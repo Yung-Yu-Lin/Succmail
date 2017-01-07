@@ -1,2 +1,2 @@
 # Succmail
-The new platform/system focus on event process in corporation or individual
+Succmail 是一套專注在企業事件處理上的平台。
