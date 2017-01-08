@@ -1,0 +1,455 @@
+﻿body {
+	background-image:url(/Statics/img/background.jpg);
+    font-family:Microsoft JhengHei;
+}
+
+/* NavBar */
+#navbar {
+	position:fixed;
+	width:100%;
+	height:50px;
+    top:0;
+    background-color:#333;
+	z-index:990;
+}
+
+#navbar >a{
+	color:#fff;
+	font-size:25px;
+	margin-left:3%;
+}
+
+#navbar #img_mail {
+	margin-top:15px;
+	width:30px;
+	height:20px;
+	cursor:pointer;
+}
+
+#navbar #panel_search {
+    position:relative;
+    left:20%;
+    top:-38px;
+    padding-bottom:0;
+    width:400px;
+    margin:0;
+}
+
+#navbar #panel_search_head >input{
+    background-color:#888;
+    color:#fff;
+    border:0;
+    border-radius:2px;   
+    width:300px;
+}
+#navbar #panel_search_head >a{
+    position:relative;
+    left:-25px;
+    color:#fff;
+    border-left:1px solid #fff;
+    padding-left:3px;
+}
+
+#navbar #panel_search_body {
+	width:420px;
+	height:300px;
+	border:1px solid #c4c4c4;
+	background-color:#eee;
+	border-radius:3px;
+}
+
+#navbar #panel_search_body .col-sm-3,
+#navbar #panel_search_body .col-sm-8{
+	margin-top:10px;
+}
+
+#navbar #panel_search_body .close{
+	position:absolute;
+	top:52px;
+	right:10px;
+}
+
+#navbar .search_tag {
+    width:100px;
+	margin-left:5px;
+	margin-top:14px;
+	padding-bottom:8px;
+}
+
+#navbar .input_search {
+	width:280px;
+	margin:10px;
+}
+
+#navbar .search_date {
+	left:-10px;
+	margin:5px;
+	width:90px;
+}
+
+#navbar .search_date_div {
+    margin:10px;
+    margin-bottom:0;
+	width:280px;
+    height:32px;
+}
+
+#navbar .search_date_div .start-date{
+    width:140px;
+}
+#navbar .search_date_div .end-date{
+    position:absolute;
+    top:54px;
+    left:150px;
+    width:140px;
+}
+
+#navbar .col-sm-8 .btn-group{
+    margin-left:10px;
+}
+
+#navbar #search_btn {
+	margin-top:15px;
+	margin-left:50px;
+}
+
+#navbar .user{
+    position:absolute;
+    top:0;
+    right:5%;
+}
+#navbar .user >ul>li>a{
+    background-color:#333;
+}
+#navbar .user >ul>li>a:hover{
+    background-color:#555;
+}
+
+
+/* Wrap */
+#wrap {
+	margin-top:52px;
+	width:100%;
+    height:100%;
+}
+
+#wrap >h2{
+	margin-top:20px;
+	margin-left:15%;
+}
+
+#wrap >h2>span{
+    position:relative;
+    color:#3385cc;
+    top:5px;   
+}
+
+
+/* Middle */
+#middle {
+	height:100%;
+	width:78%;
+	border:1px solid #c4c4c4;
+	background-color:#eee;
+	margin-left:13%;
+    margin-right:10%;
+	margin-top:20px;
+	padding:0;
+    padding-bottom:30px;
+    box-shadow:3px 3px 3px #888;
+}
+/* 功能列 */
+#middle #toolbar{
+    width:100%;
+    padding:3px;
+    box-shadow:0px 1px 3px #ccc;
+}
+
+#middle #toolbar >button,
+#middle #toolbar >div>button{
+    color:#999;
+    border:2px solid #eee;
+}
+#middle #toolbar >button:hover,
+#middle #toolbar >div>button:hover{
+    background-color:#fff;
+    border-radius:5px;
+}
+
+#middle #toolbar >button>span,
+#middle #toolbar >button>i{
+    color:#888;
+}
+
+#middle #toolbar >div>ul{
+    background-color:#eee;
+}
+
+#middle ul.dropdown-menu > li > a:hover{
+    background-image:url('/Statics/img/bcolor.jpg');
+    cursor:pointer;
+}
+
+#middle #toolbar >div>ul>li>a>span{
+    font-size:18px;
+    color:#888;
+}
+
+#middle #toolbar #save{
+    color:#fff;
+    background-color:#39e;
+    border-radius:5px;
+    margin-right:5px;
+}
+#middle #toolbar #save:hover{
+    background-color:#f93;
+    border-radius:5px;
+}
+
+#middle #toolbar #save >span{
+    color:#fff;
+}
+
+#middle #toolbar >span{
+    margin:10px 10px 20px 0;
+    font-size:16px;
+    color:#3b3;
+}
+
+#middle #toolbar .end-div{
+    width:120px;
+}
+
+#middle #toolbar .end{
+    color:#fff;
+    background-color:#39e;
+    border-radius:5px;
+    margin-right:5px;
+    float:right;
+}
+#middle #toolbar .end-div>button:hover{
+    background-color:#f93;
+    border-radius:5px;
+}
+
+#middle #toolbar .end-div .end-drop{
+    position:relative;
+    top:-3px;
+    left:1px;
+    width:114px;
+    height:34px;
+    color:#fff;
+    background-color:#39e;
+    border-radius:5px;
+    margin-right:5px;
+    visibility:hidden;
+    clear:both;
+}
+
+#middle #toolbar .popover-content{
+    background-color:#888;
+    color:#fff;
+    text-align:center;
+    width:140px;
+    height:55px;
+}
+#middle #toolbar .popover{
+    border-radius:0;
+    padding:0;
+}
+#middle #toolbar .arrow::after{
+    border-bottom-color:#888;
+}
+
+
+
+
+/* 日期 */
+#middle #date{
+    position:relative;
+    left:50px;
+    top:10px;
+    width:100px;
+    font-size:16px;
+    text-align:center;
+    padding:5px 5px 0 5px;
+    background-color:#fff;
+    border:1px solid #ccc;
+    border-radius:3px;
+}
+#middle #date >i{
+    font-size:20px;
+}
+
+/* 內容 */
+#middle #content{
+    background-color:#fff;
+    margin-top:10px;
+    margin-left:20px;
+    margin-right:20px;
+    border:1px solid #ddd;
+    padding:0px 20px 20px 20px;
+}
+#middle #content >h4{
+    padding-top:5px;
+}
+
+/* 資訊列 */
+#middle #content #infobar >span{
+    color:#3385cc;
+}
+
+#middle #content #infobar .label,
+#middle #respond-area #respond-infobar .label{
+    color:#fff;
+    padding:2px;
+}
+
+#middle #content #infobar >label{
+    color:#999;
+}
+/* 主要內容 */
+#middle #content #main_content >p{
+    line-height:2;
+}
+/* 附加檔案 */
+#middle #content #file-attach{
+    margin-top:10px;
+}
+
+#middle #content #file-attach >i{
+    font-size:18px;
+    margin:10px;
+}
+
+#middle #content #file-attach .file_name{
+    color:#999;
+    font-size:13px;
+    cursor:pointer;
+}
+
+/* 快速回覆 */
+#middle #comment {
+    width:96%;
+    margin-left:20px;
+    margin-top:10px;
+    padding-left:20px;
+    margin-bottom:10px;
+    padding-bottom:30px;
+    border-bottom:1px solid #aaa;
+}
+#middle #comment >span,
+#middle #comment >label {
+    color:#888; 
+}
+
+#middle #comment >input{
+    width:82%;
+}
+
+#middle #comment >button{
+    margin-left:10px;
+    background-color:#39e;
+    color:#fff;
+}
+#middle #comment >button:hover{
+    background-color:#f93;
+}
+
+/* 未讀/回覆 */
+#middle #comment #respond-panel {
+    position:absolute;
+    left:43%;
+    margin-top:10px;
+    font-size:16px;
+    height:40px;
+    padding:6px;
+    padding-left:15px;
+    padding-right:15px;        
+    background-color:#fff;
+    border:2px solid #c4c4c4;
+}
+#middle #comment #respond-panel >span{
+    padding :4px;
+    padding-left:8px;
+    padding-right:8px;
+
+}
+#middle #comment #respond-panel .label-default{
+    background-color:#bbb;
+    color:#555;
+}
+
+/* 寫回覆訊息 */
+#middle #write-area {
+    position:relative;
+    margin: 0 20px 0 20px;
+    top:-50px;
+    background-color:#fff;
+    border:1px solid #ddd;
+    visibility:hidden;
+}
+
+
+/* 回覆資訊 */
+#middle #respond-area{
+    background-color:#fff;
+    margin-top:10px;
+    margin-left:20px;
+    margin-right:20px;
+    border:1px solid #ddd;
+    padding:0px 20px 20px 20px;
+}
+
+#middle #respond-area #respond-infobar{
+    margin-top:10px;
+    padding:10px 0 5px 0;
+}
+
+#middle #respond-area #respond-infobar >span{
+    color:#3385cc;
+}
+
+#middle #respond-area #respond-infobar >label{
+    color:#888;
+}
+
+#middle #respond-area #respond-infobar >a{
+    padding:0 5px 5px 5px;
+}
+#middle #respond-area >label{
+    font-size:15px;
+    color:#888;
+}
+
+
+
+/* 共用 */
+.nopadding {
+	padding:0;
+}
+.f16 {
+	font-size:16px;
+}
+.a_type,.a_type:hover{
+	color:#222;
+	text-decoration:none;
+	cursor:pointer;	
+}
+.dropdown-menu{
+	padding:0;
+}
+hr{
+    margin-top:0;
+    margin-bottom:15px;
+}
+
+/* 收件人 */
+#middle #receiver >i{
+    margin-left:10px;
+    margin-right:10px;
+    color:#999;
+}
+#middle #receiver >span .read-false {
+    color:#f11;
+}

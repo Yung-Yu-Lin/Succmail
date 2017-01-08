@@ -1,0 +1,243 @@
+﻿#memberList{
+    border:1px solid #ccc;
+    width:966px;
+    height:638px;
+    background-color:#eee;
+}
+
+#memberList .memberAdd{
+    /*border:1px solid red;*/
+    width:450px;
+    height:600px;
+    float:left;
+    margin-left:25px;
+    margin-top:10px;
+    background-color:#fff;
+}
+
+#memberList .memberAdd > ul{
+    background-color:#eee;
+}
+
+#memberList .memberAdd > ul > li{
+    margin-left:40px;
+    /*border:1px solid green;*/
+}
+
+/* #region 新增非公司員工 */
+
+.AddNewPerson .AddNewPersonPhoto{
+    width:80px;
+    height:80px;
+    margin-left:40px;
+    float:left;
+    color:white;
+    font-size:52px;
+    text-align:center;
+    border:1px solid lightgray;
+}
+
+.AddNewPerson .AddNewPersonName{
+    margin-top:50px;
+    margin-left:135px;
+    padding-top:5px;
+}
+
+.AddNewPerson .AddNewPersonName .lastName{
+    float:left;
+    width:100px;
+}
+
+.AddNewPerson .AddNewPersonName .firstName{
+    width:150px;
+    margin-left:15px;
+}
+
+.AddNewPerson .AddNewPersonEmail{
+    margin-top:20px;
+}
+
+.AddNewPerson .AddNewPersonEmail .AddNewEmail{
+    margin-left:15px;
+    width:265px;
+}
+
+.memberAddNew .confirm{
+    margin-top:30px;
+    margin-left:174px;
+}
+/* #endregion */
+
+/* #region 新增公司員工 */
+
+.memberSearchArea{
+    /*border:1px solid red;*/
+    padding:5px;
+}
+
+.memberSearchArea .memberSearch{
+    width:380px;
+    height:32px;
+    font-size:18px;
+    padding-left:5px;
+    float:left;
+    margin-left:5px;
+    margin-top:1.5px;
+}
+
+.memberSearchArea .memberSearchIcon{
+    color:#888;
+    font-size:25px;
+    margin-left:395px;
+}
+
+.memberUnAddTitle{
+    border-top:1px solid #e4e4e4;
+    border-bottom:1px solid #e4e4e4;
+    padding:5px 0;
+    padding-left:10px;
+    color:#666;
+    font-size:16px;
+    background-color:#fff;
+}
+
+.memberUnAddList{
+    border:1px solid #e4e4e4;
+    height:483px;
+    overflow-y:scroll;
+}
+
+.memberGroupTitle{
+    border:1px solid #e4e4e4;
+    border-bottom:none;
+    height:34px;
+    font-size:16px;
+}
+
+.memberGroupTitle > label{
+    padding:5px;
+    padding-left:10px;
+}
+
+.memberGroupTitle > label > i{
+    margin-left:5px;
+}
+
+.memberGroupTitle > button{
+    float:right;
+    margin-top:5px;
+    margin-right:5px;
+    font-size:14px;
+    background-color:#39c;
+    border:none;
+    color:#fff;
+}
+
+.memberAddIn{
+    float: right;
+    margin-top: -22px;
+    margin-right: 10px;
+    background-color:#39c;
+    border:none;
+    color:#fff;
+    width:60px;
+}
+
+/* #endregion */
+
+/* #region 右側成員名單 */
+
+#memberList .memberInGroup{
+    /*border:1px solid #ccc;*/
+    width:450px;
+    height:638px;
+    margin-left:500px;
+    margin-bottom:50px;
+}
+
+#memberList .memberInGroup .memberListAll .AllMember{
+    /*border:1px solid red;*/
+    background-color:#eee;
+    color:#666;
+    width:100%;
+    height:50px;
+    /*border-bottom:1px solid #ddd;*/
+    font-size:20px;
+    padding:5px;
+    text-align:center;
+}
+
+#memberList .memberInGroup .memberListAll .AllMember > label{
+    padding-top:5px;
+    padding-left:165px;
+    float:left;
+}
+
+.AllMember .memberTotal{
+    float:right;
+    padding-top:5px;
+    margin-right:-5px;
+}
+
+#memberList .memberInGroup .memberListAll .memberList{
+    border:1px solid #e4e4e4;
+    box-shadow:#888 -5px 0px 5px 0px;
+    height:562px;
+    overflow-y:scroll;
+}
+
+.memberListMember{
+    background-color:#fff;
+    border:1px solid #e4e4e4;
+    width:100%;
+    height:80px;
+}
+
+.memberPhoto{
+    color:#fff;
+    width:50px;
+    height:50px;
+    margin-top:18px;
+    margin-left:10px;
+    margin-right:10px;
+    float:left;
+    font-size:36px;
+    text-align:center;
+}
+
+.memberName {
+   padding:1em 0;
+}
+.memberDepartment{
+    float:right;
+    margin-top:-50px;
+    margin-right:10px;
+    color:#666;
+}
+
+.memberRemove{
+    float: right;
+    margin-top: -22px;
+    margin-right: 10px;
+}
+
+.memberInvited{
+    margin-top:19px;
+    margin-left:20px;
+    float:left;
+    color:#888;
+}
+
+.AllMember{
+    text-align:center;
+}
+
+.memberImage{
+    position:relative;
+    width:50px;
+    height:50px;
+    border:1px solid #ccc;
+    margin-bottom:10px;
+}
+
+/* #endregion */

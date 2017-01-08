@@ -1,0 +1,348 @@
+﻿/* #region 使用記錄 */
+#operation{
+    min-width:900px;
+}
+
+#operation >h2,
+#login >h2{
+    margin-left:40px;
+    font-family:'Microsoft JhengHei';
+}
+
+/* #region 登入紀錄 */
+#recorddetail{
+    margin:30px 10%;
+    font-size:1.07em;
+}
+
+#recorddetail .recordsort{
+    margin-bottom:-10px;
+}
+
+#recorddetail > div .sort{
+    font-weight: 100;
+    background-color: #c7c7c7;
+    margin-left:10px;
+}
+
+#recorddetail > div > label{
+    border:1px solid #dcdcdc;
+    margin-left:10px;
+
+}
+
+/* #region table */
+.recordtable{
+    margin-top:20px;
+}
+
+#recordinfo{
+    border:1px solid #aaa;
+}
+
+#recordinfo .recordtabletitle_bar{
+    background-color:#aaa;
+    text-align:center;
+}
+
+#recordinfo .recordtabletitle_bar >th{
+    border-top:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+}
+#recordinfo .recordtabledetail:hover{
+    background-color:#ffc;
+    cursor:default;
+}
+
+#recordinfo .recordtime{
+    width:191px;
+}
+
+#recordinfo .recordname{
+    width:141px;
+}
+
+#recordinfo .recordip{
+    width:191px;
+}
+
+#recordinfo .recordbrowser{
+    width:141px;
+}
+
+#recordinfo .recordsystem{
+    width:141px;
+}
+
+#recordinfo .recordtype{
+    width:141px;
+    line-height:1.67em;
+}
+
+/* #endregion */
+
+/* #endregion */
+
+/* #region 操作紀錄 */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes rollIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+    transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes rollIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+    transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.rollIn {
+  -webkit-animation-name: rollIn;
+  animation-name: rollIn;
+}
+
+.MoreDetail
+{
+    transition:background-color 1s,color 1s;
+    -moz-transition:background-color 1s,color 1s;
+    -webkit-transition:background-color 1s,color 1s;
+    -o-transition:background-color 1s,color 1s;
+}
+
+.MoreDetail:hover
+{
+    background-color:#1AFD9C;
+    color:white;
+}
+
+/* #region timeline */
+#operation #operate .timearea .aday{
+    margin-bottom:-20px;
+}
+
+#operation #operate .timearea .aday .circle{
+    width:60px;
+    height:60px;
+    border-radius:99em;
+    background-color:#0094ff;
+    margin-top:20px;
+    margin-left:15px;
+}
+#operation #operate .timearea .aday .circle >p{
+    line-height:60px;
+    text-align:center;
+    color:#fff;
+    font-size:18px;
+}
+
+#operation #operate .timeline {
+  margin-left:44px;
+  margin-bottom:0;
+  border-left:3px solid #ddd;
+  padding-top:25px;
+  list-style-type: none;
+}
+
+#operation #operate .timeline >li {
+    margin-left:-40px;
+    padding-top:1em;
+}
+
+/* #endregion */
+
+/* #region infobox */
+#operation #operate .infobox .spot{
+    background-color:#fff;
+    position:relative;
+    top:-20px;
+    margin-left:-7.5px;
+    z-index:3;
+    color:lightgray;
+}
+
+#operation #operate .infobox .time{
+    position:relative;
+    top:-20px;
+    margin-left:10px;
+    color:#a0a0a0;
+}
+
+#operation #operate .infobox > .photo
+{
+    margin-left:10px;
+    margin-top:17px;
+    padding:5px 10px;
+    font-size:30px;
+    text-align:center;
+    color:#fff;
+    border-radius:3px;
+}
+
+#operation #operate .infobox .name{
+    position:relative;
+    top:30px;
+    margin-left:-50px;
+}
+
+#operation #operate .infobox .action{
+    position:relative;
+    top:-45px;
+    margin-left:15px;
+    color:#999;
+    border-radius:6px 6px 0 0;
+    padding:4px;
+}
+
+#operation #operate .infobox .disc{
+    position:relative;
+    top:-25px;
+    margin-right:50px;
+    color:#999;
+}
+
+#operation #operate .infobox .detail{
+    position:relative;
+    top:-47px;
+    left:130px;
+    width:700px;
+    padding:10px;
+    padding-top:15px;
+    padding-left:15px;
+    background-color:#efefef;
+    overflow-x:auto;
+}
+
+#operation #operate .infobox .detail > span{
+    font-size:16px;
+}
+
+#operation #operate .infobox .detail > p{
+    color:#555;
+    padding-top:10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.label{
+    font-weight:normal !important;
+}
+
+/* #endregion*/
+
+/* #endregion */
+
+/* #region 共用 */
+/* #region filter_bar */
+#operation #operate{
+    min-width:900px;
+    margin:30px 8%;
+}
+#operation #operate .filter_bar,
+#login #recorddetail .filter_bar{
+    font-size:16px;
+    margin-top:10px;
+}
+
+#operation #operate .filter_bar .dropdown >button,
+#login #recorddetail .filter_bar .dropdown >button{
+    border:1px solid #888;
+}
+
+#operation #operate .filter_bar .dropdown >ul,
+#login #recorddetail .filter_bar .dropdown >ul{
+    margin-top:10px;
+    padding:5px;
+    z-index:100;
+}
+
+#operation #operate .filter_bar .dropdown >ul>li,
+#login #recorddetail .filter_bar .dropdown >ul>li{
+    font-size:15px;
+    margin:3px;
+    padding:5px;
+}
+
+#operation #operate .filter_bar .dropdown >ul>li>select,
+#login #recorddetail .filter_bar .dropdown >ul>li>select {
+    width:173px;
+    height:30px;
+    margin-top:5px;
+    border-radius:3px;
+}
+
+#operation #operate .filter_bar .filter_tag,
+#login #recorddetail .filter_bar .filter_tag{
+    position:relative;
+    width:750px;
+    top:-30px;
+    left:180px;
+}
+
+#operation #operate .filter_bar .filter_tag >span,
+#login #recorddetail .filter_bar .filter_tag >span{
+    border:1px solid #ccc;
+    margin:3px 5px;
+    padding:2px;
+}
+
+#operation #operate .filter_bar .filter_tag >span>i,
+#login #recorddetail .filter_bar .filter_tag >span>i{
+    padding:2px;
+    color:#888;
+}
+#operation #operate .filter_bar .filter_tag >span>i:hover,
+#login #recorddetail .filter_bar .filter_tag >span>i:hover{
+    color:#f55;
+    cursor:pointer;
+}
+
+/* #endregion */
+
+/* #region 選單樣式 */
+#operation #operate .chosen-container,
+#operation #operate .chosen-container >a{
+    width: 125px;
+    height: 30px;
+    font-size: 15px;
+    padding-top: 1px;
+}
+
+.filterLabel{
+    display:inline-block;
+    padding:5px 3px 5px 3px;
+}
+.filterLabel > i{
+    cursor:pointer;
+}
+
+/* #endregion  */
+
+/* #endregion 共用 */
+
+
+/* #endregion 使用記錄 */

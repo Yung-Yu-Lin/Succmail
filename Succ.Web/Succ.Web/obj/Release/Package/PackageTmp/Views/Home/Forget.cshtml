@@ -1,0 +1,34 @@
+﻿@{
+    Layout = null;    
+}
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/angular")
+@*forget pwd所需script*@
+@Scripts.Render("~/bundles/pwd")
+<html ng-app="forget">
+<head>
+    <title></title>
+    @*charset指定.js的編碼為UTF-8*@
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="~/Statics/css/home/ForgetPwdPage.min.css" rel="stylesheet" />
+</head>
+@*angular controller:forgetpassword*@
+<body ng-controller="forgetpassword">
+    @*form 送出後呼叫ng-submit function*@
+    <form ng-submit="emailsubmit()">
+        <div class="main">
+            @*css class dialog*@
+            <div class="dialog">
+                @*顯示:忘記密碼?文字*@
+                <div id="see_id" style="font-size:18px">@Html.Raw(Succ.Common.Global.Succ.ForgotPpassword)?</div>
+                <div style="margin-top:30px;">
+                    @*輸入框:使用者信箱*@
+                    <input type="text" id="txtEmail" class="email" ng-model="txtEmail" placeholder="name@company.com" /><br />
+                    @*submit button*@
+                    <input type="submit" value="@Html.Raw(Succ.Common.Global.Succ.OK)" class="submit_button" id="logb" />
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

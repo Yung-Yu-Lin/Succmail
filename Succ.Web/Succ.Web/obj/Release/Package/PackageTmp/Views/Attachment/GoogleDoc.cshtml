@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+<script type="text/javascript" src="~/Scripts/lib/jquery/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="~/Scripts/lib/jquery/jquery-2.1.1.min.js"></script>
+
+<style>
+    #controlbar {
+        display: none;
+    }
+    #panel_search{
+        display:none;
+    }
+    #navbar > span{
+        display:none;
+    }
+    #btnList{
+        display:none;
+    }
+    .user{
+        display:none;
+    }
+    .logoOut{
+        display:none;
+    }
+    .settingBackEnd {
+        display:none;
+    }
+</style>
+<div>
+    <div id="GoogleDoc_Container">
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function ()
+    {
+        var ViewHeight = document.documentElement.clientHeight;
+        $("#GoogleDoc_Container").css('height', ViewHeight - 80);
+        document.body.style.overflow = 'hidden';
+        $("[href='/news']").removeAttr('ng-click').removeAttr('href');
+        $("#img_mail").parent("a").css('display', 'none');
+        $("#navbar").append("<div onclick='CloseGoogleDoc()' style='position:absolute;top:8px;right:5%;'><span class='btn btn-warning'><span>關閉文件</span><span style='margin:4px 0px 0px 3px;' class='glyphicon glyphicon-remove'></span></span></div>")
+    });
+
+    function CloseGoogleDoc()
+    {
+        window.close();
+    };
+
+</script>

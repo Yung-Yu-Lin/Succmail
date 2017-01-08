@@ -1,0 +1,181 @@
+﻿@{Layout = null;}
+@Styles.Render("~/backend/css")
+
+<input type="hidden" id="CurrentUserID" />
+<input type="hidden" id="CurrentCompID" />
+<div id="partial">
+    <ul class="nav nav-tabs viewtab" role="tablist">
+        <!-- #region 網站管理 -->
+        <li class="active WebManageTab">
+            <a class="tag" role="tab" data-toggle="tab" ng-click="TabView('website')">@Html.Raw(Succ.Common.Global.Succ.WebSite)</a>
+        </li>
+        <!-- #endregion -->
+        <!-- #region 討論組管理 -->
+        <li class="DiscManageTab">
+            <a class="tag" role="tab" data-toggle="tab" ng-click="TabView('disc')">@Html.Raw(Succ.Common.Global.Succ.DiscSetting)</a>
+        </li>
+        <!-- #endregion -->
+        <!-- #region 部門管理 -->
+        <li class="DeptManageTab">
+            <a class="tag" role="tab" data-toggle="tab" ng-click="TabView('dept')">
+                @Html.Raw(Succ.Common.Global.Succ.DeptManagement)
+            </a>
+        </li>
+        <!-- #endregion -->
+        <!-- #region 人員管理 -->
+        <li class="MemberManageTab">
+            <a class="tag" role="tab" data-toggle="tab" ng-click="TabView('member')">@Html.Raw(Succ.Common.Global.Succ.MemberManagement)</a>
+        </li>
+        <!-- #endregion -->
+        <!-- #region 標籤管理 -->
+        <li class="TagManageTab" id="SubjTag_li">
+            <a class="subjTag" role="tab" data-toggle="tab" ng-click="DropDownTag()">
+                @Html.Raw(Succ.Common.Global.Succ.SubjectTag) <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="subjTag-drop w3-animate-zoom">
+                <label ng-click="TabView('eventtag')" class="EventTag tag" data-tagname="EventTag">@Html.Raw(Succ.Common.Global.Succ.ObjectTag)</label>
+                <hr />
+                <label ng-click="TabView('custag')" class="CusTag tag" data-tagname="CusTag">@Html.Raw(Succ.Common.Global.Succ.CusTag)</label>
+            </ul>
+        </li>
+        <!-- #endregion -->
+        <!-- #region 紀錄管理 -->
+        <li class="RecordManageTab" id="record_li">
+            <a class="tag" role="tab" data-toggle="tab" ng-click="DropDownRecord()">
+                @Html.Raw(Succ.Common.Global.Succ.UseRecord) <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="sub-dropdown record-drop w3-animate-zoom">
+                <label ng-click="TabView('operate')" class="operation tag" data-tagname="operation">
+                    @Html.Raw(Succ.Common.Global.Succ.operateRec)
+                </label>
+                <hr />
+                <label ng-click="TabView('login')" class="login tag" data-tagname="login">
+                    @Html.Raw(Succ.Common.Global.Succ.loginRec)
+                </label>
+                <hr />
+                <label ng-if="Backend.IsCheckHistory" ng-click="TabView('history')" class="history tag" data-tagname="history">
+                    @Html.Raw(Succ.Common.Global.Succ.UseRecord)
+                </label>
+            </ul>
+        </li>
+        <!-- #endregion -->
+    </ul>
+    <div id="partialview">
+        <div data-ng-include="Backend.BackendDetailUrl"></div>
+    </div>
+</div>
+<!-- #region -->
+<!-- #endregion -->
+@* 網站版本 *@
+@*<div class="version">
+    <!-- #region 目前版本 -->
+    <div class="versiontitle" style="padding:10px;">
+        <label>@Html.Raw(Succ.Common.Global.Succ.CurrentVersion)</label>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 版本資訊 -->
+    <div class="versioninfo">
+        <img class="succmailphoto" src="~/Statics/img/home/logo.png" />
+        <div class="version_date">
+            <label ng-bind="Backend.VersionInfo.VersionType"></label><br />
+            <!-- #region 剩餘天數 -->
+            <div class="progress" style="width:170px;" ng-if="Backend.IsTrial">
+                <div class="progress-bar enddate" data-value="" ng-style="SetDateWidth()"></div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 到期日 -->
+            <label class="end_date progress_text" ng-if="Backend.IsTrial" ng-bind="Backend.VersionInfo.ExpireDate"></label>
+            <!-- #endregion -->
+            <!-- #region 距離到期日 -->
+            <label class="else_date">
+                <label>@Html.Raw(Succ.Common.Global.Succ.RemainingDays)</label>
+                <label ng-bind="Backend.VersionInfo.ExpireLeft"></label>
+                <label>@Html.Raw(Succ.Common.Global.Succ.Day)</label>
+            </label>
+            <!-- #endregion -->
+        </div>
+        <div class="web_info">
+            <!-- #region 目前成員數 -->
+            <div class="progress">
+                <div class="progress-bar usercount" ng-style="SetMemberWidth()"></div>
+            </div>
+            <span class="progress_text">
+                <span>
+                    &nbsp;@Html.Raw(Succ.Common.Global.Succ.CurrentMemberAmount):
+                </span>
+                <span ng-bind="Backend.VersionInfo.MemberCount"></span>
+                <span>/</span>
+                <span ng-if="Backend.IsTrial" ng-bind="Backend.VersionInfo.MaxMember"></span>
+                <span ng-if="!Backend.IsTrial" >∞</span>
+            </span>
+            <!-- #endregion -->
+            <!-- #region 目前上傳量 -->
+            <div class="progress">
+                <div class="progress-bar upload" ng-style="SetUploadWidth()"></div>
+            </div>
+            <span class="progress_text">
+                <span>
+                    &nbsp;@Html.Raw(Succ.Common.Global.Succ.UploadAmount):
+                </span>
+                <span ng-bind="Backend.VersionInfo.Uploaded"></span>
+                <span> GB/</span>
+                <span ng-if="Backend.IsTrial" ng-bind="Backend.VersionInfo.MaxUpload"></span>
+                <span ng-if="!Backend.IsTrial">∞</span>
+                <span> GB</span>
+            </span>
+            <!-- #endregion -->
+            <!-- #region 討論組數量 -->
+            <div class="progress">
+                <div class="progress-bar disccount" ng-style="SetDiscWidth()"></div>
+            </div>
+            <span class="progress_text">
+                <span>
+                    &nbsp;@Html.Raw(Succ.Common.Global.Succ.DiscAmount):
+                </span>
+                <span ng-bind="Backend.VersionInfo.DiscussionCount"></span>
+                <span>/</span>
+                <span ng-if="Backend.IsTrial" ng-bind="Backend.VersionInfo.MaxDiscussion"></span>
+                <span ng-if="!Backend.IsTrial">∞</span>
+            </span>
+            <!-- #endregion -->
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 升級版本 -->
+    <div class="versiontitle" style="padding:10px;">
+        <label>@Html.Raw(Succ.Common.Global.Succ.UpgradeProgram)</label>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 專業版 -->
+    <div class="version_pro">
+        <div class="pro_title">
+            <span>@Html.Raw(Succ.Common.Global.Succ.Pro_VersionType)</span>
+        </div>
+        <div class="pro">
+            <span>
+                <label> @Html.Raw(Succ.Common.Global.Succ.Pro_CostPerMonth)</label><br />
+                <label>◎</label> <label> @Html.Raw(Succ.Common.Global.Succ.Pro_Member)</label><br />
+                <label>◎</label> <label> @Html.Raw(Succ.Common.Global.Succ.Pro_Storage)</label><br />
+                <label>◎</label> <label> @Html.Raw(Succ.Common.Global.Succ.Pro_DiscAmount)</label>
+            </span>
+            <button class="btn payforpro" style="visibility:hidden;">@Html.Raw(Succ.Common.Global.Succ.PaidUpgrades)</button>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 大型企業版 -->
+    <div class="version_com">
+        <div class="com_title">
+            <span>@Html.Raw(Succ.Common.Global.Succ.Ent_VersionType)</span>
+        </div>
+        <div class="com">
+            <span>
+                <label>@Html.Raw(Succ.Common.Global.Succ.Ent_Cost)</label><br />
+                <label>◎</label> <label> @Html.Raw(Succ.Common.Global.Succ.Ent_Member)</label><br />
+                <label>◎</label> <label> @Html.Raw(Succ.Common.Global.Succ.Ent_Storage)</label><br />
+                <label>◎</label> <label> @Html.Raw(Succ.Common.Global.Succ.Ent_DiscAmount)</label>
+            </span>
+            <button class="btn contactus" style="visibility:hidden;">@Html.Raw(Succ.Common.Global.Succ.Lay_Contact)</button>
+        </div>
+    </div>
+    <!-- #endregion -->
+</div>*@

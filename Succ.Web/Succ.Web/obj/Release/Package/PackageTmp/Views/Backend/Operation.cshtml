@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+@*實作jqGrid所需的js & css檔案*@
+@Scripts.Render("~/jqGrid/script")
+<link href="~/Scripts/lib/jqGrid/css/ui.jqgrid.css" rel="stylesheet" />
+<link href="~/Scripts/lib/jquery-ui/jquery-ui.css" rel="stylesheet" />
+
+<div ng-controller="BackendRecord">
+    <div ng-style="Title">
+        <h2>公司列表</h2>
+    </div>
+    <br />
+    @*所有的公司設定*@
+    <section ng-class="CompNameClass" ng-style="IsShowCompName">
+        <div class="w3-row-padding">
+            <div class="w3-col m3 w3-card-2" ng-repeat="item in CompList">
+                <button class={{item.DefaultStyle}} ng-click="ShowCompDetail(item.Compid)">{{item.CompShorName}}</button><br />
+                @*老闆名稱*@
+                <span>{{item.BossName}}</span><br />
+                @*創立時間*@
+                <span>{{item.CoverDate}}</span><br />
+            </div>
+        </div>
+    </section>
+    <br />
+    @*每間公司的內容*@
+    <section ng-class="CompDetailClass" ng-style="IsShowCompDetail">
+        <div>
+            <button class="w3-btn w3-green w3-ripple" style="float:left;" ng-click="PrevCompName()">《回上頁</button>
+        </div>
+        <div class="w3-row">
+        </div>
+        <div class="w3-row">
+            <div class="w3-col m3">
+                @*usagestatusjqgrid directives*@
+                <usagestatusjqgrid config="config"></usagestatusjqgrid>
+            </div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-col m2">
+                @*attachjqgrid directives*@
+                <compuserjqgrid config="configcompuser"></compuserjqgrid>
+            </div>
+            <div class="w3-col m2">
+                @*attachjqgrid directives*@
+                <last30userjqgrid config="configlast30user"></last30userjqgrid>
+            </div>
+       </div>
+        @*<div class="w3-row">
+            <div class="w3-col m3 w3-card-8">*@
+                @*toptensubjchangejqgrid directives*@
+                @*<toptensubjchangejqgrid config="configtoptensubjchange"></toptensubjchangejqgrid>
+            </div>
+       </div>*@
+        @*<div class="w3-row">
+            <div class="w3-col m3 w3-card-8">*@
+                @*toptensubjchangejqgrid2 directives*@
+                @*<toptensubjchangejqgrid2 config="configtoptensubjchange2"></toptensubjchangejqgrid2>
+            </div>
+        </div>*@
+</section>
+</div>
+
+

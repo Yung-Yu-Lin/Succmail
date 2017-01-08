@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hangfire.Dashboard.Authorization</name>
+    </assembly>
+    <members>
+        <member name="M:Hangfire.Dashboard.AuthorizationFilter.SplitString(System.String)">
+            <summary>
+            Splits the string on commas and removes any leading/trailing whitespace from each result item.
+            </summary>
+            <param name="original">The input string.</param>
+            <returns>An array of strings parsed from the input <paramref name="original"/> string.</returns>
+        </member>
+        <member name="P:Hangfire.Dashboard.AuthorizationFilter.Roles">
+            <summary>
+            Gets or sets the authorized roles.
+            </summary>
+            <value>
+            The roles string.
+            </value>
+            <remarks>Multiple role names can be specified using the comma character as a separator.</remarks>
+        </member>
+        <member name="P:Hangfire.Dashboard.AuthorizationFilter.Users">
+            <summary>
+            Gets or sets the authorized users.
+            </summary>
+            <value>
+            The users string.
+            </value>
+            <remarks>Multiple role names can be specified using the comma character as a separator.</remarks>
+        </member>
+    </members>
+</doc>

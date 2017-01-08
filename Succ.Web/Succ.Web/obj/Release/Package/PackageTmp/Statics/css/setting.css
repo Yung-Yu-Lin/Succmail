@@ -1,0 +1,163 @@
+﻿
+.setting-panel{
+    border:1px solid #ccc;
+    margin:50px 150px;
+    min-width:770px;
+}
+
+hr{
+   border-top-color:#ccc;
+}
+
+/* 基本設定 */
+.setting-panel .base-setting>div>h4{
+    background-color:#eee;
+    padding:10px;
+    border-bottom:1px solid #cfcfcf;
+}
+
+.setting-panel .base-setting .panel-body{
+    height:240px;
+}
+
+.setting-panel .base-setting .panel-body>div>label{
+    min-width:125px;
+    margin:10px 0 10px 20px ;
+}
+.setting-panel .base-setting .panel-body>div>div{
+    margin:10px 0 10px 10px ;
+}
+
+.setting-panel .base-setting .panel-body >div>div>label,
+.setting-panel .base-setting .panel-body > div > div > input {
+    margin-left:10px;
+}
+.setting-panel .base-setting .panel-body > div >input{
+    margin-left:10px;
+}
+
+.setting-panel .base-setting .panel-body .image-div{
+    width:120px;
+    height:120px;
+    padding:0;
+    margin-top:50px;
+}
+
+.setting-panel .base-setting .panel-body .image-div>img{
+    position:relative;
+    width:110px;
+    height:110px;
+    border:1px solid #ccc;
+}
+/*
+#ca7497、#60b4d0、#8fcbcc、#f17860、#7594b3、#f2a5a7、#e29e4b、#b7d28d、#d9b9f1、#fed049
+*/
+.setting-panel .base-setting .upload-img{
+    position:relative;
+    width:106px; 
+    height:20px;
+    top:-15px;
+    margin-left:2px;
+    background-color:#777;
+    opacity:0.9;
+    text-align:center;
+    display:none;
+}
+.setting-panel .base-setting .upload-img>p{
+    color:#fff;
+    cursor:pointer;
+}
+.setting-panel .base-setting .upload-img>p:hover{
+    text-decoration:underline;
+}
+
+
+
+
+/* 進階設定 */
+.setting-panel .advanced-setting>p{
+    width:200px;
+    padding:10px;
+    cursor:pointer;
+}
+.setting-panel .advanced-setting>p:hover{
+    text-decoration:underline
+}
+
+.setting-panel .advanced-setting >p>i{
+    position:relative;
+    margin-left:5px;
+}
+
+.setting-panel .advanced-setting .panel-body>div{
+    padding-left:80px;
+    padding-top:10px;
+}
+
+.setting-panel .advanced-setting .panel-body>div>label{
+    margin:10px 0;
+}
+
+.setting-panel .advanced-setting .panel-body>div>input,
+.setting-panel .advanced-setting .panel-body>div>select
+{
+    margin:0 8px;
+}
+/* 通知 */
+.setting-panel .advanced-setting .mail-alert{
+    width:460px;
+}
+/* 通知頻率 */
+.setting-panel .advanced-setting .alert-frequency{
+    width:230px;
+    background-color:#eee;
+}
+/* 字體大小 */
+.setting-panel .advanced-setting .fontsize{
+    margin:10px 65px 10px 0;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    padding:10px 0;
+}
+
+.setting-panel .advanced-setting .fontsize>label{
+    margin-right:30px;
+}
+.setting-panel .advanced-setting .fontsize>input{
+    margin-left:20px;
+    margin-right:5px;
+}
+.setting-panel .advanced-setting .fontsize>p{
+    margin-top:20px;
+    margin-left:160px;
+    color:#999;
+}
+.setting-panel .advanced-setting .contury,
+.setting-panel .advanced-setting .time-zoom{
+    background-color:#eee;
+    width:460px;
+}
+
+
+/* 按鈕列 */
+.setting-panel .btn-bar{
+    text-align:center;
+    border-top:1px solid #ccc;
+    padding:15px;
+}
+
+.setting-panel .btn-bar .cancel{
+    background-color:#fff;
+    border:1px solid #ccc;
+    color:#888;
+    margin-right:10px;
+}
+.setting-panel .btn-bar .decide{
+    background-color:#39e;
+    color:#fff;
+}
+
+.setting-panel .btn-bar >button>i{
+    margin-right:5px;
+}
+

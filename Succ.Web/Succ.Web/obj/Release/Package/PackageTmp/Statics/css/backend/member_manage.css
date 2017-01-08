@@ -1,0 +1,454 @@
+﻿/*人員管理標題*/
+#member_manage >h2{
+    margin-left:40px;
+    font-family:'Microsoft JhengHei';
+}
+/*人員管理第一個Div框架*/
+#member_manage > div{
+    margin:30px 4%;
+    min-width:750px;
+    min-height:488px;
+}
+/*左側人員清單*/
+#member_manage #sub {
+    width:250px;
+    min-height:490px;
+    border: 1px solid #aaa;
+    float:left;
+}
+/*左側人員清單標題*/
+#member_manage #sub .title{
+    background-color:#333;
+    color:#fff;
+    padding:8px;
+    font-size:17px;
+}
+/*左側人員清單所有人員*/
+#member_manage #sub .list .alluser{
+    background-color:#eee;
+    border-top:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+    padding:9px 0px 8px 8px;
+    cursor:pointer;
+    height:41px;
+}
+/*左側人員清單所有人員 下面的Span*/
+#member_manage #sub .list .alluser >span{
+    margin-left:5px;
+    margin-right:18px;
+    color:#aaa;
+}
+/*左側人員清單所有人員 下面的Label*/
+#member_manage #sub .list .alluser >label{
+    color:#aaa;
+}
+/*左側人員清單部門清單*/
+#member_manage #sub .list .user-group{
+    height:380px;
+    border-bottom:1px solid #aaa;
+    overflow-y:auto;
+}
+/*左側人員清單部門清單滑過動作*/
+#member_manage #sub .list .group_title:hover,
+#member_manage #sub .list .group_collapse:hover{
+    background-color:#ffc;
+}
+/*左側人員清單部門清單刪除按鈕*/
+#member_manage .delete{
+    position:absolute;
+    color:#f00;
+    top:405px;
+    left:148px;
+    padding:5px;
+    display:none;
+    cursor:pointer;
+}
+/*左側人員清單部門清單像下圖示*/
+#member_manage #sub .list .group_title >i{
+    position:relative;
+    top:-5px;
+    margin:0 5px;
+    color:#aaa;
+}
+/*左側人員清單部門清單人像*/
+#member_manage #sub .list .group_title >span{
+    color:#aaa;
+}
+/*左側人員清單部門清單人員數量*/
+#member_manage #sub .list .group_title >.membercount{
+    color:#aaa;
+}
+/*左側人員清單部門清單部門名稱*/
+#member_manage #sub .list .group_title .deptname{
+    width:132px;
+    margin:0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor:pointer;
+}
+/*標題底下的Span & Label*/
+.member-team .group_title>span,
+.member-team .group_title>label{
+    margin-top:3px;
+    margin-right:5px;
+    font-weight:normal;
+}
+
+/*部門底下的人員列表*/
+#member_manage .group_collapse{
+    height:60px;
+    padding:5px;
+    cursor:pointer;
+}
+/*部門底下的人員列表無照片的大頭名字*/
+#member_manage .list .group_collapse .imgname{
+    color:#fff;
+    font-size:25px;
+    position:relative;
+    margin:0 0 0 -4px;
+}
+/*部門底下的人員列表照片*/
+#member_manage .list .group_collapse .memberImg{
+    width:50px;
+    height:50px;
+    border:1px solid #ccc;
+    display:inline-block;
+    margin:0;
+    vertical-align:top;
+    text-align:center;
+}
+/*部門底下的人員列表名字*/
+#member_manage .list .group_collapse .name_label{
+    /*position:relative;
+    top:6px;*/
+    display:inline-block;
+    width:100px;
+    margin:0;
+}
+/*部門底下的人員列表電子郵件*/
+#member_manage .group_collapse .email_label{
+    /*position:relative;
+    top:6px;*/
+    display:inline-block;
+    width:135px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin:0;
+}
+/*人員在職與否按鈕*/
+#member_manage .use >a
+{
+    color: #fff;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: 'Microsoft JhengHei';
+    font-weight: 100;
+    padding: 2px 4px;
+}
+#member_manage .use >a.active{
+    color: #fff;
+    background-color: #09f;
+    font-weight: 100;
+}
+#member_manage .use >a.use_off{
+    background-color:#f44;
+}
+/*確定按鈕區域*/
+#member_manage .check{
+    float:right;
+}
+#detail .tab-pane .check > button{
+    padding:5px 20px;
+    margin:5px;
+    font-size:16px;
+    border-radius:2px;
+}
+#detail .DiscBtnArea{
+    display:block;
+    width:100%;
+    height: 50px;
+    padding: 0 70px 0 70px;
+    margin-top:30px;
+}
+/* 離職區 */
+#member_manage #sub .list .leave{
+    padding:10px;    
+    height:39px;
+    cursor:pointer;
+}
+#member_manage #sub .list .leave > span{
+    margin-left:6px;
+    margin-right:14px;
+    color:#aaa;
+}
+
+#member_manage #sub .list .leave > label{
+    color:#aaa;
+}
+
+#member_manage .adddepart{
+    position:absolute;
+    top:779px;
+    left:22%;
+    cursor:pointer;
+    text-align:center;
+}
+/* #endregion */
+
+/* #region 右側所有人員清單 */
+#member_manage #detail{
+    border:1px solid #aaa;
+    margin-left:249px;
+    min-height:502px;
+}
+
+#member_manage #detail .title{
+    margin:-1px -1px 0 -1px;
+    border:1px solid #aaa;
+    border-bottom:0px;
+    background-color:#f4f4f4;
+}
+
+#member_manage #detail .title>ul{
+    border-bottom:1px solid #aaa;
+    height:40px;
+}
+
+#member_manage #detail .title >ul>li{
+    margin-top:10px;
+    margin-left:10px;
+}
+
+#member_manage #detail .title >ul>li,
+#member_manage #detail .title >ul>li>a{
+    height:30px;
+    background-color:#eee;
+    border-bottom-color:#aaa;
+    border-radius:5px 5px 0 0;
+}
+
+#member_manage #detail .title >ul>li.active,
+#member_manage #detail .title >ul>li.active>a,
+#member_manage #detail .title >ul>li.active>a:hover{
+    background-color:#fff;
+    border-bottom-color:#fff;
+}
+
+#member_manage #detail .title >ul>li>a{
+    padding-top:5px;
+    width:auto;
+    text-align:center;
+}
+#member_manage #detail .title >ul>li>a:hover{
+    background-color:#c7c7c7;
+}
+
+#member_manage .memberplus{
+    position:relative;
+    top:-38px;
+    float:right;    
+    height:36px;
+    width:40px;
+    background-color:#f4f4f4;
+    border:none;
+    border-radius:5px;
+}
+
+    #member_manage .memberplus .adduser{
+        background:url('/Statics/img/backend/adduser.png') no-repeat;
+        background-position:0 10px;
+        width:42px;
+        height:41px;
+        position:relative;
+        top:-4px;
+        left:-7px;
+    }
+
+    #member_manage .memberplus .adduser:hover{
+        background:url('/Statics/img/backend/adduser-01.png') no-repeat;
+        background-position:-43px 10px;
+        width:42px;
+        height:41px;
+    }
+
+#member_manage .content{
+    padding-bottom:0;
+    position:relative;
+}
+/*人員列表搜尋區塊*/
+#member_manage .membersearchbox{
+    height:40px;
+    display:inline-block;
+}
+
+#member_manage .membersearchbox>input{
+    border:1px solid #aaa;
+    border-radius:3px;
+    width:250px;
+    height:28px;
+    font-size:14px;
+    margin:5px 10px;
+    padding:0 6px 0 6px;
+}
+
+#member_manage .membersearchbox>span{
+    position:relative;
+    left:-35px;
+    width:20px;
+    height:20px;
+    font-size:15px;
+    cursor:pointer;
+}
+/* #region 基本資料 */
+#member_manage #basic .sub-title {
+    margin: 20px 20px 26px 20px;
+    font-size: 18px;
+}
+
+.member_vertical{
+    -ms-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
+    letter-spacing: 90px;
+}
+
+.attempt_disc{
+    margin: 20px 20px 26px 4px;
+}
+
+#member_manage #basic .basicinfo{
+    margin:10px;
+    margin-left:10%;
+    width:620px;
+    padding-top:14px;
+}
+
+#member_manage #basic .basicinfo >table>tbody>tr>td{
+    padding:10px 5px;
+}
+
+#member_manage #basic .nameinput{
+    width:132px;
+        padding:3px 2px 3px 2px;
+}
+
+#member_manage #basic .setinput{
+    width:327px;
+        padding:5px 2px 5px 2px;
+}
+
+#member_manage #basic .basicinfo >select{
+    width:327px;
+    background-color:#F5f5f5;
+    text-indent:5px;
+    padding:5px 2px 5px 2px;
+}
+  /* 圖片資訊 */
+#member_manage #basic .basicphoto{
+    margin-top:-30px;
+    margin-left:40px;
+    border:1px solid #557788;
+    width:125px;
+    height:125px;
+    text-align:center;
+}
+
+#member_manage #basic .basicphoto>img{
+    width:125px;
+    height:125px;
+    margin-top:-1px;
+    margin-left:-1px;
+    border:1px solid #ccc;
+}
+
+#member_manage #basic .basicphoto .img_name{
+    position:relative;
+    top:-105px;
+    min-height:85px;
+    text-align:center;
+    color:#fff;
+    font-size:60px;
+}
+
+#member_manage #basic .deletephoto{
+    position:relative;
+    bottom:25px;
+    left:41px;
+    background-color:#444;
+    color:#fff;
+    width:125px;
+    text-align:center;
+    padding:4px 32px;
+    visibility:hidden;
+    opacity:0.5;
+    cursor:pointer;
+}
+/*放置討論組設置區塊*/
+#member_manage #basic .RegularArea{
+    margin-left:30px;
+}
+
+/* #endregion */
+
+/* #region 新增部門*/
+
+#member_manage .new-team{
+
+}
+
+#member_manage .new-team-title{
+    height:50px;
+    text-indent:1em;
+    color:#fff;
+    background-color:#000;
+    font-size:24px;
+    padding-top:5px;
+}
+
+#member_manage .new-team-info{
+    color:#575757;
+    margin-left:1em;    
+    padding:10px;
+}
+
+#member_manage .new-team-info >span{
+    margin:40px;
+}
+#member_manage .new-team-info >input{
+    width:250px;
+    margin:30px 4px;
+    height:30px;
+}
+
+#member_manage .new-team-info select{
+    width:450px;
+    margin:30px 0;
+}
+
+#member_manage .new-team-info div>div,
+#member_manage .new-team-info div>ul,
+#member_manage .new-team-info div>ul>li>input{
+    width:450px;
+}
+
+#member_manage .new-team-check{
+    position:relative;
+    margin-bottom:-1px;
+    padding:5px 0 10px 0;
+    text-align:center;
+}
+
+#member_manage .new-team-check>button{
+    background-color:#3e94d1;
+    color:#ffffff;
+    height:35px;
+    margin-top:5px;
+    padding-top:5px;
+}
+ /* Change the white to any color ;) */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+

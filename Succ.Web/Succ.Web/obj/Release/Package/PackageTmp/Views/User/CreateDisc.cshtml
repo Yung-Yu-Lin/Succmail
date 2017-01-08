@@ -1,0 +1,96 @@
+﻿@{
+    Layout = null;
+    @model Succ.Common.Models.User.RegisterUserInfo
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Succmail -- @Html.Raw(Succ.Common.Global.Succ.NewGroup)</title>
+    <link href="~/Statics/css/Registe/CreateDisc.min.css" rel="stylesheet" />
+</head>
+<body class="is-loading">
+    @Html.HiddenFor(model => model.CompanyID, new { id = "companyID" })
+    @Html.HiddenFor(model => model.UserName, new { id = "UserName" })
+    <div id="wrapAll">
+        <div id="icon"><img src="~/Statics/img/register/logo.png" /></div>
+        <ul style="width:95%;text-align:center">
+            <li class="circle on"><p class="stepWord">@Html.Raw(Succ.Common.Global.Succ.PersonalProfile)</p></li>
+            <li class="rectangle on"></li>
+            <li class="circle on"><p class="stepWord ontext">@Html.Raw(Succ.Common.Global.Succ.NewGroup)</p></li>
+        </ul>
+        <section id="main">
+            <div class="area">
+                <b style="color:#000; font-size:16px;">@Html.Raw(Succ.Common.Global.Succ.NewGroup)</b>
+            </div>
+            <div class="area">
+                <label style="color:#999;line-height:24px;padding-bottom:15px;">
+                    @Html.Raw(Succ.Common.Global.Succ.Global_Detail)
+                </label>
+            </div>
+            <div class="area">
+                <label>
+                    @Html.Raw(Succ.Common.Global.Succ.You_Can_Create) 
+                    <b style="color:#c61919">6</b> 
+                    @Html.Raw(Succ.Common.Global.Succ.Unit)
+                    @Html.Raw(Succ.Common.Global.Succ.Discussion)
+                    ，
+                    @Html.Raw(Succ.Common.Global.Succ.Created)
+                    <b id="discCount" style="color:#c61919">1</b> 
+                    @Html.Raw(Succ.Common.Global.Succ.Discussion)。
+                </label>
+            </div>
+            <div class="area">
+                <section id="NewDiscArea" class="DiscSection">
+                    <div class="discussDiv selectedDiv">
+                        <span class="discussName selectedDiscussName">
+                            @Html.Raw(Succ.Common.Global.Succ.Company)
+                        </span>
+                        <span class="built">
+                            <b style="color:#FFF;">ｖ</b>
+                            @Html.Raw(Succ.Common.Global.Succ.Created)
+                        </span>
+                    </div>
+                    <div class="discussDiv">
+                        <span class="discussName">@Html.Raw(Succ.Common.Global.Succ.Business)</span>
+                        <span id="sales" class="build build-disc">
+                            ＋@Html.Raw(Succ.Common.Global.Succ.Create)
+                        </span>
+                    </div>
+                    <div class="discussDiv">
+                        <span class="discussName">@Html.Raw(Succ.Common.Global.Succ.Product)</span>
+                        <span id="product" class="build build-disc">
+                            ＋@Html.Raw(Succ.Common.Global.Succ.Create)
+                        </span>
+                    </div>
+                    <div class="discussDiv last">
+                        <span class="discussName">@Html.Raw(Succ.Common.Global.Succ.Case)</span>
+                        <span id="project" class="build build-disc">＋@Html.Raw(Succ.Common.Global.Succ.Create)</span>
+                    </div>
+                </section>
+                <section class="DiscSection">
+                    <div class="discussDiv c" style="border:0;">
+                        <input id="discname" placeholder="@Html.Raw(Succ.Common.Global.Succ.IsNullDiscussionName)" type="text" class="addDiscussName" />
+                        <span id="add-disc" class="build">＋@Html.Raw(Succ.Common.Global.Succ.Create)</span>
+                    </div>
+                </section>
+                <section class="StartSection">
+                    <button class="nextButton" data-userid="@Model.UserID">
+                        @Html.Raw(Succ.Common.Global.Succ.Start)Succmail 》
+                    </button>
+                </section>
+            </div>
+        </section>
+    </div>
+    <script src="~/Scripts/lib/jquery/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/common/common.js"></script>
+    <script src="~/Scripts/common/user/create-disc.js"></script>
+    <script>
+    if ('addEventListener' in window) {
+        window.addEventListener('load', function () { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+        document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+    }
+    </script>
+</body>
+</html>

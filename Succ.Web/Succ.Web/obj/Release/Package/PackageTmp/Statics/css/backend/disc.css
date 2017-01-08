@@ -1,0 +1,630 @@
+﻿/*請假*/
+#LeaveLabel{
+    display:none;
+}
+
+/*外出*/
+#GoOutLabel{
+    display:none;
+}
+
+#disc-manage{
+    min-height:600px;
+}
+#disc-manage >h2{
+    margin-left:40px;
+    font-family:'Microsoft JhengHei';
+}
+#disc-manage >div{
+    margin:30px 7%;
+    min-width:750px;
+    min-height:600px;
+}
+
+.del_audit{
+    color:red;
+    cursor:pointer;
+}
+
+.focus {
+    border:2px solid rgb(77,144,254);
+}
+
+/* #region 左側討論組清單 */
+    
+#disc {
+    width:220px;
+    border-left:1px solid #aaa;
+    border-right: 1px solid #aaa;
+}
+
+#disc .disc_list >div>div{
+    background-color:#FEFBF8;
+    width:241px;
+    height:40px;
+    font-size:16px;
+    margin:0;
+    margin-left:-22px;
+    border:1px solid #888;
+    padding:8px;
+    border-radius:3px 0 0 3px ;
+    cursor:pointer;
+}
+
+#disc .disc_list >div>div>span{
+    margin-top:10px;
+    margin-right:5px;
+}
+
+#disc .disc_list >div>ul{
+    padding:0;
+    list-style:none;
+}
+
+#disc .disc_list >div>ul>li{
+    border-bottom:1px solid #ccc;
+    padding:8px 3px;
+    cursor:pointer;
+    background-color:#FEFBF8;
+}
+#disc .disc_list >div>ul>li:hover{
+    background-color:#ffc;
+}
+#disc .disc_list >div>ul>li.active{
+    background-color:#30ACFF;
+    color:#fff;
+}
+
+#disc .disc_list >div>ul>li>span{
+    position:relative;
+    left:-23px;
+    padding:8px 4px;
+    visibility:hidden;
+}
+#disc .disc_list >div>ul>li:hover>span,
+#disc .disc_list >div>ul>li>span:hover{
+    color:#f00;
+    visibility:visible;
+}
+
+#disc .disc_list >div>ul>li .pull_disc{
+    width:10px;
+    height:15px;
+    margin:-10px 10px 0 -15px;
+    cursor:pointer;
+}
+
+#disc .disc_list >div>ul>li .discname{
+    position:relative;
+    top:2px;
+    max-width:115px;
+    overflow : hidden;
+    text-overflow : ellipsis;
+    white-space : nowrap;
+}
+
+#disc .disc_list >div>ul>li>label{
+    font-size:1em;
+}
+
+#disc .disc_list >div>ul>li .group{
+    width:25px;
+    height:25px;
+    margin:0 3px;
+}
+
+#disc .disc_list >div>ul>li .member{
+    color:#666;
+    margin-top:3px;
+}
+#disc .disc_list >div>ul>li.active .member{
+    color:#fff;
+}
+
+
+#disc .disc_list >div>ul .add-eventdisc,
+#disc .disc_list >div>ul .add-admindisc{
+    cursor:default;
+    margin-left:-1px;
+    margin-right:-1px;
+    border-left:1px solid #fff;
+    border-right:1px solid #fff;
+}
+
+#disc .disc_list >div>ul .add-eventdisc:hover,
+#disc .disc_list >div>ul .add-admindisc:hover{
+    background-color:#fff;
+}
+    
+#disc .disc_list >div>ul .add-eventdisc >label,
+#disc .disc_list >div>ul .add-admindisc >label{
+    cursor:pointer;
+    padding-left:20px;
+    margin-bottom:0;
+
+}
+
+#disc .disc_list >div>ul .add-eventdisc >label:hover{
+    text-decoration:underline;
+}
+#disc .disc_list >div>ul .add-admindisc >label:hover{
+    text-decoration:underline;
+}
+
+#disc .disc_list .event .panel > label{
+    font-weight:normal;
+}
+
+#event_list > li > label{
+    font-weight:normal;
+}
+
+#disc .disc_list .admin .panel >label{
+    font-weight:normal;
+}
+
+#admin_list >li > label{
+    font-weight:normal;
+}
+
+#disc .disc_list .trash .panel >label{
+    font-weight:normal;
+}
+
+
+/* #endregion  */
+
+/* #region 右側設定 */
+#disc-manage #set {
+    position:absolute;
+    top:262px;
+    font-size:15px;
+    min-width:725px;
+    margin-left:220px;
+    border:1px solid #ccc;
+}
+
+#disc-manage #set .title{
+    background-color:#eee;
+    margin:-1px;
+    border:1px solid #bbb;
+    padding:8px 15px 10px 15px;
+}
+
+#disc-manage #set >table{
+    margin-top:30px;
+    width:700px;
+}
+
+#disc-manage #set >table>tbody>tr .td_label{
+    padding:0 20px 20px 50px;
+    width:150px;
+    vertical-align:text-top;
+}
+#disc-manage #set >table>tbody>tr .td_input{
+    vertical-align:top;
+}
+
+
+/* 討論組名稱 */
+#disc-manage #set .disc_name {
+    width:200px;
+}
+
+/* 管理員選單 */
+#disc-manage #set #Adminer{
+    width:200px;
+    height:28px;
+}
+
+/* 成員選單 */
+#disc-manage #set >table>tbody>tr .td_label .p_member{
+    position:relative;
+}
+
+#disc-manage #set .sub-member,
+#disc-manage #set .sub-receiver,
+#disc-manage #set .sub-member >select,
+#disc-manage #set .sub-receiver >select{
+    width:450px;
+}
+
+#disc-manage #set .sub-member >div>ul,
+#disc-manage #set .sub-member >div>ul>li>input,
+#disc-manage #set .sub-receiver >div>ul,
+#disc-manage #set .sub-receiver >div>ul>li>input{
+    width:510px;
+    height:25px;
+}
+
+
+#disc-manage #set .sub-member .chosen-container,
+#disc-manage #set .sub-receiver .chosen-container{
+        margin-bottom:30px;
+}
+
+#disc-manage #set .sub-member .chosen-drop >ul>li.group-option{
+    padding-left:32px;
+}
+
+/* #region 審核 */
+#disc-manage #set #audit_div{
+    margin-right:20px;
+    padding-top:30px;
+}
+
+#disc-manage #set #audit_div>label{
+    margin-top:-60px;
+}
+
+#disc-manage #set #audit_div .audit_line{
+    margin:60px;
+    margin-right:-10px;
+    border-top:2px solid #333;
+}
+
+#disc-manage #set #audit_div >button {
+    margin-top:70px;
+    margin-right:-10px;
+}
+
+#disc-manage #set #audit_div table{
+    margin-top:-116px;
+    margin-left:-5px;
+    width:auto;
+}
+
+#disc-manage #set #audit_div table>tbody>tr>td>div{
+    margin:0 5px;
+    width:105px;
+}
+
+#disc-manage #set #audit_div table>tbody>tr>td>div>input{
+    width:100px;
+    text-align:center;
+}
+
+#disc-manage #set #audit_div table>tbody>tr>td>div>i{
+    background-color:#fff;
+    margin:20px 45px;
+    z-index:1;
+    font-size:16px;
+}
+
+#disc-manage #set #audit_div table>tbody>tr>td>div>select{
+    width:100px;
+}
+/* #endregion */
+
+/* #region 請假 */
+#disc-manage #set #leave_div >div,
+#disc-manage #set #goout_div >div {
+    min-width:500px;
+    max-width:700px;
+}
+#disc-manage #set #leave_div >div>span,
+#disc-manage #set #goout_div >div>span{
+    text-align:center;
+    width:145px;
+    height:30px;
+    margin-right:8px;
+    margin-bottom:15px;
+    padding:3px 0;
+    display:inline-flex;
+}
+
+#disc-manage #set #leave_div >div>span:hover >i,
+#disc-manage #set #goout_div >div>span:hover >i,
+#disc-manage #set #leave_div >div>span>i:hover,
+#disc-manage #set #goout_div >div>span>i:hover{
+    visibility:visible;
+}
+
+#disc-manage #set #leave_div >div>span .fa-times-circle,
+#disc-manage #set #goout_div >div>span .fa-times-circle{
+    color:#f00;
+    background-color:#fff;
+    font-size:18px;
+    cursor:pointer;
+    position:relative;
+    top:-13px;
+    left:-10px;
+    visibility:hidden;
+}
+
+#disc-manage #set #leave_div >div>span>label,
+#disc-manage #set #goout_div >div>span>label{
+    min-width:145px;
+    margin-bottom:0;
+}
+
+#disc-manage #set #leave_div >div>span>input,
+#disc-manage #set #goout_div >div>span>input{
+    width:145px;
+    height:30px;
+    text-align:center;
+}
+
+#disc-manage #set #leave_div >div>span .fa-check-circle,
+#disc-manage #set #goout_div >div>span .fa-check-circle{
+    color:green;
+    font-size:18px;
+    height:15px;
+    margin-top:-7px;
+    margin-left:-8px;
+    background-color:#fff;
+    cursor:pointer;
+}
+
+#disc-manage #set #leave_div >input,
+#disc-manage #set #goout_div >input{
+    width:145px;
+    height:28px;
+    text-align:center;
+    margin-top:10px;
+    border:1px solid #ccc;
+}
+#disc-manage #set #leave_div >i,
+#disc-manage #set #goout_div >i{
+    margin-top:0.5px;
+    margin-left:-12px;
+    background-color:#3D94CF;
+    color:#fff;
+    padding:6.5px;
+    cursor:pointer;
+}
+
+
+
+/* #endregion */
+
+/* button */
+#disc-manage #set .btn_div {
+    text-align:center;
+    /*border-top:1px solid #ccc;*/
+    padding:10px 0;
+}
+
+#disc-manage #set .btn_div .cancel{
+    background-color:#fff;
+    color:#848484;
+    margin-right:10px;
+    border:1px solid #aaa;
+    border-radius:5px;
+    padding:6px 20px;
+}
+
+#disc-manage #set .btn_div .check{
+    background-color:#3e94d1;
+    color:#fff;
+    padding:6px 20px;
+}
+
+
+/* #endregion  */
+
+/* #region 回收區 */
+#disc-manage #recycle{
+    position:absolute;
+    top:262px;
+    font-size:18px;
+    margin-left:220px;
+    border:1px solid #ccc;
+}
+
+#disc-manage #recycle .title{
+    background-color:#eee;
+    margin:-1px;
+    border:1px solid #bbb;
+    padding:8px 15px 10px 15px;
+}
+
+#disc-manage #recycle >table{
+    margin:0;
+}
+
+#disc-manage #recycle >table>tbody .title_row{
+    background-color:#aaa;
+}
+
+#disc-manage #recycle >table>tbody .title_row .sort_create,
+#disc-manage #recycle >table>tbody .title_row .sort_delete{
+    cursor:pointer;
+}
+
+#disc-manage #recycle >table>tbody>tr:nth-child(odd) td {
+    background: none repeat scroll 0 0 #f3f3f3;
+}
+
+#disc-manage #recycle >table>tbody>tr>th,
+#disc-manage #recycle >table>tbody>tr>td{
+    text-align:center;
+    font-size:15px;
+    width:120px;
+    border-left:1px solid #ccc;
+    border-top-color:#f9f9f9;
+    border-bottom-color:#f9f9f9;
+}
+
+#disc-manage #recycle >table>tbody>tr .td_name{
+    text-align:left;
+    width:200px;
+}
+
+#disc-manage #recycle >table>tbody>tr> .action{
+    width:120px;
+    padding:3px;
+}
+
+/* #endregion */
+
+
+/* #region 彈出視窗 */
+
+/* #region 新增行政討論組 */
+#discmanage-modal .add_admin .modal-content{
+    width:740px;
+}
+
+#discmanage-modal .add_admin .modal-header{
+    height:50px;
+}
+#discmanage-modal .add_admin .modal-header>h4{
+    margin-top:-30px;
+    margin-left:70px;
+}
+#discmanage-modal .add_admin .modal-body{
+    height:630px;
+}
+#discmanage-modal .add_admin .modal-body #subAdminSet >div{
+    cursor:pointer;
+}
+/* #endregion */
+
+
+#modal {
+    display:none;
+    background-color:#eee;
+    position:fixed;
+    top:100px;    
+    width:900px;
+    margin:50px 100px;
+    box-shadow:4px 4px 8px #555,
+        -4px -4px 8px #555;
+    z-index:3;
+}
+
+#modal >i{
+    font-size:18px;
+    position:relative;
+    left:12px;
+    top:-12px;
+}
+
+#modal .modal_title{
+    font-family:'Microsoft JhengHei';
+    color:#666;
+    background-color:#fff;
+    margin:0;
+    padding:15px 30px;
+}
+/* #region 頁籤*/
+
+#modal .tab_area{
+    background-color:#fff;
+    margin-top:100px;
+}
+
+#modal .tab_area >ul{
+    width:900px;
+    position:relative;
+    left:0;
+}
+
+#modal .tab_area >ul>li.active>a{
+    border:1px solid #aaa;
+    border-bottom:0;
+}
+
+   /* 啟用 */
+#modal .tab_area .unlock>a{
+    background-color:#fff;
+}
+
+   /* 未啟用 */
+#modal .tab_area .lock>a{
+    border:1px solid #eee;
+    border-bottom:1px solid #aaa;
+}
+/* #endregion 頁籤 */
+/* #region 頁籤body */
+
+
+#modal .tab-content >div>label{
+    margin-left:40px;
+    font-size:16px;
+}
+
+#modal .tab-content .radio_area{
+    padding:20px 10px;
+}
+
+#modal .tab-content .radio_area >label{
+    margin-left:60px;
+    margin-right:10px;
+}
+
+#modal .radio_area >div>a{color:#fff;}
+#modal .radio_area >div>a:hover{color:#eee;}
+
+#modal .radio_area >div>a.active{
+    color:#fff;
+    background-color:#09f;
+}
+
+#modal .tab-content >div>p{
+    margin:10px 0 0 70px;
+}
+
+#modal .tab-content #type>input{
+    position:relative;
+    top:-30px;
+    left:150px;
+    margin-top:10px;
+}
+#modal .tab-content div>button{
+    position:relative;
+    background-color:#09f;
+    color:#fff;
+    left:50%;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:-34px;
+}
+
+/* #endregion 頁籤body */
+
+
+/* #region 客戶頁籤 */
+#modal .customer_list{
+    padding:25px;
+}
+#modal .customer_list>label{
+    font-size:16px;
+}
+
+#modal .customer_list>input{
+    width:300px;
+    border:1px solid #aaa;
+    border-radius:3px;
+
+}
+#modal .customer_list>i{
+    color:#888;
+    position:relative;
+    top:5px;
+    left:-30px;
+}
+
+
+/* #endregion 客戶頁籤 */
+
+
+/* #endregion */
+
+.black_pad {
+    display:none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #444;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.nomargin{
+    margin:0;
+}
+

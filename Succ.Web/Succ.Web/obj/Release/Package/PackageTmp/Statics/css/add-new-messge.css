@@ -1,0 +1,338 @@
+﻿/* #region 編輯器 */
+.note-editor table, .note-editor table td {
+    border: 1px solid #cacaca;
+}
+
+.note-editor .note-toolbar {
+    background: none;
+    border-bottom: 0;
+    padding:7px 0;
+}
+
+.note-editor {
+    width: 100%;
+    float: left;
+    border: none;
+    border-top: 1px solid #cacaca;
+}
+
+.note-editable {
+    background-color: #fff;
+    font-size:1.1em;
+    border-left:1px solid #cacaca;
+    border-top:1px solid #cacaca;
+    border-right:1px solid #cacaca;
+    padding-left:10px!important;
+}
+
+.note-editor .btn-default {
+    background: none;
+}
+
+.note-editor .note-statusbar {
+    background: none;
+}
+/* 複寫bootstrap */
+.modal-backdrop {
+    z-index: 998;
+}
+/* #endregion */
+
+/* #region 附件上傳 */
+.attatch-wrap {
+    background: #fff;
+    list-style: none;
+    font-size: 14px;
+    color: #808080;
+    margin-left: 0;
+    padding-left: 0;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #cacaca;
+}
+
+    .attatch-wrap li {
+        padding: 0 10px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+.add-new-msg .file-input-wrap {
+    float: left;
+    width: 30%;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 4px 0 0 -8px;
+    float: left;
+}
+
+.uploadImg {
+    width: 20px;
+    height: 20px;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+/* 附件列表 */
+.attatch-info {
+    list-style: none;
+    margin-left: -50px;
+}
+
+    .attatch-info li {
+        float: left;
+    }
+
+    .attatch-info .item-progress {
+        background-color: #eeeeee;
+        height: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+        border: 1px solid #808080;
+        padding: 0;
+        width: 180px;
+        float: right;
+    }
+
+        .attatch-info .item-progress .progress-bar {
+            background-color: #428bca;
+        }
+
+/* #endregion */
+
+
+
+
+    /* 完成期限 */
+    .add-new-msg .msg-due-date {
+        background: #fff;
+        text-align: center;
+        width: 110px;
+        -webkit-border-radius: 80px;
+        -webkit-border-bottom-right-radius: 3px;
+        -webkit-border-bottom-left-radius: 3px;
+        -moz-border-radius: 80px;
+        -moz-border-radius-bottomright: 3px;
+        -moz-border-radius-bottomleft: 3px;
+        border-radius: 80px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        cursor: pointer;
+    }
+
+    .add-new-msg .ng-hide {
+        height: 50px;
+    }
+    /* 黑粗線 */
+    .add-new-msg .msg-bar-black {
+        border-bottom: solid 3px;
+    }
+    
+
+    .add-new-msg .chose-box {
+        width: 100%;
+        float: left;
+        border-bottom: 1px solid #cacaca;
+        padding-bottom:10px;
+        border-top:1px solid #cacaca;
+    }
+
+    /* 收件人按鈕 */
+    .add-new-msg .receipt-btn {
+        cursor: pointer;
+        float: left;
+        font-size: 17px;
+        margin-right: 3px;
+        margin-top:10px;
+    }
+    /*下拉收件人選單*/
+    .add-new-msg .chosen-container {
+        float: left;
+    }
+
+    .add-new-msg .chosen-container-multi, .add-new-msg .chosen-choices {
+        border: none;
+        background-image: none;
+    }
+
+        /* 下拉收件人選單的的選取結果 */
+        .add-new-msg .chosen-choices li.search-choice {
+            background: none #eeeeee;
+            border-radius: none;
+            font-size: 16px;
+        }
+    /* 訊息主題輸入框 */
+    .add-new-msg .msg-title {
+        float: left;
+        width: 41%;
+        border: none;
+        font-size:18px;
+        padding:9px 9px 9px 9px;
+    }
+
+    /* 到期日按鈕 */
+    .add-new-msg .due-date-btn {
+        background: none repeat scroll 0 0 #fff;
+        border-bottom: medium none;
+        border-left: 1px solid #cacaca;
+        border-right: 1px solid #cacaca;
+        border-top: none;
+        cursor: pointer;
+        height: 50px;
+        width: 45px;
+        margin: 0;
+        float: right;
+        position: relative;
+        font-size:22px;
+        color:#666;
+    }
+
+    .create-date-input{
+        float: left;
+        width: 13%;
+        height: 50px;
+        border-left: 1px solid #cacaca;
+        margin: 0;
+        padding-left: 3px;
+        font-size:17px;
+        text-align:center;
+    }
+
+    .add-new-msg .due-date-input {
+        float: right;
+        width: 14%;
+        height: 50px;
+        border-left: 1px solid #cacaca;
+        margin: 0;
+        padding-left: 3px;
+        font-size:17px;
+        text-align:center;
+    }
+    .add-new-msg .due-date-input-hidden{
+        width: 14%;
+        height: 48px;
+        background:#3399cc;
+        position:absolute;
+        right:130px;
+        top:132px;
+        visibility:hidden;
+    }
+/* 取消按鈕 */
+.btn-cancel {
+    float: left;
+    margin-right: 7px;
+}
+
+.add-new-msg .btn-wrap {
+    width: 100%;
+    float: left;
+}
+
+.add-new-msg .btn-draft {
+    height: 40px;
+    border: 1px solid #fff;
+    min-width: 110px;
+    position: absolute;
+    -webkit-border-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    text-align: center;
+    margin: 0 0 0 106px;
+    background: #3399cc;
+    color:#fff;
+}
+
+.add-new-msg .btn-group-new-message {
+    float: right;
+    position:relative;
+    right:0;
+}
+
+.add-new-msg .dropdown-draft {
+    background: #3399cc;
+    height: 36px;
+    width:15px;
+    text-align: center;
+    border-radius:0;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding:0;
+    position:relative;
+    margin-left:-10px;
+    margin-right:10px;
+}
+
+    .add-new-msg .dropdown-draft .caret {
+        /*margin-left: -5px;*/
+        color:#FFF;
+    }
+
+.add-new-msg .loading {
+    /*display: none;*/
+    background-color: #111;
+    color: #fff;
+    font-size: 26px;
+    height: 100%;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 1111;
+}
+
+.SubjTagSelect{
+    float:left;
+    position:relative;
+    top:8px;
+}
+
+.TagIntermediate{
+    display:inline-block;
+    position:relative;
+    top:16px;
+    margin:0px 5px 0px 5px;
+    float:left;
+}
+.AddTagDiv{
+    height:200px;
+}
+
+.w3-dropdown-content
+{
+    width:320px;
+    height:200px;
+    text-align:center;
+    position:absolute;
+}
+.w3-dropdown-content div:hover
+{
+    background-color:white;
+}

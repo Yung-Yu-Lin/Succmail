@@ -1,0 +1,38 @@
+﻿@{
+    var data = Model as Succ.Common.Google.Models.CalenderMain;
+    var items = data.items;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>calerder</title>
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryval")
+</head>
+<body>
+    <div>
+        <select id="cid">
+            @foreach (var item in items)
+            {
+                <option value="@item.id">@item.summary</option>
+            }
+        </select>
+        <input type="text" value="" id="eventest" />
+        <input type="button" value="send" onclick="send()" />
+    </div>
+    <script>
+        function send()
+        {
+            var para = {};
+            para["id"] = $("#cid").val();
+            para["even"] = $("#eventest").val();
+            $.ajax(
+            {
+                url: "/google/addEvent",
+                data:para
+            });
+        }
+    </script>
+</body>
+</html>

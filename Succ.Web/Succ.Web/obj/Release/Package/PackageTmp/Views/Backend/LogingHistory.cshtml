@@ -1,0 +1,109 @@
+﻿@{
+    Layout = null;
+}
+<!-- #region 實作jqGrid所需的js & css檔案 -->
+@Scripts.Render("~/jqGrid/script")
+<link href="~/Scripts/lib/jquery-ui/jquery-ui.css" rel="stylesheet" />
+<link href="~/Scripts/lib/jqGrid/css/ui.jqgrid.css" rel="stylesheet" />
+<link href="~/Statics/css/backend/LoginHistory.css" rel="stylesheet" />
+@*實作地理位置的js*@
+<script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
+<!-- #endregion -->
+<!-- #region -->
+<!-- #endregion -->
+<div id="login" ng-controller="History">
+    <!-- #region 登入標題 -->
+    <h2>
+        <b>@Html.Raw(Succ.Common.Global.Succ.loginRec)</b>
+    </h2>
+    <!-- #endregion -->
+    <!-- 登入紀錄 -->
+    <div id="recorddetail">
+        <div class="filter_bar">
+            <section>
+                <!-- #region 過濾按鈕 -->
+                <button ng-class="DropDownClass()" ng-click="DropDownFilter()">
+                    <label ng-if="!HistoryManage.IsClickFilter">@Html.Raw(Succ.Common.Global.Succ.OpenFilter)</label>
+                    <label ng-if="HistoryManage.IsClickFilter">@Html.Raw(Succ.Common.Global.Succ.CloseFilter)</label>
+                    <span class="caret"></span>
+                </button>
+                <!-- #endregion -->
+                <!-- #region 無任何過濾條件狀態 -->
+                <span class="indeed_label filterLabel w3-card w3-pale-green" ng-if="NoFilter()">
+                    <label>@Html.Raw(Succ.Common.Global.Succ.OperTime) : @Html.Raw(Succ.Common.Global.Succ.Within_a_month)</label>
+                    <i class="fa fa-times" data-type="indeed"></i>
+                </span>
+                <!-- #endregion -->
+                <!-- #region 有過濾開始日期 -->
+                <span class="start_label filterLabel w3-card w3-pale-green" ng-if="SDateFilter()">
+                    <label>@Html.Raw(Succ.Common.Global.Succ.Start_Date):</label>
+                    <label ng-bind="HistoryManage.StartDate"></label>
+                    <i class="fa fa-times" data-type="sdate" ng-click="RemoveSDate()"></i>
+                </span>
+                <!-- #endregion -->
+                <!-- #region 有過濾結束日期 -->
+                <span class="end_label filterLabel w3-card w3-pale-green" ng-if="EDateFilter()">
+                    <label>@Html.Raw(Succ.Common.Global.Succ.End_Date):</label>
+                    <label ng-bind="HistoryManage.EndDate"></label>
+                    <i class="fa fa-times" data-type="edate" ng-click="RemoveEDate()"></i>
+                </span>
+                <!-- #endregion -->
+                <!-- #region 有過濾人員 -->
+                <span class="user_label filterLabel w3-card w3-pale-green" ng-if="UserFilter()">
+                    <label>@Html.Raw(Succ.Common.Global.Succ.Operater):</label>
+                    <label ng-bind="HistoryManage.FilterUser.UserName"></label>
+                    <i class="fa fa-times" data-type="user" ng-click="RemoveUser()"></i>
+                </span>
+                <!-- #endregion -->
+            </section>
+            <section class="w3-animate-bottom" ng-style="HistoryManage.FilterStyle" ng-if="HistoryManage.IsShowFilter">
+                <!-- #region 開始日期 -->
+                <div>
+                    @Html.Raw(Succ.Common.Global.Succ.Start_Date)
+                    <input type="date" ng-model="HistoryManage.StartDate" style="line-height:23px;" class="sdate filter_data form-control" />
+                </div>
+                <!-- #endregion -->
+                <!-- #region 結束日期 -->
+                <div>
+                    @Html.Raw(Succ.Common.Global.Succ.End_Date)
+                    <input type="date" ng-model="HistoryManage.EndDate" style="line-height:23px;" class="edate filter_data form-control" />
+                </div>
+                <!-- #endregion -->
+                <div style="margin:15px 0 15px 0;">
+                    <hr />
+                </div>
+                <!-- #region 過濾人員 -->
+                <div>
+                    <select id="FilterUser"
+                            name="FilterUser"
+                            ng-options="option.UserName for option in HistoryManage.MemberList"
+                            ng-model="HistoryManage.FilterUser"
+                            style="width:100%;">
+                    </select>
+                </div>
+                <!-- #endregion -->
+            </section>
+        </div>
+        @*登入記錄列表*@
+        <div id="LoginList" style="margin-top:20px;">
+            <history-jq-grid config="HistoryManage.HistoryConfig"></history-jq-grid>
+            @*顯示地圖位置的model view*@
+            <div class="modal fade" id="InfoModal" tabindex="-1" role="dialog" aria-labelledby="InfoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1>{{country}}</h1>
+                        </div>
+                        <div class="modal-body">
+                            @*所在位置地圖*@
+                            <div id="mapposition"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dissmiss="modal" ng-click="Close()">@Html.Raw(Succ.Common.Global.Succ.Close)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

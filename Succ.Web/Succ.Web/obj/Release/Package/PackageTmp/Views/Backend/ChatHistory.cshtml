@@ -1,0 +1,251 @@
+﻿@{
+    Layout = null;
+}
+@*實作jqGrid所需的js & css檔案*@
+<script src="~/Scripts/lib/jqGrid/src/i18n/grid.locale-en.js"></script>
+<script src="~/Scripts/lib/jqGrid/js/jquery.jqGrid.min.js"></script>
+<link href="~/Scripts/lib/jquery-ui/jquery-ui.css" rel="stylesheet" />
+<link href="~/Scripts/lib/jqGrid/css/ui.jqgrid.css" rel="stylesheet" />
+
+@*此頁面的css檔案*@
+<link href="~/Statics/css/backend/LoginHistory.css" rel="stylesheet" />
+<div id="login">
+
+    <h2><b>@Html.Raw(Succ.Common.Global.Succ.ChatHistory)</b></h2>
+    <!-- 登入紀錄 -->
+    <div id="recorddetail">
+
+        <div class="filter_bar">
+            @Html.Raw(Succ.Common.Global.Succ.Filter)：
+            <span class="dropdown">
+                <button class="btn dropdown-toggle" id="filter_oper" data-toggle="dropdown">
+                    @Html.Raw(Succ.Common.Global.Succ.Filter)
+                    <span class="caret"></span>
+                </button>
+                <ul class="filter_drop dropdown-menu" role="menu">
+                    <li>
+                        @Html.Raw(Succ.Common.Global.Succ.Start_Date)
+                        @if (@ViewBag.sDate != null)
+                        {
+                            <input style="line-height:23px;" type="date" class="sdate filter_data form-control" value="@ViewBag.sDate" name="sdate" />
+                        }
+                        else
+                        {
+                            <input style="line-height:23px;" type="date" class="sdate filter_data form-control" name="sdate" />
+                        }
+                    </li>
+                    <li>
+                        @Html.Raw(Succ.Common.Global.Succ.End_Date)
+                        @if (@ViewBag.eDate != null)
+                        {
+                            <input style="line-height:23px;" type="date" class="edate filter_data form-control" value="@ViewBag.eDate" name="edate" />
+                        }
+                        else
+                        {
+                            <input style="line-height:23px;" type="date" class="edate filter_data form-control" name="edate" />
+                        }
+                    </li>                    
+                </ul>
+            </span>
+            <div class="filter_tag">
+                @*有開始&有結束日期之過濾標籤*@
+                <span id="HaveS_HaveE" class="start_label">
+                    <label class="start_date"></label>
+                    @Html.Raw(Succ.Common.Global.Succ.to)
+                    <label class="end_label"></label>
+                    <i class="fa fa-times" data-type="rang"></i>
+                </span>
+
+                @*有開始&無結束日期之過濾標籤*@
+                <span id="HaveS_NoE" class="start_label">
+                    <label></label>
+                    <i class="fa fa-times" data-type="sdate"></i>
+                </span>
+
+                @*無開始&有結束日期之過濾標籤*@
+                <span id="NoS_HaveE" class="end_label">
+                    <label></label>
+                    <i class="fa fa-times" data-type="edate"></i>
+                </span>
+
+
+                @*無開始&無結束日期之過濾標籤*@
+                <span id="NoS_NoE" class="indeed_label">
+                    <label>@Html.Raw(Succ.Common.Global.Succ.OperTime) : @Html.Raw(Succ.Common.Global.Succ.Within_a_month)</label>
+                    <i class="fa fa-times" data-type="indeed"></i>
+                </span>
+              
+            </div>
+        </div>        
+        <div id="ChatHistoryList">
+            <table id="ChatHistoryContent"></table>
+            <div id="pager"></div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/lib/i18next.js"></script>
+<script src="~/Scripts/extensions/i18next.js"></script>
+<script>
+    var Lang = window.navigator.language;
+    $(document).ready(function ()
+    {
+        $.unblockUI();
+        $("#ChatHistoryContent").jqGrid({
+            url: 'Backend/ChatHistoryList',
+            datatype: 'json',
+            colNames: ['@Html.Raw(Succ.Common.Global.Succ.SendTime)', '@Html.Raw(Succ.Common.Global.Succ.UserName)', '@Html.Raw(Succ.Common.Global.Succ.SendTarget)', '@Html.Raw(Succ.Common.Global.Succ.MessageContent)'],
+            colModel: [
+                { name: 'ViewDate', sortable: false, stype: 'text', align: 'center' },
+                { name: 'FromName', sortable: false, stype: 'text', align: 'center' },
+                { name: 'ToName', sortable: false, stype: 'text', align: 'center' },
+                { name: 'sContent', sortable: false, stype: 'text', align: 'center' }
+            ],
+            rowNum: 10,
+            ntype: 'Get',
+            loadonce: true,
+            rowList: [10, 20],
+            pager: '#pager',
+            sortorder: 'desc',
+            shrinkToFit: false,
+            width: 776,
+            height: '100%',
+            scrollOffset: 0
+        });
+
+
+        //html5日期檢視
+        if (!Modernizr.inputtypes.date) {
+            $('input[type=date]').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        }
+
+        i18n.init({ lng: Lang, resGetPath: '/Statics/locales/__ns__-__lng__.txt', ns: 'resource' });
+        i18n.init(function (t) {
+            //開啟or關閉過濾清單
+            $('#filter_oper').click(function () {
+                isFilterOpen();
+            });
+            //新增過濾條件
+            $('.filter_data').change(function () {
+                //var userId = $('select[name=user]').val();
+                var sDate = $('.sdate').val();
+                var eDate = $('.edate').val();
+                //判斷日期格式
+                //製作日期過濾標籤
+                if (sDate != "") {
+                    //有結束日期
+                    if (eDate != "") {
+                        RemoveFilterLabel();
+                        $("#HaveS_HaveE").css("display", "inline-block");
+                        $("#HaveS_HaveE").children(".start_date").text("@Html.Raw(Succ.Common.Global.Succ.Start_Date) : " + sDate + " ");
+                        $("#HaveS_HaveE").children(".end_label").text(eDate);
+                    }
+                        //無結束日期
+                    else {
+                        RemoveFilterLabel();
+                        $("#HaveS_NoE").css("display", "inline-block");
+                        $("#HaveS_NoE").children("label").text("@Html.Raw(Succ.Common.Global.Succ.Start_Date) : " + sDate + "");
+                    }
+                }
+                //製作日期過濾標籤
+                if (eDate != "") {
+                    //無開始日期
+                    if (sDate == "") {
+                        RemoveFilterLabel();
+                        $("#NoS_HaveE").css("display", "inline-block");
+                        $("#NoS_HaveE").children("label").text("@Html.Raw(Succ.Common.Global.Succ.End_Date) : " + eDate + "");
+                    }
+                }
+                @*if (userId != "") {
+                    $("#userLabel").css("display", "inline-block");
+                    var result = $("option[value=" + userId + "]").text();
+                    $("#userLabel").children("label").text("@Html.Raw(Succ.Common.Global.Succ.UserName) : " + result + " ");
+                }*@
+                $("#ChatHistoryContent").setGridParam({ datatype: 'json' }).setGridParam({ 'url': 'Backend/ChatHistoryList?sDate=' + sDate + '&eDate=' + eDate }).trigger('reloadGrid');
+                //開啟或關閉過濾視窗
+                isFilterOpen();
+            });
+            //移除篩選
+            $('.fa-times').click(function () {
+                switch ($(this).data("type")) {
+                    case "sdate":
+                        $('.start_label').css("display", "none");
+                        $('.indeed_label').css('display', 'inline-block');
+                        $('.sdate').val(null);
+                        break;
+                    case "edate":
+                        $('.end_label').css("display", "none");
+                        $('.indeed_label').css('display', 'inline-block');
+                        $('.edate').val(null);
+                        break;
+                    case "rang":
+                        $('.start_label').css("display", "none");
+                        $('.sdate').val(null);
+                        $('.end_label').css("display", "none");
+                        $('.indeed_label').css('display', 'inline-block');
+                        $('.edate').val(null);
+                        break;
+                    case "user":
+                        $('.user_label').css("display", "none");
+                        $('select[name=user]').val(null);
+                        break;
+                    case "indeed":
+                        return;
+                        break;
+                }
+
+                //var userId = $('select[name=user]').val();
+                var sDate = $('.sdate').val();
+                var eDate = $('.edate').val();
+
+                $("#ChatHistoryContent").setGridParam({ datatype: 'json' }).setGridParam({ 'url': 'Backend/ChatHistoryList?sDate=' + sDate + '&eDate=' + eDate }).trigger('reloadGrid');
+            });
+        });
+
+
+    });
+    //判斷過濾條件視窗開啟即關閉
+    function isFilterOpen() {
+        if ($('.filter_drop').css("display") == "block") {
+            $('.filter_drop').css("display", "none");
+        }
+        else {
+            $('.filter_drop').css("display", "block");
+        }
+    }
+
+    //關閉所有過濾
+    function RemoveFilterLabel() {
+        $("#HaveS_HaveE").css("display", "none");
+        $("#HaveS_NoE").css("display", "none");
+        $("#NoS_HaveE").css("display", "none");
+        $("#NoS_NoE").css("display", "none");
+        $("#userLabel").css("display", "none");
+    }
+    //日期格式
+    function checkdateformate(str) {
+        var re = new RegExp("^([0-9]{4})[.-]{1}([0-9]{1,2})[.-]{1}([0-9]{1,2})$");
+        var strDataValue;
+        var infoValidation = true;
+
+        if ((strDataValue = re.exec(str)) != null) {
+            var i;
+            i = parseFloat(strDataValue[1]);
+            if (i <= 0 || i > 9999) { // 年
+                infoValidation = false;
+            }
+            i = parseFloat(strDataValue[2]);
+            if (i <= 0 || i > 12) { // 月
+                infoValidation = false;
+            }
+            i = parseFloat(strDataValue[3]);
+            if (i <= 0 || i > 31) { // 日
+                infoValidation = false;
+            }
+        } else {
+            infoValidation = false;
+        }
+        return infoValidation;
+    }
+</script>

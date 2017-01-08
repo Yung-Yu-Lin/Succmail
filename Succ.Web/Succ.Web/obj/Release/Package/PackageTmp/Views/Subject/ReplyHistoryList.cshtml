@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+<div id="replyHistory-area" ng-repeat="data in ReplyHistoryData">
+    <!--回覆紀錄內容-->
+    <div style="margin-top:15px;">
+        <!--回覆紀錄資訊列-->
+        <div id="infobar">
+            <span title="data.Creator" style="color:#3385cc" ng-bind="data.Creator"></span>
+            <label title="@Html.Raw(Succ.Common.Global.Succ.Time) : {{data.CreateOn}} | date:'MM/dd HH:mm'" ng-bind="data.CreateOn | date:'MM/dd HH:mm'" style="color:#999"></label>
+        </div>
+    </div>
+    <hr />
+    <!--回覆記錄主要內容-->
+    <div id="main_content" ng-bind-html="ConvertContent(data.Content)"></div>
+    <!--回覆記錄附加檔案-->
+    <div id="file-attach" ng-repeat="att in data.Attatchments">
+        <i ng-class="AttIcon(att.FileType)"></i>
+        <a ng-click="DownLoadFile(att.FileID)" class="file_name" ng-bind-template="{{att.FileName}} &nbsp;&nbsp; {{att.FileSize}}"></a>
+        <br />
+    </div>
+</div>
+
+<!--其他回覆紀錄-->
+<div id="SubHistory-area" ng-repeat="otherdata in subOtherHis">
+    <!--回覆紀錄內容-->
+    <div style="margin-top:15px;">
+        <div id="infobar" ng-click="otherdata.isOpen = true">
+            <span title="otherdata.Creator" style="color:#3385cc" ng-bind="otherdata.Creator"></span>
+            <label title="@Html.Raw(Succ.Common.Global.Succ.Time) : {{otherdata.CreateOn}} | date:'MM/dd HH:mm'" ng-bind="otherdata.CreateOn | date:'MM/dd HH:mm'" style="color:#999"></label>
+        </div>
+    </div>
+    <hr ng-show="otherdata.isOpen" />
+    <!--回覆紀錄資訊列-->
+    <!--回覆記錄主要內容-->
+    <div id="main_content" ng-bind-html="ConvertContent(otherdata.Content)" ng-show="otherdata.isOpen"></div>
+    <div id="file-attach" ng-repeat="att in otherdata.Attatchments" ng-show="otherdata.isOpen">
+        <i ng-class="AttIcon(att.FileType)"></i>
+        <a ng-click="DownLoadFile(att.FileID)" class="file_name" ng-bind-template="{{att.FileName}} &nbsp;&nbsp; {{att.FileSize}}"></a>
+        <br />
+    </div>
+</div>

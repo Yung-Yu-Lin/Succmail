@@ -1,0 +1,213 @@
+﻿@{Layout = null;}
+
+<!--Middle Content-->
+<div id="middle" class="col-md-9">
+    <h2>
+        <b>@Html.Raw(Succ.Common.Global.Succ.FavBox)</b>
+    </h2>
+    <!-- Tab Body -->
+    <div id="tab_content_body" class="tab-content" style=" margin-top: 45px;">
+        <!-- #region 條件列 -->
+        <div id="tab_content_bar">
+            <!-- 排序 -->
+            <div class="btn-group" filter-sort>
+            </div>
+            <!-- 篩選 -->
+            <div class="btn-group" screening compid="{{compid}}" userid="{{userid}}" disctype="fav">
+            </div>
+            <!--篩選條件標籤 -->
+            <div class="condition-result" style="top:100px;" filter-label>
+            </div>
+            <!-- 時程表 -->
+            <div class="calendar condition-btn pull-right">
+                <a class="a_type" href="#/calendar"><span class="glyphicon glyphicon-calendar"></span> @Html.Raw(Succ.Common.Global.Succ.Schedule)</a>
+            </div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 主題列表 -->
+        <div id="tab_content_data" ng-repeat="DiscData in FavData | orderBy:'Sequence'">
+            <!-- #region 討論組名稱 -->
+            <div class="General_DiscName"
+                 ng-click="DiscData.IsShowDisc = !DiscData.IsShowDisc;
+                         Favup = !Favup;
+                         Favdown = !Favdown;"
+                 ng-init="Favup = true;">
+                <h3 style="margin-top:0px;">
+                    <span ng-bind="DiscData.DiscName"></span>
+                    <span class="glyphicon pull-right gray"
+                          ng-class="{'glyphicon-chevron-up' :Favup,'glyphicon-chevron-down' :Favdown}"
+                          style="padding-right:1%;">
+                    </span>
+                </h3>
+            </div>
+            <!-- #endregion -->
+            <table class="data-table" ng-show="DiscData.IsShowDisc">
+                <tr class="data-table-tr" ng-repeat="data in DiscData.SubjectList | filter:FilterPara | filter:FilterDate | filter:FilterModify | orderBy:predicate:reverse">
+                    <!-- #region 緊急程度 -->
+                    <td class="type" ng-switch on="data.SubjectColor">
+                        <div class="div-type-0" ng-switch-when="3" title="@Html.Raw(Succ.Common.Global.Succ.Urgent)">&nbsp;</div>
+                        <div class="div-type-1" ng-switch-when="2" title="@Html.Raw(Succ.Common.Global.Succ.Pressing)">&nbsp;</div>
+                        <div class="div-type-2" ng-switch-when="1" title="@Html.Raw(Succ.Common.Global.Succ.Important)">&nbsp;</div>
+                        <div class="div-type-3" ng-switch-when="0" title="@Html.Raw(Succ.Common.Global.Succ.Unmarked)">&nbsp;</div>
+                    </td>
+                    <!-- #endregion -->
+                    <!-- #region 我的訊息 -->
+                    <td class="my-msg" ng-switch on="data.IsIns">
+                        <span class="glyphicon glyphicon-user my-true" ng-switch-when="true" ng-click="RemoveMyMsg(DiscData.DiscID,data.SubjectID)"
+                              tooltip-placement="bottom"
+                              tooltip-html-unsafe="
+                                 <div class='Tooltip'>
+                                    @Html.Raw(Succ.Common.Global.Succ.HideFromMyMailBox)
+                                 </div>">
+                        </span>
+                        <span class="glyphicon glyphicon-user my-false" ng-switch-when="false" ng-click="AddMyMsg(DiscData.DiscID,data.SubjectID)"
+                              tooltip-placement="bottom"
+                              tooltip-html-unsafe="
+                                  <div class='Tooltip'>
+                                    @Html.Raw(Succ.Common.Global.Succ.AddMyMailBox)
+                                  </div>">
+                        </span>
+                    </td>
+                    <!-- #endregion -->
+                    <!-- #region 收藏 -->
+                    <td class="collect" ng-switch on="data.IsFav">
+                        <span class="glyphicon glyphicon-star collect-true" ng-switch-when="true" ng-click="RemoveFav(DiscData.DiscID,data.SubjectID)"
+                              tooltip-placement="bottom"
+                              tooltip-html-unsafe="
+                                  <div class='Tooltip'>
+                                    @Html.Raw(Succ.Common.Global.Succ.RemoveFromFavorite)
+                                  </div>">
+                        </span>
+                        <span class="glyphicon glyphicon-star collect-false" ng-switch-when="false" ng-click="AddFav(DiscData.DiscID,data.SubjectID)"
+                              tooltip-placement="bottom"
+                              tooltip-html-unsafe="
+                                  <div class='Tooltip'>
+                                    @Html.Raw(Succ.Common.Global.Succ.Add)@Html.Raw(Succ.Common.Global.Succ.FavBox)
+                                  </div>">
+                        </span>
+                    </td>
+                    <!-- #endregion -->
+                    <!-- #region 歸檔/退回 主題Ttile -->
+                    <td class="title" ng-switch on="data.Progress">
+                        <a class="list-title {{data.IsRead == true ? 'a_type' : 'a_noRead'}}" ng-click="ShowSubject(DiscData.DiscID, compid, userid, data.SubjectID)">{{data.SubjectTitle}}</a> &nbsp;
+                        <i class="fa fa-undo refuse" ng-switch-when="5" title="@Html.Raw(Succ.Common.Global.Succ.Back)"></i>
+                        <span class="glyphicon glyphicon-check" style="color:green;" ng-switch-when="2"
+                              tooltip-placement="bottom"
+                              tooltip-html-unsafe="
+                                <div class='Tooltup' style='margin-bottom:1px;'>
+                                    @Html.Raw(Succ.Common.Global.Succ.Applyed)
+                                </div>
+                                <div style='border-bottom:1px solid white;'></div>
+                                <div class='Tooltip'>
+                                    {{data.ApplyerName}}
+                                </div>
+                                <div class='Tooltip'>
+                                    {{data.ApplyCloseOn | converdate}}
+                                </div>"></span>
+                        <span class="glyphicon glyphicon-ok" style="color:green;" ng-switch-when="9" title="@Html.Raw(Succ.Common.Global.Succ.Finish)"></span>
+                    </td>
+                    <!-- #endregion -->
+                    <!-- #region 新視窗 -->
+                    <td class="blank">
+                        <a href="/Spage/{{compid}}/{{userid}}/{{data.SubjectID}}/2" target="_blank">
+                            <span class="glyphicon glyphicon-new-window"
+                                  tooltip-placement="bottom"
+                                  tooltip-html-unsafe="
+                                    <div class='Tooltip'>
+                                        @Html.Raw(Succ.Common.Global.Succ.Open_New)
+                                    </div>" >
+                            </span>
+                        </a>
+                    </td>
+                    <!-- #endregion -->
+                    <!-- #region 日期 -->
+                    <td class="date">
+                        <label ng-bind="ConvertPlanDiff(data.PlanCloseOn, data.Progress, 0)"
+                               ng-if="data.PlanDiff <= 0" style="color:red;"
+                               tooltip-placement="bottom"
+                               tooltip-html-unsafe="
+                               <div class='Tooltip'>
+                                 @Html.Raw(Succ.Common.Global.Succ.Has_More_PlanClosedOn)
+                                 {{ConvertPlanDiff(data.PlanCloseOn, data.Progress, 0)}}
+                                 @Html.Raw(Succ.Common.Global.Succ.Day)
+                               </div>">
+                        </label>
+                        <label ng-bind="ConvertPlanDiff(data.PlanCloseOn, data.Progress, 1)"
+                               ng-if="data.PlanDiff > 0"
+                               tooltip-placement="bottom"
+                               tooltip-html-unsafe="
+                                   <div class='Tooltip'>
+                                       @Html.Raw(Succ.Common.Global.Succ.From_PlanClosedOn)
+                                   </div>
+                                   <br />
+                                   <div style='color:white;font-size:14px;'>
+                                       @Html.Raw(Succ.Common.Global.Succ.Remain)
+                                       {{ConvertPlanDiff(data.PlanCloseOn, data.Progress, 1)}}
+                                       @Html.Raw(Succ.Common.Global.Succ.Day)
+                                   </div>">
+                        </label>
+                    </td>
+                    <!-- #endregion -->
+                    <!-- #region 發文者-->
+                    <td class="sender">
+                        <p tooltip-placement="bottom"
+                           tooltip-html-unsafe="
+                                <div class='Tooltip'>
+                                    @Html.Raw(Succ.Common.Global.Succ.Creator)
+                                </div>
+                                <div style='border-bottom:1px solid white;'></div>
+                                <div class='Tooltip'>
+                                    {{data.CreatorName}}
+                                </div>
+                                <div class='Tooltip'>
+                                    {{data.CreatedOn | converdate}}
+                                </div>">
+                            {{data.CreatorName}}
+                        </p>
+                        <label>{{data.CreatedOn | converdate}}</label>
+                    </td>
+                    <!-- #endregion -->
+                    <!-- #region 回覆 -->
+                    <td class="respond">
+                        <div ng-show="data.ReplyCount > 0">
+                            <h2 class="fa fa-comment"></h2>
+                            <label tooltip-placement="bottom"
+                                   tooltip-html-unsafe="
+                                        <div class='Tooltip noBreak'>
+                                            @Html.Raw(Succ.Common.Global.Succ.Total2)
+                                            {{data.ReplyCount}}
+                                            @Html.Raw(Succ.Common.Global.Succ.Reply)
+                                        </div>">
+                                    {{data.ReplyCount}}
+                                </label>
+                        </div>
+                    </td>
+                    <!-- #endregion -->
+                    <!-- #region 最後回覆人 -->
+                    <td class="lastrespond">
+                        <p ng-show="data.ModifierName != ''"
+                           tooltip-placement="bottom"
+                           tooltip-html-unsafe="
+                                <div class='Tooltip'>
+                                    @Html.Raw(Succ.Common.Global.Succ.New_Replier)
+                                </div>
+                                <div style='border-bottom:1px solid white;'></div>
+                                <div class='Tooltip'>
+                                    {{data.ModifierName}}
+                                </div>
+                                <div class='Tooltip'>
+                                    {{data.ModifiedOn | converdate}}
+                                </div>">
+                                {{data.ModifierName}}
+                        </p>
+                        <label ng-show="data.ModifierName != ''">
+                            {{data.ModifiedOn | converdate}}
+                        </label>
+                    </td>
+                    <!-- #endregion -->
+                </tr>
+            </table>
+        </div>
+        <!-- #endregion -->
+    </div>
+</div>

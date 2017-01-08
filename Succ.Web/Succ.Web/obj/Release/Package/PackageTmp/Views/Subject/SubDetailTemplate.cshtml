@@ -1,0 +1,943 @@
+@{
+    Layout = null;
+}
+
+<!-- #region 功能按鈕 -->
+<div id="toolbar" ng-if="!isEditSubj">
+    <div>
+        <!-- #region 我的排程按鈕 -->
+        <button class="btn btn-link a_type" ng-if="!data.IsMyIns && data.Progress < 9" ng-click="ChangeMyBox(true)"
+                tooltip-placement="bottom"
+                tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.AddMyMailBox)
+                    </div>">
+            <span class="glyphicon glyphicon-user"></span>
+            @Html.Raw(Succ.Common.Global.Succ.AddMyMailBox)
+        </button>
+        <button class="btn btn-link a_type" ng-if="data.IsMyIns && data.Progress < 9" ng-click="ChangeMyBox(false)"
+                tooltip-placement="bottom"
+                tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.HideFromMyMailBox)
+                    </div>">
+            <span class="glyphicon glyphicon-user" style="color:#3385ff"></span> @Html.Raw(Succ.Common.Global.Succ.HideFromMyMailBox)
+        </button>
+        <!-- #endregion -->
+        <!-- #region 收藏按鈕-->
+        <button class="btn btn-link a_type" ng-if="!data.IsFav" ng-click="ChangeMyFav(true)"
+                tooltip-placement="bottom"
+                tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.Add)@Html.Raw(Succ.Common.Global.Succ.FavBox)
+                    </div>">
+            <span class="glyphicon glyphicon-star"></span> @Html.Raw(Succ.Common.Global.Succ.AddFavorites)
+        </button>
+        <button class="btn btn-link a_type" ng-if="data.IsFav" ng-click="ChangeMyFav(false)"
+                tooltip-placement="bottom"
+                tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.RemoveFromFavorite)
+                    </div>">
+            <span class="glyphicon glyphicon-star" style="color:#fc0"></span> @Html.Raw(Succ.Common.Global.Succ.RemoveFromFavorite)
+        </button>
+        <!-- #endregion -->
+        <!-- #region 紅綠燈按鈕 -->
+        <div class="btn-group" ng-if="data.Progress < 9">
+            <button class="btn btn-link dropdown-toggle a_type" data-toggle="dropdown" ng-switch="data.SubjectColor"
+                    tooltip-placement="bottom"
+                    tooltip-html-unsafe="
+                        <div class='Tooltip noBreak'>
+                            @Html.Raw(Succ.Common.Global.Succ.Sign)@Html.Raw(Succ.Common.Global.Succ.importance)
+                        </div>">
+                <span ng-switch-when="0" style="font-size:15px">
+                    <span class="glyphicon glyphicon-stop" style="color:#C1C1C1"></span>
+                    @Html.Raw(Succ.Common.Global.Succ.importance)
+                </span>
+                <span ng-switch-when="1" style="font-size:15px">
+                    <span class="glyphicon glyphicon-stop" style="color:#5CB52F"></span>
+                    @Html.Raw(Succ.Common.Global.Succ.Low)
+                </span>
+                <span ng-switch-when="2" style="font-size:15px">
+                    <span class="glyphicon glyphicon-stop" style="color:#F59C1A"></span>
+                    @Html.Raw(Succ.Common.Global.Succ.Mid)
+                </span>
+                <span ng-switch-when="3" style="font-size:15px">
+                    <span class="glyphicon glyphicon-stop" style="color:#FF5B57"></span>
+                    @Html.Raw(Succ.Common.Global.Succ.Top)
+                </span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li ng-click="ChangeColor('0')">
+                    <a style="font-size:15px; margin-bottom:5px"><span class="glyphicon glyphicon-stop" style="color:#C1C1C1"></span> @Html.Raw(Succ.Common.Global.Succ.Unmarked)</a>
+                </li>
+                <li ng-click="ChangeColor('1')">
+                    <a style="font-size:15px; margin-bottom:5px"><span class="glyphicon glyphicon-stop" style="color:#5CB52F"></span> @Html.Raw(Succ.Common.Global.Succ.Low)</a>
+                </li>
+                <li ng-click="ChangeColor('2')">
+                    <a style="font-size:15px; margin-bottom:5px"><span class="glyphicon glyphicon-stop" style="color:#F59C1A"></span> @Html.Raw(Succ.Common.Global.Succ.Mid)</a>
+                </li>
+                <li ng-click="ChangeColor('3')">
+                    <a style="font-size:15px"><span class="glyphicon glyphicon-stop" style="color:#FF5B57"></span> @Html.Raw(Succ.Common.Global.Succ.Top)</a>
+                </li>
+            </ul>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 匯出按鈕 複製URL 主題刪除 按鈕 -->
+        <div class="btn-group">
+            <button class="btn btn-link dropdown-toggle a_type" data-toggle="dropdown" title="@Html.Raw(Succ.Common.Global.Succ.More)"><i class="fa fa-ellipsis-v"></i>&nbsp; @Html.Raw(Succ.Common.Global.Succ.More)</button>
+            <ul class="dropdown-menu" role="menu">
+                <li ng-click="export()">
+                    <a style="font-size:15px; margin-bottom:5px"><span class="glyphicon glyphicon-share"></span> @Html.Raw(Succ.Common.Global.Succ.Export)</a>
+                </li>
+                <li clip-copy="copyUrl()">
+                    <a style="font-size:15px; margin-bottom:5px"><span class="glyphicon glyphicon-link"></span> @Html.Raw(Succ.Common.Global.Succ.CopyUrl)</a>
+                </li>
+                @*主題刪除按鈕*@
+                <li ng-if="IsDelBtn(data.IsBoss,data.Progress)" ng-click="DeleteSubject()">
+                    <a style="font-size:15px"><span class="glyphicon glyphicon-remove"></span> @Html.Raw(Succ.Common.Global.Succ.Delete)</a>
+                </li>
+            </ul>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 工作期限 -->
+        <div id="WorkDateline" class="pull-right" data-ng-switch="PlanDate(data.PlanCloseOn)" data-ng-if="data.PlanCloseOn !== '' && !isEditSubj && data.Progress < 9">
+            <div id="date" class="pull-right" data-ng-if="data.PlanCloseOn != ''">
+                <i class="fa fa-calendar-o"></i>
+                <span data-ng-bind="data.PlanCloseOn | converdate:true"></span>
+                @*預設完成日期為正值*@
+                <label class="ShowPlanDiff pull-right" data-ng-switch-when="0">
+                    @Html.Raw(Succ.Common.Global.Succ.Remain)
+                    <label data-ng-bind="PlanDiff" style="font-size:22px"></label>
+                    <label>@Html.Raw(Succ.Common.Global.Succ.Day)</label>
+                </label>
+                @*預設完成日期為負值*@
+                <label class="ShowPlanDiff pull-right" data-ng-switch-when="1">
+                    <label style="color:red;">@Html.Raw(Succ.Common.Global.Succ.Late)</label>
+                    <label style="color:red; font-size:22px" data-ng-bind="PlanDiff">
+                    </label>
+                    <label style="color:red">@Html.Raw(Succ.Common.Global.Succ.Day)</label>
+                </label>
+                @*沒有設定預設日期*@
+            </div>
+            <label data-ng-switch-when="2"></label>
+        </div>
+        <!-- #endregion -->
+    </div>
+</div>
+<!-- #endregion  -->
+<!-- #region 進入編輯視窗，需顯示討論組名稱-->
+<div class="col-md-12 msg-edit-breadcrumb">
+    <span class="editTitleSpan" ng-if="isEditSubj">
+        {{Disc.discName}}
+    </span>
+    <span class="mainTitleSpan" ng-if="!isEditSubj">
+        {{Disc.discName}}
+    </span>
+</div>
+<!-- #endregion -->
+<!-- #region 完成區顯示日期時間軸 -->
+<div class="TimeLine" ng-if="showTimeLine(data.Progress, data.DiscType)">
+    <div class="anxil" ng-style="setRed()"></div>
+    <!-- #region 建立日期-->
+    <div class="SubjLine"
+         tooltip-placement="bottom"
+         tooltip-html-unsafe="
+            <div class='Tooltip'>
+                @Html.Raw(Succ.Common.Global.Succ.Create)
+            </div>
+            <div style='border-bottom:1px solid white;'></div>
+            <div class='Tooltip'>
+                {{data.Creator}}
+            </div>
+            <div class='Tooltip'>
+                {{data.CreateOn | converdate}}
+            </div>">
+        <p style="margin-bottom:30px;">@Html.Raw(Succ.Common.Global.Succ.New_Msg)</p>
+        <div class="pencilOutside">
+            <div class="processData" style="width:36px;height:36px;border-radius:18px;line-height:33px;">
+                <span class="glyphicon glyphicon-pencil gray"></span>
+            </div>
+        </div>
+        <div style="position:relative;bottom:18px;">
+            {{data.CreateOn | converdate}}
+        </div>
+
+    </div>
+    <!-- #endregion -->
+    <!-- #region ApplyData-->
+    <div class="ProcessLine" ng-repeat="item in data.ProcessData | filter : {ProcessState:'Apply'}" ng-style="setWidth(data.ProcessData.length)"
+         tooltip-placement="bottom"
+         tooltip-html-unsafe="
+            <div class='Tooltip'>
+               @Html.Raw(Succ.Common.Global.Succ.ApplySubject2)
+            </div>
+            <div style='border-bottom:1px solid white;'></div>
+            <div class='Tooltip'>
+                {{item.UserName}}
+            </div>
+             <div class='Tooltip'>
+                 {{item.ProcessTime | converdate}}
+             </div>">
+        <!-- 申請圖示 -->
+        <div class="processOutside">
+            <div class="processData">
+                <span class="glyphicon glyphicon-check gray"></span>
+            </div>
+        </div>
+        <!-- 申請時間 -->
+        <span class="processSpan" style="visibility:hidden;">
+            {{item.ProcessTime | converdate}}
+        </span>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Reject Data-->
+    <div class="ProcessLine" ng-repeat="item in data.ProcessData | filter : {ProcessState:'Reject'}" ng-style="setWidth(data.ProcessData.length)"
+         tooltip-placement="bottom"
+         tooltip-html-unsafe="
+            <div class='Tooltip'>
+               @Html.Raw(Succ.Common.Global.Succ.Back)
+            </div>
+            <div style='border-bottom:1px solid white;'></div>
+            <div class='Tooltip'>
+                {{item.UserName}}
+            </div>
+             <div class='Tooltip'>
+                 {{item.ProcessTime | converdate}}
+             </div>">
+        <!--退回圖示-->
+        <div class="processOutside">
+            <div class="processData">
+                <span class="glyphicon glyphicon-share-alt gray"></span>
+            </div>
+        </div>
+        <!-- 退回時間 -->
+        <span class="processSpan" style="visibility:hidden;">
+            {{item.ProcessTime | converdate}}
+        </span>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 無預計完成日-->
+    <div class="SubjLine pull-right" ng-if="data.PlanCloseOn == 0">
+        <div tooltip-placement="bottom"
+             tooltip-html-unsafe="
+                <div class='Tooltip'>
+                @Html.Raw(Succ.Common.Global.Succ.CloseSubj)
+                </div>
+                <div style='border-bottom:1px solid white;'></div>
+                <div class='Tooltip'>
+                    {{data.ClosedOn | converdate}}
+                </div>">
+            <p class="noBreak">@Html.Raw(Succ.Common.Global.Succ.SubjectFinished2)</p>
+            <div class="closeDataIcon">
+            </div>
+            <div style="position:relative;top:10px;">
+                {{data.ClosedOn | converdate}}
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Close < PlancloseOn 提前完成-->
+    <div class="ProcessLine pull-right" ng-if="(data.PlanCloseOn > data.ClosedOn) && (data.PlanCloseOn != 0)">
+        <div class="InsidePlan pull-right"
+             tooltip-placement="bottom"
+             tooltip-html-unsafe="
+                <div class='Tooltip'>
+                @Html.Raw(Succ.Common.Global.Succ.Deadlines)
+                </div>
+                <div style='border-bottom:1px solid white;'></div>
+                <div class='Tooltip'>
+                    {{data.PlanCloseOn | converdate}}
+                </div>">
+            <p style="margin-bottom:30px;">@Html.Raw(Succ.Common.Global.Succ.Deadlines)</p>
+            <div class="processOutside">
+                <div class="processData">
+                    <span class="glyphicon glyphicon-flag"></span>
+                </div>
+            </div>
+            <div>
+                {{data.PlanCloseOn | converdate}}
+            </div>
+        </div>
+        <div class="InsidePlan pull-right" style="margin-top:76px;">
+            <span class="noBreak">
+                @Html.Raw(Succ.Common.Global.Succ.Move_up)
+            </span>
+            <span>
+                {{data.PlanDiff}}&nbsp;@Html.Raw(Succ.Common.Global.Succ.Day)
+            </span>
+        </div>
+        <div class="InsidePlan pull-right"
+             tooltip-placement="bottom"
+             tooltip-html-unsafe="
+                <div class='Tooltip'>
+                    @Html.Raw(Succ.Common.Global.Succ.CloseSubj)
+                </div>
+                <div style='border-bottom:1px solid white;'></div>
+                <div class='Tooltip'>
+                    {{data.ClosedOn | converdate}}
+                </div>">
+            <p>@Html.Raw(Succ.Common.Global.Succ.CloseSubj)</p>
+            <div class="closeDataIcon" style="margin:0 auto;">
+            </div>
+            <div style="position:relative;top:7px;">
+            {{data.ClosedOn | converdate}}
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Close > PlanCloseOn 延遲完成-->
+    <div class="ProcessLine pull-right" ng-if="(data.ClosedOn > data.PlanCloseOn) && (data.PlanCloseOn != 0)">
+        <div class="InsidePlan pull-right"
+             tooltip-placement="bottom"
+             tooltip-html-unsafe="
+                <div class='Tooltip'>
+                @Html.Raw(Succ.Common.Global.Succ.CloseSubj)
+                </div>
+                <div style='border-bottom:1px solid white;'></div>
+                <div class='Tooltip'>
+                    {{data.ClosedOn | converdate}}
+                </div>">
+            <p>@Html.Raw(Succ.Common.Global.Succ.CloseSubj)</p>
+            <div class="closeRedIcon" style="margin:0 auto;">
+            </div>
+            <div style="position:relative;top:7px;">
+                {{data.ClosedOn | converdate}}
+            </div>
+        </div>
+        <div class="InsidePlan pull-right" style="margin-top:76px;">
+            <span class="noBreak">
+                @Html.Raw(Succ.Common.Global.Succ.Late)
+            </span>
+            <span style="color:red;">
+                {{data.PlanDiff | convertabs}}
+            </span>
+            @Html.Raw(Succ.Common.Global.Succ.Day)
+        </div>
+        <div class="InsidePlan pull-right"
+             tooltip-placement="bottom"
+             tooltip-html-unsafe="
+                <div class='Tooltip'>
+                @Html.Raw(Succ.Common.Global.Succ.Deadlines)
+                </div>
+                <div style='border-bottom:1px solid white;'></div>
+                <div class='Tooltip'>
+                    {{data.PlanCloseOn | converdate}}
+                </div>">
+            <p style="margin-bottom:30px;">@Html.Raw(Succ.Common.Global.Succ.Deadlines)</p>
+            <div class="processOutside">
+                <div class="processData">
+                    <span class="glyphicon glyphicon-flag"></span>
+                </div>
+            </div>
+            <div>
+                {{data.PlanCloseOn | converdate}}
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+</div>
+<!-- #endregion -->
+<!-- #region 主題內容 -->
+<div id="content" data-ng-if="!isEditSubj">
+    <!-- #region 標題 -->
+    <div class="TitleArea" title="{{data.Title}}">
+        <strong data-ng-bind-template="{{SubjTag.EventTagName}}{{SubjTag.CusTagName}}{{data.Title}}{{SubjTag.timeString}}{{data.Money}}"></strong>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 工作程序按鈕 -->
+    <div id="missionBtn" data-ng-switch="progressBtn(data.DiscType, data.IsBoss, data.IsAdmin, data.Progress)">
+        <!-- 一般申請 -->
+        <div class="btnDone" data-ng-switch-when="0" data-ng-click="SubjectProgress(0)"
+             tooltip-placement="bottom"
+             tooltip-html-unsafe="
+                        <div class='Tooltip noBreak'>
+                            @Html.Raw(Succ.Common.Global.Succ.Circular)@Html.Raw(Succ.Common.Global.Succ.ApplySubject2)
+                        </div>">
+        </div>
+        <!-- 一般退回申請 -->
+        <div class="btnApplyClose" data-ng-switch-when="1" data-ng-click="SubjectProgress(1)"
+             tooltip-placement="bottom"
+             tooltip-html-unsafe="
+                        <div class='Tooltip noBreak'>
+                            @Html.Raw(Succ.Common.Global.Succ.Circular)@Html.Raw(Succ.Common.Global.Succ.ApplyCancel)
+                        </div>">
+        </div>
+        <!-- 一般完成 -->
+        <div class="btnDone" data-ng-switch-when="2" data-ng-click="SubjectProgress(2)"
+             tooltip-placement="bottom"
+             tooltip-html-unsafe="
+                        <div class='Tooltip noBreak'>
+                            @Html.Raw(Succ.Common.Global.Succ.Circular)@Html.Raw(Succ.Common.Global.Succ.SubjectFinished)
+                        </div>">
+        </div>
+        <!-- 一般退回 -->
+        <div class="btnReturn" style="position:relative;top:212px;" data-ng-switch-when="3" data-ng-click="SubjectProgress(3)"></div>
+        <!-- 行政區重新簽核 -->
+        <div class="btnBack" data-ng-switch-when="4" data-toggle="modal" data-target="#ResignModal"></div>
+        <!-- 行政區退回 -->
+        <div class="btnReturn" style="position:relative;top:212px;" data-ng-switch-when="5" data-toggle="modal" data-target="#AdminGobackModal"></div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 建立者 是否為新訊息(New) 回復按鈕 編輯按鈕 -->
+    <div id="infobar">
+        <span title="data.Creator" ng-bind="data.Creator"></span>
+        <span class="label label-warning" ng-if="data.ReadStatus == 'UnRead'">NEW</span>
+        <label title="@Html.Raw(Succ.Common.Global.Succ.Time) : {{data.CreateOn | converdate}}" ng-bind="data.CreateOn | converdate" style="margin-left:5px;"></label>
+        <a class="btn btn-link pull-right nopadding reply-btn" ng-if="data.Progress < 9" ng-click="ReplySubject()">
+            <i class="fa fa-reply"></i> @Html.Raw(Succ.Common.Global.Succ.Reply)
+        </a>
+        <a class="btn btn-link pull-right nopadding edit-detail" ng-click="EditSubject(data)" ng-if="IsEdit(data.IsCreator,data.IsBoss,data.Progress)" style="margin-right:10px">
+            <i class="fa fa-pencil"></i> @Html.Raw(Succ.Common.Global.Succ.Edit2)
+        </a>
+    </div>
+    <!-- #endregion -->
+    <hr style="margin:0" />
+    <!-- #region 編輯過後資訊 -->
+    <div class="detail_infobar_hr">
+        <a class="pull-right" style="cursor:pointer;color:#999;text-decoration:underline;" ng-if="data.SubjModifiedById != ''" ng-click="OpenHistory(data.ID)">@Html.Raw(Succ.Common.Global.Succ.Edited)</a>
+        <label ng-if="data.SubjModifiedById != ''" class="responder pull-right" title="{{data.SubjModifiedBy}} @Html.Raw(Succ.Common.Global.Succ.Time) : {{data.SubjModifiedOn | converdate}}" ng-bind-template="{{data.SubjModifiedBy}} {{data.SubjModifiedOn | converdate}}" style="color:#999"></label>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 行政區審核資料 -->
+    <div id="admin-audit" ng-if="showAdminAuditAndForm(data.DiscType)">
+        <div class="audit-anxil" data-ng-style="FlowLineStyle"></div>
+        <div class="audit" data-ng-repeat="flow in FlowData" data-ng-style="FlowStyle">
+            <p class="audit-name">{{flow.Name}}</p>
+            <div data-ng-class="flow.CheckClass" data-ng-if="!flow.CanAudit"></div>
+            <div style="margin:0 auto; width:80px; height:40px;">
+                <div class="audit-check-btn audit-check-ok-btn" data-ng-if="flow.CanAudit" data-ng-click="AuditCheck(data.ID,'ok',flow)" data-toggle="modal" data-target="#ApprovalCheckModal"></div>
+                <div class="audit-check-btn audit-check-no-btn" data-ng-if="flow.CanAudit" data-ng-click="AuditCheck(data.ID,'no',flow)" data-toggle="modal" data-target="#ApprovalCheckModal"></div>
+            </div>
+        </div>
+        <div class="FailSignSpace" ng-if="IsChangeFlow">
+            <img class="FailSignImg" />
+            @*ApplyMoney*@
+            <span class="FailSignSpan" ng-if="data.DiscType == 201">@Html.Raw(Succ.Common.Global.Succ.FailSign_Apply)</span>
+            @*Purchase*@
+            <span class="FailSignSpan" ng-if="data.DiscType == 202">@Html.Raw(Succ.Common.Global.Succ.FailSign_Purchase)</span>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 行政區表格 -->
+    <div id="admin-table" ng-if="showAdminAuditAndForm(data.DiscType) || showAdminOther(data.DiscType)">
+        <!-- #region 款項請領表格-->
+        <table class="table table-bordered" data-ng-if="isApplyMoney(data.DiscType)">
+            <tr>
+                <th>@Html.Raw(Succ.Common.Global.Succ.UsingDate)</th>
+                <th>@Html.Raw(Succ.Common.Global.Succ.Item)</th>
+                <th>@Html.Raw(Succ.Common.Global.Succ.Price)</th>
+                <th>@Html.Raw(Succ.Common.Global.Succ.Number)</th>
+                <th>@Html.Raw(Succ.Common.Global.Succ.Total3)</th>
+                <th>@Html.Raw(Succ.Common.Global.Succ.Remark)</th>
+            </tr>
+            <tr data-ng-repeat="money in ApplyMoney">
+                <td class="pDate">{{money.pDate}}</td>
+                <td class="pName">{{money.pName}}</td>
+                <td class="pPrice">{{money.pPrice | customcurrency}}</td>
+                <td class="pQty">{{money.pQty}}</td>
+                <td class="pTotal">{{money.pTotal | customcurrency}}</td>
+                <td class="pMemo">{{money.pMemo}}</td>
+            </tr>
+            <tr>
+                <td colspan="4">@Html.Raw(Succ.Common.Global.Succ.Total)</td>
+                <td data-ng-bind="Total | customcurrency" class="TotalCurrency"></td>
+                <td></td>
+            </tr>
+        </table>
+        <!-- #endregion -->
+        <!-- #region 採購表格-->
+        <table class="table table-bordered" ng-if="isPurchasing(data.DiscType)">
+            <tr>
+                <th>@Html.Raw(Succ.Common.Global.Succ.Item)</th>
+                <th>@Html.Raw(Succ.Common.Global.Succ.Price)</th>
+                <th>@Html.Raw(Succ.Common.Global.Succ.Number)</th>
+                <th>@Html.Raw(Succ.Common.Global.Succ.Total3)</th>
+                <th>@Html.Raw(Succ.Common.Global.Succ.Remark)</th>
+            </tr>
+            <tr ng-repeat="item in PurchaseMoney">
+                <td class="pName">{{item.pName}}</td>
+                <td class="pPrice">{{item.pPrice | currency}}</td>
+                <td class="pQty">{{item.pQty}}</td>
+                <td class="pTotal">{{item.pTotal | currency}}</td>
+                <td class="pMemo">{{item.pMemo}}</td>
+            </tr>
+            <tr>
+                <td colspan="3">@Html.Raw(Succ.Common.Global.Succ.Total)</td>
+                <td data-ng-bind="Total | currency" class="TotalCurrency"></td>
+                <td></td>
+            </tr>
+        </table>
+        <!-- #endregion -->
+        <!-- #region 外出表格-->
+        <table class="GoOutFormTable" ng-if="isGoOut(data.DiscType)">
+            <!--Member & Agent-->
+            <tr class="GoOutFormMember" style="height:50px;">
+                <td class="title">
+                    @Html.Raw(Succ.Common.Global.Succ.Staff)
+                </td>
+                <td class="memberName">
+                    <span ng-bind="data.GoOutItem.MemberName"></span>
+                </td>
+                <td class="title">
+                    @Html.Raw(Succ.Common.Global.Succ.Agent)
+                </td>
+                <td class="dutyAgentName">
+                    <span ng-bind="data.GoOutItem.AgentName"></span>
+                </td>
+            </tr>
+            <!--外出日期-->
+            <tr class="GoOutFormDate">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.GoOut)</td>
+                <td class="date dataSpan" colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.GoOutItem.sYear}} / {{data.GoOutItem.sMonth}} / {{data.GoOutItem.sDay}} &nbsp;&nbsp; {{data.GoOutItem.sHour}} :  {{data.GoOutItem.sMinute}}
+                    </span>
+                    <span class="pull-left" style="margin-left:7px;">
+                        ~{{data.GoOutItem.eYear}} / {{data.GoOutItem.eMonth}} / {{data.GoOutItem.eDay}} &nbsp;&nbsp; {{data.GoOutItem.eHour}} : {{data.GoOutItem.eMinute}}
+                    </span>
+                    <span class="pull-right total-time">
+                        @Html.Raw(Succ.Common.Global.Succ.Total2)
+                        <span class="days">
+                            {{data.GoOutItem.TotalDays}}
+                        </span>
+                        @Html.Raw(Succ.Common.Global.Succ.Day)
+                        <span class="hours">
+                            {{data.GoOutItem.TotalHours | convertabs}}
+                        </span>
+                        @Html.Raw(Succ.Common.Global.Succ.Hours)
+                    </span>
+
+                </td>
+            </tr>
+            <!--公事-->
+            <tr class="GoOutFormType">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.Job)</td>
+                <td colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.GoOutItem.OutType}}
+                    </span>
+                </td>
+            </tr>
+            <!--事由-->
+            <tr class="GoOutFormReason">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.Reason)</td>
+                <td class="reason" colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.GoOutItem.Reason}}
+                    </span>
+                </td>
+            </tr>
+            <!--備註-->
+            <tr class="GoOutFormRemarks">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.Remark)</td>
+                <td class="remarks" colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.GoOutItem.Memo}}
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <!-- #endregion -->
+        <!-- #region 請假表格-->
+        <table class="personLeaveFormTable" ng-if="isPersonLeave(data.DiscType)">
+            <!--Member & Agent-->
+            <tr class="personLeaveFormMember">
+                <td class="title">
+                    @Html.Raw(Succ.Common.Global.Succ.Staff)
+                </td>
+                <td class="memberName">
+                    <span ng-bind="data.PersonLeaveItem.MemberName"></span>
+                </td>
+                <td class="title">
+                    @Html.Raw(Succ.Common.Global.Succ.Agent)
+                </td>
+                <td class="dutyAgentName">
+                    <span ng-bind="data.PersonLeaveItem.AgentName"></span>
+                </td>
+            </tr>
+            <!--請假日期-->
+            <tr class="personLeaveFormDate">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.Ask_for_leave)</td>
+                <td class="date dataSpan" colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.PersonLeaveItem.sYear}} / {{data.PersonLeaveItem.sMonth}} / {{data.PersonLeaveItem.sDay}} &nbsp;&nbsp; {{data.PersonLeaveItem.sHour}} :  {{data.PersonLeaveItem.sMinute}}
+                    </span>
+                    <span class="pull-left" style="margin-left:7px;">
+                        ~{{data.PersonLeaveItem.eYear}} / {{data.PersonLeaveItem.eMonth}} / {{data.PersonLeaveItem.eDay}} &nbsp;&nbsp; {{data.PersonLeaveItem.eHour}} : {{data.PersonLeaveItem.eMinute}}
+                    </span>
+                    <span class="pull-right total-time">
+                        @Html.Raw(Succ.Common.Global.Succ.Total2)
+                        <span class="days">
+                            {{data.PersonLeaveItem.TotalDays}}
+                        </span>
+                        @Html.Raw(Succ.Common.Global.Succ.Day)
+                        <span class="hours">
+                            {{data.PersonLeaveItem.TotalHours | convertabs}}
+                        </span>
+                        @Html.Raw(Succ.Common.Global.Succ.Hours)
+                    </span>
+                </td>
+            </tr>
+            <!--假別-->
+            <tr class="personLeaveFormType">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.Leave_Type)</td>
+                <td colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.PersonLeaveItem.LeaveType}}
+                    </span>
+                </td>
+            </tr>
+            <!--事由-->
+            <tr class="personLeaveFormReason">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.Reason)</td>
+                <td class="reason" colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.PersonLeaveItem.Reason}}
+                    </span>
+                </td>
+            </tr>
+            <!--備註-->
+            <tr class="personLeaveFormRemarks">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.Remark)</td>
+                <td class="remarks" colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.PersonLeaveItem.Memo}}
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <!-- #endregion -->
+        <!-- #region 加班表格-->
+        <table class="OverTimeFormTable" ng-if="isOvertime(data.DiscType)">
+            <!--Member-->
+            <tr class="OverTimeFormMember">
+                <td class="title">
+                    @Html.Raw(Succ.Common.Global.Succ.Staff)
+                </td>
+                <td class="memberName">
+                    <span ng-bind="data.OverTimeItem.MemberName"></span>
+                </td>
+            </tr>
+            <!--加班日期-->
+            <tr class="OverTimeFormDate">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.OverTime)</td>
+                <td class="date dataSpan" colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.OverTimeItem.sYear}} / {{data.OverTimeItem.sMonth}} / {{data.OverTimeItem.sDay}} &nbsp;&nbsp; {{data.OverTimeItem.sHour}} :  {{data.OverTimeItem.sMinute}}
+                    </span>
+                    <span class="pull-left" style="margin-left:7px;">
+                        ~{{data.OverTimeItem.eYear}} / {{data.OverTimeItem.eMonth}} / {{data.OverTimeItem.eDay}} &nbsp;&nbsp; {{data.OverTimeItem.eHour}} : {{data.OverTimeItem.eMinute}}
+                    </span>
+                    <span class="pull-right total-time" style="margin-right:1.2em; margin-top:-0.3em;color:#808080">
+                        @Html.Raw(Succ.Common.Global.Succ.Total2)
+                        <span class="days">
+                            {{data.OverTimeItem.TotalDays}}
+                        </span>
+                        @Html.Raw(Succ.Common.Global.Succ.Day)
+                        <span class="hours">
+                            {{data.OverTimeItem.TotalHours | convertabs}}
+                        </span>
+                        @Html.Raw(Succ.Common.Global.Succ.Hours)
+                    </span>
+                </td>
+            </tr>
+            <!--內容-->
+            <tr class="OverTimeFormReason">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.OverTime_Content)</td>
+                <td colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.OverTimeItem.Content}}
+                    </span>
+                </td>
+            </tr>
+            <!--備註-->
+            <tr class="OverTimeFormRemarks">
+                <td class="title">@Html.Raw(Succ.Common.Global.Succ.Remark)</td>
+                <td class="remarks" colspan="3">
+                    <span class="pull-left DetailSpan">
+                        {{data.OverTimeItem.Memo}}
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <!-- #endregion -->
+    </div>
+    <!-- #endregion -->
+    <!-- #region 主題主要內容 -->
+    <div id="main_content" ng-bind-html="data.Content"></div>
+    <!-- #endregion -->
+    <!-- #region 附加檔案 -->
+    <div id="file-attach" ng-repeat="att in data.AttatchList | orderBy:'CreatedOn'">
+        <div data-ng-if="AttIsImg(att.FileName)" class="IconSetting {{AttIcon(att.FileName)}}"></div>
+        <img onclick="showImg(this)" data-ng-if="!AttIsImg(att.FileName)" ng-src="{{AttFileImg(att.AttID, att.FileName)}}" class="UploadFile_Img" />
+        <a data-ng-click="GoogleDoc(att.AttID)" class="file_name TextLimitation" ng-bind-template="{{att.FileName}} &nbsp;&nbsp; {{att.FileSize/1024|number:2}}KB"></a>
+        <a data-ng-click="DownLoadFile(att.AttID)" class="downloadString" style="line-height:50px;">@Html.Raw(Succ.Common.Global.Succ.Download)</a>
+        <br />
+    </div>
+    <!-- #endregion -->
+    <hr style="clear:left" />
+    <!-- #region 收件人 -->
+    <div id="receiver">
+        <span class="glyphicon glyphicon-user"></span>
+        <span ng-repeat="receiver in data.Receipts | orderBy:'UserReadStatus':false" ng-switch="receiver.UserReadStatus">
+            <label class="read-false" ng-switch-when="0" ng-bind-template="{{receiver.UserName}}"
+                   tooltip-placement="bottom"
+                   tooltip-html-unsafe="
+                        <div class='Tooltip'>
+                            @Html.Raw(Succ.Common.Global.Succ.UnRead)
+                        </div>">
+            </label>
+            <label ng-switch-when="1" ng-bind-template="{{receiver.UserName}}"
+                   tooltip-placement="bottom"
+                   tooltip-html-unsafe="
+                       <div class='Tooltip'>
+                            @Html.Raw(Succ.Common.Global.Succ.Read) ＠<br />{{receiver.UserReadTime | converdate}}
+                        </div>">
+            </label>
+        </span>
+    </div>
+    <!-- #endregion -->
+</div>
+<!-- #endregion -->
+<!-- #region 主題編輯區 -->
+<div id="EditSubject" ng-if="isEditSubj" ng-controller="EditMessageCtrl">
+    <div class="reply-editor" ng-include="EditorTemplate"></div>
+</div>
+<!-- #endregion -->
+<!-- #region 主題記錄區 -->
+<div class="animate-show" ng-include="SubHistoryUrl" ng-controller="SubHistory_ctrl" ng-show="ShowSubHis"></div>
+<!-- #endregion -->
+<!-- #region 快速回覆 -->
+<div id="comment" ng-show="!isReply && !isEditSubj">
+    <div style="width:15px; height:40px;background-color:#3385cc;float:left;" ng-if="isFinish(data.Progress)"></div>
+    <input ng-if="data.Progress < 9" type="text" data-ng-click="ReplySubject()" placeholder="@Html.Raw(Succ.Common.Global.Succ.Reply)" />
+    <div id="respond-new" data-ng-if="data.NoReadCount > 0" tooltip-placement="bottom"
+         tooltip-html-unsafe="
+            <div class='Tooltip noBreak'>
+                @Html.Raw(Succ.Common.Global.Succ.AddNew)@Html.Raw(Succ.Common.Global.Succ.Reply)
+            </div>">
+        New
+        <span class="label label-warning" ng-bind="data.NoReadCount"></span>
+    </div>
+    <div id="respond-panel" data-ng-if="data.ReplyCount > 0"
+         tooltip-placement="bottom"
+         tooltip-html-unsafe="
+            <div class='Tooltip noBreak'>
+                @Html.Raw(Succ.Common.Global.Succ.Replies)
+            </div>">
+        @Html.Raw(Succ.Common.Global.Succ.Reply)
+        <span class="label label-default" ng-bind="data.ReplyCount"></span>
+    </div>
+</div>
+<!-- #endregion -->
+<!-- #region 主題回覆區(位置計算用) -->
+<a id="reply-subj"></a>
+<!-- #endregion -->
+<!-- #region 回覆編輯器 -->
+<div class="reply-wrap slide" ng-if="isReply && !isEditSubj" ng-controller="ReplyCtrl">
+    @*<div class="reply-title">Re : {{data.Creator}}</div>*@
+    <div class="reply-editor" ng-include="EditorTemplate">
+    </div>
+</div>
+<!-- #endregion -->
+<!-- #region 回覆資訊 -->
+<div ng-repeat="reply in ReplyList | orderBy:'CreateOn':true">
+    <!-- #region 回覆主體 -->
+    <div id="respond-area" ng-if="replyEdit!=reply.ID">
+        <!-- #region 建立者 建立時間 回覆 編輯 刪除 按鈕-->
+        <div id="respond-infobar">
+            <span title="reply.CreatorName" ng-bind-template="{{reply.CreatorName}}"></span>
+            <label title="@Html.Raw(Succ.Common.Global.Succ.Time) :{{reply.CreateOn | converdate}}" ng-bind="reply.CreateOn | converdate"></label>
+            <span class="label label-warning" ng-if="!reply.IsRead">NEW</span>
+            <a class="btn btn-link pull-right nopadding" ng-click="ReplyByReply(reply.ID)" ng-if="data.Progress < 9">
+                <i class="fa fa-reply"></i> @Html.Raw(Succ.Common.Global.Succ.Reply)
+            </a>
+            <a class="btn btn-link pull-right nopadding" ng-click="EditByReply(reply.ID)" ng-if="IsEdit(reply.IsCreator, reply.IsBoss,data.Progress)">
+                <i class="fa fa-pencil"></i> @Html.Raw(Succ.Common.Global.Succ.Edit2)
+            </a>
+            <a class="btn btn-link pull-right nopadding" ng-click="DelByReply(reply.ID)" ng-if="reply.IsBoss && data.Progress < 9">
+                <i class="fa fa-times-circle"></i> @Html.Raw(Succ.Common.Global.Succ.Delete)
+            </a>
+        </div>
+        <!-- #endregion -->
+        <hr />
+        <!-- #region 回覆右上角資訊 --> 
+        <div class="detail_infobar_hr" ng-if="reply.ReplyToName || reply.ModifiedBy != ''">
+            <label ng-if="reply.ReplyToName" ng-bind-template="Re:&nbsp&nbsp{{reply.ReplyCreator}}&nbsp&nbsp{{reply.ReplyCreateOn | converdate}}"></label>
+            <a ng-if="reply.ModifiedBy != ''" class="pull-right" style="cursor:pointer;" ng-click="OpenReplyHistory(reply.SubjectID,reply.ID)">@Html.Raw(Succ.Common.Global.Succ.Edited)</a>
+            <label ng-if="reply.ModifiedBy != ''" class="responder pull-right" title="{{reply.ModifiedBy}} @Html.Raw(Succ.Common.Global.Succ.Time) : {{reply.ModifiedOn | converdate}}" ng-bind-template="{{reply.ModifiedBy}} {{reply.ModifiedOn | converdate}}"></label>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 回覆主要內容-->
+        <div id="respond-content" ng-bind-html="ConverContent(reply.Content)"></div>
+        <!-- #endregion -->
+        <!-- #region 回覆附加檔案-->
+        <div id="file-attach" ng-repeat="att in reply.Attatchs | orderBy:'CreatedOn'">
+            <div data-ng-if="AttIsImg(att.FileName)" class="IconSetting {{AttIcon(att.FileName)}}"></div>
+            <img onclick="showImg(this)" data-ng-if="!AttIsImg(att.FileName)" ng-src="{{AttFileImg(att.AttID, att.FileName)}}" class="UploadFile_Img" />
+            <a ng-click="GoogleDoc(att.AttID)" class="file_name TextLimitation" ng-bind-template="{{att.FileName}} &nbsp;&nbsp; {{att.FileSize/1024|number:2}}KB"></a>
+            <a data-ng-click="DownLoadFile(att.AttID)" class="downloadString">@Html.Raw(Succ.Common.Global.Succ.Download)</a>
+            <br />
+        </div>
+        <hr />
+        <!-- #endregion -->
+        <div id="{{reply.ID}}"></div>
+        <!-- #region 回覆收件人-->
+        <div id="receiver">
+            <i class="glyphicon glyphicon-user"></i>
+            <span ng-repeat="receiver in reply.Receipts | orderBy:'UserReadStatus':false" ng-switch on="receiver.UserReadStatus">
+                <label class="read-false" ng-switch-when="0" ng-bind-template="{{receiver.UserName}} &nbsp;"
+                       tooltip-placement="bottom"
+                       tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.UnRead)
+                    </div>">
+                </label>
+                <label ng-switch-when="1" ng-bind-template="{{receiver.UserName}} &nbsp;"
+                       tooltip-placement="bottom"
+                       tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.Read) ＠ <br /> {{receiver.UserReadTime | converdate}}
+                    </div>">
+                </label>
+            </span>
+        </div>
+        <!-- #endregion -->
+    </div>
+    <!-- #endregion -->
+    <!-- #region 編輯回覆區 -->
+    <div id="EditReply" class="reply-wrap" ng-if="replyEdit == reply.ID" ng-controller="EditReplyCtrl">
+        @*<div class="reply-title">Re : {{reply.CreatorName}}</div>*@
+        <div class="reply-editor" ng-include="EditorTemplate"></div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 回覆記錄區 -->
+    <div ng-if="reply.ModifiedBy != '' && !replyEdit" ng-include="ReplyHistoryUrl" ng-controller="ReplyHistory_ctrl" ng-show="reply.IsShowHis">
+    </div>
+    <!-- #endregion -->
+    <!-- #region 回覆-回覆區 -->
+    <div id="reply-reply{{reply.ID}}" ng-if="reply2lv == reply.ID && !isReply && !isEditSubj">
+        <div class="reply-wrap" ng-controller="Reply2lvCtrl">
+            @*<div class="reply-title">Re : {{reply.CreatorName}}</div>*@
+            <div class="reply-editor" ng-include="EditorTemplate2lv"></div>
+        </div>
+    </div>
+    <!-- #endregion -->
+</div>
+<!-- #endregion -->
+<!-- #region Bootstrap Modal 行政區重新簽核用 -->
+<div class="modal fade" id="ResignModal" tabindex="-1" role="dialog" aria-labelledby="ResignModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="closeButton" data-dismiss="modal"><img src="~/Statics/img/close.png" /></button>
+                <h4 class="modal-title" id="ResignModalLabel">@Html.Raw(Succ.Common.Global.Succ.Restore_approval_process)</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Raw(Succ.Common.Global.Succ.Choose_ReApprove_Process)
+                <div class="audit-anxil" data-ng-style="FlowLineStyle"></div>
+                <div class="audit" data-ng-repeat="flow in FlowData" data-ng-style="FlowStyle">
+                    <p data-ng-class="ReCheckNameClass(flow)">{{flow.Name}}</p>
+                    <div data-ng-class="flow.ReSignCheckClass" data-ng-click="ReSignCheck(flow)"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-ok" data-ng-click="ReSignSubmit(data.ID)"><span class="glyphicon glyphicon-ok"></span>@Html.Raw(Succ.Common.Global.Succ.OK)</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #endregion -->
+<!-- #region Bootstrap Modal 行政區退回用 -->
+<div class="modal fade" id="AdminGobackModal" tabindex="-1" role="dialog" aria-labelledby="AdminGobackModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="margin:30px 50%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="closeButton" data-dismiss="modal"><img src="~/Statics/img/close.png" /></button>
+                <h4 class="modal-title" id="AdminGobackModalLabel">@Html.Raw(Succ.Common.Global.Succ.Back)</h4>
+            </div>
+            <div class="modal-body">
+                <div id="goback-no-reapproval" class="choose-block" data-ng-click="SubjectProgress(3)">
+                    <div class="process-icon icon-back-desc"></div>
+                    <div class="title">@Html.Raw(Succ.Common.Global.Succ.KeepApproval)</div>
+                    <div class="title-desc">@Html.Raw(Succ.Common.Global.Succ.KeepApproval_Desc)</div>
+                </div>
+                @*showBackAndReApproval()*@
+                <div id="goback-reapproval" class="choose-block" data-ng-click="AdminBack(data.ID)">
+                    <div class="process-icon icon-back-desc"></div>
+                    <div class="title">@Html.Raw(Succ.Common.Global.Succ.ReAudit)</div>
+                    <div class="title-desc">@Html.Raw(Succ.Common.Global.Succ.Resign_Desc)</div>
+                </div>
+                @*<div class="audit-anxil" data-ng-if="isbackAndReApproval" data-ng-style="FlowLineStyle"></div>
+                <div class="audit" data-ng-if="isbackAndReApproval" data-ng-repeat="flow in FlowData" data-ng-style="FlowStyle">
+                    <p data-ng-class="ReCheckNameClass(flow)">{{flow.Name}}</p>
+                    <div data-ng-class="flow.ReSignCheckClass" data-ng-click="ReSignCheck(flow)"></div>
+                </div>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #endregion -->
+<!-- #region Bootstrap Modal 行政區確認簽核用 -->
+<div class="modal fade" data-ng-if="UpdateAudit" id="ApprovalCheckModal" tabindex="-1" role="dialog" aria-labelledby="ApprovalCheckModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                @* 3種狀態:
+                    1. 不允核准並完成
+                    2. 核准
+                    3. 核准並完成*@
+                @* 1. 不允核准並完成 *@
+                <div class="audit-img-no" data-ng-if="UpdateAudit.State == 'no'"></div>
+                <div class="audit-name" data-ng-if="UpdateAudit.State == 'no'">@Html.Raw(Succ.Common.Global.Succ.UnApproval)</div>
+                @* 2. 核准 *@
+                <div class="audit-img-ok" data-ng-if="UpdateAudit.State == 'ok'"></div>
+                <div class="audit-name" data-ng-if="UpdateAudit.State == 'ok'">@Html.Raw(Succ.Common.Global.Succ.Approval)</div>
+            </div>
+            <div class="modal-body">
+                @* 1. 不允核准並完成 *@
+                <div class="audit-desc" data-ng-if="UpdateAudit.State == 'no'">@Html.Raw(Succ.Common.Global.Succ.UnApproval_Desc)</div>
+                @* 2. 核准 *@
+                <div class="audit-desc" data-ng-if="UpdateAudit.State == 'ok'">@Html.Raw(Succ.Common.Global.Succ.Approval_Desc)</div>
+                @* 3. 核准並完成 *@
+                <div class="audit-desc" data-ng-if="UpdateAudit.State == 'ok' && FlowData.length == UpdateAudit.Serise">@Html.Raw(Succ.Common.Global.Succ.Approval_Finish_Desc)</div>
+            </div>
+            @*<div class="modal-footer">*@
+            <button type="button" class="btn btn-cancel" data-ng-click="CancelAudit()">
+                <span class="glyphicon glyphicon-remove"></span>
+                @Html.Raw(Succ.Common.Global.Succ.Cancle)
+            </button>
+            <button type="button" class="btn btn-ok " data-ng-click="AuditSubmit()">
+                <span class="glyphicon glyphicon-ok"></span>@Html.Raw(Succ.Common.Global.Succ.OK)
+            </button>
+            @*</div>*@
+        </div>
+    </div>
+</div>
+<!-- #endregion -->
+<script>
+    function showImg(obj) {
+        var src = $(obj).attr('src').replace('_1', '');
+        //編輯狀態中
+        if ($(".note-editable").length > 0) {
+            return true;
+        }
+        //圖片沒有連結設定，為它加入連結，以供ColorBox使用
+        if ($(obj).attr('href') == undefined) {
+            $(obj).attr('href', src);
+        }
+        else {
+            $(obj).attr('href', src);
+        }
+        return $(obj).colorbox({
+            transition: 'elastic',
+            width: '60%',
+            speed: '400',
+            close: '關閉',
+            imgError: '圖片不存在',
+            maxWidth: '70%',
+        });
+    }
+</script>

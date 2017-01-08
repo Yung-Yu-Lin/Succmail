@@ -1,0 +1,278 @@
+﻿@{ Layout = null;}
+
+@Scripts.Render("~/jqGrid/script")
+<link href="~/Scripts/lib/jqGrid/css/ui.jqgrid.css" rel="stylesheet" />
+<link href="~/Scripts/lib/jquery-ui/jquery-ui.css" rel="stylesheet" />
+
+<!-- #region -->
+<!-- #endregion -->
+<div ng-controller="BackDiscManageCtrl">
+    <div id="disc-manage">
+        <input id="BossID" type="hidden" value="@ViewBag.BossID" />
+        <h2><b>@Html.Raw(Succ.Common.Global.Succ.Setting_Disc)</b></h2>
+        <div class="disc_manage_div" data-recycle-sort="@ViewBag.sort">
+            <!-- #region 討論組 -->
+            <div id="disc">
+                <div class="disc_list">
+                    <div class="event">
+                        <!-- #region 一般討論組滑動開關 -->
+                        <div class="panel" data-toggle="collapse" data-target="#event_list">
+                            <i class="fa fa-envelope"></i>
+                            <label class="nomargin">@Html.Raw(Succ.Common.Global.Succ.CompanyMessage)</label>
+                            <span class="caret pull-right"></span>
+                        </div>
+                        <!-- #endregion -->
+                        <!-- #region 一般討論組列表 -->
+                        <ul id="event_list" class="nomargin panel-collapse collapse in">
+                            <li class="disc_li" ng-repeat="item in DiscManage.NormalDiscList" title="{{item.DiscName}}}" ng-style="IsSelected(item.IsSelect)" ng-click="SelectDisc(item)">
+                                <span class="delete" title="@Html.Raw(Succ.Common.Global.Succ.Delete_Disc)" ng-click="DeleteDisc(item)">
+                                    <i class="fa fa-times-circle"></i>
+                                </span>
+                                <label class="discname nomargin" ng-bind="item.DiscName"></label>
+                                <img ng-if="!item.IsSelect" class="group pull-right" src="~/Statics/img/backend/group.png" />
+                                <img ng-if="item.IsSelect" class="group pull-right" src="~/Statics/img/backend/group_white.png" />
+                                <label class="member pull-right" ng-bind="item.MemberCount"></label>
+                            </li>
+                            <li class="add-eventdisc" ng-click="AddNewNormalDisc()">
+                                <button class="w3-btn w3-khaki" style="width:100%;">
+                                    <i class="fa fa-plus"></i>@Html.Raw(Succ.Common.Global.Succ.AddEventDisc)
+                                </button>
+                            </li>
+                        </ul>
+                        <!-- #endregion -->
+                    </div>
+                    <div class="admin">
+                        <!-- #region 行政討論組滑動開關 -->
+                        <div class="panel" data-toggle="collapse" data-target="#admin_list">
+                            <i class="fa fa-briefcase"></i>
+                            <label class="nomargin">@Html.Raw(Succ.Common.Global.Succ.Progress)</label>
+                            <span class="caret pull-right"></span>
+                        </div>
+                        <!-- #endregion -->
+                        <!-- #region 行政區討論組列表 -->
+                        <ul id="admin_list" class="nomargin panel-collapse collapse in">
+                            <li class="disc_li" ng-repeat="item in DiscManage.AdminDiscList" title="{{item.DiscName}}" ng-style="IsSelected(item.IsSelect)" ng-click="SelectAdminDisc(item)">
+                                <span class="delete" title="@Html.Raw(Succ.Common.Global.Succ.Delete_Disc)" ng-click="DeleteDisc(item)">
+                                    <i class="fa fa-times-circle"></i>
+                                </span>
+                                <label class="discname nomargin" ng-bind="item.DiscName"></label>
+                                <img ng-if="!item.IsSelect" class="group pull-right" src="~/Statics/img/backend/group.png" />
+                                <img ng-if="item.IsSelect" class="group pull-right" src="~/Statics/img/backend/group_white.png" />
+                                <label class="member pull-right" ng-bind="item.MemberCount"></label>
+                            </li>
+                            <li class="add-admindisc" data-toggle="modal" data-target=".add_admin">
+                                <button class="w3-btn w3-khaki" style="width:100%;">
+                                    <i class="fa fa-plus"></i>@Html.Raw(Succ.Common.Global.Succ.AddAdminDisc)
+                                </button>
+                            </li>
+                        </ul>
+                        <!-- #endregion -->
+                    </div>
+                    <div class="trash">
+                        <!-- #region 討論組回收區 -->
+                        <div class="panel" ng-click="GotoRecycle()">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            <label class="nomargin">@Html.Raw(Succ.Common.Global.Succ.RecycledDisc)</label>
+                        </div>
+                        <!-- #endregion -->
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 基本設定 -->
+            <div id="set" ng-if="DiscManage.SettingView">
+                <div class="title" ng-if="!DiscManage.IsNew">@Html.Raw(Succ.Common.Global.Succ.Basic_Setting)</div>
+                <div class="title" ng-if="DiscManage.IsNew">@Html.Raw(Succ.Common.Global.Succ.NewGroup)</div>
+                <table>
+                    <!-- #region 討論組名稱 -->
+                    <tr>
+                        <td class="td_label">@Html.Raw(Succ.Common.Global.Succ.StageName)</td>
+                        <td class="td_input">
+                            <input id="DiscName" class="disc_name" maxlength="8" name="DiscName" ng-model="DiscManage.DiscDetail.DiscName" ng-change="ModifyName()" placeholder="@Html.Raw(Succ.Common.Global.Succ.DiscussionName)" />
+                        </td>
+                    </tr>
+                    <!-- #endregion -->
+                    <!-- #region 討論組管理員 -->
+                    <tr>
+                        <td class="td_label">@Html.Raw(Succ.Common.Global.Succ.SettingsAdministrators)</td>
+                        <td class="td_input">
+                            <select id="Adminer"
+                                    name="Adminer"
+                                    ng-options="option.Name for option in DiscManage.DiscDetail.MemberList"
+                                    ng-model="DiscManage.DiscDetail.Admin"
+                                    ng-change="ModifyAdmin()"></select>
+                        </td>
+                    </tr>
+                    <!-- #endregion -->
+                    <!-- #region 討論組成員 -->
+                    <tr ng-if="!DiscManage.IsRegistState">
+                        <td class="td_label"><p class="p_member">@Html.Raw(Succ.Common.Global.Succ.Member)</p></td>
+                        <td class="td_input">
+                            <div class="sub-member">
+                                <select data-placeholder="@Html.Raw(Succ.Common.Global.Succ.IsNullMember)"
+                                        id="Member"
+                                        style="width:350px;"
+                                        multiple chosen="DiscManage.DiscDetail.MemberList"
+                                        ng-options="option.Name for option in DiscManage.DiscDetail.MemberList"
+                                        datasource="DiscManage.DiscDetail.MemberList"
+                                        template="templates"
+                                        view-width="90%"
+                                        ng-change="chosenChange()"
+                                        ng-model="DiscManage.DiscDetail.Members"></select>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- #endregion -->
+                    <!-- #region 固定收件人 -->
+                    <tr ng-if="!DiscManage.IsRegistState">
+                        <td class="td_label"><p class="p_member">@Html.Raw(Succ.Common.Global.Succ.FixedReceiver)</p></td>
+                        <td class="td_input">
+                            <div class="sub-receiver">
+                                <select data-placeholder="@Html.Raw(Succ.Common.Global.Succ.Choose_Receiver)"
+                                        id="Receiver"
+                                        multiple chosen="DiscManage.DiscDetail.MemberList"
+                                        ng-options="option.Name for option in DiscManage.DiscDetail.MemberList"
+                                        class="chosen-select"
+                                        datasource="DiscManage.DiscDetail.MemberList"
+                                        template="templates"
+                                        view-width="90%"
+                                        ng-change="chosenChange()"
+                                        ng-model="DiscManage.DiscDetail.Regulars"></select>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- #endregion -->
+                    <!-- #region 行政區 款項請領 採購計畫 簽核 -->
+                    <tr ng-if="DiscManage.IsFlowDisc">
+                        <td class="td_label" colspan="2">
+                            <hr style="margin:10px 0 0 0" />
+                            <div id="audit_div">
+                                <label>@Html.Raw(Succ.Common.Global.Succ.AuditMechanism)</label>
+                                <!-- 新增簽核流程按鈕 -->
+                                <button class="btn btn-primary pull-right" ng-click="AddNewAudit()"><i class="fa fa-plus"></i></button>
+                                <hr class="audit_line" />
+                                <table>
+                                    <tr>
+                                        <td ng-repeat="item in DiscManage.DiscDetail.Flow" ng-mouseover="item.InArea = true" ng-mouseleave="item.InArea = false">
+                                            <div class="auditDiv">
+                                                <!-- #region 關卡名稱 -->
+                                                <input class="audit" ng-model="item.Name" placeholder="@Html.Raw(Succ.Common.Global.Succ.Checkpoint)" title="@Html.Raw(Succ.Common.Global.Succ.Checkpoint)" />
+                                                <!-- #endregion -->
+                                                <!-- #region 刪除按鈕 -->
+                                                <i ng-if="!item.InArea" class="fa fa-circle-o"></i>
+                                                <i ng-if="item.InArea && !(item.Serise == DiscManage.DiscDetail.Flow.length)" class="fa fa-circle-o"></i>
+                                                <i ng-if="item.InArea && item.Serise == DiscManage.DiscDetail.Flow.length && item.Serise <= 1" class="fa fa-circle-o"></i>
+                                                <i ng-if="item.InArea && item.Serise == DiscManage.DiscDetail.Flow.length && item.Serise > 1" class="del_audit fa fa-times-circle" ng-click="DeleteProcess(item)"></i>
+                                                <!-- #endregion -->
+                                                <!-- #region 關卡負責人選擇 -->
+                                                <select class="auditer_name"
+                                                        data-placeholder="@Html.Raw(Succ.Common.Global.Succ.Auditor)"
+                                                        name="AuditID"
+                                                        ng-options="option.Name for option in DiscManage.DiscDetail.MemberList"
+                                                        ng-model="item.FlowMemberData"
+                                                        ng-change="UpdateFlowUser(item)"></select>
+                                                <!-- #endregion -->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- #endregion -->
+                    <!-- #region 請假與外出 -->
+                    <tr ng-if="IsPersonalLeave() || IsGoOut()">
+                        <td ng-if="IsPersonalLeave()" class="td_label">@Html.Raw(Succ.Common.Global.Succ.TypeOfLeave)</td>
+                        <td ng-if="IsGoOut()" class="td_label">@Html.Raw(Succ.Common.Global.Succ.TypeOfGoOut)</td>
+
+                        <td class="td_input" colspan="2">
+                            <div id="leave_div">
+                                <div>
+                                    <span class="leave" ng-repeat="item in DiscManage.DiscDetail.Leave | filter:{ Action:'!delete'}">
+                                        <input ng-model="item.Name" ng-change="UpdateLeaveName(item)"></input>
+                                        <i class="del-leave fa fa-times-circle" ng-click="RemoveLeaveItem(item)"></i>
+                                    </span>
+                                </div>
+                                <input ng-if="IsPersonalLeave() || IsGoOut()" ng-model="DiscManage.LeaveValue" ng-style="LeaveStyle()" id="Leave" placeholder="@Html.Raw(Succ.Common.Global.Succ.Added)" maxlength="8" />
+                                <i ng-if="IsPersonalLeave() || IsGoOut()" class="add_leave fa fa-plus" title="@Html.Raw(Succ.Common.Global.Succ.AddLeave)" ng-click="AddNewLeave()"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- #endregion -->
+                </table>
+
+                <hr style="margin:40px 25px 0 25px;" />
+
+                <div class="btn_div">
+                    <!-- #region 確定按鈕 -->
+                    <button class="btn check btn-ok" ng-click="UpdateDisc()">
+                        <i class="fa fa-check">&nbsp;&nbsp;</i>
+                        @Html.Raw(Succ.Common.Global.Succ.OK)
+                    </button>
+                    <!-- #endregion -->
+                    <!-- #region 確定更新成功訊息框 -->
+                    <div class="alert alert-success" style="text-align:center;margin-bottom:0;width:100px;display:inline-block;padding:6px;" ng-show="DiscManage.IsSuccess" role="alert">@Html.Raw(Succ.Common.Global.Succ.SetSuccessfully)</div>
+                    <!-- #endregion -->
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 回收區 -->
+            <div id="recycle" ng-if="!DiscManage.SettingView">
+                <div class="title">@Html.Raw(Succ.Common.Global.Succ.RecycledDisc)</div>
+                <disc-jq-grid config="config" data="data" compid="DiscManage.CompID" userid="DiscManage.UserID"></disc-jq-grid>
+            </div>
+            <!-- #endregion -->
+        </div>
+    </div>
+    <div id="discmanage-modal">
+        <!-- #region 新增行政討論組(選擇視窗) -->
+        <div class="add_admin modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="closeButton" data-dismiss="modal"><img src="~/Statics/img/close.png" /></button>
+                        <h4 class="modal-title">@Html.Raw(Succ.Common.Global.Succ.NewGroup)</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="sub-type sub-type-general">
+                            <div id="subAdminSet" class="sub-admin-set hideObj" style="display:inline;">
+                                <div class="purchs disctype-div" data-type="purchs" ng-click="AddAdminDisc('purchs')">
+                                    <div class="sub-admin-title">@Html.Raw(Succ.Common.Global.Succ.Progress1)</div>
+                                    <div class="sub-admin-icon purchs-icon"></div>
+                                    <div class="sub-admin-content purchs-content">@Html.Raw(Succ.Common.Global.Succ.Describe_Purchase)<br />@Html.Raw(Succ.Common.Global.Succ.Describe_Audit)</div>
+                                    <div class="sub-admin-more">@Html.Raw(Succ.Common.Global.Succ.Describe)</div>
+                                </div>
+                                <div class="applyMoney disctype-div" data-type="applyMoney" ng-click="AddAdminDisc('applyMoney')">
+                                    <div class="sub-admin-title">@Html.Raw(Succ.Common.Global.Succ.Progress2)</div>
+                                    <div class="sub-admin-icon applyMoney-icon"></div>
+                                    <div class="sub-admin-content applyMoney-content">@Html.Raw(Succ.Common.Global.Succ.Describe_ApplyMoney)<br />@Html.Raw(Succ.Common.Global.Succ.Describe_Audit)</div>
+                                    <div class="sub-admin-more">@Html.Raw(Succ.Common.Global.Succ.Describe)</div>
+                                </div>
+                                <div class="personLeave disctype-div" data-type="personLeave" ng-click="AddAdminDisc('personLeave')">
+                                    <div class="sub-admin-title">@Html.Raw(Succ.Common.Global.Succ.Progress3)</div>
+                                    <div class="sub-admin-icon personLeave-icon"></div>
+                                    <div class="sub-admin-content personLeave-content">@Html.Raw(Succ.Common.Global.Succ.Describe_Leave)</div>
+                                    <div class="sub-admin-more">@Html.Raw(Succ.Common.Global.Succ.Describe)</div>
+                                </div>
+                                <div class="overTime disctype-div" data-type="overTime" ng-click="AddAdminDisc('overTime')">
+                                    <div class="sub-admin-title">@Html.Raw(Succ.Common.Global.Succ.Progress4)</div>
+                                    <div class="sub-admin-icon overTime-icon"></div>
+                                    <div class="sub-admin-content overTime-content">@Html.Raw(Succ.Common.Global.Succ.Describe_OverTime)</div>
+                                    <div class="sub-admin-more">@Html.Raw(Succ.Common.Global.Succ.Describe)</div>
+                                </div>
+                                <div class="goOut disctype-div" data-type="goOut" ng-click="AddAdminDisc('goOut')">
+                                    <div class="sub-admin-title">@Html.Raw(Succ.Common.Global.Succ.Progress5)</div>
+                                    <div class="sub-admin-icon goOut-icon"></div>
+                                    <div class="sub-admin-content goOut-content">@Html.Raw(Succ.Common.Global.Succ.Describe_GoOut)</div>
+                                    <div class="sub-admin-more">@Html.Raw(Succ.Common.Global.Succ.Describe)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #endregion -->
+    </div>
+    <div class="black_pad"></div>
+</div>

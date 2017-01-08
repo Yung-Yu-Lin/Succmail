@@ -1,0 +1,77 @@
+﻿.seperate_line{
+    background-color:#aaa;
+    height:1px;
+}
+
+.SubjTag_Content{
+    min-height:85px;
+}
+
+.SubjTagBtn{
+    float:right;
+    margin:20px 20px 0 0;
+    background:#5cb85c!important;
+}
+
+.EventTag_Content{
+    text-align:center;
+    margin-bottom:5px;
+}
+
+.Edit_EventTag_Content{
+    text-align:center;
+    margin-bottom:5px;
+}
+
+.CusTag_Content{
+    text-align:center;
+    margin-bottom:5px;
+}
+
+.Edit_CusTag_Content{
+    text-align:center;
+    margin-bottom:5px;
+}
+
+.Add_EventTag{
+    margin-top:5px;
+    text-align:center;
+}
+
+.Add_CusTag{
+    margin-top:5px;
+    text-align:center;
+}
+
+.Add_EventTag > span{
+    cursor:pointer;
+}
+
+.Add_CusTag > span{
+    cursor:pointer;
+}
+
+.EventTag_Val{
+    padding-left:4px;
+}
+
+.CusTag_Val{
+    padding-left:4px;
+}
+
+#EventTag_List{
+    text-align:center;
+}
+
+.Search_Div{
+    margin-left:20px;
+    margin-bottom:10px;
+}
+
+.Search_Div > input{
+    width:200px;
+}
+
+#CusTag_List{
+    text-align:center;
+}

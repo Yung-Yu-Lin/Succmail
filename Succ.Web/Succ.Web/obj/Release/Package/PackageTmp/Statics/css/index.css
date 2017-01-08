@@ -1,0 +1,3654 @@
+﻿#middle .upload-file:hover {
+    color: #fff;
+    background-color: #f93;
+}
+
+#middle #tab_content_head {
+    position: static;
+    margin-left: 30px;
+    margin-top: 5px;
+    float: right;
+}
+
+    #middle #tab_content_head > ul {
+        position: static;
+        width: 448px;
+        border: 0;
+        margin-top: 14px;
+        right: 20px;
+    }
+
+        #middle #tab_content_head > ul > li {
+            margin-left: 15px;
+            left: 30px;
+        }
+
+            #middle #tab_content_head > ul > li > div {
+                width: 111px;
+                height: 43px;
+                margin-right: 0;
+                border: 1px solid #c4c4c4;
+                border-bottom: 0;
+                border-radius: 3px 3px 0 0;
+                padding: 10px 8px 10px 8px;
+                background-color: #F9F9F9;
+                text-align: center;
+                font-size: 16px;
+            }
+
+                #middle #tab_content_head > ul > li > div:hover {
+                    background-color: #ddd;
+                }
+
+            #middle #tab_content_head > ul > li.active > div {
+                height: 44px;
+                background-color: #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+#middle #tab_content_body {
+    min-height: 600px;
+    margin-top: 72px;
+    margin-left: 10px;
+    margin-right: 12px;
+    border: 1px solid #c4c4c4;
+    /*     border-radius: 1px 1px 1px 1px; */
+}
+
+#middle .area {
+    font-size: 16px;
+    color: #888;
+    margin: 5px 1px 5px 0;
+}
+
+/* 條件列 */
+#middle #tab_content_bar {
+    height: 50px;
+    border-bottom: 1px solid #c4c4c4;
+    background-color: #fff;
+    z-index: 10;
+    padding: 7px;
+}
+
+    #middle #tab_content_bar .order {
+        position: relative;
+        color: #000;
+        top: 8px;
+        padding: 0 5px 0 8px;
+        text-decoration: none;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    #middle #tab_content_bar > div > button,
+    #middle #tab_content_bar .calendar > a {
+        background-color: #eee;
+        border: 1px solid #aaa;
+        font-size: 14px;
+        border-radius: 5px;
+        z-index: 1;
+    }
+
+        #middle #tab_content_bar > div > button:hover,
+        #middle #tab_content_bar .calendar > a:hover {
+            background-color: #ccc;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+#tab_content_bar .drop-sort {
+    display: none;
+}
+/* 篩選鈕 */
+#tab_content_bar .dropdown-menu {
+    width: 200px;
+    z-index: 990;
+}
+
+    #tab_content_bar .dropdown-menu > li > a {
+        margin-left: -5px;
+    }
+
+#tab_content_bar .dropdown-submenu {
+    position: relative;
+}
+
+    #tab_content_bar .dropdown-submenu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+        margin-left: -1px;
+        border-radius: 0 6px 6px 6px;
+    }
+
+    #tab_content_bar .dropdown-submenu:hover .dropdown-menu {
+        display: block;
+    }
+
+    #tab_content_bar .dropdown-submenu > a:after {
+        display: block;
+        content: " ";
+        float: right;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 0 5px 5px;
+        border-left-color: #aaa;
+        margin-top: 5px;
+        margin-right: -10px;
+    }
+
+    #tab_content_bar .dropdown-submenu > a:hover:after {
+        border-left-color: #fff;
+    }
+
+    #tab_content_bar .dropdown-submenu.pull-left {
+        float: none;
+    }
+
+        #tab_content_bar .dropdown-submenu.pull-left .dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            border-radius: 6px 0 6px 6px;
+        }
+
+
+.dropdown-submenu > .filter-people {
+    display: block;
+    float: left;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+    .dropdown-submenu > .filter-people > span {
+        margin-right: 10px;
+    }
+
+#tab_content_bar .dropdown-menu > li > label {
+    font-size: 15px;
+    margin-top: 5px;
+    padding-left: 10px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+}
+
+#tab_content_bar .dropdown-menu > li > span {
+    padding-top: 9px;
+    padding-left: 15px;
+    padding-right: 5px;
+    float: left;
+}
+
+
+#middle #tab_content_bar .condition-result {
+    position: absolute;
+    top: 130px;
+    width: 800px;
+}
+
+#tab_content_bar .condition-result > label {
+    position: relative;
+    left: 210px;
+    top: 16px;
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 4px;
+    border-radius: 3px;
+    border: 1px #C4c4c4 solid;
+}
+
+#tab_content_bar .calendar {
+    margin-top: 8px;
+}
+
+    #tab_content_bar .calendar > a {
+        padding: 7px 10px;
+        visibility: hidden;
+    }
+
+
+
+
+/* 文章列表 */
+#tab_content_data > table {
+    /* border:2px solid #f60; */
+    width: 100%;
+    height: 50px;
+}
+
+#tab_content_data .data-table-tr {
+    border-bottom: 1px solid #c4c4c4;
+    background-color: #f4f4f4;
+    /*border: 2px solid #f93*/
+}
+
+    /*未讀欄位白色*/
+    #tab_content_data .data-table-tr.noread {
+        background-color: #fff;
+    }
+
+    #tab_content_data .data-table-tr:hover {
+        background-color: #ffffdd;
+    }
+
+#tab_content_data .data-table-tr-noRead {
+    border-bottom: 1px solid #c4c4c4;
+    background-color: #ffffff;
+}
+
+    #tab_content_data .data-table-tr-noRead:hover {
+        background-color: #ffffdd;
+    }
+
+#tab_content_data .type {
+    position: relative;
+    left: -13px;
+    width: 10px;
+}
+
+#tab_content_data .div-type-0 {
+    background-color: #F66;
+    width: 12px;
+    height: 49px;
+}
+
+#tab_content_data .div-type-1 {
+    background-color: #F93;
+    width: 12px;
+    height: 49px;
+}
+
+#tab_content_data .div-type-2 {
+    background-color: #6C3;
+    width: 12px;
+    height: 49px;
+}
+
+#tab_content_data .div-type-3 {
+    background-color: transparent;
+    width: 12px;
+    height: 49px;
+}
+
+#tab_content_data .my-msg {
+    font-size: 20px;
+}
+
+#tab_content_data .my-true {
+    color: #3385ff;
+    cursor: pointer;
+    font-size: 20px;
+    padding-right: 3px;
+}
+
+#tab_content_data .my-false {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 20px;
+    padding-right: 3px;
+}
+
+#tab_content_data .collect {
+    font-size: 20px;
+}
+
+#tab_content_data .collect-true {
+    color: #fc0;
+    cursor: pointer;
+    font-size: 20px;
+    padding-right: 3px;
+}
+
+#tab_content_data .collect-false {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 20px;
+    padding-right: 3px;
+}
+
+#tab_content_data .title {
+    margin-top: 15px;
+    width: 61%;
+    font-size: 15px;
+}
+
+#tab_content_data .save {
+    color: #0e0;
+}
+
+#tab_content_data .refuse {
+    color: #f22;
+}
+
+#tab_content_data .blank {
+    margin-top: 8px;
+    padding: 5px;
+    width: 40px;
+    color: #aaa;
+    font-size: 20px;
+    text-align: center;
+}
+
+    #tab_content_data .blank > a > span {
+        visibility: visible;
+        color: #aaa;
+    }
+
+#tab_content_data .date {
+    margin-top: 8px;
+    padding: 5px;
+    width: 40px;
+    text-align: center;
+}
+
+    #tab_content_data .date label {
+        font-size: 25px;
+    }
+
+#tab_content_data .sender {
+    padding: 5px;
+    width: 85px;
+    text-align: center;
+}
+
+    #tab_content_data .sender > p {
+        margin-bottom: 0;
+    }
+
+    #tab_content_data .sender > label {
+        font-size: 15px;
+    }
+
+#tab_content_data .arrowRight {
+    padding: 5px;
+    width: 16px;
+    text-align: center;
+}
+
+#tab_content_data .closeOn {
+    padding: 5px;
+    width: 70px;
+    text-align: center;
+}
+
+#tab_content_data .respond {
+    margin-top: 8px;
+    width: 40px;
+    height: 50px;
+    text-align: center;
+}
+
+    #tab_content_data .respond > div {
+        position: relative;
+        padding-top:22px;
+    }
+    #tab_content_data .respond > div > h2{
+        margin:0px;
+        color:#AFAFAF;
+    }
+
+        #tab_content_data .respond > div > i {
+            position: relative;
+            top: 11px;
+            font-size: 2.5em;
+            color: #AFAFAF;
+            transform: scaleX(-1);
+            -moz-transform: scaleX(-1.0);
+            -webkit-transform: scaleX(-90);
+            -o-transform: scaleX(-1.0);
+            -ms-transform: scaleX(-1.0);
+            transform: scaleX(-1.0);
+        }
+
+        #tab_content_data .respond > div > label {
+            position: relative;
+            font-size: 14px;
+            width: 40px;
+            text-align: center;
+            top: -26px;
+            color: #fff;
+        }
+
+#tab_content_data .lastrespond {
+    width: 10%;
+    text-align: center;
+}
+
+    #tab_content_data .lastrespond > p {
+        margin-bottom: 0;
+    }
+
+    #tab_content_data .lastrespond > label {
+        font-size: 12px;
+    }
+
+
+/* Right Side */
+
+
+.tab_list_head {
+    position: fixed;
+    right: 0;
+    top: 220px;
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+    .tab_list_head > ul {
+        width: 340px;
+        height: 40px;
+    }
+
+    .tab_list_head li {
+        cursor: pointer;
+        background: #D4D4D4;
+        /*visibility: hidden;*/
+        text-align: center;
+        width: 156px;
+        display: none;
+        margin-right: 10px;
+        position: relative;
+        top: -8px;
+        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+
+    }
+
+    .tab_list_head .active {
+        height: 35px;
+        line-height: 35px;
+        background: #eee;
+        top: 0;
+    }
+    .tab_list_head .actaive{
+        height: 35px;
+        line-height: 35px;
+        background: #eee;
+        top: 0;
+    }
+
+    .tab_list_head div {
+        height: 100%;
+        border-bottom-right-radius: 2px;
+    }
+
+li.new-message-li.tab_list_head_li.active {
+    background-color: #fff;
+}
+   
+
+.tab_list_head > ul > li a, .tab_list_head > ul > li a:hover {
+    border-radius: 0;
+    text-decoration: none;
+    color: #333;
+}
+
+.tab_list_head > ul > li > a.closes {
+    font-size: 25px;
+}
+
+.tab_list_head > ul > li i.glyphicon-plus {
+    position: absolute;
+    left: 5px;
+    height: 100%;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-right: 1px solid gray;
+    font-size: 16px;
+}
+
+.tab_list_head > ul > li i.glyphicon-remove {
+    position: absolute;
+    right: 5px;
+    height: 100%;
+    border-left: 1px solid #ccc;
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+.tab_list_head > ul > li i.glyphicon-remove {
+    line-height: 20px;
+    border-left: 1px #777 solid;
+}
+
+.tab_list_head > ul > li.active i.glyphicon-remove {
+    line-height: 35px;
+}
+
+.tab_list_head > ul > li i.glyphicon-plus {
+    line-height: 20px;
+}
+
+.tab_list_head > ul > li.active i.glyphicon-plus {
+    line-height: 35px;
+}
+
+.tab_list_head > ul > li i.glyphicon {
+    top: 0;
+    color: gray;
+}
+
+   li.new-message-li.tab_list_head_li.active, .tab_list_head li{
+      -webkit-box-shadow:0 0 3px 0 rgba(50, 50, 50, 0.2);
+   -moz-box-shadow:0 0 3px 0 rgba(50, 50, 50, 0.2);
+   box-shadow:0 0 3px 0 rgba(50, 50, 50, 0.2);
+   border-bottom-right-radius:4px;
+   border-bottom-left-radius:4px;
+   }
+
+.tab_list_body {
+    position: fixed;
+    right: -8px;
+    width: 0;
+    height: 100%;
+    top: 0;
+    background-color: #eee;
+    overflow: auto;
+    z-index: 1001;
+}
+
+    .tab_list_body.new-message {
+        background-color: #fff;
+    }
+
+    .tab_list_body > div > div {
+        visibility: hidden;
+    }
+
+/* 新增主題 */
+
+.new-message-div {
+    width: 100%;
+    padding: 0 0 0 16px;
+}
+
+    .new-message-div .breadcrumb {
+        background: none;
+    }
+
+    .new-message-div .due-date {
+        position: relative;
+        left: 50px;
+        top: 10px;
+        width: 100px;
+        font-size: 16px;
+        text-align: center;
+        padding: 5px 5px 0 5px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+
+/* ------------ RightSide Detial ---------------------*/
+
+
+/* 功能列 */
+#infobar {
+    margin: 0 0 -1px 0;
+}
+
+.tab_list_body .browse-content-div #toolbar {
+    width: 100%;
+    padding: 3px;
+    box-shadow: 0 1px 3px #ccc;
+    background: -moz-linear-gradient( center top, #e4e4e4 105%, #ffffff 0% );
+    background: -ms-linear-gradient( top, #e4e4e4 105%, #ffffff 0% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e4e4e4', endColorstr='#ffffff');
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(105%, #e4e4e4), color-stop(0%, #ffffff) );
+    background-color: #e4e4e4;
+}
+
+    .tab_list_body .browse-content-div #toolbar > button,
+    .tab_list_body .browse-content-div #toolbar > div > button,
+    .tab_list_body .browse-content-div #toolbar > div > div > button {
+        color: #999;
+        /*border: 2px solid #eee;*/
+        margin-left: 9px;
+    }
+
+        /*.tab_list_body .browse-content-div #toolbar > button:hover,
+        .tab_list_body .browse-content-div #toolbar > div > button:hover {
+            border: 2px solid #888;
+            border-radius: 5px;
+}*/
+
+        .tab_list_body .browse-content-div #toolbar > button > span,
+        .tab_list_body .browse-content-div #toolbar > button > i {
+            color: #888;
+        }
+
+    .tab_list_body .browse-content-div #toolbar > div > ul > li > a > span {
+        font-size: 18px;
+        color: #888;
+    }
+
+    .tab_list_body .browse-content-div #toolbar #save {
+        color: #fff;
+        background-color: #39e;
+        border-radius: 5px;
+    }
+
+        .tab_list_body .browse-content-div #toolbar #save > span {
+            color: #fff;
+        }
+
+        .tab_list_body .browse-content-div #toolbar #save:hover {
+            background-color: #f93;
+            border-radius: 5px;
+            border: 1px solid #f93;
+        }
+
+/* 日期 */
+/*.tab_list_body .browse-content-div #date {
+    position: relative;
+    float: right;
+    right: 280px;
+    top: 28px;
+    font-size: 16px;
+    text-align: center;
+    padding: 5px 10px 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    border-top-width: 0;
+    border-bottom-width: 40px;
+    border-right-width: 15px;
+    border-left-width: 10px;
+    border-top-color: white;
+    border-right-color: transparent;
+    border-bottom-color: white;
+    border-left-color: transparent;
+    border-style: solid;
+    height: 0;
+    line-height: 41px;
+}
+
+    .tab_list_body .browse-content-div #date > i {
+        font-size: 20px;
+    }*/
+
+/* 內容 */
+.tab_list_body .browse-content-div #content {
+    background-color: #fff;
+    margin-top: 81px;
+    margin-left: 25px;
+    margin-right: 40px;
+    border: 1px solid #ddd;
+    padding: 0 20px 3px 20px;
+}
+
+    .tab_list_body .browse-content-div #content > h4 {
+        padding-top: 5px;
+    }
+
+    /* 資訊列 */
+    .tab_list_body .browse-content-div #content #infobar > span {
+        color: #3385cc;
+        font-weight: 700;
+        font-size: 0.98em;
+    }
+
+    .tab_list_body .browse-content-div #content #infobar .label,
+    .tab_list_body .browse-content-div #respond-area #respond-infobar .label {
+        color: #fff;
+        padding: 2px;
+        margin-left: 0.8em;
+    }
+
+    .tab_list_body .browse-content-div #content #infobar > label {
+        color: #999;
+        font-weight: normal;
+    }
+    /* 主要內容 */
+    .tab_list_body .browse-content-div #content #main_content > p {
+        /*line-height: 2;*/
+    }
+
+#content #main_content {
+    clear: left;
+    margin: 20px 1px;
+    font-size: 12pt;
+}
+
+#content{
+    overflow:auto;
+}
+
+/* 附加檔案 */
+.tab_list_body .browse-content-div #content #file-attach {
+    margin-top: 10px;
+    display: flex;
+}
+
+    /*.tab_list_body .browse-content-div #content #file-attach > i {
+        font-size: 18px;
+        margin: 10px;
+}*/
+
+    .tab_list_body .browse-content-div #content #file-attach > div {
+        float: left;
+        clear: both;
+        margin: 5px 3px 3px -7px;
+    }
+
+    .tab_list_body .browse-content-div #content #file-attach .file_name {
+        color: #428bca;
+        font-size: 1.1em;
+        cursor: pointer;
+        margin-top: 14px;
+    }
+
+/* 快速回覆 */
+.tab_list_body .browse-content-div #comment {
+    margin-left: 27px;
+    margin-right: 41px;
+    margin-top: 23px;
+    margin-bottom: 28px;
+    padding-bottom: 61px;
+    border-bottom: 1px solid #aaa;
+    font-size: 1.11em;
+}
+
+    .tab_list_body .browse-content-div #comment > span,
+    .tab_list_body .browse-content-div #comment > label {
+        color: #888;
+    }
+
+    .tab_list_body .browse-content-div #comment > input {
+        width: 96%;
+    }
+
+    .tab_list_body .browse-content-div #comment > button {
+        /*margin-left: 10px;*/
+        background-color: #39e;
+        color: #fff;
+    }
+
+        .tab_list_body .browse-content-div #comment > button:hover {
+            background-color: #f93;
+        }
+
+    /* 未讀/回覆 */
+    .tab_list_body .browse-content-div #comment #respond-panel {
+        position: absolute;
+        right: 10%;
+        margin-top: 28px;
+        font-size: 14px;
+        /*height: 40px;*/
+        padding: 6px;
+        padding-left: 17px;
+        padding-right: 8px;
+        /*background-color: #fff;*/
+        border-top: 1px solid #c4c4c4;
+        border-left: 1px solid #c4c4c4;
+        border-right: 1px solid #c4c4c4;
+        border-bottom: 2px solid #eee;
+        color: #666;
+    }
+
+    .tab_list_body .browse-content-div #comment #respond-new {
+        position: absolute;
+        float: left;
+        margin-top: 34px;
+        font-size: 16px;
+        font-weight: 800;
+        padding-top: 6px;
+        /*padding-left: 15px;
+        padding-right: 15px;*/
+        color: #666;
+        border-bottom: 6px solid #f90;
+        padding-bottom: 1px;
+    }
+
+        .tab_list_body .browse-content-div #comment #respond-new > span {
+            padding-top: 4px;
+            padding-bottom: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            color: #222;
+            font-size: 22px;
+            background-color: #eee;
+            /*background-color: #F90;*/
+        }
+
+    .tab_list_body .browse-content-div #comment #respond-panel .label-default {
+        background-color: #eee;
+        font-size: 16px;
+        color: #555;
+        padding-left: 2px;
+    }
+
+#respond-area #respond-content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size:12pt;
+    overflow-x:auto;
+}
+
+#respond-area #file-attach {
+    display: flex;
+}
+
+
+/* #region 主題回覆區 */
+.reply-wrap {
+    /*註解原因 回覆編輯的Template By Gary*/
+    width: 96%;
+    margin:0 30px 10px 29px;
+}
+
+    .reply-wrap .reply-title {
+        font-size: x-large;
+    }
+/* #endregion */
+
+/*任務完成按鈕*/
+#missionBtn {
+    cursor: pointer;
+    position: absolute;
+    top: 100px;
+    right:15px;
+    clear: right;
+    float: right;
+}
+/*一般申請退回*/
+.btnApplyClose{
+    background: url(/Statics/img/finish.png)no-repeat -157px 0;
+    background-size: 460px;
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+    .btnApplyClose:hover {
+        background: url(/Statics/img/finish.png) no-repeat -395px -3px;
+        background-size: 460px;
+        width: 60px;
+        height: 60px;
+    }
+/*一般歸檔*/
+.btnDone {
+    background: url(/Statics/img/finish.png) no-repeat -78px 0;
+    background-size: 460px;
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+
+    .btnDone:hover {
+        background: url(/Statics/img/finish.png) no-repeat -315px -3px;
+        background-size: 460px;
+        width: 60px;
+        height: 60px;
+    }
+/*行政區退回*/
+.btnBack {
+    background: url(/Statics/img/finish.png)no-repeat -157px 0;
+    background-size: 460px;
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+
+    .btnBack:hover {
+        background: url(/Statics/img/finish.png) no-repeat -395px -3px;
+        background-size: 460px;
+        width: 60px;
+        height: 60px;
+    }
+/*一般退回*/
+.btnReturn {
+    background: url(/Statics/img/finish.png) no-repeat 1px 0;
+    background-size: 460px;
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+
+    .btnReturn:hover {
+        background: url(/Statics/img/finish.png) no-repeat -236px -3px;
+        background-size: 460px;
+        width: 60px;
+        height: 60px;
+    }
+
+/* 回覆資訊 */
+.tab_list_body .browse-content-div #respond-area {
+    background-color: #fff;
+    margin: 21px 40px 0px 25px;
+    border: 1px solid #ddd;
+    padding: 0 20px 9px 20px;
+    overflow:auto;
+}
+
+    .tab_list_body .browse-content-div #respond-area #respond-infobar {
+        margin-top: 10px;
+        padding: 10px 0 5px 0;
+        font-size: 1.15em;
+        font-weight: 700;
+    }
+
+        .tab_list_body .browse-content-div #respond-area #respond-infobar > span {
+            color: #3385cc;
+        }
+
+        .tab_list_body .browse-content-div #respond-area #respond-infobar > label {
+            color: #888;
+            margin-left: 0.8em;
+        }
+
+        .tab_list_body .browse-content-div #respond-area #respond-infobar > a {
+            padding: 0 5px 5px 5px;
+        }
+
+
+/* Detial ---------------------------------*/
+
+/* Footer */
+#footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    left: 15px;
+    height: 40px;#footer
+    top: 20px;
+    /*padding: 15px;*/
+    z-index: -1;
+    text-align:center;
+}
+
+    #footer > p {
+        color: #4c4c4c;
+        text-align: center;
+        white-space:nowrap;
+    }
+
+    #footer > div {
+        position: relative;
+        width: 60px;
+        height: 30px;
+        left: 80%;
+        top: -36px;
+        border: 1px solid #c4c4c4;
+        border-radius: 3px 3px 0 0;
+        background-color: #fff;
+        text-align: center;
+        font-size: 16px;
+        padding-top: 3px;
+    }
+
+/* 共用 */
+
+.list-title {
+    font-weight: 500;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.f16 {
+    font-size: 16px;
+}
+
+.a_type, .a_type:hover {
+    color: #222;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.a_noRead, .a_noRead:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color:#428BCD;
+}
+
+.dropdown-menu {
+    padding: 0;
+}
+
+
+/* 收件人 */
+.tab_list_body #browse-content #receiver > i {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #999;
+}
+
+#content #receiver {
+    clear: left;
+    font-size: 0.98em;
+    margin-top: -14px;
+    color: #A9A9A9;
+}
+
+#receiver {
+    clear: left;
+    font-size: 0.98em;
+    margin-top: -8px;
+    color: #A9A9A9;
+}
+
+/*搜尋成員ChsoenBox*/
+#panel_search_body > .col-sm-8 > .chose-box > div > .chosen-container {
+    width: 280px !important;
+    left: 10px;
+    margin-top: -6px;
+}
+
+    #panel_search_body > .col-sm-8 > .chose-box > div > .chosen-container > a.chosen-single {
+        width: 280px;
+        height: 32px;
+        margin-top: 2px;
+        margin-bottom: 12px;
+    }
+
+/*收件人間隔*/
+#receiver > span > label {
+    margin-left: 0.8em;
+    clear: left;
+    font-size: 0.99em;
+    margin-top: 0;
+    color: #333;
+    font-weight: normal;
+}
+
+    /*未讀收件人*/
+    #receiver > span > label.read-false {
+        color: #f11;
+    }
+/*主題長度限制*/
+.TitleArea {
+    width: 634px;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: inline-block;
+    font-size: 2em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+/*主題按鈕*/
+#content > a.btn {
+    padding: 5px 5px 0 5px;
+    margin-top: 14px;
+}
+
+.dropdown-menu > li {
+    cursor: pointer;
+}
+/*主題紀錄*/
+#SubHistory-area {
+    background-color: #fafafa;
+    margin-left: 46px;
+    margin-right: 40px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    padding: 10px 20px 10px 20px;
+    border-left: 14px solid #cbcbcb;
+}
+
+.file_name {
+    color: #428bca;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 5px;
+    max-width:80%;
+}
+/*開啟其他主題紀錄按鈕*/
+#OpenOtherHis {
+    background-color: #fff;
+    margin-left: 40px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    padding: 10px 20px 10px 20px;
+}
+
+#replyHistory-area {
+    background-color: #fafafa;
+    margin-left: 65px;
+    margin-right: 40px;
+    margin-bottom: 5px;
+    padding: 10px 20px 10px 20px;
+    border-left: 5px solid #bfbfbf;
+}
+/*快速回覆 按鈕*/
+#SubmitFastReply {
+    margin-right: 1px;
+}
+
+#FastReplyName {
+    margin-top: 3px;
+    margin-right: 8px;
+}
+
+#FastReplyIcon {
+    margin-top: 3px;
+    margin-right: 12px;
+}
+
+#respond-area > hr {
+    margin-top: 5px;
+    margin-bottom: 14px;
+    border-top-color: #f2f2f2;
+}
+
+#comment > input {
+    height: 40px;
+    padding-left: 5px;
+}
+
+/*期限外區域*/
+/*#WorkDateline {
+    display: block;
+    height: 36px;
+    }*/
+
+.ShowPlanDiff {
+    line-height:0.6;
+    margin-left: 16px;
+    padding-left: 7px;
+}
+/*限制字數*/
+
+.LimitWord {
+    display: inline-block;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+span.LimitWord.ng-binding {
+    width: 124px;
+}
+/*過濾日曆*/
+.FilterDatePicker > p > ul {
+    left: 160px !important;
+    width: 255px !important;
+    top: -190px !important;
+}
+/*各別主題列表討論組名稱*/
+.General_DiscName {
+    padding-left: 12px;
+    padding-bottom: 1px;
+    padding-top: 15px;
+    border-bottom: 1px solid #c4c4c4;
+    cursor: pointer;
+}
+
+    .General_DiscName > h3, .General_DiscName > h3 > span {
+        cursor: pointer;
+    }
+
+.lightgray {
+    color: lightgray;
+}
+
+.gray {
+    color: gray;
+}
+
+.white {
+    color: white;
+}
+
+.noReadSeperate {
+    text-align: center;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+h3 {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.5em;
+}
+/*草稿顯示主題或回覆的容器*/
+.StateDiv {
+    width: 70px;
+    height: 30px;
+    display: inline-block;
+    background-color: #39C;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    text-align: center;
+    margin-left: 14px;
+    margin-right: 7px;
+}
+/*草稿主題容器字體*/
+.DraftString {
+    font-size: 1.1em;
+    line-height: 30px;
+}
+/*草稿顯示主題或回覆容器 <td>寬度*/
+#tab_content_data .subjState {
+    width: 7%;
+    padding:10px 0px 10px 0px;
+}
+/*草稿的紅色叉叉*/
+.redCircle {
+    width: 20px;
+    height: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    background-color: red;
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+}
+/*未讀刪除按鈕 <td>寬度*/
+#tab_content_data .deleteBtn {
+    width: 15%;
+}
+/*The Noread Msg Category Button*/
+.noRdCategory {
+    width: 70px;
+    height: 70px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+/*The Background-color that Belong Noread Msg's MsgData*/
+.noRdMsgIcon {
+    background-image: linear-gradient(#4cb9e7, #4cb9e7 35px, #3399cc 35px);
+    background-image: -webkit-linear-gradient(#4cb9e7, #4cb9e7 35px, #3399cc 35px);
+    background-image: -o-linear-gradient(#4cb9e7, #4cb9e7 35px, #3399cc 35px);
+    background-image: -moz-linear-gradient(#4cb9e7, #4cb9e7 35px, #3399cc 35px);
+}
+/*The Background-color that Belong Noread Msg's FileData*/
+.noRdFileIcon {
+    background-image: linear-gradient(#f8a647,#f8a647 35px, #ff9933 35px);
+    background-image: -webkit-linear-gradient(#f8a647, #f8a647 35px, #ff9933 35px);
+    background-image: -o-linear-gradient(#f8a647, #f8a647 35px, #ff9933 35px);
+    background-image: -moz-linear-gradient(#f8a647, #f8a647 35px, #ff9933 35px);
+}
+/*The Background-color that Belong Noread Msg's ApplyData*/
+.noRdApplyIcon {
+    background-image: linear-gradient(#33cc33, #33cc33 35px, #5ec26b 35px);
+    background-image: -webkit-linear-gradient(#33cc33, #33cc33 35px, #5ec26b 35px);
+    background-image: -o-linear-gradient(#33cc33, #33cc33 35px, #5ec26b 35px);
+    background-image: -moz-linear-gradient(#33cc33, #33cc33 35px, #5ec26b 35px);
+}
+/*NoRead Msg Category Icon*/
+.CategoryIcon {
+    line-height: 60px;
+    margin-top: 0;
+    display: block;
+}
+/*Noread Msg Category's Count*/
+.CategoryNum {
+    position: relative;
+    top: -20px;
+}
+
+.hideDatetime {
+    visibility: hidden;
+}
+/*Finish Subject TimeLine*/
+.TimeLine {
+    margin: 86px 39px -20px 19px;
+    padding: 0;
+}
+/*Anxil*/
+.anxil {
+    width: 90%;
+    height: 2.4px;
+    background: linear-gradient(to right, gray, gray);
+    background: -webkit-linear-gradient(left,gray,gray);
+    background: -o-linear-gradient(right,gray,gray);
+    background: -moz-linear-gradient(right,gray,gray);
+    position: relative;
+    top: 67px;
+    z-index: 1;
+    margin-left: 26px;
+}
+/*Finish Subject TimeLine CreatedOn Icon*/
+.pencil {
+    width: 36px;
+    height: 36px;
+    -moz-border-radius: 18px;
+    -webkit-border-radius: 18px;
+    border-radius: 18px;
+    padding: 1px;
+    border: 1px solid gray;
+    position: relative;
+    z-index: 3;
+    background-color: #eee;
+    text-align: center;
+    line-height: 32px;
+    margin-bottom: 23px;
+    margin-left: 25px;
+    margin-top: 29px;
+}
+
+.processData {
+    width: 30px;
+    height: 30px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    padding: 1px;
+    border: 1px solid gray;
+    position: relative;
+    z-index: 3;
+    background-color: #FFF;
+    text-align: center;
+    line-height: 26px;
+    margin: 0 auto;
+}
+
+.processOutside {
+    margin-bottom: 48px;
+}
+
+.pencilOutside {
+    margin-bottom: 43px;
+}
+
+.processSpan 
+{
+    position:relative;
+    bottom:10px;
+}
+
+.SubjLine {
+    text-align: center;
+    width: 11%;
+    display: inline-block;
+}
+
+.ProcessLine {
+    text-align: center;
+    width: 32%;
+    display: inline-block;
+}
+/*期限內的完成*/
+.closeDataIcon {
+    background: url(/Statics/img/Done.png);
+    background-position-x: 0;
+    background-position-y: 0;
+    width: 85px;
+    height: 72px;
+    position: relative;
+    z-index: 3;
+}
+/*過期的完成*/
+.closeRedIcon {
+    background: url(/Statics/img/Done.png);
+    background-position-x: 87px;
+    background-position-y: 0;
+    width: 85px;
+    height: 72px;
+    position: relative;
+    z-index: 3;
+    margin: 0 auto;
+}
+/*具有PlanCloseOn 設置各別寬度為50%*/
+.InsidePlan {
+    text-align: center;
+    width: 33%;
+    display: inline-block;
+}
+
+.Tooltip {
+    margin: 10px 10px 10px 10px;
+    color: white;
+    font-size: 14px;
+}
+
+.noBreak {
+    white-space: nowrap;
+}
+
+/* #region 行政區審核流程區 */
+#admin-audit {
+    margin-top: 0 auto;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    margin-top: 37px;
+}
+    /* 審核區 */
+    #admin-audit .audit {
+        margin: 0 auto;
+        width: 45px;
+        float: left;
+    }
+
+.audit .audit-name {
+    position: relative;
+    top: 10px;
+    z-index: 2;
+    text-align: center;
+}
+/* #region 審核按鈕 */
+.audit .audit-check {
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+}
+
+.audit .audit-check-uncheck {
+    width: 15px;
+    height: 15px;
+    border: 1px solid lightgray;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    top: 17px;
+    background-color: #fff;
+}
+
+.audit .audit-check-ok {
+    width: 50px;
+    height: 50px;
+    background: url("/Statics/img/admin-check.png") no-repeat scroll 0 0;
+    cursor: pointer;
+    margin-top: -6px;
+}
+
+.audit .audit-check-no {
+    width: 50px;
+    height: 50px;
+    background: url("/Statics/img/admin-check.png") no-repeat scroll -65px 0;
+    cursor: pointer;
+    margin-top: -6px;
+}
+
+.audit .audit-check-btn {
+    /*margin: 0 auto;*/
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+    position: relative;
+    float: left;
+    /*left: 90px;*/
+    /*left:33%;*/
+    /*top: 0;*/
+    cursor: pointer;
+}
+
+.audit .audit-check-ok-btn {
+    background: url("/Statics/img/admin-check.png") repeat scroll -6px 50px;
+    /*background-position-x:-6px !important;
+        background-position-y:50px !important;*/
+}
+
+.audit .audit-check-no-btn {
+    background: url("/Statics/img/admin-check.png") repeat scroll 50px 50px;
+    /*background-position-x:50px !important;
+        background-position-y:50px !important;*/
+}
+
+#admin-audit .audit-anxil {
+    margin: 0 auto;
+    height: 1px;
+    background: linear-gradient(to right, #d1d1d1, #d1d1d1);
+    background: -webkit-linear-gradient(left,#d1d1d1,#d1d1d1);
+    background: -o-linear-gradient(right,#d1d1d1,#d1d1d1);
+    background: -moz-linear-gradient(right,#d1d1d1,#d1d1d1);
+    position: relative;
+    top: 55px;
+    z-index: 1;
+}
+/* #endregion */
+
+/* #endregion */
+
+/* #region 行政區表單 */
+#admin-table {
+    width: 100%;
+    float: left;
+}
+
+    #admin-table table th {
+        background: #f3f3f3;
+        text-align: center;
+        font-weight: normal;
+    }
+
+.pDate {
+    text-align: center;
+}
+
+.pName {
+    text-align: left;
+}
+
+.pPrice {
+    text-align: right;
+}
+
+.pQty {
+    text-align: center;
+}
+
+.pTotal {
+    text-align: right;
+}
+
+.pMemo {
+    text-align: left;
+}
+
+.TotalCurrency {
+    text-align: right;
+}
+
+/* #endregion */
+
+/*#region 行政區重新簽核Modal*/
+#ResignModal {
+    margin-top: 0 auto;
+}
+
+    #ResignModal .modal-title {
+        text-align: center;
+    }
+
+    #ResignModal .modal-body {
+        text-align: center;
+    }
+
+    #ResignModal .audit {
+        margin: 0 auto;
+        width: 45px;
+        float: left;
+    }
+
+
+        #ResignModal .audit .audit-name {
+            position: relative;
+            top: 10px;
+            z-index: 2;
+        }
+
+        #ResignModal .audit .audit-name-gray {
+            position: relative;
+            top: 10px;
+            z-index: 2;
+            color: lightgray;
+        }
+
+    #ResignModal .audit-anxil {
+        margin: 0 auto;
+        height: 1px;
+        background: linear-gradient(to right, #d1d1d1, #d1d1d1);
+        background: -webkit-linear-gradient(left,#d1d1d1,#d1d1d1);
+        background: -o-linear-gradient(right,#d1d1d1,#d1d1d1);
+        background: -moz-linear-gradient(right,#d1d1d1,#d1d1d1);
+        position: relative;
+        top: 55px;
+        z-index: 1;
+    }
+
+    #ResignModal .audit .audit-check {
+        margin: 0 auto;
+        z-index: 2;
+        position: relative;
+    }
+
+    #ResignModal .audit-check-uncheck {
+        width: 15px;
+        height: 15px;
+        border: 1px solid lightgray;
+        border-radius: 100%;
+        top: 17px;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    #ResignModal .audit-check-uncheck-gray {
+        width: 15px;
+        height: 15px;
+        border: 1px solid lightgray;
+        border-radius: 100%;
+        top: 17px;
+        background-color: #fff;
+        cursor: default;
+    }
+
+    #ResignModal .audit-check-resign {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #3399cc;
+        border-radius: 100%;
+        top: 17px;
+        background-color: #3399cc;
+    }
+
+    #ResignModal .modal-footer {
+        border: none;
+    }
+
+    #ResignModal .modal-dialog .modal-content {
+        margin-left: 198px;
+        margin-top: 260px;
+        width: 700px;
+    }
+
+        #ResignModal .modal-dialog .modal-content .modal-header > button {
+            right: -660px;
+        }
+
+/*#endregion*/
+
+/*#region 行政區退回Modal*/
+#AdminGobackModal {
+    margin-top: 0 auto;
+}
+
+    #AdminGobackModal .modal-title {
+        text-align: center;
+    }
+
+    #AdminGobackModal .modal-body {
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    #AdminGobackModal .choose-block {
+        width: 100%;
+        padding: 10px 40px;
+        border-bottom: 1px solid #e5e5e5;
+        text-align: left;
+        cursor: pointer;
+    }
+
+.choose-block .icon-back-desc {
+    margin: 0;
+    padding: 0;
+    float: left;
+    background: url("/Statics/img/admin-finish-back.png") repeat 60px -30px scroll;
+    width: 60px;
+    height: 30px;
+}
+
+.choose-block .title {
+    float: left;
+    width: 200px;
+}
+
+.choose-block .title-desc {
+    text-align: right;
+    color: #7a7a7a;
+}
+
+#AdminGobackModal .audit {
+    margin: 0 auto;
+    width: 45px;
+    float: left;
+}
+
+
+    #AdminGobackModal .audit .audit-name {
+        position: relative;
+        top: 10px;
+        z-index: 2;
+    }
+
+    #AdminGobackModal .audit .audit-name-gray {
+        position: relative;
+        top: 10px;
+        z-index: 2;
+        color: lightgray;
+    }
+
+#AdminGobackModal .audit-anxil {
+    margin: 0 auto;
+    height: 1px;
+    background: linear-gradient(to right, #d1d1d1, #d1d1d1);
+    background: -webkit-linear-gradient(left,#d1d1d1,#d1d1d1);
+    background: -o-linear-gradient(right,#d1d1d1,#d1d1d1);
+    background: -moz-linear-gradient(right,#d1d1d1,#d1d1d1);
+    position: relative;
+    top: 55px;
+    z-index: 1;
+}
+
+#AdminGobackModal .audit .audit-check {
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+}
+
+#AdminGobackModal .audit-check-uncheck {
+    width: 15px;
+    height: 15px;
+    border: 1px solid lightgray;
+    border-radius: 100%;
+    top: 17px;
+    background-color: #fff;
+}
+
+#AdminGobackModal .audit-check-uncheck-gray {
+    width: 15px;
+    height: 15px;
+    border: 1px solid lightgray;
+    border-radius: 100%;
+    top: 17px;
+    background-color: #fff;
+    cursor: default;
+}
+
+#AdminGobackModal .audit-check-resign {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #3399cc;
+    border-radius: 100%;
+    top: 17px;
+    background-color: #3399cc;
+}
+
+#AdminGobackModal .modal-footer {
+    border: none;
+}
+/*#endregion*/
+
+/* #region 行政區簽核確認Modal */
+#ApprovalCheckModal {
+    margin: 0 auto;
+    z-index: 1001;
+}
+
+    #ApprovalCheckModal .modal-dialog {
+        width: 370px;
+        height: 290px;
+    }
+
+    #ApprovalCheckModal div.modal-content {
+        width: 370px;
+        height: 240px;
+        margin-top: 270px;
+        margin-left: 250px;
+    }
+
+    #ApprovalCheckModal div.modal-body {
+    }
+
+    #ApprovalCheckModal > div {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    #ApprovalCheckModal .audit-img-no {
+        position: relative;
+        float: left;
+        left: 110px;
+        width: 50px;
+        height: 50px;
+        background: url("/Statics/img/admin-check.png") no-repeat scroll -68px -60px;
+    }
+
+    #ApprovalCheckModal .audit-img-ok {
+        position: relative;
+        float: left;
+        left: 110px;
+        width: 55px;
+        height: 45px;
+        background: url("/Statics/img/admin-check.png") no-repeat scroll 0 -60px;
+    }
+
+    #ApprovalCheckModal .audit-name {
+        width: 100%;
+        height: 16px;
+        line-height: 40px;
+        margin-left: 0;
+    }
+
+    #ApprovalCheckModal .audit-desc {
+    }
+
+    #ApprovalCheckModal .modal-footer {
+        border: none;
+    }
+
+/* #endregion */
+
+/* #region 確認取消按按鈕 */
+
+.btn-cancel {
+    text-align: center;
+    background-color: transparent !important;
+    color: #848484 !important;
+    font-size: 16px !important;
+    width: 100px;
+    margin-right: 7px;
+}
+
+    .btn-cancel:hover, .btn-cancel:focus {
+        background-color: #e6e6e6 !important;
+        color: #848484 !important;
+    }
+
+    .btn-cancel .glyphicon-remove {
+        padding-right: 0;
+    }
+
+    .btn-cancel > i {
+        color: #848484 !important;
+    }
+
+.btn-ok {
+    text-align: center;
+    background: #3399cc !important;
+    color: white !important;
+    font-size: 16px !important;
+    width: 100px;
+    border: 1px solid #ccc !important;
+}
+
+    .btn-ok:hover {
+        background-color: #39ABD8 !important;
+        color: #fff !important;
+        border: 1px solid #ccc !important;
+    }
+
+    .btn-ok .glyphicon-ok {
+        padding-right: 3px;
+    }
+
+.btn-dropdown, .dropdown-draft {
+    background-color: #39c !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    border: 1px solid #ccc !important;
+}
+
+    .btn-dropdown:hover, .btn-dropdown:focus, .dropdown-draft:hover, .dropdown-draft:focus {
+        background-color: #39abd8 !important;
+        color: #fff !important;
+        border: 1px solid #ccc !important;
+    }
+
+.btn-draft {
+    background-color: #39c !important;
+    color: #fff !important;
+    border: 1px solid #ccc !important;
+}
+
+    .btn-draft:hover {
+        background-color: #39abd8 !important;
+        color: #fff !important;
+        border: 1px solid #ccc !important;
+    }
+
+.btn-ok > i {
+    position: relative;
+    top: -1px;
+}
+
+/* #endregion */
+.modal-backdrop {
+    z-index: 1000;
+}
+
+/*檔案分享區*/
+.fileStyleIconArea {
+    float: right;
+    width: 80px;
+    height: 35px;
+    background-color: lightgray;
+    margin-top: 2px;
+    border-radius: 3px;
+    border: #a4a4a4 1px solid;
+}
+
+.fileStyleIcon {
+    font-size: 30px;
+    background-color: lightgray;
+    border-radius: 3px;
+    width: 30px;
+    margin-left: 6px;
+    margin-top: 2px;
+    cursor:pointer;
+}
+
+    .fileStyleIcon > a {
+        height: 30px;
+        background-color: lightgray;
+        border: 1px solid lightgray;
+    }
+
+.fileStyleDetail {
+    font-size: 25px;
+    margin-top: -11px;
+    margin-left: -15px;
+    background-color: lightgray;
+    height: 30px;
+    cursor:pointer;
+}
+
+.fileStyleLarger {
+    font-size: 26px;
+    margin-top: -9px;
+    margin-left: -13px;
+    background-color: lightgray;
+    height: 28px;
+}
+
+/* #region 新增討論組(彈出視窗) */
+#NewDiscussionModal .blackpad-discmanage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    background-color: #111;
+}
+
+#NewDiscussionModal .modal-content {
+    width: 740px;
+    margin-top: 100px;
+}
+
+#NewDiscussionModal .modal-title {
+    background-color: #f7f7f7;
+    position: relative;
+    top: -18px;
+}
+
+#NewDiscussionModal .modal-header {
+    background-color: #f7f7f7;
+    height: 76px;
+}
+
+/*.modal-header >button{
+    position:relative;
+    top:-30px;
+    right:-30px;
+}*/
+
+#NewDiscussionModal .closeButton {
+    background-color: transparent;
+    border: none;
+    position: relative;
+    top: -30px;
+    right: -700px;
+}
+
+#NewDiscussionModal .modal-footer {
+    margin-top: 40px;
+}
+
+    #NewDiscussionModal .modal-footer > button {
+        background-color: #3399cc;
+        color: #fff;
+        border: none;
+        padding: 3px;
+        width: 100px;
+        height: 35px;
+        font-size: 20px;
+        position: relative;
+        right: 33%;
+    }
+
+        #NewDiscussionModal .modal-footer > button:hover {
+            background-color: #39abd8;
+        }
+
+#NewDiscussionModal .modal-body {
+    /*height:110px;*/
+}
+
+#NewDiscussionModal .chosen-container,#NewDiscussionModal .chosen-container-multi{
+    vertical-align: text-bottom;
+    border-left:1px solid #aaa;
+}
+
+.sub-type-admin {
+    position: relative;
+    height: 800px;
+}
+
+.sub-type{
+    position:relative;
+    z-index:1002;
+}
+
+
+.sub-general {
+    border-right: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    float: left;
+    font-size: 20px;
+    height: 80px;
+    margin-left: 21px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding: 10px 160px 10px 15px;
+    cursor: pointer;
+}
+
+.sub-general-on {
+    background-color: #3399cc;
+    border: 1px solid #f2f2f2;
+    color: #fff;
+}
+
+.sub-general-off {
+    background-color: #f2f2f2;
+    border: 1px solid #f7f7f7;
+    color: #000;
+}
+
+.sub-general > p {
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.sub-admin {
+    border-left: none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    float: left;
+    font-size: 20px;
+    height: 80px;
+    margin-right: 21px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding: 10px 76px 10px 15px;
+    cursor: pointer;
+}
+
+.sub-admin-on {
+    background-color: #3399cc;
+    border: 1px solid #f2f2f2;
+    color: #fff;
+}
+
+.sub-admin-off {
+    background-color: #f2f2f2;
+    border: 1px solid #f7f7f7;
+    color: #000;
+}
+
+.sub-admin > p {
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+#admin_sandwich {
+    position: relative;
+    margin-top: -55px;
+}
+
+.admin_sandwich_general {
+    left: 25%;
+}
+
+.admin_sandwich_admin {
+    left: 70%;
+}
+
+/* #region 討論組設定 */
+.sub-general-set .title {
+    padding-left: 40px;
+    width: 18%;
+    padding-bottom: 30px;
+}
+
+.sub-general-set-name {
+    height: 30px;
+    padding-left: 5px;
+}
+
+.sub-general-set .sub-general-set-adm {
+    width: 160px;
+    height: 30px;
+    padding-left: 5px;
+}
+
+.sub-general-set > select {
+    width: 70%;
+    height: 30px;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+.hideObj {
+    display: none;
+}
+
+/* #endregion */
+
+/* #region 簽核行討論組 */
+
+#subAdminSet > div {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.sub-admin-set {
+    cursor: pointer;
+}
+
+    .sub-admin-set .sub-admin-title {
+        font-size: 28px;
+        padding-top: 15px;
+        padding-left: 25px;
+        color: #333333;
+    }
+
+    .sub-admin-set .sub-admin-icon {
+        width: 165px;
+        height: 154px;
+        position: relative;
+        left: -30px;
+        top: -5px;
+        float: left;
+        background-repeat: no-repeat;
+    }
+
+    .sub-admin-set .sub-admin-content {
+        height: 95px;
+        position: relative;
+        color: #666666;
+    }
+
+    .sub-admin-set .sub-admin-more {
+        text-decoration: underline;
+        float: right;
+        padding-right: 10px;
+        color: #666666;
+    }
+    /* #region 採購計畫 */
+    .sub-admin-set .purchs {
+        border: 1px solid #cc6699;
+        height: 180px;
+        width: 310px;
+        float: left;
+    }
+
+        .sub-admin-set .purchs:hover .sub-admin-title {
+            color: #4d4d4d;
+        }
+
+        .sub-admin-set .purchs:hover .sub-admin-content, .sub-admin-set .purchs:hover .sub-admin-more {
+            color: #808080;
+        }
+
+        .sub-admin-set .purchs:hover .purchs-icon {
+            background: url('/Statics/img/admin_icno-1.png') no-repeat -1470px -5px;
+        }
+
+.purchs-content {
+    width: 346px;
+    left: -50px;
+}
+
+.purchs-icon {
+    background: url('/Statics/img/admin_icno-1.png') no-repeat -30px -2px;
+}
+/* #endregion */
+
+/* #region 款項請領 */
+.sub-admin-set .applyMoney {
+    border: 1px solid #66cccc;
+    height: 180px;
+    width: 310px;
+    float: right;
+}
+
+.applyMoney-icon {
+    background: url('/Statics/img/admin_icno-1.png') no-repeat -215px -3px;
+}
+
+.sub-admin-set .applyMoney:hover .sub-admin-title {
+    color: #4d4d4d;
+}
+
+.sub-admin-set .applyMoney:hover .sub-admin-content, .sub-admin-set .applyMoney:hover .sub-admin-more {
+    color: #808080;
+}
+
+.sub-admin-set .applyMoney:hover .applyMoney-icon {
+    background: url('/Statics/img/admin_icno-1.png') no-repeat -1656px 0;
+}
+
+.applyMoney-content {
+    width: 361px;
+    left: -64px;
+}
+/* #endregion */
+
+/* #region 請假區 */
+.sub-admin-set .personLeave {
+    border: 1px solid #6699cc;
+    height: 180px;
+    width: 310px;
+    float: left;
+}
+
+.personLeave-icon {
+    background: url('/Statics/img/admin_icno-1.png') no-repeat -395px -6px;
+}
+
+.personLeave-content {
+    width: 375px;
+    left: -75px;
+}
+
+
+/*外出加班請假時數總計列*/
+.total-time {
+    color: #808080;
+    margin-right: 1.2em;
+    margin-top: -0.3em;
+}
+
+.days, .hours {
+    font-size: 1.3em;
+    color: #222;
+}
+
+.sub-admin-set .personLeave:hover .sub-admin-title {
+    color: #4d4d4d;
+}
+
+.sub-admin-set .personLeave:hover .sub-admin-content, .sub-admin-set .personLeave:hover .sub-admin-more {
+    color: #808080;
+}
+
+.sub-admin-set .personLeave:hover .personLeave-icon {
+    background: url('/Statics/img/admin_icno-1.png') no-repeat -1835px -9px;
+}
+
+/* #endregion */
+
+/* #region 加班區 */
+.sub-admin-set .overTime {
+    border: 1px solid #cc9933;
+    height: 180px;
+    width: 310px;
+    float: right;
+}
+
+.overTime-icon {
+    background: url('/Statics/img/admin_icno-1.png') no-repeat -570px -8px;
+}
+
+.overTime-content {
+    width: 305px;
+    left: -40px;
+}
+
+.sub-admin-set .overTime:hover .sub-admin-title {
+    color: #4d4d4d;
+}
+
+.sub-admin-set .overTime:hover .sub-admin-content, .sub-admin-set .overTime:hover .sub-admin-more {
+    color: #808080;
+}
+
+.sub-admin-set .overTime:hover .overTime-icon {
+    background: url('/Statics/img/admin_icno-1.png') no-repeat -2010px -8px;
+}
+/* #endregion */
+
+/* #region 外出單 */
+.sub-admin-set .goOut {
+    border: 1px solid #cccc99;
+    height: 180px;
+    width: 310px;
+    float: left;
+}
+
+.goOut-icon {
+    background: url('/Statics/img/admin_icno-1.png') no-repeat -743px -6px;
+}
+
+.goOut-content {
+    width: 305px;
+    left: -30px;
+}
+
+.sub-admin-set .goOut:hover .sub-admin-title {
+    color: #4d4d4d;
+}
+
+.sub-admin-set .goOut:hover .sub-admin-content, .sub-admin-set .goOut:hover .sub-admin-more {
+    color: #808080;
+}
+
+.sub-admin-set .goOut:hover .goOut-icon {
+    background: url('/Statics/img/admin_icno-1.png') no-repeat -2183px -9px;
+}
+
+/* #endregion */
+
+/* #endregion */
+
+.mainTitleSpan { /* SubDetail的討論組名稱 */
+    margin: 25px 0 0 12px;
+    color: #888;
+    position: absolute;
+    font-size: 1.1em;
+    font-weight: normal;
+}
+
+
+.add-new-msg .msg-breadcrumb { /*發訊息的討論組名稱*/
+    height: 34px;
+    line-height: 40px;
+    font-size: 1em;
+    margin: 17px 0 35px 0;
+    font-weight: normal;
+    font-size: 1.1em;
+    color: #888;
+}
+
+.editTitleSpan { /*編輯訊息的討論組名稱*/
+    position: absolute;
+    top: -50px;
+    margin-left: 10px;
+}
+
+.detailOptionsMoreCheck {
+    color: #3399cc;
+    margin: 20px 50px 20px 50px;
+}
+
+.detailOptionsMoreCheckPhoto {
+    background-image: url('/Statics/img/ng_new-group-0.png');
+    height: 214px;
+    margin-top: 20px;
+    margin-left: 8px;
+    margin-right: -40px;
+    background-repeat: no-repeat;
+}
+
+.actualView {
+    color: #3399cc;
+    margin: 10px 50px 20px 50px;
+    font-size: 1.25em;
+}
+
+#moreActualView {
+    padding: 0 62px;
+}
+
+/* #endregion */
+
+/* #region 簽核行討論組設定 */
+.modal-Detail {
+    display: none;
+}
+
+.detailSetting {
+    background-color: #f7f7f7;
+}
+
+.detailReturns {
+    color: #808080;
+    padding: 10px 0 10px 20px;
+}
+
+    .detailReturns > label:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+.detailTitleArea {
+    font-size: 24px;
+    padding: 10px 0 10px 30px;
+}
+
+.glyphicon-briefcase {
+    font-size: 30px;
+    top: 0;
+    padding-right: 10px;
+    float: left;
+}
+
+.detailContent {
+    padding: 5px 0 30px 50px;
+    color: #808080;
+}
+
+#detailIcon {
+    width: 165px;
+    height: 154px;
+    position: relative;
+    float: right;
+    left: -20px;
+    margin-top: -105px;
+    /*background-repeat:no-repeat;*/
+}
+
+.personLeave-icon-reversed {
+    background: url('../img/admin_icno-1.png') no-repeat -930px -6px;
+}
+
+.overTime-icon-reversed {
+    background: url('../img/admin_icno-1.png') no-repeat -1100px -8px;
+}
+
+.goOut-icon-reversed {
+    background: url('../img/admin_icno-1.png') no-repeat -1280px -6px;
+}
+
+/* 說明與設定 */
+
+.setDetail .nav-tabs {
+    height: 30px;
+    font-size: 16px;
+    background-color: #f7f7f7;
+}
+
+/*.setDetail > ul > li{
+    border:1px solid #dddddd;
+    border-radius:5px 5px 0 0;
+    height:30px;
+    width:100px;
+    text-align:center;
+}*/
+
+.setDetail > ul > li > div {
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    padding-top: 3px;
+}
+
+.optionsMoreOff {
+    margin-left: 215px;
+    border: 1px solid #dddddd;
+    color: #808080;
+    background-color: #f7f7f7;
+    border-radius: 3px 3px 0 0;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.optionsMoreOn {
+    margin-left: 215px;
+    border: 1px solid #dddddd;
+    border-bottom: 1px solid #fff;
+    border-radius: 3px 3px 0 0;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.optionsSetOn {
+    margin-right: 219px;
+    border: 1px solid #dddddd;
+    border-bottom: 1px solid #fff;
+    border-radius: 3px 3px 0 0;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.optionsSetOff {
+    margin-right: 219px;
+    border: 1px solid #dddddd;
+    color: #808080;
+    background-color: #f7f7f7;
+    border-radius: 3px 3px 0 0;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.optionsGeneralSet > h4 {
+    margin-top: 30px;
+    margin-left: 30px;
+    font-size: 16px;
+}
+
+.optionsGeneralSet .title {
+    padding-top: 20px;
+    padding-left: 50px;
+    width: 18%;
+    margin-top: 10px;
+}
+
+.optionsGeneralSet > select {
+    width: 70%;
+    height: 30px;
+    padding-left: 5px;
+    vertical-align: middle;
+    padding-top: 4px;
+}
+
+.optionsGeneralSet > .optionsGeneralSetAdm {
+    width: 160px;
+}
+
+.optionsGeneralSetConfirm {
+    padding: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 60px;
+}
+
+.optionsGeneralSetCheck {
+    margin-left: 15px;
+    margin-right: 15px;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 20px;
+}
+
+    .optionsGeneralSetCheck .title {
+        margin-left: -30px;
+        margin-bottom: 30px;
+        font-size: 18px;
+    }
+
+.optionsGeneralSet .optionsGeneralSetName {
+    height: 30px;
+    padding-left: 5px;
+}
+
+.optionsGeneralSetCheck .flow {
+    float: left;
+    margin-top: 35px;
+    margin-left: 50px;
+}
+
+.flow input {
+    width: 73px;
+    height: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.flow select {
+    margin-top: 10px;
+}
+
+.flow .linePoint {
+    margin-left: 28px;
+    height: 16px;
+    width: 16px;
+    border: 1px solid #808080;
+    border-radius: 8px;
+    margin-top: -8px;
+    background-color: #fff;
+    position: relative;
+}
+
+.optionsGeneralSetCheck .levelLine {
+    margin-top: 115px;
+}
+
+    .optionsGeneralSetCheck .levelLine .levelLineBar {
+        height: 1px;
+        width: 77%;
+        background-color: #ddd;
+        margin: 0 auto;
+        margin-top: 35px;
+    }
+
+    .optionsGeneralSetCheck .levelLine .levelPlus {
+        margin-top: -14px;
+        margin-left: 625px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding-left: 2px;
+        padding-top: 1px;
+        font-size: 1.25em;
+        background-color: #3399cc;
+        color: #fff;
+        cursor: pointer;
+    }
+
+/*.optionsGeneralSetCheck .levelLine .levelLinePoint .levelLinePointDetail .linePoint {
+        height: 16px;
+        width: 16px;
+        border: 1px solid #808080;
+        border-radius: 8px;
+        margin-top: -8px;
+        background-color: #fff;
+}*/
+
+.flow .linePoint .delLevel {
+    margin-top: -13px;
+    max-width: 20px;
+    margin-left: -2px;
+}
+
+.optionsGeneralSetCheck .levelLine .levelLinePoint .levelLinePointDetail {
+    margin: 0 auto;
+    float: left;
+}
+
+    .optionsGeneralSetCheck .levelLine .levelLinePoint .levelLinePointDetail:first-child {
+        margin-left: 80px;
+    }
+
+/*.optionsGeneralSetCheck .keeper {
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+    .optionsGeneralSetCheck .keeper > div {
+        float: left;
+}
+
+        .optionsGeneralSetCheck .keeper > div > select {
+            width: 73px;
+}*/
+
+.personLeaveReason {
+    margin-top: 10px;
+}
+
+    .personLeaveReason .title {
+        float: left;
+    }
+
+.goOutReason {
+    margin-top: 10px;
+}
+
+    .goOutReason .title {
+        float: left;
+    }
+
+.leaveReasonArea {
+    float: left;
+    margin-left: 3px;
+    width: 177px;
+    display: block;
+    height: 61px;
+    position: relative;
+}
+
+.plReasonArea, .goReasonArea {
+    display: inline-block;
+    margin-left: 2px;
+    width: 550px;
+    margin-top: 18px;
+}
+
+    .plReasonArea .leaveReason, .goReasonArea .leaveReason {
+        margin-right: 10px;
+        text-align: center;
+        margin-top: 15px;
+        z-index: 2;
+    }
+
+.leaveReasonDel {
+    cursor: pointer;
+    float: right;
+    margin-top: 8px;
+    max-width: 15px;
+    position: absolute;
+    right: 18px;
+    z-index: 1;
+}
+
+.addReasonArea {
+    margin-left: 137px;
+}
+
+.addplReason, .addgoReason {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    clear: left;
+    float: left;
+    width: 183px;
+    padding-right: 26px;
+}
+
+.reasonPlus {
+    /*margin-top:-14px;
+    margin-left:625px;*/
+    /*border: 1px solid #fff;*/
+    position: relative;
+    float: left;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    font-size: 1.25em;
+    background-color: #3399cc;
+    color: #fff;
+    left: -47px;
+    cursor: pointer;
+}
+
+.optionsGeneralSetConfirm > button {
+    background-color: #3399cc;
+    color: #fff;
+    border: none;
+    padding: 3px;
+    width: 100px;
+    height: 35px;
+    font-size: 20px;
+    position: relative;
+    right: 43%;
+}
+
+    .optionsGeneralSetConfirm > button:hover {
+        background-color: #39ABD8;
+    }
+
+/* #endregion */
+.fileShreDetail {
+    border: 1px solid lightgray;
+    width: 100%;
+}
+
+.fileShreIcon {
+    font-size: 27px;
+    width: 7%;
+    padding-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fileShreTitle {
+    float: left;
+    font-size: 20px;
+    cursor: pointer;
+    min-width: 35px;
+    max-width: 200px;
+}
+
+.fileShreFile {
+    width: 100%;
+    border: 1px solid lightgray;
+    height: 61px;
+}
+
+.fileShreFileIcon {
+    font-size: 30px;
+    padding-left: 30px;
+    width: 9%;
+}
+
+.IconSetting {
+    width: 36px;
+    height: 36px;
+    background: url(/Statics/img/FileIcon.png);
+    background-repeat: no-repeat;
+    background-size: 400px;
+    margin-left: -0.5em;
+}
+
+.file {
+    background-position: -68px 4px;
+}
+
+.Largefile {
+    background-position: -243px 1px;
+}
+
+.excel {
+    background-position: -288px 4px;
+}
+
+.Largeexcel {
+    background-position: 342px 1px;
+}
+
+.mp3 {
+    background-position: -143px 4px;
+}
+
+.Largemp3 {
+    background-position: -485px 1px;
+}
+
+.word {
+    background-position: -251px 4px;
+}
+
+.Largeword {
+    background-position: -833px 1px;
+}
+
+.jpg {
+    background-position: -31px 4px;
+}
+
+.Largejpg {
+    background-position: -118px 1px;
+}
+
+.mp4 {
+    background-position: -105px 4px;
+}
+
+.Largemp4 {
+    background-position: -354px 1px;
+}
+
+.ppt {
+    background-position: -215px 4px;
+}
+
+.Largeppt {
+    background-position: 581px 1px;
+}
+
+.rar {
+    background-position: 7px 4px;
+}
+
+.Largerar {
+    background-position: 0 1px;
+}
+
+.text {
+    background-position: -177px 4px;
+}
+
+.Largetext {
+    background-position: 700px 1px;
+}
+
+.pdf {
+    background-position: -362px 4px;
+}
+
+.Largepdf {
+    background-position: 104px 1px;
+}
+
+.other {
+    background-position: -325px 4px;
+}
+
+.Largeother {
+    background-position: 222px 1px;
+}
+
+.peopleIcon {
+    float: right;
+    background: url(/Statics/img/peopleIcon.gif);
+    background-size: 36px;
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+}
+
+.fileshreName {
+    display: inline-block;
+    width: 61%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 8px 0;
+}
+
+.fileShreNameTitle {
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    line-height: 1.8em;
+    font-size: 1.11em;
+    color: #444;
+}
+
+.fileShreVersion {
+    display: inline-block;
+    width: 5%;
+    padding: 20px 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.fileShreTime {
+    display: inline-block;
+    color: gray;
+    width: 20%;
+    text-align: center;
+    padding: 20px 0 20px 50px;
+}
+
+.fileFolderTime {
+    display: inline-block;
+    color: gray;
+    width: 20%;
+    text-align: center;
+    padding: 0px;
+}
+
+.fileShreBy {
+    display: inline-block;
+    width: 9%;
+    text-align: center;
+    padding: 20px 0 20px 5px;
+    color: gray;
+    font-weight: bold;
+}
+
+.fileDiscName {
+    display: inline-block;
+    width: 40%;
+    padding: 10px 0 10px 20px;
+}
+
+.fileShreURL {
+    display: inline-block;
+    font-size: 30px;
+    float: right;
+    width: 6%;
+    vertical-align: middle;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.fileShreHover, .fileShreHoverIn {
+    margin: 10px 0;
+    display: inline-block;
+    font-size: 26px;
+    float: right;
+    width: 4%;
+    color: #fff;
+    background-color: gray;
+    border-radius: 8px 0 0 8px;
+}
+
+.fileShreHoverDetail {
+    font-size: 25px;
+    float: right;
+    width: 5%;
+    margin: 10px 0;
+    padding: 3px 0;
+    background-color: lightgray;
+}
+
+.hideBtn {
+    opacity: 0.0;
+}
+
+.remove {
+    width: 31px;
+    height: 31px;
+    background: url(/Statics/img/del.png);
+}
+
+.fileLargerTd {
+    padding: 0 20px;
+    width: 200px;
+    height: 165px;
+    text-align: center;
+    display: inline-block;
+}
+
+    .fileLargerTd:hover {
+        background-color: #ffffdd;
+    }
+
+.fileLargerIcon {
+    width: 100px;
+    height: 100px;
+    background-image: url(/Statics/img/FileIcon.png);
+    margin: 0 auto;
+}
+
+.fileLargerTitle {
+    font-weight: bolder;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    color: black;
+    width: 100%;
+    display: inline-block;
+}
+
+.fileLargeRemove {
+    visibility: hidden;
+}
+
+
+#onUploading input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    display: inline-block;
+    width: 100%;
+    /*Gary 修正為0px，檔案分享區使用 請勿共用*/
+    height: 0px;
+    margin-top: 135px;
+}
+
+#onUploading {
+    width: 100%;
+}
+
+.stringLimit {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.my-drop-zone {
+    border: dotted 3px lightgray;
+}
+
+.uploadTitle {
+    width: 300px;
+    display: block;
+}
+
+.fileLargerVersion {
+    cursor: pointer;
+}
+
+.uploadFileDropdown {
+    position: absolute;
+    left: 174px;
+    top: 19px;
+}
+
+
+.tab-file {
+    margin-left: 90px;
+}
+
+.finish_more {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    cursor: pointer;
+}
+
+    .finish_more:hover {
+        color: orange;
+    }
+
+#fileTab > li > a {
+    border: none;
+    background-color: lightgray;
+    padding-right: 2px;
+    padding-top: 11px;
+}
+
+/*外出單*/
+
+.GoOutFormTable {
+    width: 100%;
+}
+
+
+
+
+
+   
+
+
+.GoOutFormMember > td > select {
+    width: 100%;
+    padding-right: 65px;
+    height: 30px;
+    border: none;
+}
+/*請假區*/
+.personLeaveFormTable {
+    width: 100%;
+}
+
+
+    /*
+    .personLeaveFormTable td, .GoOutFormTable td {
+        text-align: center;
+    }
+    */
+      
+
+.personLeaveFormMember > td > select {
+    width: 100%;
+    padding-right: 65px;
+    height: 30px;
+    border: none;
+}
+
+.personLeaveFormTable select.error {
+    border: 1px solid red;
+}
+
+.personLeaveFormTable .title, .GoOutFormTable .title,.OverTimeFormTable .title  {
+    width: 125px;
+    text-align: center;
+    background-color: #f7f7f7;
+
+}
+
+  
+.detail_infobar_hr {
+    padding-top: 10px;
+    padding-bottom: 6px;
+}
+
+/* 彈出來的收件人區塊 */
+.add-new-msg .receipt-wrap, #editor-block .receipt-wrap {
+    z-index: 999;
+    background-color: #fff;
+    position: fixed;
+    right: 60%;
+    overflow-y: scroll;
+    height: 86.5%;
+    width: 21%;
+    top: 13.5% !important;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0 0 6px 0 rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0 0 6px 0 rgba(50, 50, 50, 0.2);
+    box-shadow: 0 0 6px 0 rgba(50, 50, 50, 0.2);
+}
+
+.reply-editor {
+margin:0;
+}
+
+.responder {
+    font-weight: normal;
+    margin-right: 1em;
+    /*margin-bottom: 1em;*/ /*Gary Update 2015/06/09*/
+    color: #888;
+    font-size: 14px;
+}
+
+#admin-table {
+    font-size: 1.1em;
+}
+
+/*.slide.ng-add{
+    transition:10s;
+    height:0px;
+    background-color:red;
+}
+.slide.ng-add-active{
+    height:100%;
+    background-color:red;
+}
+.slide.ng-remove{
+    transition:10s;
+    height:100%;
+    background-color:red;
+}
+.slide.ng-remove-active{
+    height:0px;
+    background-color:red;
+}*/
+
+.slide {
+    height: 100%;
+}
+
+    .slide.ng-hide-add.ng-hide-add-active,
+    .slide.ng-hide-remove.ng-hide-remove-active {
+        -webkit-transition: all linear 10s;
+        -moz-transition: all linear 10s;
+        -o-transition: all linear 10s;
+        transition: all linear 10s;
+    }
+
+    .slide.ng-hide {
+        height: 0px;
+        opacity: 0;
+    }
+
+.animate-show {
+    height: 101%;
+    /*opacity:1;*/
+    -moz-transition: all linear 0.1s;
+    -o-transition: all linear 0.1s;
+    -webkit-transition: all linear 0.1s;
+    transition: all linear 0.1s;
+}
+
+    .animate-show.ng-hide-add.ng-hide-add-active,
+    .animate-show.ng-hide-remove.ng-hide-remove-active {
+        /*-webkit-transition:all linear 10.5s;*/
+        -moz-transition: all linear 0.1s;
+        -o-transition: all linear 0.1s;
+        -webkit-transition: all linear 0.1s;
+        transition: all linear 0.1s;
+    }
+
+    .animate-show.ng-hide {
+        height: 0;
+        /*opacity:0;*/
+        /*-webkit-transition:all linear 10.5s;*/
+        -moz-transition: all linear 0.1s;
+        -o-transition: all linear 0.1s;
+        -webkit-transition: all linear 0.1s;
+        transition: all linear 0.1s;
+    }
+
+
+/* 行政區發訊息的討論組名稱 */
+.msg-breadcrumb {
+    margin: 17px 0 35px 0;
+    font-size: 1.1em;
+    height: 34px;
+    line-height: 40px;
+    font-weight: normal;
+    font-size: 1.1em;
+    color: #888;
+}
+
+
+/*行政區 請假 外出 加班 的發訊息*/
+.add-new-personLeaveForm, .add-new-GoOutForm, .add-new-OverTimeForm {
+    /*border:1px solid red;
+    box-shadow: 0 0 3px 3px rgb(244, 244, 244);
+       border-radius: 10px;
+        height:300px;*/
+    /*width:90%;*/
+    margin: 0 21px 0 1px;
+    clear: left;
+    background-color: #fff;
+    font-size: 1.1em;
+}
+
+
+/* 發訊息時 草稿儲存時間 */
+.draft-msg {
+    width: 30%;
+    float: right;
+    color: #808080;
+    font-size: 14px;
+    margin-top: 7px;
+    position: absolute;
+    right: 200px;
+}
+
+/*款項請領&採購的總金額*/
+.momey_total, .TotalCurrency {
+    background-color: #f3f3f3;
+    text-align: right;
+    font-weight: 600;
+}
+
+/* 收件人按鈕 */
+.add-new-msg .receipt-btn, .add-new-GoOutForm .receipt-btn, .add-new-personLeaveForm .receipt-btn, .add-new-OverTimeForm .receipt-btn {
+    cursor: pointer;
+    font-size: 17px;
+    margin-right: 6px;
+    margin-top: 9px;
+    float: left;
+}
+/*下拉收件人選單*/
+.add-new-msg .receipt-btn:hover, .add-new-GoOutForm .receipt-btn:hover {
+    text-decoration: underline;
+}
+
+
+.btn-draft {
+    height: 40px;
+    border: 1px solid #fff;
+    min-width: 110px;
+    position: absolute;
+    -webkit-border-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    text-align: center;
+    margin: 0 0 0 106px;
+    background: #3399cc;
+    color: #fff;
+}
+
+.file-input-wrap {
+    float: left;
+    width: 30%;
+}
+
+.btn-group-new-message {
+    float: right;
+    position: relative;
+    right: 18px;
+}
+
+
+.dropdown-draft {
+    background: #3399cc;
+    height: 36px;
+    width: 15px;
+    text-align: center;
+    border-radius: 0;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 0;
+    position: relative;
+    margin-left: -10px;
+    margin-right: 10px;
+}
+
+    .dropdown-draft .caret {
+        /*margin-left: -5px;*/
+        color: #FFF;
+    }
+
+
+
+.fileUpload {
+    position: absolute;
+    overflow: hidden;
+    margin: 4px 0 0 -8px;
+    float: left;
+    font-size: 16px;
+}
+
+.uploadImg {
+    width: 24px;
+    margin-top: -4px;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    display: inline-block;
+}
+
+.fileUpload:hover {
+    text-decoration: underline;
+}
+
+.fileupload-msg {
+    float: left;
+    color: #808080;
+    font-size: small;
+    position: relative;
+    width: 100px;
+    margin: 9px 0 0 10px;
+}
+
+.file-input-wrap {
+    float: left;
+    width: 30%;
+}
+
+
+
+
+/* 收件人按鈕 */
+.add-new-personLeaveForm .msg-title, .add-new-OverTimeForm .msg-title {
+    font-size: 18px;
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    border: 1px solid #fff;
+}
+
+.loading
+{
+    width:100%;
+    height:100%;
+}
+
+.loadingDiv 
+{
+    z-index:9999;
+    cursor:wait;
+    border:none;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    position:fixed;
+    opacity:0.6;
+    background-color:lightgray;
+}
+
+.loadingImg
+{
+    position:absolute;
+    z-index:1000;
+    left:45%;
+    top:45%;
+}
+
+
+
+    .add-new-OverTimeForm .chosen-container-multi, .add-new-OverTimeForm .chosen-choices , .add-new-GoOutForm .chosen-container-multi, .add-new-GoOutForm .chosen-choices, .add-new-personLeaveForm .chosen-container-multi, .add-new-personLeaveForm .chosen-choices, .add-new-msg .chosen-container-multi, .add-new-msg .chosen-choices {
+    border: none;
+    background-image: none;
+    width:90% !important;
+}
+
+    /* 下拉收件人選單的的選取結果 */
+    .add-new-msg .chosen-choices li.search-choice {
+        background: none #eeeeee;
+        font-size: 16px;
+    }
+
+
+.add-new-msg ,.add-new-msg .chose-box, .add-new-OverTimeForm .chose-box, .add-new-personLeaveForm .chose-box, .add-new-GoOutForm .chose-box {
+/*  box-shadow: 0 0 10px 10px lightgray;
+    border-radius: 10px;
+    margin: 0 10px 0 10px;
+*/
+    clear: left;
+    background-color: #fff;
+    padding-bottom: 10px;
+}
+
+.personLeaveFormTable tbody > tr > td, .GoOutFormTable tbody > tr > td, .OverTimeFormTable tbody > tr > td {
+    border:1px solid #ccc;
+}
+ 
+
+/* 款項請領&採購計畫  訊息主題輸入框 */
+.msg-title, .add-new-personLeaveForm .msg-title, .add-new-OverTimeForm .msg-title, .add-new-GoOutForm .msg-title {
+    border: none;
+    height: 50px;
+    width: 100%;
+    padding:9px 9px 9px 9px;
+    font-size:18px;
+    border-top:1px solid #ccc;
+
+}
+
+
+  .personLeaveFormTitle td:last-child, .OverTimeFormTitle td:last-child, .GoOutFormTitle td:last-child {
+              border: none !important;
+        }
+
+  .GoOutFormDate .date,.personLeaveFormDate .date,.OverTimeFormDate .date{
+    background-color:#fff;
+    padding:4px 0 21px 8px;
+    color:#999;
+}
+
+  .GoOutFormDate .date .outBackTime,.personLeaveFormDate .date .outBackTime,.OverTimeFormDate .date .outBackTime{
+    float:left;
+    padding-top:15px;
+    line-height:2.6em;
+}
+
+  
+.GoOutFormDate .date >div >input,.personLeaveFormDate .date > div > input,.OverTimeFormDate .date > div > input {
+    border:none;
+    min-width:38px;
+    max-width:48px;
+    padding-left:6px;
+    border-bottom:1px solid #CCC;
+    color:#222;
+    font-size:20px;
+    text-align:center;
+}
+.GoOutFormDate .date .totalTime > input,.personLeaveFormDate .date .totalTime > input,.OverTimeFormDate .date .totalTime > input{
+    font-size:1.5em;
+    font-weight:600;
+}
+.GoOutFormDate .date .totalTime,.personLeaveFormDate .date .totalTime,.OverTimeFormDate .date .totalTime{
+    float:right;
+    padding-top:48px;
+    padding-right:20px;
+}
+
+
+.GoOutFormMember .memberName,.GoOutFormMember .dutyAgentName,.personLeaveFormMember .memberName,.OverTimeFormMember .memberName,.personLeaveFormMember .dutyAgentName{
+    width:200px;
+    background-color:#fff;
+    padding-left:1em;
+    padding-right:1em;
+}
+
+.GoOutFormDate .date .outBackTime .outYear, .GoOutFormDate .date .outBackTime .backYear,.personLeaveFormDate .date .outBackTime .outYear, .personLeaveFormDate .date .outBackTime .backYear ,.OverTimeFormDate .date .outBackTime .outYear, .OverTimeFormDate .date .outBackTime .backYear{
+    min-width:55px;
+    max-width:75px;
+    text-align:center;
+}
+
+.personLeaveFormType .chose,.GoOutFormType .chose >ul{
+    padding:1.2em 0.6em;
+    margin-bottom:0;
+}
+
+.GoOutFormReason .reason > textarea, .GoOutFormRemarks .remarks > textarea, .OverTimeFormRemarks .remarks > textarea > textarea, .personLeaveFormReason .reason > textarea,.personLeaveFormRemarks .remarks > textarea,.OverTimeFormRemarks .remarks > textarea,.OverTimeFormReason .reason > textarea{
+    width:100%;
+    padding:0.6em 1em;
+    border:none;
+}
+
+
+.GoOutFormDate .date .outBackTime > input,.OverTimeFormDate .date .outBackTime > input,.personLeaveFormDate .date .outBackTime > input{
+    font-size:1.2em;
+}
+
+    .OverTimeFormTable .date > div > input.error,.personLeaveFormTable .date > div > input.error,.GoOutFormTable .date > div > input.error {
+        border-bottom: 1px solid rgb(255, 19, 98);
+    }
+
+        .OverTimeFormMember select.error {
+        border-bottom:1px solid;
+    }
+
+    .OverTimeFormTable .reason > textarea.error{
+        border:1px solid  rgb(255, 19, 98);
+    }
+  /*回覆*/
+.reply-wrap .reply-editor #editor-block {
+    border-left: 14px solid #39c;
+    margin: 1px 39px 72px 17px;
+    padding-top: 0px;
+}
+
+    .reply-wrap .reply-editor #editor-block .note-editor .note-toolbar {
+    border-top:1px solid #fff;
+    }
+
+/*主題詳細頁 預計完成日期*/
+#WorkDateline {
+    margin-top:8px;
+}
+
+/*控制內簽圖Style*/
+#main_content img
+{
+    cursor:pointer;
+    max-width:100%;
+}
+
+/*回覆內簽圖*/
+#respond-content img
+{
+    cursor:pointer;
+    max-width:100%;
+}
+
+#btnList{
+    display:inline-block;
+    border:1px solid gray;
+    background-color:white;
+    position:fixed;
+    right:0;
+    bottom:0;
+    cursor:pointer;
+    padding:5px 20px 5px 20px;
+    z-index:1;
+}
+/*限制編輯器下Tag P Margin*/
+.note-editable > p
+{
+    margin-bottom:0px!important;
+}
+/*限制主題詳細頁下Tag P Margin*/
+#main_content > p
+{
+    margin-bottom:0px!important;
+}
+#respond-content > p
+{
+    margin-bottom:0px!important;
+}
+/*下載的文字*/
+.downloadString{
+    text-align:center;
+    line-height:42px;
+    margin-left:20px;
+    cursor:pointer;
+}
+.UploadFile_Img
+{
+    width:45px;
+    height:45px;
+    cursor:pointer;
+}
+
+.DetailContainer{
+    padding-bottom:50px;
+}

@@ -1,0 +1,206 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <title>Succmail</title>
+        <link href="~/Statics/css/home/LoginPage.min.css" rel="stylesheet" />
+        <link href="~/Statics/css/home/LoginPageItem.min.css" rel="stylesheet" />
+        <link href="~/Statics/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <script src="/Scripts/lib/jquery/jquery-2.1.1.min.js"></script>
+        <script src="~/Scripts/lib/bootstrap/bootstrap.min.js"></script>
+        @System.Web.Optimization.Scripts.Render("/bundle/home")
+    </head>
+    <body>
+        <!-- #region -->
+        <!-- #endregion -->
+        <!-- #region 主板範圍 -->
+        <div id="login-ground">
+            <div class="closeLogin_button"></div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 登入畫面 -->
+        <div id="login-table" style="display:none;">
+            <div id="login-title">
+                <img id="logo_white" />
+            </div>
+            <div id="ac-pw-div">
+                <input id="account" type="text" placeholder="E-mail" />
+                <input id="password" type="password" placeholder="Password" />
+                <a id="forgetPW" href="/Home/Forget">@Html.Raw(Succ.Common.Global.Succ.ForgotPpassword)?</a>
+                <input id="login-button" type="submit" value="@Html.Raw(Succ.Common.Global.Succ.Login)" onclick="Login()" />
+            </div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 最上方Nav Bar -->
+        <nav class="navbar navbar-default padding10" role="navigation">
+            <!-- #region Logo -->
+            <div class="navbar-brand" id="logo"></div>
+            <!-- #endregion -->
+            <div class="container">
+                <div id="mainNav" class="navbar-header mainNavLast">
+                    <!-- #region 畫面縮小列表按鈕 -->
+                    <button id="LoginNavBtn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#loginPage" aria-expanded="false">
+                        <span class="sr-only">Toggle</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- #endregion -->
+                    <!-- #region 登入按鈕 -->
+                    <a id="openLogin" class="navbar-brand" title="@Html.Raw(Succ.Common.Global.Succ.Login)">
+                        @Html.Raw(Succ.Common.Global.Succ.Login)
+                    </a>
+                    <!-- #endregion -->
+                </div>
+                <!-- #region 下拉選項列表 -->
+                <div class="collapse navbar-collapse" id="loginPage" aria-expanded="true">
+                    <ul class="nav navbar-nav loginNav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="@Html.Raw(Succ.Common.Global.Succ.Service)">
+                                @Html.Raw(Succ.Common.Global.Succ.Price_And_Service)
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:100%;">
+                                <li>
+                                    <a href="/Home/Login_pri_serv_contact">@Html.Raw(Succ.Common.Global.Succ.Contact)Succmail</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Login_Network_Security">@Html.Raw(Succ.Common.Global.Succ.Net_Safe)</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Login_ClientCase">@Html.Raw(Succ.Common.Global.Succ.Cus_Sample)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="@Html.Raw(Succ.Common.Global.Succ.About)Succmail">
+                                @Html.Raw(Succ.Common.Global.Succ.About)Succmail
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:100%;">
+                                <li><a href="/Home/Login_about_what">@Html.Raw(Succ.Common.Global.Succ.What_is)Succmail</a></li>
+                                <li><a href="/Home/Login_about_why">@Html.Raw(Succ.Common.Global.Succ.Why)Succmail</a></li>
+                                <li><a href="/Home/Login_about_who">@Html.Raw(Succ.Common.Global.Succ.Who)Succmail</a></li>
+                                <li><a href="/Home/Login_about_where">@Html.Raw(Succ.Common.Global.Succ.AnyWhere)</a></li>
+                                <li><a href="/Home/Login_about_how">@Html.Raw(Succ.Common.Global.Succ.How)Succmail</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- #endregion -->
+            </div>
+        </nav>
+        <!-- #endregion -->
+        <div id="ground-wrap">
+            <!-- #region Logo -->
+            <div id="main-top-part-index">
+                <div id="main-container">
+                    <div id="wrap-slogan-register">
+                        <img id="slogan-index" class="animated fadeIn" src="/Statics/img/home/slogan_what.png" />
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 雲朵 -->
+            <div id="introduce-menu-wrap">
+                <div id="wrap-cloud">
+                    <div class="cloud-menu">
+                        <div class="empty_div"></div>
+                        <a title="@Html.Raw(Succ.Common.Global.Succ.What_is)Succmail?" class="option" href="#">What</a>
+                    </div>
+                    <div class="cloud-menu" onclick=window.location.href ="/Home/Login_about_why">
+                        <div class="empty_div"></div>
+                        <a title="@Html.Raw(Succ.Common.Global.Succ.Why)Succmail" class="option" href="/Home/Login_about_why">Why</a>
+                    </div>
+                    <div class="cloud-menu" onclick=window.location.href ="/Home/Login_about_who">
+                        <div class="empty_div"></div>
+                        <a title="@Html.Raw(Succ.Common.Global.Succ.Who)Succmail" class="option" href="/Home/Login_about_who">Who</a>
+                    </div>
+                    <div class="cloud-menu cloudSelected" onclick=window.location.href ="/Home/Login_about_where">
+                        <div class="empty_div"></div>
+                        <a title="@Html.Raw(Succ.Common.Global.Succ.AnyWhere)" class="option" href="/Home/Login_about_where">Where</a>
+                    </div>
+                    <div class="cloud-menu" onclick=window.location.href ="/Home/Login_about_how" style="margin-right:0px;">
+                        <div class="empty_div"></div>
+                        <a title="@Html.Raw(Succ.Common.Global.Succ.How)Succmail?" class="option" href="/Home/Login_about_how">How</a>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region where is succmail -->
+            <div id="whatisSuccmail-wrap">
+                <div id="content-wrap">
+                    <div class="small-cloud"></div>
+                    <h1 class="title">Where / @Html.Raw(Succ.Common.Global.Succ.AnyWhere)</h1>
+                    <p class="middleContent">@Html.Raw(Succ.Common.Global.Succ.Anywhere_Ex)</p>
+
+                    <div class="inside-text-wrap">
+                        <div class="icons"><img width="100%" src="/Statics/img/home/icons/icon7.png" /></div>
+                        <span class="little-title">@Html.Raw(Succ.Common.Global.Succ.SaveData)</span>
+                        <p class="little-text">@Html.Raw(Succ.Common.Global.Succ.Anywhere_Ex2)</p>
+                    </div>
+
+                    <div class="inside-text-wrap">
+                        <div class="icons"><img width="100%" src="/Statics/img/home/icons/icon8.png" /></div>
+                        <span class="little-title">@Html.Raw(Succ.Common.Global.Succ.Mobile_Office)</span>
+                        <p class="little-text">@Html.Raw(Succ.Common.Global.Succ.Anywhere_Ex3)</p>
+                    </div>
+
+                    <div class="inside-text-wrap">
+                        <div class="icons"><img width="100%" src="/Statics/img/home/icons/icon9.png" /></div>
+                        <span class="little-title">@Html.Raw(Succ.Common.Global.Succ.Work_Group)</span>
+                        <p class="little-text">@Html.Raw(Succ.Common.Global.Succ.Anywhere_Ex4)</p>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 註冊區塊 -->
+            <div style="text-align:center;width:100%;height:100px;display:block;">
+                <div id="register_item">
+                    @using (Html.BeginForm("Regist", "User", FormMethod.Post, new { id = "emailvalue" }))
+                    {
+                        <input type="text" name="email" id="email2" class="type-regis_item animated fadeIn" placeholder="Enter your work email" />
+                        <input id="logb" type="submit" class="button-regis_item animated fadeIn" value="@Html.Raw(Succ.Common.Global.Succ.Sign_up)" onclick="onSubmit()" />
+                    }
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 底部Footer -->
+            <div id="footer-wrap" class="container">
+                <div class="row">
+                    <div class="col-sm-6 footerInfo">
+                        <span>@Html.Raw(Succ.Common.Global.Succ.Cus_Service)</span>
+                        <section class="serviceEmail">
+                            <img />
+                        </section>
+                        <section class="servicetel">
+                            <img />
+                        </section>
+                        <section class="serviceaddress">
+                            <img />
+                        </section>
+                    </div>
+                    <div class="col-sm-6 footerInfo">
+                        <span>@Html.Raw(Succ.Common.Global.Succ.Promotion_Product)</span>
+                        <section class="BMCAEmail">
+                            <img />
+                        </section>
+                        <section class="BMCAtel">
+                            <img />
+                        </section>
+                        <section class="BMCAaddress">
+                            <img />
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+        </div>
+
+    </body>
+</html>

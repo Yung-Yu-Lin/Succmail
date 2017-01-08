@@ -1,0 +1,122 @@
+﻿@{
+    Layout = null;
+}
+
+<div id="middle" class="col-md-9">
+    <h2>
+        <b>@Html.Raw(Succ.Common.Global.Succ.Personal_Setting)</b>
+    </h2>
+    <input id="userid" type="hidden" value="{{UserID}}" />
+    <!--個人帳戶設定-->
+    <div class="setting-panel panel-group">
+        <!-- #region 基本設定-->
+        <div class="base-setting">
+            <div class="panel-heading nopadding">
+                <h4 class="panel-title">
+                    @Html.Raw(Succ.Common.Global.Succ.Basic_Setting)
+                </h4>
+            </div>
+            <div class="panel-body">
+                <div class="pull-left" style="width:550px;">
+                    <!--登入帳號-->
+                    <label>
+                        @Html.Raw(Succ.Common.Global.Succ.Login)@Html.Raw(Succ.Common.Global.Succ.Account) &nbsp;&nbsp;
+                    </label>
+                    <span ng-bind="LoginEmail"></span>
+                    <br />
+                    <!--登入者姓名-->
+                    <div>
+                        <!--姓-->
+                        <label>
+                            @Html.Raw(Succ.Common.Global.Succ.LastName)
+                        </label>
+                        <input type="text" class="lastname" ng-model="Lastname" style="margin-left:120px;" />
+                        <!--名-->
+                        <label>
+                            @Html.Raw(Succ.Common.Global.Succ.FirstName)
+                        </label>
+                        <input type="text" class="firstname" ng-model="Firstname" />
+                    </div>
+                    <!--新密碼-->
+                    <label>
+                        @Html.Raw(Succ.Common.Global.Succ.NewPassword)
+                    </label>
+                    <input type="password" class="newpwd" ng-model="newpwd" />
+                    <br />
+                    <!--確認密碼-->
+                    <label>
+                        @Html.Raw(Succ.Common.Global.Succ.ConfirmPassword)
+                    </label>
+                    <input type="password" class="checkpwd" ng-model="checkpwd" />
+                    <br />
+                    <!--是否開啟未讀訊息通知-->
+                    <label>
+                        @Html.Raw(Succ.Common.Global.Succ.EmailReminder)
+                    </label>
+                    <input type="checkbox"
+                           class="w3-check"
+                           ng-model="Person.PersonEmailRemind"
+                           ng-checked="Person.PersonEmailRemind" />
+                    @*<input type="checkbox"
+        id="isSettingEmail"
+        ng-model="MemberManage.Detail.BindEmail"
+        ng-checked="MemberManage.Detail.BindEmail && !MemberManage.Detail.Duplicate"
+        ng-change="BindAccountChange()" />*@
+                </div>
+                <div class="pull-right">
+                    <!--上傳個人圖像-->
+                    <div class="image-div">
+                        <img id="personShowImg" class="image" ng-src="{{Person.PersonImg}}" />
+                        <div class="upload-img">
+                            <form style="position:absolute;z-index:9999;width:106px;opacity:0;" onsubmit="UploadSubmit(this)" method="post" enctype="multipart/form-data" action="">
+                                <input id="personImg" type="file" name="uploadfile" class="filePrew" accept="image/*" onchange="javascript: $(this).submit();" />
+                            </form>
+                            <p>
+                                @Html.Raw(Succ.Common.Global.Succ.UploadPhoto)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 按鈕列 -->
+        <div class="btn-bar">
+            <button class="btn cancel" ng-click="SettingCancel()"><i class="fa fa-times"></i>取消</button>
+            <button class="btn decide" ng-click="SettingConfirm()"><i class="fa fa-check"></i>確定</button>
+        </div>
+        <!-- #endregion -->
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    function UploadSubmit(obj)
+    {
+        var DateString = new Date().getMilliseconds();
+
+        //上傳照片
+        var formData = new FormData();
+        var file = document.getElementById("personImg").files[0];
+        var param =
+            {
+                UserID: document.getElementById("userid").value
+            };
+        formData.append("file", file);
+        formData.append("UserID", document.getElementById("userid").value);
+        formData.append("CompId", $("#CurrentCompID").val());
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/Backend/UploadPersonalImg", true);
+        xhr.send(formData);
+        xhr.onreadystatechange = function ()
+        {
+            if(xhr.readyState == 4 && xhr.status == 200)
+            {
+                //取照片
+                $("#personShowImg").attr("src", "/Backend/getUserImg/?UserID=" + document.getElementById("userid").value + "&t=" + DateString);
+            }
+        }
+    }
+</script>

@@ -1,0 +1,362 @@
+﻿body {
+    font-family:Microsoft JhengHei;
+    font-size:15px;
+
+}
+
+/*向右偏*/
+.ToRightSide{
+    float:right;
+}
+
+#partial{
+    height:100%;
+	width:100%;
+	border:1px solid #aaa;
+	background-color:#fff;
+    margin:0 auto;
+	margin-top:66px;
+    margin-bottom:50px;
+	padding:0;
+    padding-bottom:30px;
+    min-width:900px;
+    max-width:1100px;
+    min-height:500px;
+}
+
+/* #region Partial頁籤 */
+#partial .viewtab{
+    position:relative;
+    width:900px;
+    top:-43px;
+    left:34%;
+    margin-left:-250px;
+    border-bottom:1px solid #aaa;
+}
+
+#partial .nav-tabs>li{
+    margin-left:5px;
+}
+
+#partial .nav-tabs >li>a{
+    color:#222;
+    background-color:#eee;
+    width:135px;
+    height:43px;
+    border:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+    border-radius:3px 3px 0 0;
+    padding:10px 10px;
+    text-align:center;
+    cursor:pointer;
+    font-size:16px;
+}
+
+#partial .nav-tabs > li > a > i {
+    padding-left:5px;
+}
+
+#partial .nav-tabs >li>a:hover{
+    background-color:#ccc;
+    border:1px solid #aaa;
+}
+
+#partial .nav-tabs >li.active >a {
+    background-color:#fff;
+    border-bottom:1px solid #fff;
+}
+
+#partial .nav-tabs >li>ul{
+    position:absolute;
+    background-color:#fff;
+    width:135px;
+    top:42px;
+    border:1px solid #aaa;
+    padding:0px;
+    display:none;
+    font-size:16px;
+}
+#partial .nav-tabs >li>ul>label{
+    text-align:center;
+    width:135px;
+    height:38px;
+    margin:0;
+    padding-top:5px;
+    cursor:pointer;
+    font-weight:normal;
+    line-height:28px;
+}
+#partial .nav-tabs >li>ul>label:hover{
+    background-color:#eee;
+}
+/* #endregion 頁籤*/
+
+
+hr{
+    margin:0;
+    border-top-color:#aaa;
+}
+
+/* #region 網站管理 */
+#web_manage >h2{
+    margin-left:40px;
+    font-family:'Microsoft JhengHei';
+}
+
+.companyinfo{
+    margin:40px 100px;
+    border:1px solid #bbb;
+}
+
+/* #region 公司基本資訊 */
+
+.companyinfo .tab-head{
+    color:#666;
+    background-color:#eee;
+    margin:-1px; 
+    border:1px solid #bbb;
+    height:40px;
+}
+/*公司資料Title部分*/
+.companyinfo .tab-head > label{
+    font-size:16px;
+    font-weight:normal;
+}
+.companyinfo .tab-head > i {
+    margin:12px 0 0 10px;
+}
+/*網站權限Title部分*/
+.companyinfo .tab-head > span{
+    margin:12px 0 0 10px;
+}
+.companyinfo .tab-head > button {
+    margin-top:1px;
+}
+
+/* 上傳圖片 */
+.companyinfo .tab-body .upload_img{
+    margin:20px auto;
+    width:110px;
+    height:110px;
+}
+
+.companyinfo .tab-body .upload_img>img{
+    width:110px;
+    height:110px;
+    border:1px solid #aaa;
+}
+
+#web_manage .companyinfo .upload_img>span{
+    width:110px;
+    height:25px;
+    background-color:#555;
+    padding:2px 20px;
+    opacity:0.6;
+    text-align:center;
+    display:block;
+    color:#fff;
+    cursor:pointer;
+}
+#web_manage .companyinfo .upload_img>input{
+    visibility:hidden;
+}
+
+.companyinfo .tab-body .companyname{
+    margin:10px 0 30px 0;
+    font-size:16px;
+    text-align:center;
+}
+
+.companyinfo .tab-body .companyname >table{
+    text-align:left;
+    margin:0 auto;
+    
+}
+
+.companyinfo .tab-body .companyname >table>tbody>tr>td{
+    padding-right:25px;
+}
+
+.companyinfo .tab-body .companyname table>tbody>tr>td>input,
+.companyinfo .tab-body .companyname table>tbody>tr>td>select{
+    margin:10px;
+    width:350px;
+    padding:5px 8px 5px 8px;
+}
+/* #endregion 公司基本資訊 */
+
+/* #region 網站權限*/
+.companyinfo .tab-body .boss{
+    margin:30px 0;
+    padding:20px 0 60px 188px; 
+}
+
+.companyinfo .tab-body .boss>label{
+    font-size:16px;
+    font-weight:normal!important;
+}
+
+.companyinfo .tab-body .boss>select{
+    width:100px;
+    margin-left:38px;
+    background-color:#eee;
+}
+/* #endregion 網站權限 */
+
+.companyinfo .tab-body .check{
+    text-align:center;
+    border-top:1px solid #ccc;
+    padding:10px 0;
+}
+
+.companyinfo .tab-body .check>button{
+    padding:5px 20px;
+    margin:5px;
+    font-size:16px;
+    border-radius:2px;
+}
+
+
+.version{
+    height:420px;
+    width:845px;
+    margin:0 auto;
+    border:1px solid #bbb;
+    background-color:#fff;
+    
+}
+
+/* #region 網站版本 */
+
+
+.version .versiontitle{
+    color:#666;
+    background-color:#eee;
+    margin:-1px -1px 0 -1px; 
+    border:1px solid #bbb;
+    clear:both;
+}
+
+.version .versiontitle>label{
+    font-size:16px;
+    margin:1px 0 0 0;
+}
+
+.version .versioninfo,
+.version .versiontitle{
+    padding:15px;
+}
+
+.version .versioninfo .succmailphoto{
+    /*width:140px;*/
+    height:67px;
+    margin:20px;
+    float:left;
+}
+
+.version .versioninfo .version_date{
+    width:200px;
+    margin:24px 0 0 30px;
+    float:left;
+}
+
+.version .versioninfo .web_info{
+    width:300px;
+    margin:14px 0 11px 70px;
+    float:left;
+}
+
+.progress{
+    position:relative;
+    width:130px;
+    height:15px;
+    border:1px solid #bbb;
+    margin:0;
+}
+.version .web_info .progress_text{
+    position:relative;
+    top:-18px;
+    left:135px;
+}
+
+.version .versioninfo .version_date .else_date{
+    color:#f00;
+    margin-top:10px;
+    margin-left:34px;
+}
+
+/* #endregion */
+
+/* #region 升級方案 */
+.version_pro{
+    width:420px;
+    border-right:1px solid #ccc;
+    height:155px;
+    padding:10px;
+}
+
+.version .version_pro .pro_title,
+.version .version_com .com_title {
+    font-size:16px;
+    color:#004A93;
+    margin:11px 15px;
+}
+
+.version .version_pro .pro{
+    position:relative;
+    top:-30px;
+    left:90px;
+    width:318px;
+    line-height:1.7em;
+}
+
+.version .version_pro .pro_title > span{
+    font-weight:normal!important;
+}
+
+.version .version_pro .pro > span > label{
+    font-weight:normal!important
+}
+
+
+.version .version_com{
+    position:relative;
+    width:318px;
+    top:-145px;
+    left:428px;
+}
+
+.version .version_com .com{
+    position:relative;
+    top:-30px;
+    left:100px;
+    line-height:1.7em;
+}
+
+.version .version_com .com_title >span{
+    font-weight:normal!important;
+}
+
+.version .version_com .com > span > label{
+    font-weight:normal!important;
+}
+
+.version .version_pro .pro >button,
+.version .version_com .com >button{
+    color:#fff;
+    background-color:#3385ff;
+    float:right;
+    margin:0 30px 10px 0;
+}
+
+.required{
+    color:#e14b39;
+    display:inline-block;
+    font-weight:normal;
+    padding-left:2px;
+}
+
+/* #endregion  */
+
+
+/* #endregion */

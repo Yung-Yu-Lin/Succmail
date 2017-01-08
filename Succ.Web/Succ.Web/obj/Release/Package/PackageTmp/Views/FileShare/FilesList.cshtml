@@ -1,0 +1,442 @@
+﻿@{Layout = null;}
+
+<input type="hidden" ng-model="copyurl" id="urlString" />
+<!-- #region 條件列-->
+<div id="tab_content_bar" style="height:50px;">
+    <!--排序-->
+    <div class="btn-group" file-sort></div>
+    <!--篩選-->
+    <div class="btn-group" filescreen userid="{{userid}}" compid="{{compid}}" discid="{{discussionid}}" filetype="fileShare"></div>
+    <!--篩選條件標籤-->
+    <div class="condition-result" filter-label></div>
+    <!--檔案分享呈現方式Btn-->
+    <div class="pull-right">
+        <ul class="fileStyleIconArea nav nav-tabs" id="fileTab">
+            <li class="fileStyleIcon active" ng-click="ShowLarger(flase)"
+                tooltip-placement="bottom"
+                tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.Cutover)@Html.Raw(Succ.Common.Global.Succ.List)
+                    </div>">
+                <a style="background-color:lightgray; border:1px solid lightgray">
+                    <span class="fa fa-list-ul pull-left fileStyleDetail"></span>
+                </a>
+            </li>
+            <li><div style="width:1px;height:25px;background-color:#555;margin-top:4px;margin-left:2px;"></div></li>
+            <li class="fileStyleIcon" ng-click="ShowLarger(true)"
+                tooltip-placement="bottom"
+                tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.Cutover)@Html.Raw(Succ.Common.Global.Succ.LargeIcon)
+                    </div>">
+                <a style="background-color:lightgray; border:1px solid lightgray;color:#555;">
+                    <span class="fa fa-th-large pull-left fileStyleLarger"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- #endregion -->
+<!-- #region 顯示檔案位置 -->
+<div id="tab_content_data" ng-if="IsInFile">
+    <table class="fileShreDetail">
+        <tr style="border:1px solid lightgray">
+            <td class="fileShreIcon">
+                <span class="glyphicon glyphicon-folder-open"></span>
+                <span style="font-size:0.8em;margin-left:4px;cursor:pointer;" ng-click="GoHome(OriginalData)">
+                    @Html.Raw(Succ.Common.Global.Succ.FileShare)
+                </span>
+            </td>
+            <td>
+                <span class="fileShreTitle stringLimit" ng-repeat="item in FolderStep" ng-click="GoBack(item,item.DirID)" ng-style="FolderStyle(FolderStep)"
+                        tooltip-placement="bottom"
+                        tooltip-html-unsafe="
+                        <div class='Tooltip'>
+                            {{item.Name}}
+                        </div>">
+                    <span class="glyphicon glyphicon-play" style="margin-top:5px;color:gray;"></span>
+                    <span>
+                        {{item.Name}}
+                    </span>
+                </span>                    
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- #endregion -->
+<div class="tab-pane active" style="width:100%;">
+    <!--無資料夾檔案 + 資料夾檔案-->
+    <table style="width:100%" ng-repeat="data in FileData.showData | filter:FilterPara | filter:FilterDate | orderBy:predicate:reverse" ng-if="!IsLargerIcon">
+        <!--資料夾檔案-->
+        <tr class="fileShreFile" ng-if="data.Type == 0">
+            <!--資料夾Icon-->
+            <td class="fileShreFileIcon">
+                <div class="IconSetting file"></div>
+            </td>
+            <!--資料夾名稱-->
+            <td class="fileshreName" ng-if="!data.IsNewFolder" ng-click="ClickFolder(data,FileData.showData)">
+                <span class="fileShreNameTitle">
+                    {{data.Name}}
+                </span>
+            </td>
+            <td class="fileshreName" ng-if="data.IsNewFolder">
+                <input type="text" ng-model="File.NewFolder" ng-init="File.NewFolder=newFolder" style="text-align:center;" ng-keypress="KeyinFolder(data.DirID,$event.keyCode,File.NewFolder)" autofocus />
+            </td>
+            <!--資料夾無Version 統一版面-->
+            <td class="fileShreVersion">
+                <span>
+                    &nbsp;
+                </span>
+            </td>
+            <!--資料夾建立時間-->
+            <td class="fileShreTime">
+                <p style="float:left;margin:0px;">
+                    {{data.CreateOn | converdate}}
+                </p>
+                <!--資料夾建立人-->
+                <label>
+                    {{data.CreatorName}}
+                </label>
+            </td>
+            @*<!--資料夾建立時間-->
+            <td class="fileFolderTime">
+                {{data.CreateOn | converdate}}
+            </td>
+            <!--資料夾建立人-->
+            <td class="fileShreBy">
+                {{data.CreatorName}}
+            </td>*@
+            <!--隱藏按鈕-->
+            <td class="fileShreHoverDetail hideBtn" style="background-color:#fff;">
+                <span class="remove pull-right" style="margin-right:25%;" ng-click="RemoveFile(data)"></span>
+            </td>
+        </tr>
+        <!--非資料夾檔案-->
+        <tr class="fileShreFile" ng-if="data.Type != 0">
+            <!--資料夾Icon-->
+            <td class="fileShreFileIcon">
+                <div ng-class="IconPath(data.Type)"></div>
+            </td>
+            <!--檔案名稱-->
+            <td class="fileshreName" ng-style="{'width':data.TitleStyle}">
+                <a class="fileShreNameTitle" ng-click="DownLoadFile(data.FileID,data.Version)"
+                    tooltip-placement="bottom"
+                    tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.Download)
+                    </div>">
+                    {{data.Name}}
+                </a>
+                <br />
+                <span class="fileShreNameDetail">subTitle</span>
+            </td>
+            <!--資料夾無Version 統一版面-->
+            <td class="fileShreVersion" ng-click="showVersion(data.FileID)">
+                <span tooltip-placement="bottom"
+                        tooltip-html-unsafe="
+                        <div class='Tooltip'>
+                            @Html.Raw(Succ.Common.Global.Succ.Ver)@Html.Raw(Succ.Common.Global.Succ.Imformation)
+                        </div>">
+                    V{{data.Version}}
+                </span>
+            </td>
+            <!--資料夾建立時間-->
+            <td class="fileShreTime"
+                tooltip-placement="bottom"
+                tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.UploadFile)
+                    </div>
+                    <div style='border-bottom:1px solid white;'></div>
+                    <div class='Tooltip'>
+                        {{data.CreatorName}}
+                    </div>
+                    <div class='Tooltip'>
+                        {{data.CreateOn | converdate}}
+                    </div>">
+                <p style="float:left;margin:0px;">
+                    {{data.CreateOn | converdate}}
+                </p>
+                <!--資料夾建立人-->
+                <label>
+                    {{data.CreatorName}}
+                </label>
+            </td>
+            <!--隱藏按鈕-->
+            <td class="fileShreHoverDetail hideBtn" ng-if="data.IsShowBtn">
+                <span class="remove pull-right" ng-click="RemoveFile(data)"></span>
+            </td>
+            <!--箭頭-->
+            <td class="fileShreHover hideBtn" ng-click="ShowOther(data.FileID)">
+                <span ng-class="{'glyphicon glyphicon-chevron-left':!data.IsShowBtn,'glyphicon glyphicon-chevron-right':data.IsShowBtn}"></span>
+            </td>
+            <!--連結-->
+            <td class="fileShreURL hideBtn">
+                <span class="glyphicon glyphicon-link copyUrl" ng-click="CopyUrl(data.FileID,data.Version)"
+                        tooltip-placement="bottom"
+                        tooltip-html-unsafe="
+                        <div class='Tooltip'>
+                            @Html.Raw(Succ.Common.Global.Succ.CopyUrl)
+                        </div>">
+                </span>
+            </td>
+        </tr>
+    </table>
+    <!-- #region 複製Url畫面-->
+    <div class="modal fade bs-url-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="margin:30px 25%;">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel" style="top:-7px;text-align:center;width:685px;">
+                        @Html.Raw(Succ.Common.Global.Succ.Copy_to_scrapbook)
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <input type="text" ng-model="copyurl" style="width:100%;" />
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-lg active" data-dismiss="modal" style="width:auto;right:47%;">
+                        @Html.Raw(Succ.Common.Global.Succ.Close)
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 版本記錄畫面-->
+    <div class="modal fade bs-version-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="margin:30px 25%;">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel" style="top:-7px;text-align:center;">
+                        @Html.Raw(Succ.Common.Global.Succ.Version_Record)
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <!--檔案上傳中列表-->
+                    <table class="table">
+                        <!--列表頁面點選上傳檔案-->
+                        <tr ng-repeat="item in versionitem.queue">
+                            <td style="width:50%;">
+                                <strong class="uploadTitle stringLimit">
+                                    {{item.file.name}}
+                                </strong>
+                            </td>
+                            <td style="width:20%;" ng-show="versionitem.isHTML5" nowrap>
+                                {{ item.file.size/1024/1024|number:2 }} MB
+                            </td>
+                            <td style="width:20%;" ng-show="versionitem.isHTML5">
+                                <div class="progress" style="margin-bottom: 0;">
+                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }">
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="width:10%;">
+                                {{item.progress}}%
+                            </td>
+                        </tr>
+                    </table>
+                    <!--檔案上傳完成列表-->
+                    <table style="width:100%;">
+                        <tr ng-repeat="item in VersionList | orderBy:'Version':true" style="border-bottom:1px solid lightgray;">
+                            <td style="width:11%;">
+                                <div ng-class="IconPath(item.Type)" class="pull-left" style="display:inline-block;"></div>
+                                <div class="pull-left" style="margin:10px 0 0 14px;color:blue;">
+                                    V{{item.Version}}
+                                </div>
+                                <div style="clear:both;text-align:center;">
+                                    {{item.CreateOn | converdate}}
+                                </div>
+                            </td>
+                            <td style="width:76%;padding-left:30px;">
+                                <a class="fileShreNameTitle" style="color:black" ng-click="DownLoadFile(item.FileID,item.Version)">
+                                    {{item.Name}}
+                                </a>
+                            </td>
+                            <td style="width:10%;">
+                                {{item.CreatorName}}
+                            </td>
+                            <td style="width:5%" ng-if="VersionList.length > 1">
+                                <span class="remove pull-right" ng-click="RemoveVersionFile(item)"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <div class="well my-drop-zone" nv-file-over="" nv-file-drop="" uploader="FileVersion.Uploader" style="margin-bottom:0px;height:140px;font-size:2em;text-align:center;padding-top:45px;">
+                        <span class="glyphicon glyphicon-plus gray"></span>
+                        @Html.Raw(Succ.Common.Global.Succ.Drag_Upload)
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="fileUpload fileUploadbtn btn btn-primary btn-ok" id="onUploading">
+                        <input class="upload" type="file" nv-file-select uploader="FileVersion.Uploader" style="z-index:2003;margin-top:0px;height:50px;" />
+                        <span class="glyphicon glyphicon-plus white"></span>
+                        @Html.Raw(Succ.Common.Global.Succ.Upload_New_Version)
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 上傳檔案 顯示的View-->
+    <div class="modal fade bs-upload-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="margin:30px 25%;">
+            <div class="modal-content">
+
+                <div ng-show="FileView.Uploader.isHTML5">
+                    <div class="well my-drop-zone" nv-file-over="" nv-file-drop="" uploader="FileMoveView.Uploader" ng-if="OnLoadingFile" style="margin-bottom:0px;height:140px;font-size:2em;text-align:center;padding-top:45px;">
+                        <span class="glyphicon glyphicon-plus gray"></span>
+                        @Html.Raw(Succ.Common.Global.Succ.Drag_Upload)
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-ok" id="onUploading" style="position:relative;z-index:2002;">
+                    <span class="glyphicon glyphicon-plus white"></span>
+                    @Html.Raw(Succ.Common.Global.Succ.UploadFile)
+                </button>
+                <input class="upload" type="file" nv-file-select uploader="FileView.Uploader" ng-if="OnLoadingFile" multiple style="margin-top:0px;height:40px;position:relative;top:-38px;width:100%;z-index:2003;opacity:0;" />
+
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="50%">@Html.Raw(Succ.Common.Global.Succ.Name)</th>
+                                    <th>@Html.Raw(Succ.Common.Global.Succ.FileSize)</th>
+                                    <th>@Html.Raw(Succ.Common.Global.Succ.UploadProgress)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--列表頁面點選上傳檔案-->
+                                <tr ng-repeat="item in fileItem.queue">
+                                    <td>
+                                        <strong class="uploadTitle stringLimit">
+                                            {{item.file.name}}
+                                        </strong>
+                                    </td>
+                                    <td ng-show="fileItem.isHTML5" nowrap>
+                                        {{ item.file.size/1024/1024|number:2 }} MB
+                                    </td>
+                                    <td ng-show="fileItem.isHTML5">
+                                        <div class="progress" style="margin-bottom: 0;">
+                                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{item.progress}}%
+                                    </td>
+                                </tr>
+                                <!--Modal View 點選上傳-->
+                                <tr ng-repeat="item in fileItem2.queue track by $index">
+                                    <td>
+                                        <strong class="uploadTitle stringLimit">
+                                            {{item.file.name}}
+                                        </strong>
+                                    </td>
+                                    <td ng-show="fileItem2.isHTML5" nowrap style="width:20%">
+                                        {{ item.file.size/1024/1024|number:2 }} MB
+                                    </td>
+                                    <td ng-show="fileItem2.isHTML5" style="width:20%">
+                                        <div class="progress" style="margin-bottom: 0;">
+                                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="width:10%">
+                                        {{item.progress}}%
+                                    </td>
+                                </tr>
+                                <!--拖曳上傳-->
+                                <tr ng-repeat="item in fileItem3.queue track by $index">
+                                    <td>
+                                        <strong class="uploadTitle stringLimit">
+                                            {{item.file.name}}
+                                        </strong>
+                                    </td>
+                                    <td ng-show="fileItem3.isHTML5" nowrap>
+                                        {{ item.file.size/1024/1024|number:2 }} MB
+                                    </td>
+                                    <td ng-show="fileItem3.isHTML5">
+                                        <div class="progress" style="margin-bottom: 0;">
+                                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{item.progress}}%
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal" style="color:black;">
+                            @Html.Raw(Succ.Common.Global.Succ.Cancle)
+                        </button>
+                        <button type="button" class="btn btn-primary btn-ok" data-dismiss="modal" ng-click="UploadSubTitle()">
+                            @Html.Raw(Succ.Common.Global.Succ.OK)
+                        </button>
+                    </div>
+
+                </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <table style="width:100%" ng-if="IsLargerIcon">
+        <!--資料夾檔案-->
+        <tr>
+            <td class="fileLargerTd" ng-repeat="data in FileData.showData | filter:{Type:'0'} | filter:FilterPara | filter:FilterDate | orderBy:predicate:reverse" ng-click="ClickFolder(data,FileData.showData)">
+                <div class="fileLargeRemove">
+                    <span class="remove pull-right" style="margin-right:25%;margin-right:-18px;" ng-click="RemoveFile(data)"></span>
+                </div>
+                <div class="Largefile fileLargerIcon"></div>
+                <div class="fileLargerTitle" ng-if="!data.IsNewFolder">
+                    {{data.Name}}
+                </div>
+                <div class="fileLargerTitle" ng-if="data.IsNewFolder">
+                    <input type="text" ng-model="File.NewFolder" ng-init="File.NewFolder=newFolder" style="text-align:center;" ng-keypress="KeyinFolder(data.DirID,$event.keyCode,File.NewFolder)" autofocus />
+                </div>
+                <div class="fileLargerTime">{{data.CreateOn | converdate}}</div>
+                <div>&nbsp;</div>
+            </td>
+        </tr>
+        <!--非資料夾檔案-->
+        <tr>
+            <td class="fileLargerTd" ng-repeat="data in FileData.showData | filter:{Type:'!0'} | filter:FilterPara | filter:FilterDate | orderBy:predicate:reverse">
+                <div class="fileLargeRemove">
+                    <span class="remove pull-right" style="margin-right:-18px;" ng-click="RemoveFile(data)"></span>
+                </div>
+                <div ng-class="LargeIconPath(data.Type)"></div>
+                <a class="fileLargerTitle" ng-click="DownLoadFile(data.FileID,data.Version)"
+                    tooltip-placement="bottom"
+                    tooltip-html-unsafe="
+                    <div class='Tooltip'>
+                        @Html.Raw(Succ.Common.Global.Succ.Download)
+                    </div>">
+                    {{data.Name}}
+                </a>
+                <div class="fileLargerTime">{{data.CreateOn | converdate}}</div>
+                <div class="fileLargerVersion" ng-click="showVersion(data.FileID)"
+                        tooltip-placement="bottom"
+                        tooltip-html-unsafe="
+                        <div class='Tooltip'>
+                            @Html.Raw(Succ.Common.Global.Succ.Ver)@Html.Raw(Succ.Common.Global.Succ.Imformation)
+                        </div>">
+                    V{{data.Version}}
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

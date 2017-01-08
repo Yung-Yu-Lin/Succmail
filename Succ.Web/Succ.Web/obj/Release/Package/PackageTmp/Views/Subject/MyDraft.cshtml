@@ -1,0 +1,99 @@
+﻿@{Layout = null;}
+<!--Middle Content-->
+<div id="middle" class="col-md-9">
+    <h2>
+        <b>@Html.Raw(Succ.Common.Global.Succ.Draft)</b>
+    </h2>
+    <div id="tab_content_body" class="tab-content  tab-content_a" style="margin-top:45px;">
+        <div id="tab_content_data" ng-repeat="DraftData in draftdata">
+            <!--草稿主題討論組名稱:IsShowDisc=控制討論組底下Subj;draftup、draftdown=為控制開啟關閉圖示-->
+            <div class="General_DiscName"
+                 ng-click="DraftData.IsShowDisc = !DraftData.IsShowDisc;
+                         draftup = !draftup;
+                         draftdown = !draftdown;"
+                 ng-init="draftup = true;">
+                <h3 style="margin-top:0px;">
+                    <span ng-bind="DraftData.DiscName"></span>
+                    <span class="glyphicon pull-right gray"
+                          ng-class="{'glyphicon-chevron-up' :draftup,'glyphicon-chevron-down' :draftdown}"
+                          style="padding-right:1%;">
+                    </span>
+                </h3>
+            </div>
+            <table class="data-table" ng-show="DraftData.IsShowDisc">
+                <tr class="data-table-tr" ng-repeat="data in DraftData.SubjectList" ng-mouseover="data.IsShowState = true" ng-mouseleave="data.IsShowState = false">
+                    @*草稿類別 主題Progress < 9*@
+                    <td class="subjState" ng-switch="data.subjState" ng-if="data.Progress < 9">
+                        <div ng-switch-when="0" class="StateDiv">
+                            <span class="white DraftString">
+                                @Html.Raw(Succ.Common.Global.Succ.NewSubject2)
+                            </span>
+                        </div>
+                        <div ng-switch-when="1" class="StateDiv">
+                            <span class="white DraftString">
+                                @Html.Raw(Succ.Common.Global.Succ.Edit2)
+                            </span>
+                        </div>
+                        <div ng-switch-when="2" class="StateDiv">
+                            <span class="white DraftString">
+                                @Html.Raw(Succ.Common.Global.Succ.Reply)
+                            </span>
+                        </div>
+                        <div ng-switch-when="3" class="StateDiv">
+                            <span class="white DraftString">
+                                @Html.Raw(Succ.Common.Global.Succ.Edit2)@Html.Raw(Succ.Common.Global.Succ.Reply)
+                            </span>
+                        </div>
+                    </td>
+                    @*草稿類別 主題Progress >= 9*@
+                    <td class="subjState" ng-switch="data.subjState" ng-if="data.Progress >= 9">
+                        <div ng-switch-when="0" class="StateDiv">
+                            <span class="gray DraftString">
+                                @Html.Raw(Succ.Common.Global.Succ.NewSubject2)
+                            </span>
+                        </div>
+                        <div ng-switch-when="1" class="StateDiv">
+                            <span class="gray DraftString">
+                                @Html.Raw(Succ.Common.Global.Succ.Edit2)
+                            </span>
+                        </div>
+                        <div ng-switch-when="2" class="StateDiv">
+                            <span class="gray DraftString">
+                                @Html.Raw(Succ.Common.Global.Succ.Reply)
+                            </span>
+                        </div>
+                        <div ng-switch-when="3" class="StateDiv">
+                            <span class="gray DraftString">
+                                @Html.Raw(Succ.Common.Global.Succ.Edit2)@Html.Raw(Succ.Common.Global.Succ.Reply)
+                            </span>
+                        </div>
+                    </td>
+                    @*歸檔 主題title Progress < 9*@
+                    <td class="title" ng-if="data.Progress < 9">
+                        <a class="list-title a_type" ng-click="ShowSubject(data.DraftId,data.subjState)">{{data.SubjectTitle}}</a> &nbsp;
+                    </td>
+                    @*歸檔 主題title Progress >= 9*@
+                    <td class="title" ng-if="data.Progress >= 9">
+                        @*增加Enable Color*@
+                        <a class="list-title a_type" ng-click="ShowSubject(data.DraftId,data.subjState)">{{data.SubjectTitle}}</a> &nbsp;
+                        <span ng-show="IsShowState">@Html.Raw(Succ.Common.Global.Succ.IsClosed)</span>
+                    </td>
+                    <td>
+                        <span>{{data.UpdatedOn | converdate}}</span>
+                    </td>
+                    @*刪除按鈕*@
+                    <td class="deleteBtn">
+                        <div class="redCircle pull-right" ng-show="data.IsShowState" ng-click="DeleteDraft(data.DraftId,DraftData.DiscID)"
+                             tooltip-placement="bottom"
+                             tooltip-html-unsafe="
+                             <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.Delete)
+                             </div>">
+                            <span class="glyphicon glyphicon-remove white"></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

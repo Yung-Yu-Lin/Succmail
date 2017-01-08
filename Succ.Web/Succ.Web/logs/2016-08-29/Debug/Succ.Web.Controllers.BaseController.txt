@@ -1,0 +1,530 @@
+2016-08-29 18:42:01.8697 | url:/Succ/Index
+2016-08-29 18:42:06.4100 | url:/Backend/BackendGuide
+2016-08-29 18:42:08.0638 | url:/Succ/GetIndexData
+2016-08-29 18:42:08.0638 | System.Data.Entity.Core.EntityCommandExecutionException: 執行此命令定義時發生錯誤。如需詳細資料，請參閱內部例外狀況。 ---> System.Data.SqlClient.SqlException: 無效的資料行名稱 'Sequence'。
+   於 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   於 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   於 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   於 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   於 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   於 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   於 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   於 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   於 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   於 System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   於 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   於 System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   於 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   於 System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   於 System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   於 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- 內部例外狀況堆疊追蹤的結尾 ---
+   於 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   於 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   於 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   於 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   於 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   於 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   於 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   於 Succ.Data.Service.SqlService.Imps.SqlSuccServiceImp.getIndexDataInfo(Guid UserId, IndexDataInfo data, List`1 myboxdata) 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\SqlService\Imps\SqlSuccServiceImp.cs: 行 109
+   於 Succ.Data.Service.Imps.SuccServiceImp.getIndexDataInfo(Guid UserID, Guid CompID) 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\Imps\SuccServiceImp.cs: 行 92
+   於 Succ.Web.Controllers.SuccController.GetIndexData() 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Web\Controllers\SuccController.cs: 行 107
+   於 lambda_method(Closure , ControllerBase , Object[] )
+   於 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   於 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   於 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-08-29 18:42:08.1285 | url:/Succ/IsUpdateCurrentCompID/
+2016-08-29 18:42:08.1285 | System.ArgumentException: 對 'Succ.Web.Controllers.SuccController' 的方法 'Void IsUpdateCurrentCompID(System.Guid, System.Guid)' 中不可為 null 型別 'System.Guid' 的參數 'CompID' 而言，參數字典含有 null 項目。選擇性參數必須是參考型別、可為 null 的型別，或必須宣告為選擇性參數。
+參數名稱: parameters
+   於 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   於 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   於 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-08-29 18:42:08.4545 | MyBox
+2016-08-29 18:42:08.4545 | url:/Succ/MyBox
+2016-08-29 18:42:38.3326 | url:/Succ/Index
+2016-08-29 18:42:39.1936 | url:/Backend/BackendGuide
+2016-08-29 18:42:39.1946 | MyBox
+2016-08-29 18:42:39.1946 | url:/Succ/MyBox
+2016-08-29 18:42:39.7463 | url:/Succ/GetIndexData
+2016-08-29 18:42:39.7463 | System.Data.Entity.Core.EntityCommandExecutionException: 執行此命令定義時發生錯誤。如需詳細資料，請參閱內部例外狀況。 ---> System.Data.SqlClient.SqlException: 無效的資料行名稱 'Sequence'。
+   於 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   於 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   於 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   於 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   於 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   於 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   於 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   於 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   於 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   於 System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   於 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   於 System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   於 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   於 System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   於 System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   於 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- 內部例外狀況堆疊追蹤的結尾 ---
+   於 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   於 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   於 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   於 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   於 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   於 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   於 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   於 Succ.Data.Service.SqlService.Imps.SqlSuccServiceImp.getIndexDataInfo(Guid UserId, IndexDataInfo data, List`1 myboxdata) 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\SqlService\Imps\SqlSuccServiceImp.cs: 行 109
+   於 Succ.Data.Service.Imps.SuccServiceImp.getIndexDataInfo(Guid UserID, Guid CompID) 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\Imps\SuccServiceImp.cs: 行 92
+   於 Succ.Web.Controllers.SuccController.GetIndexData() 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Web\Controllers\SuccController.cs: 行 107
+   於 lambda_method(Closure , ControllerBase , Object[] )
+   於 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   於 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   於 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-08-29 18:42:39.7884 | url:/Succ/IsUpdateCurrentCompID/
+2016-08-29 18:42:39.7884 | System.ArgumentException: 對 'Succ.Web.Controllers.SuccController' 的方法 'Void IsUpdateCurrentCompID(System.Guid, System.Guid)' 中不可為 null 型別 'System.Guid' 的參數 'CompID' 而言，參數字典含有 null 項目。選擇性參數必須是參考型別、可為 null 的型別，或必須宣告為選擇性參數。
+參數名稱: parameters
+   於 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   於 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   於 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-08-29 18:42:53.3142 | url:/Succ/Index
+2016-08-29 18:42:53.9442 | url:/Succ/GetIndexData
+2016-08-29 18:42:53.9442 | System.Data.Entity.Core.EntityCommandExecutionException: 執行此命令定義時發生錯誤。如需詳細資料，請參閱內部例外狀況。 ---> System.Data.SqlClient.SqlException: 無效的資料行名稱 'Sequence'。
+   於 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   於 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   於 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   於 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   於 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   於 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   於 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   於 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   於 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   於 System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   於 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   於 System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   於 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   於 System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   於 System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   於 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- 內部例外狀況堆疊追蹤的結尾 ---
+   於 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   於 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   於 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   於 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   於 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   於 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   於 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   於 Succ.Data.Service.SqlService.Imps.SqlSuccServiceImp.getIndexDataInfo(Guid UserId, IndexDataInfo data, List`1 myboxdata) 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\SqlService\Imps\SqlSuccServiceImp.cs: 行 109
+   於 Succ.Data.Service.Imps.SuccServiceImp.getIndexDataInfo(Guid UserID, Guid CompID) 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\Imps\SuccServiceImp.cs: 行 92
+   於 Succ.Web.Controllers.SuccController.GetIndexData() 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Web\Controllers\SuccController.cs: 行 107
+   於 lambda_method(Closure , ControllerBase , Object[] )
+   於 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   於 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   於 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-08-29 18:42:54.0242 | url:/Succ/IsUpdateCurrentCompID/
+2016-08-29 18:42:54.0242 | System.ArgumentException: 對 'Succ.Web.Controllers.SuccController' 的方法 'Void IsUpdateCurrentCompID(System.Guid, System.Guid)' 中不可為 null 型別 'System.Guid' 的參數 'CompID' 而言，參數字典含有 null 項目。選擇性參數必須是參考型別、可為 null 的型別，或必須宣告為選擇性參數。
+參數名稱: parameters
+   於 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   於 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   於 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-08-29 18:42:54.4262 | url:/Backend/BackendGuide
+2016-08-29 18:42:54.4392 | MyBox
+2016-08-29 18:42:54.4392 | url:/Succ/MyBox
+2016-08-29 18:46:17.3583 | url:/Succ/Index
+2016-08-29 18:46:22.0496 | url:/Backend/BackendGuide
+2016-08-29 18:46:23.7187 | url:/Succ/GetIndexData
+2016-08-29 18:46:23.7187 | System.Data.Entity.Core.EntityCommandExecutionException: 執行此命令定義時發生錯誤。如需詳細資料，請參閱內部例外狀況。 ---> System.Data.SqlClient.SqlException: 無效的資料行名稱 'Sequence'。
+   於 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   於 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   於 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   於 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   於 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   於 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   於 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   於 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   於 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   於 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   於 System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   於 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   於 System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   於 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   於 System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   於 System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   於 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- 內部例外狀況堆疊追蹤的結尾 ---
+   於 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   於 System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   於 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   於 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   於 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   於 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   於 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   於 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   於 Succ.Data.Service.SqlService.Imps.SqlSuccServiceImp.getIndexDataInfo(Guid UserId, IndexDataInfo data, List`1 myboxdata) 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\SqlService\Imps\SqlSuccServiceImp.cs: 行 109
+   於 Succ.Data.Service.Imps.SuccServiceImp.getIndexDataInfo(Guid UserID, Guid CompID) 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\Imps\SuccServiceImp.cs: 行 92
+   於 Succ.Web.Controllers.SuccController.GetIndexData() 於 D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Web\Controllers\SuccController.cs: 行 107
+   於 lambda_method(Closure , ControllerBase , Object[] )
+   於 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   於 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   於 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-08-29 18:46:23.7927 | url:/Succ/IsUpdateCurrentCompID/
+2016-08-29 18:46:23.7927 | System.ArgumentException: 對 'Succ.Web.Controllers.SuccController' 的方法 'Void IsUpdateCurrentCompID(System.Guid, System.Guid)' 中不可為 null 型別 'System.Guid' 的參數 'CompID' 而言，參數字典含有 null 項目。選擇性參數必須是參考型別、可為 null 的型別，或必須宣告為選擇性參數。
+參數名稱: parameters
+   於 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   於 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   於 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-08-29 18:46:24.1067 | MyBox
+2016-08-29 18:46:24.1067 | url:/Succ/MyBox
+2016-08-29 18:53:50.9264 | url:/Succ/Index
+2016-08-29 18:53:55.1486 | url:/Backend/BackendGuide
+2016-08-29 19:04:53.3090 | url:/Succ/Index
+2016-08-29 19:05:01.6305 | url:/Backend/BackendGuide
+2016-08-29 19:05:03.8506 | url:/Succ/GetIndexData
+2016-08-29 19:05:07.0138 | url:/Succ/IsUpdateCurrentCompID/
+2016-08-29 19:05:07.0138 | System.ArgumentException: 對 'Succ.Web.Controllers.SuccController' 的方法 'Void IsUpdateCurrentCompID(System.Guid, System.Guid)' 中不可為 null 型別 'System.Guid' 的參數 'CompID' 而言，參數字典含有 null 項目。選擇性參數必須是參考型別、可為 null 的型別，或必須宣告為選擇性參數。
+參數名稱: parameters
+   於 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   於 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   於 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   於 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-08-29 19:05:07.3848 | MyBox
+2016-08-29 19:05:07.3848 | url:/Succ/MyBox
+2016-08-29 19:07:44.8873 | url:/Succ/Index
+2016-08-29 19:07:49.1205 | url:/Backend/BackendGuide
+2016-08-29 19:07:50.6856 | MyBox
+2016-08-29 19:07:50.6856 | url:/Succ/MyBox
+2016-08-29 19:07:51.6537 | url:/Succ/GetIndexData
+2016-08-29 19:07:51.9227 | url:/Subject/GetCompanyUserList/
+2016-08-29 19:07:53.2458 | 我的信箱數:7
+2016-08-29 19:07:53.2458 | url:/Subject/GetMyBox/
+2016-08-29 19:07:53.3018 | url:/Backend/getCompImg
+2016-08-29 19:07:53.3148 | url:/Backend/getCompImg
+2016-08-29 19:07:53.3278 | url:/Backend/getCompImg
+2016-08-29 19:07:53.3418 | url:/Backend/getCompImg
+2016-08-29 19:07:53.6728 | url:/Backend/getCompImg
+2016-08-29 19:07:54.1688 | url:/Backend/getCompImg
+2016-08-29 19:07:54.6888 | url:/Backend/getCompImg
+2016-08-29 19:07:55.1889 | url:/Backend/getCompImg
+2016-08-29 19:07:55.7999 | url:/Subject/GetAllCompNoReadCount
+2016-08-29 19:08:02.8013 | url:/Subject/GetDetail/
+2016-08-29 19:08:03.4124 | url:/Subject/GetReplyList/
+2016-08-29 19:08:03.6814 | url:/Subject/SubDetailTemplate
+2016-08-29 19:08:06.6216 | url:/Subject/HistoryList
+2016-08-29 19:08:57.1746 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:08:57.4236 | url:/Subject/GetNoReadCount
+2016-08-29 19:09:31.9847 | url:/Succ/Index
+2016-08-29 19:09:39.0141 | url:/Succ/IsUpdateCurrentCompID/
+2016-08-29 19:09:42.3393 | url:/Backend/BackendGuide
+2016-08-29 19:09:42.3623 | MyBox
+2016-08-29 19:09:42.3623 | url:/Succ/MyBox
+2016-08-29 19:09:43.0893 | url:/Succ/GetIndexData
+2016-08-29 19:09:43.5103 | 我的信箱數:7
+2016-08-29 19:09:43.5103 | url:/Subject/GetMyBox/
+2016-08-29 19:09:43.7154 | url:/Subject/GetAllCompNoReadCount
+2016-08-29 19:09:43.9174 | url:/Backend/getCompImg
+2016-08-29 19:09:44.0174 | url:/Backend/getCompImg
+2016-08-29 19:09:44.1394 | url:/Backend/getCompImg
+2016-08-29 19:09:44.2634 | url:/Backend/getCompImg
+2016-08-29 19:09:44.3884 | url:/Backend/getCompImg
+2016-08-29 19:09:44.7874 | url:/Backend/getCompImg
+2016-08-29 19:09:44.9134 | url:/Backend/getCompImg
+2016-08-29 19:09:45.4085 | url:/Backend/getCompImg
+2016-08-29 19:09:45.9135 | url:/Subject/GetCompanyUserList/
+2016-08-29 19:09:52.5409 | url:/Subject/GetReplyList/
+2016-08-29 19:09:53.1419 | url:/Subject/GetDetail/
+2016-08-29 19:09:53.5439 | url:/Subject/SubDetailTemplate
+2016-08-29 19:09:56.5141 | url:/Subject/HistoryList
+2016-08-29 19:10:43.1399 | url:/Subject/GetNoReadCount
+2016-08-29 19:10:43.6579 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:11:08.6654 | url:/Succ/Index
+2016-08-29 19:11:08.8765 | url:/Succ/IsUpdateCurrentCompID/
+2016-08-29 19:11:10.8106 | url:/Backend/BackendGuide
+2016-08-29 19:11:10.8536 | MyBox
+2016-08-29 19:11:10.8536 | url:/Succ/MyBox
+2016-08-29 19:11:11.6066 | url:/Succ/GetIndexData
+2016-08-29 19:11:11.9276 | 我的信箱數:7
+2016-08-29 19:11:11.9276 | url:/Subject/GetMyBox/
+2016-08-29 19:11:12.2046 | url:/Subject/GetAllCompNoReadCount
+2016-08-29 19:11:12.3657 | url:/Backend/getCompImg
+2016-08-29 19:11:12.4147 | url:/Backend/getCompImg
+2016-08-29 19:11:12.4887 | url:/Backend/getCompImg
+2016-08-29 19:11:12.6227 | url:/Backend/getCompImg
+2016-08-29 19:11:12.6917 | url:/Backend/getCompImg
+2016-08-29 19:11:12.8687 | url:/Backend/getCompImg
+2016-08-29 19:11:12.8827 | url:/Backend/getCompImg
+2016-08-29 19:11:12.9117 | url:/Subject/GetCompanyUserList/
+2016-08-29 19:11:13.3817 | url:/Backend/getCompImg
+2016-08-29 19:11:14.6988 | url:/Subject/GetDetail/
+2016-08-29 19:11:14.7138 | url:/Subject/SubDetailTemplate
+2016-08-29 19:11:18.0170 | url:/Subject/HistoryList
+2016-08-29 19:11:18.2300 | url:/Subject/GetReplyList/
+2016-08-29 19:11:25.0634 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-08-29 19:11:25.0634 | DiscussionID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-08-29 19:11:25.0744 | url:/Receipt/GetReceipts
+2016-08-29 19:11:25.5835 | url:/Subject/EditorTemplate
+2016-08-29 19:11:31.8568 | Content:<p class="MsoPlainText"><span style="color: rgb(0, 198, 83);">Edit</span></p>
+2016-08-29 19:11:31.8568 | 1
+2016-08-29 19:11:33.1129 | url:/Subject/UpdateReply
+2016-08-29 19:11:33.1609 | url:/Subject/ReplyHistoryList
+2016-08-29 19:12:11.6432 | url:/Subject/GetNoReadCount
+2016-08-29 19:12:12.1442 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:13:12.6749 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:13:13.1859 | url:/Subject/GetNoReadCount
+2016-08-29 19:14:12.6895 | url:/Subject/GetNoReadCount
+2016-08-29 19:14:13.1735 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:15:12.7140 | url:/Subject/GetNoReadCount
+2016-08-29 19:15:13.2051 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:16:11.7126 | url:/Subject/GetAllCompNoReadCount
+2016-08-29 19:16:11.7396 | url:/Subject/GetNoReadCount
+2016-08-29 19:16:12.2366 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:17:12.6942 | url:/Subject/GetNoReadCount
+2016-08-29 19:17:13.1892 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:18:12.6908 | url:/Subject/GetNoReadCount
+2016-08-29 19:18:13.1848 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:19:15.3575 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:19:15.5005 | url:/Subject/GetNoReadCount
+2016-08-29 19:20:12.6880 | url:/Subject/GetNoReadCount
+2016-08-29 19:20:13.1820 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:20:37.0924 | url:/Succ/Index
+2016-08-29 19:20:43.2458 | url:/Succ/IsUpdateCurrentCompID/
+2016-08-29 19:20:48.4471 | url:/Backend/BackendGuide
+2016-08-29 19:20:48.4771 | MyBox
+2016-08-29 19:20:48.4771 | url:/Succ/MyBox
+2016-08-29 19:20:49.2062 | url:/Succ/GetIndexData
+2016-08-29 19:20:49.7762 | 我的信箱數:7
+2016-08-29 19:20:49.7762 | url:/Subject/GetMyBox/
+2016-08-29 19:20:50.0112 | url:/Subject/GetCompanyUserList/
+2016-08-29 19:20:50.4582 | url:/Backend/getCompImg
+2016-08-29 19:20:50.5622 | url:/Backend/getCompImg
+2016-08-29 19:20:50.6382 | url:/Backend/getCompImg
+2016-08-29 19:20:50.7322 | url:/Backend/getCompImg
+2016-08-29 19:20:51.0723 | url:/Subject/GetAllCompNoReadCount
+2016-08-29 19:20:51.4733 | url:/Backend/getCompImg
+2016-08-29 19:20:51.9713 | url:/Backend/getCompImg
+2016-08-29 19:20:52.4914 | url:/Backend/getCompImg
+2016-08-29 19:20:53.0024 | url:/Backend/getCompImg
+2016-08-29 19:21:11.3125 | url:/Subject/GetDetail/
+2016-08-29 19:21:11.7425 | url:/Subject/GetReplyList/
+2016-08-29 19:21:11.9985 | url:/Subject/SubDetailTemplate
+2016-08-29 19:21:14.3837 | url:/Subject/HistoryList
+2016-08-29 19:21:14.8847 | url:/Subject/ReplyHistoryList
+2016-08-29 19:21:23.9472 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-08-29 19:21:23.9472 | DiscussionID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-08-29 19:21:23.9472 | url:/Receipt/GetReceipts
+2016-08-29 19:21:24.4473 | url:/Subject/EditorTemplate
+2016-08-29 19:21:35.6229 | Content:<p class="MsoPlainText"><span style="color: rgb(0, 198, 83);">Editasdjiajdoiasjdioasjdoasjdoiasjdoiasjdoiasjdoiasjdoaisdjoasjdoasdjoaisdj</span></p>
+2016-08-29 19:21:35.6229 | 1
+2016-08-29 19:21:36.6220 | url:/Subject/UpdateReply
+2016-08-29 19:21:50.7508 | url:/Subject/GetNoReadCount
+2016-08-29 19:21:51.1989 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:22:24.5229 | url:/Succ/Index
+2016-08-29 19:22:25.6899 | url:/Backend/BackendGuide
+2016-08-29 19:22:25.7129 | url:/Subject/Detail
+2016-08-29 19:22:26.4350 | url:/Succ/GetIndexData
+2016-08-29 19:22:26.6860 | url:/Subject/GetRightToSubjDetail/
+2016-08-29 19:22:26.7000 | url:/Subject/GetRightToSubjDetail/
+2016-08-29 19:22:26.7000 | url:/Subject/GetRightToSubjDetail/
+2016-08-29 19:22:26.7230 | url:/Subject/GetRightToSubjDetail/
+2016-08-29 19:22:26.7330 | url:/Subject/GetRightToSubjDetail/
+2016-08-29 19:22:26.8100 | url:/Subject/GetDetail/
+2016-08-29 19:22:26.8600 | url:/Subject/GetReplyList/
+2016-08-29 19:22:26.8860 | url:/Subject/HistoryList
+2016-08-29 19:22:26.9000 | url:/Backend/getCompImg
+2016-08-29 19:22:26.9000 | url:/Backend/getCompImg
+2016-08-29 19:22:26.9280 | url:/Backend/getCompImg
+2016-08-29 19:22:26.9380 | url:/Backend/getCompImg
+2016-08-29 19:22:26.9560 | url:/Backend/getCompImg
+2016-08-29 19:22:26.9680 | url:/Backend/getCompImg
+2016-08-29 19:22:26.9820 | url:/Backend/getCompImg
+2016-08-29 19:22:26.9960 | url:/Backend/getCompImg
+2016-08-29 19:22:27.1180 | url:/Subject/ReplyHistoryList
+2016-08-29 19:22:27.1870 | url:/Subject/GetRightToSubjDetail/
+2016-08-29 19:22:27.2080 | url:/Subject/GetRightToSubjDetail/
+2016-08-29 19:22:27.6870 | url:/Subject/GetRightToSubjDetail/
+2016-08-29 19:22:28.0371 | url:/Subject/GetAllCompNoReadCount
+2016-08-29 19:22:50.6974 | url:/Subject/GetNoReadCount
+2016-08-29 19:22:51.1875 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:23:27.6916 | url:/Subject/GetNoReadCount
+2016-08-29 19:23:28.1817 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:23:50.6920 | url:/Subject/GetNoReadCount
+2016-08-29 19:23:51.1760 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:24:27.6872 | url:/Subject/GetNoReadCount
+2016-08-29 19:24:28.1832 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:24:50.6936 | url:/Subject/GetNoReadCount
+2016-08-29 19:24:51.1876 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:25:27.6888 | url:/Subject/GetNoReadCount
+2016-08-29 19:25:28.1828 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:25:49.7241 | url:/Subject/GetAllCompNoReadCount
+2016-08-29 19:25:49.7551 | url:/Subject/GetNoReadCount
+2016-08-29 19:25:50.2442 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:26:27.6954 | url:/Subject/GetNoReadCount
+2016-08-29 19:26:28.1924 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:26:50.6868 | url:/Subject/GetNoReadCount
+2016-08-29 19:26:51.1808 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:27:26.6949 | url:/Subject/GetNoReadCount
+2016-08-29 19:27:27.2240 | url:/Subject/GetAllCompNoReadCount
+2016-08-29 19:27:27.6970 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:27:50.6924 | url:/Subject/GetNoReadCount
+2016-08-29 19:27:51.1804 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:28:27.6886 | url:/Subject/GetNoReadCount
+2016-08-29 19:28:28.1836 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:28:50.6969 | url:/Subject/GetNoReadCount
+2016-08-29 19:28:51.1800 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:29:27.6932 | url:/Subject/GetNoReadCount
+2016-08-29 19:29:28.1842 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:29:50.6895 | url:/Subject/GetNoReadCount
+2016-08-29 19:29:51.1776 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:30:27.6727 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:30:28.2018 | url:/Subject/GetNoReadCount
+2016-08-29 19:30:49.7951 | url:/Subject/GetAllCompNoReadCount
+2016-08-29 19:30:49.8271 | url:/Subject/GetNoReadCount
+2016-08-29 19:30:50.3111 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:31:27.6903 | url:/Subject/GetNoReadCount
+2016-08-29 19:31:28.1854 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:31:50.6857 | url:/Subject/GetNoReadCount
+2016-08-29 19:31:51.1718 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:32:26.7038 | url:/Subject/GetNoReadCount
+2016-08-29 19:32:27.1864 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:32:27.2274 | url:/Subject/GetAllCompNoReadCount
+2016-08-29 19:32:50.6887 | url:/Subject/GetNoReadCount
+2016-08-29 19:32:51.1767 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:33:27.6874 | url:/Subject/GetNoReadCount
+2016-08-29 19:33:28.1875 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:33:50.7001 | url:/Subject/GetNoReadCount
+2016-08-29 19:33:51.1971 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:34:27.6884 | url:/Subject/GetNoReadCount
+2016-08-29 19:34:28.1830 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:34:50.6890 | url:/Subject/GetNoReadCount
+2016-08-29 19:34:51.1850 | url:/Succ/GetOnlineUserCount
+2016-08-29 19:35:18.5967 | url:/Succ/IsUpdateCurrentCompID/
+2016-08-29 19:35:19.8078 | url:/Succ/IsUpdateCurrentCompID/

@@ -1,0 +1,2 @@
+﻿var SuccApp = angular.module('SuccApp', ['ngRoute', 'ui.bootstrap', 'summernote', 'angularFileUpload', 'multiselect-chosen', 'ngCookies', 'pascalprecht.translate', 'ngAnimate', 'ngClipboard', 'ngSanitize', 'ui.select','ngDragDrop']);
+var news = 1; //'ngCookies',

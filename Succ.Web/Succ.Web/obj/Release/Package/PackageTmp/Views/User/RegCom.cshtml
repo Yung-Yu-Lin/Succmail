@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null;
+    @model Succ.Common.Models.User.RegisterUserInfo 
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Succmail -- @Html.Raw(Succ.Common.Global.Succ.Sign_up)</title>
+    <link href="~/Statics/css/Registe/RegCompany.min.css" rel="stylesheet" />
+</head>
+<body class="is-loading">
+    
+    @Html.HiddenFor(model => model.UserID, new { id = "userid" })
+    @Html.HiddenFor(model => model.CompanyID, new { id = "companyID" })
+    @Html.HiddenFor(model => model.Serial, new { id = "Serial" })
+    @Html.HiddenFor(model => model.UserName, new { id = "UserName" })
+    <div id="wrapAll">
+        <div id="icon"><img src="~/Statics/img/register/logo.png" /></div>
+        @*資料流程圖*@
+        <ul style="width:95%; text-align:center;">
+            <li class="circle on"><p class="stepWord ontext">@Html.Raw(Succ.Common.Global.Succ.PersonalProfile)</p></li>
+            @*<li class="rectangle"></li>
+            <li class="circle"><p class="stepWord">@Html.Raw(Succ.Common.Global.Succ.NewGroup)</p></li>*@
+        </ul>
+        @*填寫資料的表單*@
+        <section id="main">
+            <div class="Titlefield">
+                <b style="color:#000; font-size:16px;">@Html.Raw(Succ.Common.Global.Succ.WelcomToUse)Succmail!</b>
+            </div>
+            <div class="field">
+                <label>
+                    @Html.Raw(Succ.Common.Global.Succ.Account)
+                </label>
+                <input type="text" value="@Model.UserEmail" disabled />
+            </div>
+            <div class="field">
+                <label>
+                    @Html.Raw(Succ.Common.Global.Succ.LastName)
+                    <span class="required">
+                        *
+                    </span>
+                </label>
+                <input type="text" id="lastname" placeholder="@Html.Raw(Succ.Common.Global.Succ.LastName)" />
+            </div>
+            <div class="field">
+                <label>
+                    @Html.Raw(Succ.Common.Global.Succ.Name)
+                    <span class="required">
+                        *
+                    </span>
+                </label>
+                <input type="text" id="firstname" placeholder="@Html.Raw(Succ.Common.Global.Succ.Name)" />
+            </div>
+            <div class="field">
+                <label>
+                    @if(Model.IsRegist)
+                    {
+                        @Html.Raw(Succ.Common.Global.Succ.Password)@Html.Raw("(" + Succ.Common.Global.Succ.Password_Already + ")")
+                    }
+                    else
+                    {
+                        @Html.Raw(Succ.Common.Global.Succ.Password)
+                    }
+                    <span class="required">
+                        *
+                    </span>
+                </label>
+                @if (Model.IsRegist)
+                {
+                    <input type="password" id="pwd" value="@Model.UserPassword" disabled />
+                }
+                else
+                {
+                    <input type="password" id="pwd" placeholder="@Html.Raw(Succ.Common.Global.Succ.Password)" />
+                }
+            </div>
+            <div class="field">
+                <label>
+                    @Html.Raw(Succ.Common.Global.Succ.CompanyName)
+                    <span class="required">
+                        *
+                    </span>
+                </label>
+                <input type="text" id="comp" placeholder="@Html.Raw(Succ.Common.Global.Succ.CompanyName)" />
+            </div>
+            <div class="field">
+                @*<button class="nextButton" onclick="validateCom()">@Html.Raw(Succ.Common.Global.Succ.NextStep)》</button>*@
+                <button class="nextButton" onclick="validateCom()">
+                    @Html.Raw(Succ.Common.Global.Succ.Start)Succmail 》
+                </button>
+            </div>
+        </section>
+    </div>
+    @Scripts.Render("~/bundles/regist")
+    <script>
+        if ('addEventListener' in window) {
+            window.addEventListener('load', function () { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+            document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+        }
+    </script>
+</body>
+</html>

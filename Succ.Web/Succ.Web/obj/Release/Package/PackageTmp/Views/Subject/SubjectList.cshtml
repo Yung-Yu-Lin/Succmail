@@ -1,0 +1,420 @@
+﻿@{
+    Layout = null;
+}
+<!-- 載入此css原因為，討論組可察看成員列表畫面 -->
+<link href="/Statics/css/backend/MemberSetting.css" rel="stylesheet" />
+@Styles.Render("~/SubjectList/css")
+
+<!-- Middle Content -->
+<div id="middle" class="col-md-9">
+    <h2>
+        <b>{{subject_title}}</b>
+    </h2>
+    <!-- #region 成員按鈕-->
+    <a ng-click="ShowMember()" class="member right" tooltip-placement="bottom"
+       tooltip-html-unsafe="
+        <div class='Tooltip noBreak'>
+            @Html.Raw(Succ.Common.Global.Succ.Check_Member)
+            </div>">
+        @Html.Raw(Succ.Common.Global.Succ.Member)
+    </a>
+    <!-- #endregion -->
+    <!-- #region 新增訊息-->
+    <button class="btn write-msg pull-right" title="@Html.Raw(Succ.Common.Global.Succ.New_Msg)" ng-if="Btnobj.IsShowMsgBtn" data-ng-click="openNewMsgBlock(nowDiscussion.DiscussionID,nowDiscussion.DiscussionType)">
+        <span class="glyphicon glyphicon-plus"></span> @Html.Raw(Succ.Common.Global.Succ.New_Msg)
+    </button>
+    <!-- #endregion -->
+    <!-- #region 上傳檔案-->
+    <button class="fileUpload fileUploadbtn btn pull-right" ng-if="Btnobj.IsShowFileBtn" ng-click="ShowUploadView()">
+        <span>
+            @Html.Raw(Succ.Common.Global.Succ.UploadFile)
+        </span>
+        <input class="upload" type="file" nv-file-select ng-if="Btnobj.IsShowFileBtn" uploader="File.Uploader" multiple />
+    </button>
+    <!-- #endregion -->
+    <!-- #region 建立資料夾-->
+    <div class="pull-right uploadFileDropdown" ng-if="Btnobj.IsShowFileBtn">
+        <button class="btn upload-file upload-choose" type="button" id="fileDropdown" data-toggle="dropdown">
+            <span class="caret white"></span>
+        </button>
+        <ul class="dropdown-menu CreateFolder" role="menu" aria-labelledby="fileDropdown" style="right:1.6%; margin-right:17px;">
+            <li role="presentation" role="menu" tabindex="-1" ng-click="CreateFolder()">
+                <span class="glyphicon glyphicon-folder-close white" style="font-size:20px;margin-top:3px;margin-left:10px;"></span>
+                <span style="margin-left:10px;">
+                    @Html.Raw(Succ.Common.Global.Succ.Create)@Html.Raw(Succ.Common.Global.Succ.Folder)
+                </span>
+            </li>
+        </ul>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Tab Head /進行中、已完成、檔案區 -->
+    <div id="tab_content_head">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="tab-continue tab-li active">
+                <div class="a_type" href="#continue" role="tab" data-toggle="tab" ng-click="SelectRunning()">
+                    <span class="glyphicon glyphicon-pencil"></span> @Html.Raw(Succ.Common.Global.Succ.Running)
+                </div>
+            </li>
+            <li class="tab-finish tab-li">
+                <div class="a_type" href="#finish" role="tab" data-toggle="tab" ng-click="SeleceFinish()">
+                    <span class="glyphicon glyphicon-ok"></span> @Html.Raw(Succ.Common.Global.Succ.Finished)
+                </div>
+            </li>
+            <li class="tab-file tab-li">
+                <div class="a_type" href="#file" role="tab" data-toggle="tab" ng-click="SelectFile()">
+                    <span class="glyphicon glyphicon-paperclip"></span> @Html.Raw(Succ.Common.Global.Succ.FileShare)
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Tab Body -->
+    <div id="tab_content_body" class="tab-content">
+        <!--  進行中 -->
+        <div class="tab-pane active" id="continue">
+            <!-- #region 條件列 -->
+            <div id="tab_content_bar">
+                <!-- 排序 -->
+                <div class="btn-group" filter-sort>
+                </div>
+                <!-- 篩選 -->
+                <div class="btn-group" screening discid="{{discussionid}}" userid="{{userid}}" disctype="general">
+                </div>
+                <!--篩選條件標籤 -->
+                <div class="condition-result" filter-label>
+                </div>
+                <!-- 時程表 -->
+                <div class="calendar condition-btn pull-right">
+                    <a class="a_type" href="#/calendar"><span class="glyphicon glyphicon-calendar"></span> @Html.Raw(Succ.Common.Global.Succ.Schedule)</a>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region  文章列表 -->
+            <div id="tab_content_data">
+                <table class="data-table" ng-repeat="data in datalist_continue | filter:FilterPara | filter:FilterDate | filter:FilterModify | orderBy:predicate:reverse">
+                    <tr class="data-table-tr {{data.IsRead === false?'noread' :''}}">
+                        <!-- #region 緊急程度 -->
+                        <td class="type" ng-switch on="data.SubjectColor">
+                            <div class="div-type-0" ng-switch-when="3" title="@Html.Raw(Succ.Common.Global.Succ.Urgent)">&nbsp;</div>
+                            <div class="div-type-1" ng-switch-when="2" title="@Html.Raw(Succ.Common.Global.Succ.Pressing)">&nbsp;</div>
+                            <div class="div-type-2" ng-switch-when="1" title="@Html.Raw(Succ.Common.Global.Succ.Important)">&nbsp;</div>
+                            <div class="div-type-3" ng-switch-when="0" title="@Html.Raw(Succ.Common.Global.Succ.Unmarked)">&nbsp;</div>
+                        </td>
+                        <!-- #endregion -->
+                        <!-- #region 我的訊息 -->
+                        <td class="my-msg" ng-switch on="data.IsIns">
+                            <span class="glyphicon glyphicon-user my-true" ng-switch-when="true" ng-click="RemoveMyMsg(data.SubjectID)"
+                                  tooltip-placement="bottom"
+                                  tooltip-html-unsafe="
+                            <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.HideFromMyMailBox)
+                            </div>">
+                        </span>
+                            <span class="glyphicon glyphicon-user my-false" ng-switch-when="false" ng-click="AddMyMsg(data.SubjectID)"
+                                  tooltip-placement="bottom"
+                                  tooltip-html-unsafe="
+                            <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.AddMyMailBox)
+                            </div>">
+                        </span>
+                        </td>
+                        <!-- #endregion -->
+                        <!-- #region 收藏 -->
+                        <td class="collect" ng-switch on="data.IsFav">
+                            <span class="glyphicon glyphicon-star collect-true" ng-switch-when="true" ng-click="RemoveFav(data.SubjectID)"
+                                  tooltip-placement="bottom"
+                                  tooltip-html-unsafe="
+                            <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.RemoveFromFavorite)
+                            </div>">
+                        </span>
+                            <span class="glyphicon glyphicon-star collect-false" ng-switch-when="false" ng-click="AddFav(data.SubjectID)"
+                                  tooltip-placement="bottom"
+                                  tooltip-html-unsafe="
+                            <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.Add)@Html.Raw(Succ.Common.Global.Succ.FavBox)
+                            </div>">
+                        </span>
+                        </td>
+                        <!-- #endregion -->
+                        <!-- #region 歸檔/退回 主題Ttile -->
+                        <td class="title" ng-switch on="data.Progress">
+                            <a class="list-title {{data.IsRead === false?'a_noRead':'a_type'}}" ng-click="ShowSubject(companyid, userid, data.SubjectID)">{{data.SubjectTitle}}</a> &nbsp;
+                            <i class="fa fa-undo refuse" ng-switch-when="5" title="@Html.Raw(Succ.Common.Global.Succ.Back)"></i>
+                            <i class="glyphicon glyphicon-check" style="color:green;" ng-switch-when="2"
+                               tooltip-placement="bottom"
+                               tooltip-html-unsafe="
+                            <div class='Tooltup' style='margin-bottom:1px;'>
+                                @Html.Raw(Succ.Common.Global.Succ.Applyed)
+                            </div>
+                            <div style='border-bottom:1px solid white;'></div>
+                            <div class='Tooltip'>
+                                {{data.ApplyerName}}
+                            </div>
+                            <div class='Tooltip'>
+                                {{data.ApplyCloseOn | converdate}}
+                            </div>"></i>
+                        </td>
+                        <!-- #endregion -->
+                        <!-- #region 新視窗 -->
+                        <td class="blank">
+                            <a href="/Spage/{{companyid}}/{{userid}}/{{data.SubjectID}}/3" target="_blank">
+                                <span class="glyphicon glyphicon-new-window"
+                                      tooltip-placement="bottom"
+                                      tooltip-html-unsafe="
+                                <div class='Tooltip'>
+                                    @Html.Raw(Succ.Common.Global.Succ.Open_New)
+                                </div>">
+                            </span>
+                            </a>
+                        </td>
+                        <!-- #endregion -->
+                        <!-- #region 日期 -->
+                        <td class="date">
+                            <label ng-bind="ConvertPlanDiff(data.PlanCloseOn, data.Progress, 0)"
+                                   ng-if="data.PlanDiff <= 0" style="color:red;"
+                                   tooltip-placement="bottom"
+                                   tooltip-html-unsafe="
+                            <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.Has_More_PlanClosedOn)
+                                {{ConvertPlanDiff(data.PlanCloseOn, data.Progress, 0)}}
+                                @Html.Raw(Succ.Common.Global.Succ.Day)
+                            </div>">
+                        </label>
+                            <label ng-bind="ConvertPlanDiff(data.PlanCloseOn, data.Progress, 1)"
+                                   ng-if="data.PlanDiff > 0"
+                                   tooltip-placement="bottom"
+                                   tooltip-html-unsafe="
+                            <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.From_PlanClosedOn)
+                            </div>
+                            <br />
+                            <div style='color:white;font-size:14px;'>
+                                @Html.Raw(Succ.Common.Global.Succ.Remain)
+                                {{ConvertPlanDiff(data.PlanCloseOn, data.Progress, 1)}}
+                                @Html.Raw(Succ.Common.Global.Succ.Day)
+                            </div>">
+                        </label>
+                        </td>
+                        <!-- #endregion -->
+                        <!-- #region 發文者-->
+                        <td class="sender">
+                            <p tooltip-placement="bottom"
+                               tooltip-html-unsafe="
+                            <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.Creator)
+                            </div>
+                            <div style='border-bottom:1px solid white;'></div>
+                            <div class='Tooltip'>
+                                {{data.CreatorName}}
+                            </div>
+                            <div class='Tooltip'>
+                                {{data.CreatedOn | converdate}}
+                            </div>">
+                            {{data.CreatorName}}
+                        </p>
+                            <label>{{data.CreatedOn | converdate}}</label>
+                        </td>
+                        <!-- #endregion -->
+                        <!-- #region 回覆 -->
+                        <td class="respond">
+                            <div ng-show="data.ReplyCount > 0">
+                                <h2 class="fa fa-comment"></h2>
+                                <label tooltip-placement="bottom"
+                                       tooltip-html-unsafe="
+                                <div class='Tooltip noBreak'>
+                                    @Html.Raw(Succ.Common.Global.Succ.Total2)
+                                    {{data.ReplyCount}}
+                                    @Html.Raw(Succ.Common.Global.Succ.Reply)
+                                </div>">
+                                {{data.ReplyCount}}
+                            </label>
+                            </div>
+                        </td>
+                        <!-- #endregion -->
+                        <!-- #region 最後回覆人 -->
+                        <td class="lastrespond">
+                            <p ng-show="data.ModifierName != ''"
+                               tooltip-placement="bottom"
+                               tooltip-html-unsafe="
+                            <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.New_Replier)
+                            </div>
+                            <div style='border-bottom:1px solid white;'></div>
+                            <div class='Tooltip'>
+                                {{data.ModifierName}}
+                            </div>
+                            <div class='Tooltip'>
+                                {{data.ModifiedOn | converdate}}
+                            </div>">
+                            {{data.ModifierName}}
+                        </p>
+                            <label ng-show="data.ModifierName != ''">{{data.ModifiedOn | converdate}}</label>
+                        </td>
+                        <!-- #endregion -->
+                    </tr>
+                </table>
+            </div>
+            <!-- #endregion -->
+        </div>
+        <!-- #region 完成區 -->
+        <div class="tab-pane" id="finish">
+            <div ng-if="IsLoadingFinish" ng-include="FinishUrl" ng-controller="FinishMessageCtrl"></div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 檔案區 -->
+        <div class="tab-pane" id="file">
+            <div ng-if="IsLoadingFile" ng-include="FileUrl" ng-controller="DiscFileCtrl"></div>
+        </div>
+        <!-- #endregion -->
+    </div>
+    <!-- #endregion -->
+    <!-- #region 垃圾桶 -->
+    <button class="btn btn-link area pull-right" data-ng-click="trash()">
+        <span class="glyphicon glyphicon-trash"></span> @Html.Raw(Succ.Common.Global.Succ.Recycle)
+    </button>
+    <!-- #endregion -->
+    <!-- #region 匯出 -->
+    <button class="btn btn-link area pull-right" ng-click="ExportSubjList()">
+        <span class="glyphicon glyphicon-share"></span> @Html.Raw(Succ.Common.Global.Succ.Export)
+    </button>
+    <!-- #endregion -->
+    <!-- #region 成員名單-->
+    <div class="modal fade bs-Member-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width:968px">
+            <div class="modal-content">
+                <div class="modal-body" style="padding:0;">
+                    <div id="memberList">
+                        <!--新增成員-->
+                        <div class="memberAdd">
+
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class="active AddNewMember" ng-click="AddNewMember()">
+                                    <a href="#">@Html.Raw(Succ.Common.Global.Succ.Added)@Html.Raw(Succ.Common.Global.Succ.Non_employees)</a>
+                                </li>
+                                <li role="presentation" class="AddMember" ng-click="AddMember()">
+                                    <a href="#">@Html.Raw(Succ.Common.Global.Succ.Added)@Html.Raw(Succ.Common.Global.Succ.CompanyMember)</a>
+                                </li>
+                            </ul>
+
+                            <div class="memberAddNew">
+
+                                <div class="AddNewPerson">
+
+                                    <div ng-style="InvitePhoto" class="AddNewPersonPhoto" ng-bind="photoTxt"></div>
+                                    <div class="AddNewPersonName">
+                                        <input class="lastName" ng-change="lastNameChange()" type="text" placeholder="@Html.Raw(Succ.Common.Global.Succ.LastName)" ng-model="InviteLastName" />
+                                        <input class="firstName" ng-change="firstNameChange()" type="text" placeholder="@Html.Raw(Succ.Common.Global.Succ.FirstName)" ng-model="InviteFirstName" />
+                                    </div>
+                                    <div class="AddNewPersonEmail">
+                                        <input class="AddNewEmail" type="email" placeholder="E-mail" ng-model="InviteEmail" />
+                                    </div>
+
+                                </div>
+
+                                <div class="confirm">
+                                    <button class="btn-ok btn" ng-click="ConfirmInvite()">
+                                        @Html.Raw(Succ.Common.Global.Succ.Invite)
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div class="memberAddOld hideObj">
+
+                                <div class="memberSearchArea">
+
+                                    <input ng-model="CompUserSearch" class="memberSearch" type="text" placeholder="@Html.Raw(Succ.Common.Global.Succ.EnterNameOrEmailToSearch)" />
+                                    <div class="memberSearchIcon">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="memberUnAddTitle">
+                                    未加入此討論組人員
+                                </div>
+
+                                <div class="memberUnAddList">
+
+                                    <div class="memberGroup" ng-if="com.CompMember.length > 0" ng-repeat="com in ComMember">
+
+                                        <div class="memberGroupTitle" ng-click="com.IsShowDisc = !com.IsShowDisc;memberUp = !memberUp;memberDown = !memberDown;" ng-init="memberUp= true;">
+                                            <label>
+                                                {{com.DepartmentName}}
+                                                <i ng-class="{'fa fa-caret-down':memberUp,'fa fa-caret-up':memberDown}"></i>
+                                            </label>
+                                            <!--增加該討論組下所有的成員-->
+                                            <button ng-click="memberAllAdd(com.DepartmentID)" class="memberAddAllIn">@Html.Raw(Succ.Common.Global.Succ.All)@Html.Raw(Succ.Common.Global.Succ.Add)</button>
+                                        </div>
+                                        <!--各部門下的成員-->
+                                        <div class="memberListMember" ng-repeat="item in com.CompMember | filter:CompUserSearch" ng-hide="com.IsShowDisc">
+                                            <!--大頭貼是系統亂數決定的樣式-->
+                                            <div ng-if="!item.isPhotoImg" class="memberPhoto" ng-style="PhotoStyle(item.PhotoCss)" ng-bind="item.LastName"></div>
+                                            <!--大頭貼是個人上傳的照片-->
+                                            <div ng-if="item.isPhotoImg" class="memberPhoto">
+                                                <img class="image memberImage" src="/Backend/getUserImg/?UserID={{item.UserID}}" />
+                                            </div>
+                                            <div class="memberName" ng-bind="item.FullName"></div>
+                                            <div class="memberEmail" ng-bind="item.UserEmail"></div>
+                                            <!--單獨加入個別的成員-->
+                                            <button ng-click="memberAdd(com.DepartmentID,item.UserID)" class="memberAddIn">@Html.Raw(Succ.Common.Global.Succ.Add)</button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!--目前成員名單-->
+                        <div class="memberInGroup">
+
+                            <div class="memberListAll">
+
+                                <div class="AllMember">
+
+                                    <label>@Html.Raw(Succ.Common.Global.Succ.CurrentMemberList)</label>
+                                    <div class="memberTotal">
+                                        {{MemberNum}}<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="memberList">
+
+                                    <div class="memberListMember" ng-repeat="member in MemberList">
+                                        <!--大頭貼是系統亂數決定的樣式-->
+                                        <div ng-if="!member.isPhotoImg" class="memberPhoto" ng-style="PhotoStyle(member.PhotoCss)" ng-bind="member.LastName"></div>
+                                        <!--大頭貼是個人上傳的照片-->
+                                        <div ng-if="member.isPhotoImg" class="memberPhoto">
+                                            <img class="image memberImage" src="/Backend/getUserImg/?UserID={{member.UserID}}" />
+                                        </div>
+                                        <div class="memberName">
+                                            <span ng-bind="member.FullName"></span>
+                                            <span ng-if="!member.isRegister" style="color:lightgray;">邀請中</span>
+                                        </div>
+                                        <div class="memberEmail" ng-bind="member.UserEmail"></div>
+                                        <div class="memberDepartment" ng-bind="member.DepartmentName"></div>
+                                        @*<button class="memberRemove" ng-click="RemoveMember(member.DiscID,member.UserID,member)">@Html.Raw(Succ.Common.Global.Succ.Remove)</button>*@
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="text-align:center;cursor:pointer;" ng-click="CloseMember()">
+                    <span>
+                        @Html.Raw(Succ.Common.Global.Succ.Close)
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->    
+</div>
+
