@@ -1,0 +1,205 @@
+﻿@{
+    Layout = null;
+}
+<!-- #region 實作jqGrid所需的js & css檔案 -->
+@Scripts.Render("~/jqGrid/script")
+<link href="~/Statics/css/backend/record.css" rel="stylesheet" />
+<!-- #endregion -->
+<div id="operation" ng-controller="OperateRecord">
+    <!-- #region 操作標題 -->
+    <h2>
+        <b>@Html.Raw(Succ.Common.Global.Succ.operateRec)</b>
+    </h2>
+    <!-- #endregion -->
+    <div id="operate">
+        <div>
+            <section>
+                <!-- #region 過濾按鈕 -->
+                <button id="OperateFilter" ng-class="DropDownClass()" ng-click="DropDownFilter()">
+                    <label ng-if="!OperateManage.IsClickFilter">@Html.Raw(Succ.Common.Global.Succ.OpenFilter)</label>
+                    <label ng-if="OperateManage.IsClickFilter">@Html.Raw(Succ.Common.Global.Succ.CloseFilter)</label>
+                    <span class="caret"></span>
+                </button>
+                <!-- #endregion -->
+                <!-- #region 無任何過濾條件狀態 -->
+                <span class="indeed_label filterLabel w3-card w3-pale-green" ng-if="NoFilter()">
+                    <label>@Html.Raw(Succ.Common.Global.Succ.OperTime) : @Html.Raw(Succ.Common.Global.Succ.Within_a_month)</label>
+                    <i class="fa fa-times" data-type="indeed"></i>
+                </span>
+                <!-- #endregion -->
+                <!-- #region 有過濾開始日期 -->
+                <span class="start_label filterLabel w3-card w3-pale-green" ng-if="SDateFilter()">
+                    <label>@Html.Raw(Succ.Common.Global.Succ.Start_Date):</label>
+                    <label ng-bind="OperateManage.StartDate"></label>
+                    <i class="fa fa-times" data-type="sdate" ng-click="RemoveSDate()"></i>
+                </span>
+                <!-- #endregion -->
+                <!-- #region 有過濾結束日期 -->
+                <span class="end_label filterLabel w3-card w3-pale-green" ng-if="EDateFilter()">
+                    <label>@Html.Raw(Succ.Common.Global.Succ.End_Date):</label>
+                    <label ng-bind="OperateManage.EndDate"></label>
+                    <i class="fa fa-times" data-type="edate" ng-click="RemoveEDate()"></i>
+                </span>
+                <!-- #endregion -->
+                <!-- #region 有過濾人員 -->
+                <span class="user_label filterLabel w3-card w3-pale-green" ng-if="UserFilter()">
+                    <label>@Html.Raw(Succ.Common.Global.Succ.Operater):</label>
+                    <label ng-bind="OperateManage.FilterUser.UserName"></label>
+                    <i class="fa fa-times" data-type="user" ng-click="RemoveUser()"></i>
+                </span>
+                <!-- #endregion -->
+                <!-- #region 有過濾討論組 -->
+                <span class="user_label filterLabel w3-card w3-pale-green" ng-if="DiscFilter()">
+                    <label>@Html.Raw(Succ.Common.Global.Succ.Discussion):</label>
+                    <label ng-bind="OperateManage.FilterDisc.DiscName"></label>
+                    <i class="fa fa-times" data-type="user" ng-click="RemoveDisc()"></i>
+                </span>
+                <!-- #endregion -->
+            </section>
+            <section class="w3-animate-bottom" ng-style="OperateManage.FilterStyle" ng-if="OperateManage.IsShowFilter">
+                <!-- #region 開始日期 -->
+                <div>
+                    @Html.Raw(Succ.Common.Global.Succ.Start_Date)
+                    <input type="date" ng-model="OperateManage.StartDate" style="line-height:23px;" class="sdate filter_data form-control" />
+                </div>
+                <!-- #endregion -->
+                <!-- #region 結束日期 -->
+                <div>
+                    @Html.Raw(Succ.Common.Global.Succ.End_Date)
+                    <input type="date" ng-model="OperateManage.EndDate" style="line-height:23px;" class="edate filter_data form-control" />
+                </div>
+                <!-- #endregion -->
+                <div style="margin:15px 0 15px 0;">
+                    <hr />
+                </div>
+                <!-- #region 過濾人員 -->
+                <div>
+                    @Html.Raw(Succ.Common.Global.Succ.UserName)
+                    <select id="FilterUser"
+                            name="FilterUser"
+                            ng-options="option.UserName for option in OperateManage.UserList"
+                            ng-model="OperateManage.FilterUser"
+                            style="width:100%;height:40px;"></select>
+                </div>
+                <!-- #endregion -->
+                <!-- #region 過濾討論組 -->
+                <div>
+                    @Html.Raw(Succ.Common.Global.Succ.Discussion)
+                    <select id="FilterDisc"
+                            name="FilterDisc"
+                            ng-options="option.DiscName for option in OperateManage.DiscList"
+                            ng-model="OperateManage.FilterDisc"
+                            style="width:100%;height:40px;"></select>
+                </div>
+                <!-- #endregion -->
+            </section>
+            @*<div class="filter_bar" style="margin-left:40px;">
+
+                    <div class="filter_tag">
+                        @if (@ViewBag.sDate != null)
+                        {
+                            if (@ViewBag.eDate != null)
+                            {
+                                <span class="start_label"><label>@Html.Raw(Succ.Common.Global.Succ.Start_Date) : @ViewBag.sDate</label> @Html.Raw(Succ.Common.Global.Succ.to) <label class="end_label">@ViewBag.eDate</label><i class="fa fa-times" data-type="rang"></i></span>
+                            }
+                            else
+                            {
+                                <span class="start_label"><label>@Html.Raw(Succ.Common.Global.Succ.Start_Date) : @ViewBag.sDate</label><i class="fa fa-times" data-type="sdate"></i></span>
+                            }
+                        }
+                        else
+                        {
+                            if (@ViewBag.eDate != null)
+                            {
+                                <span class="end_label"><label>@Html.Raw(Succ.Common.Global.Succ.End_Date) : @ViewBag.eDate</label><i class="fa fa-times" data-type="edate"></i></span>
+                            }
+                            else
+                            {
+                                <span class="start_label"><label>@Html.Raw(Succ.Common.Global.Succ.OperTime) : @Html.Raw(Succ.Common.Global.Succ.Within_a_month)</label><i class="fa fa-times" data-type="rang"></i></span>
+                            }
+                        }
+
+                        @if (@ViewBag.userfilter != null)
+                        {
+                            <span class="user_label"><label>@Html.Raw(Succ.Common.Global.Succ.UserName) : @ViewBag.userfilter</label><i class="fa fa-times" data-type="user"></i></span>
+                        }
+
+                        @if (@ViewBag.discfilter != null)
+                        {
+                            <span class="disc_label"><label>@Html.Raw(Succ.Common.Global.Succ.Discussion) : @ViewBag.discfilter</label><i class="fa fa-times" data-type="disc"></i></span>
+                        }
+                    </div>
+                </div>*@
+        </div>
+        <!-- #region 操作紀錄 -->
+        <div class="timearea">
+            <h2 ng-if="OperateManage.OperationList.length <= 0">
+            </h2>
+            <div class="aday" ng-repeat="item in OperateManage.OperationList">
+                <div class="circle" title="{{item.Date}}">
+                    <p class="day" ng-bind="item.Date"></p>
+                </div>
+                <ul class="timeline">
+                    <!-- #region 內容區塊 -->
+                    <li>
+                        <div class="infobox">
+                            <i class="fa fa-circle-o spot" title="{{item.Date}}"></i>
+                            <span class="time" ng-bind="item.Time"></span>
+                            <span class="photo" ng-style="PhotoStyle(item.PhotoColor)" ng-bind="item.LastName"></span>
+                            <span class="name" ng-bind="NameConvert(item.LastName, item.FirstName)"></span>
+                            <span class="action" ng-bind="item.Action"></span>
+                            <span class="disc pull-right">
+                                <b ng-bind="item.DiscName"></b>
+                            </span>
+                            <!-- #region 詳細內容 -->
+                            <div class="detail">
+                                <span><b ng-bind="item.Title"></b></span>
+                                <br />
+                                <div class="w3-animate-zoom" ng-if="item.IsShowDetail">
+                                    <span ng-bind-html="item.Content"></span>
+                                    <br />
+                                    <!-- #region 檔案區塊 -->
+                                    <div ng-repeat="Attitem in item.logAtt">
+                                        <!-- #region 檔案類別 -->
+                                        <div ng-class="ConvertFileType(Attitem.FileType)" style="display:inline-block;vertical-align:bottom;"></div>
+                                        <!-- #endregion -->
+                                        <!-- #region 檔案資訊 -->
+                                        <a style="cursor:pointer;vertical-align:super;">
+                                            <span ng-click="GoogleDoc(Attitem.AttID)" ng-bind="Attitem.FileName"></span>
+                                            <span>&nbsp;&nbsp;</span>
+                                            <span ng-bind="FileSizeConvert(Attitem.Size)"></span>
+                                        </a>
+                                        <span>&nbsp;&nbsp;</span>
+                                        <a style="cursor:pointer;vertical-align:super;">
+                                            <span ng-click="RecordDataDownload(Attitem.AttID)">
+                                                @Html.Raw(Succ.Common.Global.Succ.Download)
+                                            </span>
+                                        </a>
+                                        <!-- #endregion -->
+                                        <br />
+                                    </div>
+                                    <!-- #endregion -->
+                                </div>
+                                <!-- #region 開啟更多的按鈕 -->
+                                <button class="MoreDetail w3-btn w3-large w3-khaki" ng-click="OpenDetail(item.SysLogId)" style="float:right;">
+                                    <span ng-if="item.IsShowDetail">
+                                        @Html.Raw(Succ.Common.Global.Succ.Close)
+                                        @Html.Raw(Succ.Common.Global.Succ.More)
+                                    </span>
+                                    <span ng-if="!item.IsShowDetail">
+                                        @Html.Raw(Succ.Common.Global.Succ.Open)
+                                        @Html.Raw(Succ.Common.Global.Succ.More)
+                                    </span>
+                                </button>
+                                <!-- #endregion -->
+                            </div>
+                            <!-- #endregion -->
+                        </div>
+                    </li>
+                    <!-- #endregion -->
+                </ul>
+            </div>
+        </div>
+        <!-- #endregion -->
+    </div>
+</div>

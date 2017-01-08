@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebTest Name="WebTest1" Id="4be6c7e5-da50-4656-9a82-a3b370bf9a7a" Owner="" Priority="2147483647" Enabled="True" CssProjectStructure="" CssIteration="" Timeout="0" WorkItemIds="" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" Description="" CredentialUserName="" CredentialPassword="" PreAuthenticate="True" Proxy="default" StopOnError="False" RecordedResultFile="WebTest1.2deff907-ea88-4fc7-b99a-8cdc2a290763.rec.webtestresult" ResultsLocale="">
+  <Items>
+    <Request Method="GET" Guid="50c51d2a-7c09-4346-845c-b2ffa8db00f0" Version="1.1" Url="http://210.61.91.126/" ThinkTime="10" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False" />
+    <Request Method="POST" Guid="25d0d722-642f-401f-93b0-3f48d8f0f2a8" Version="1.1" Url="http://210.61.91.126/Home/Login" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="*/*" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://210.61.91.126/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="t" Value="1440984401656" RecordedValue="1440984401656" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+      <FormPostHttpBody>
+        <FormPostParameter Name="Email" Value="rd03@458.com.tw" RecordedValue="rd03@458.com.tw" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="PassWord" Value="4a332001" RecordedValue="4a332001" CorrelationBinding="" UrlEncode="True" />
+      </FormPostHttpBody>
+    </Request>
+    <Request Method="GET" Guid="afa767a6-8c5d-42a2-885c-0cefa9bc865f" Version="1.1" Url="http://210.61.91.126/Succ/Index" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <DependentRequests>
+        <Request Method="GET" Guid="b3be6b16-d4aa-4e4f-a2df-df4aa1eba539" Version="1.1" Url="http://210.61.91.126/Backend/getCompImg?CompID={{CurrentCompany.CompanyID}}&amp;t=0" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+          <Headers>
+            <Header Name="Referer" Value="http://210.61.91.126/Succ/Index" />
+          </Headers>
+        </Request>
+        <Request Method="GET" Guid="f0e79114-48cd-4065-a82c-050e9bd62744" Version="1.1" Url="http://210.61.91.126/remind.mp3" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+          <Headers>
+            <Header Name="Accept" Value="*/*" />
+            <Header Name="Referer" Value="http://210.61.91.126/Succ/Index" />
+            <Header Name="Pragma" Value="getIfoFileURI.dlna.org" />
+          </Headers>
+        </Request>
+        <Request Method="GET" Guid="5cc259cc-8861-44eb-b3de-75c72c852730" Version="1.1" Url="http://210.61.91.126/Statics/fonts/glyphicons-halflings-regular.eot" ThinkTime="1" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+          <Headers>
+            <Header Name="Referer" Value="http://210.61.91.126/Succ/Index" />
+          </Headers>
+          <QueryStringParameters>
+            <QueryStringParameter Name="" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+        <Request Method="GET" Guid="f738ea7a-7495-4721-ba74-cb33eb3c579d" Version="1.1" Url="http://210.61.91.126/Succ/GetIndexData" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+          <Headers>
+            <Header Name="Accept" Value="application/json, text/plain, */*" />
+            <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+            <Header Name="Referer" Value="http://210.61.91.126/Succ/Index" />
+          </Headers>
+          <QueryStringParameters>
+            <QueryStringParameter Name="t" Value="1440984403388" RecordedValue="1440984403388" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </DependentRequests>
+      <Headers>
+        <Header Name="Referer" Value="http://210.61.91.126/" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam591.t" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;t=" />
+            <RuleParameter Name="EndsWith" Value=" " />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+    </Request>
+    <Request Method="GET" Guid="1fe9080c-4dd8-44e6-a168-a8d48013c54f" Version="1.1" Url="http://210.61.91.126/Succ/MyBox" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="application/json, text/plain, */*" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="aea811a6-d0fe-4655-8b48-a5dcd3c5edee" Version="1.1" Url="http://210.61.91.126/signalr/negotiate" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Content-Type" Value="application/json; charset=UTF-8" />
+        <Header Name="Accept" Value="text/plain, */*; q=0.01" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="clientProtocol" Value="1.4" RecordedValue="1.4" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="connectionData" Value="%5B%7B%22name%22%3A%22mainconnection%22%7D%5D" RecordedValue="%5B%7B%22name%22%3A%22mainconnection%22%7D%5D" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="_" Value="1440984401996" RecordedValue="1440984401996" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="875ed4bf-8fe1-4a87-a0c1-aa76e5a09094" Version="1.1" Url="http://210.61.91.126/Search/GetUserData/" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="application/json, text/plain, */*" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="CompanyID" Value="af00535b-7a92-4b7b-9964-bd3a02823718" RecordedValue="af00535b-7a92-4b7b-9964-bd3a02823718" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="71576a64-724e-43e9-b599-a5722203456e" Version="1.1" Url="http://210.61.91.126/Backend/getCompImg" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="CompID" Value="af00535b-7a92-4b7b-9964-bd3a02823718" RecordedValue="af00535b-7a92-4b7b-9964-bd3a02823718" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="t" Value="0" RecordedValue="0" CorrelationBinding="{{QueryStringParam591.t}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="ceb82ab6-e0dc-4ad9-a718-3ae6d7ac1e02" Version="1.1" Url="http://210.61.91.126/Backend/getCompImg" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="CompID" Value="af00535b-7a92-4b7b-9964-bd3a02823718" RecordedValue="af00535b-7a92-4b7b-9964-bd3a02823718" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="a49950d8-0f03-43f6-9c8a-e20af2eb5802" Version="1.1" Url="http://210.61.91.126/Subject/GetMyBox/" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="application/json, text/plain, */*" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="UserID" Value="c0bd0b72-fb5e-4d93-9c7e-8882c408dd22" RecordedValue="c0bd0b72-fb5e-4d93-9c7e-8882c408dd22" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="CompanyID" Value="af00535b-7a92-4b7b-9964-bd3a02823718" RecordedValue="af00535b-7a92-4b7b-9964-bd3a02823718" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="fcf2fb9f-c736-4ae7-bb0e-997e82d83ddb" Version="1.1" Url="http://210.61.91.126/Subject/GetCompanyUserList/" ThinkTime="4" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="application/json, text/plain, */*" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="CompanyID" Value="af00535b-7a92-4b7b-9964-bd3a02823718" RecordedValue="af00535b-7a92-4b7b-9964-bd3a02823718" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="61edad2c-3b2d-41e3-b08b-82963b58d6f8" Version="1.1" Url="http://210.61.91.126/Attatch/getImg/" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <QueryStringParameters>
+        <QueryStringParameter Name="CompanyId" Value="af00535b-7a92-4b7b-9964-bd3a02823718" RecordedValue="af00535b-7a92-4b7b-9964-bd3a02823718" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="FileName" Value="174e0298-7afe-44f8-ab05-d3e1a2b21d04.jpg" RecordedValue="174e0298-7afe-44f8-ab05-d3e1a2b21d04.jpg" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="d0c251cb-8acf-43b6-bcb2-4d468aeb0f7a" Version="1.1" Url="http://210.61.91.126/signalr/connect" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <QueryStringParameters>
+        <QueryStringParameter Name="transport" Value="webSockets" RecordedValue="webSockets" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="clientProtocol" Value="1.4" RecordedValue="1.4" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="connectionToken" Value="w%2FuEsHX122gk2suT66XhBfw5g%2BkQT6Wlmioq776qVL2FEzdk0R%2Be8uyM7JU3bkzBmHvM8A1iY1kg8yQWg0d1hlARbBHbzSkeyx3yaPQt05hY3Nx5Jozv%2BL4wRnUaurX88tgwvm3N5eu22m73ONee3G2bJ1gIPQNg09LPSgCqltJxR4J2J7FCcUWJni%2BjbyC6" RecordedValue="w%2FuEsHX122gk2suT66XhBfw5g%2BkQT6Wlmioq776qVL2FEzdk0R%2Be8uyM7JU3bkzBmHvM8A1iY1kg8yQWg0d1hlARbBHbzSkeyx3yaPQt05hY3Nx5Jozv%2BL4wRnUaurX88tgwvm3N5eu22m73ONee3G2bJ1gIPQNg09LPSgCqltJxR4J2J7FCcUWJni%2BjbyC6" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="connectionData" Value="%5B%7B%22name%22%3A%22mainconnection%22%7D%5D" RecordedValue="%5B%7B%22name%22%3A%22mainconnection%22%7D%5D" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="tid" Value="6" RecordedValue="6" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="5158537a-1b54-4f37-bd31-4f9fae16963b" Version="1.1" Url="http://210.61.91.126/Statics/fonts/fontawesome-webfont.eot" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="c564e3e0-956e-47ec-87cf-b00e42985188" Version="1.1" Url="http://210.61.91.126/signalr/start" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Content-Type" Value="application/json; charset=UTF-8" />
+        <Header Name="Accept" Value="text/plain, */*; q=0.01" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="transport" Value="webSockets" RecordedValue="webSockets" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="clientProtocol" Value="1.4" RecordedValue="1.4" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="connectionToken" Value="w%2FuEsHX122gk2suT66XhBfw5g%2BkQT6Wlmioq776qVL2FEzdk0R%2Be8uyM7JU3bkzBmHvM8A1iY1kg8yQWg0d1hlARbBHbzSkeyx3yaPQt05hY3Nx5Jozv%2BL4wRnUaurX88tgwvm3N5eu22m73ONee3G2bJ1gIPQNg09LPSgCqltJxR4J2J7FCcUWJni%2BjbyC6" RecordedValue="w%2FuEsHX122gk2suT66XhBfw5g%2BkQT6Wlmioq776qVL2FEzdk0R%2Be8uyM7JU3bkzBmHvM8A1iY1kg8yQWg0d1hlARbBHbzSkeyx3yaPQt05hY3Nx5Jozv%2BL4wRnUaurX88tgwvm3N5eu22m73ONee3G2bJ1gIPQNg09LPSgCqltJxR4J2J7FCcUWJni%2BjbyC6" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="connectionData" Value="%5B%7B%22name%22%3A%22mainconnection%22%7D%5D" RecordedValue="%5B%7B%22name%22%3A%22mainconnection%22%7D%5D" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="_" Value="1440984401997" RecordedValue="1440984401997" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="bfa9ae3b-b4c0-400f-a411-284430a6d5fd" Version="1.1" Url="http://210.61.91.126/User/userList" ThinkTime="2" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="application/json, text/javascript, */*; q=0.01" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="6f532fb5-b5cf-4632-a7e3-fc8a45697efc" Version="1.1" Url="http://210.61.91.126/User/userList" ThinkTime="2" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="application/json, text/javascript, */*; q=0.01" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+    </Request>
+    <Request Method="POST" Guid="85f6aa32-bce8-4710-bb52-0e2734192fa1" Version="1.1" Url="http://210.61.91.126/signalr/abort" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Accept" Value="text/plain, */*; q=0.01" />
+        <Header Name="X-Requested-With" Value="XMLHttpRequest" />
+        <Header Name="Referer" Value="http://210.61.91.126/mybox" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="transport" Value="webSockets" RecordedValue="webSockets" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="clientProtocol" Value="1.4" RecordedValue="1.4" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="connectionToken" Value="w%2FuEsHX122gk2suT66XhBfw5g%2BkQT6Wlmioq776qVL2FEzdk0R%2Be8uyM7JU3bkzBmHvM8A1iY1kg8yQWg0d1hlARbBHbzSkeyx3yaPQt05hY3Nx5Jozv%2BL4wRnUaurX88tgwvm3N5eu22m73ONee3G2bJ1gIPQNg09LPSgCqltJxR4J2J7FCcUWJni%2BjbyC6" RecordedValue="w%2FuEsHX122gk2suT66XhBfw5g%2BkQT6Wlmioq776qVL2FEzdk0R%2Be8uyM7JU3bkzBmHvM8A1iY1kg8yQWg0d1hlARbBHbzSkeyx3yaPQt05hY3Nx5Jozv%2BL4wRnUaurX88tgwvm3N5eu22m73ONee3G2bJ1gIPQNg09LPSgCqltJxR4J2J7FCcUWJni%2BjbyC6" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="connectionData" Value="%5B%7B%22name%22%3A%22mainconnection%22%7D%5D" RecordedValue="%5B%7B%22name%22%3A%22mainconnection%22%7D%5D" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+      <StringHttpBody ContentType="application/json; charset=UTF-8" InsertByteOrderMark="False">
+      </StringHttpBody>
+    </Request>
+  </Items>
+  <ValidationRules>
+    <ValidationRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidateResponseUrl, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" DisplayName="回應 URL" Description="驗證回應 URL 在套用重新導向之後是否和記錄的回應 URL 相同。已忽略 QueryString 參數。" Level="Low" ExectuionOrder="BeforeDependents" />
+    <ValidationRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleResponseTimeGoal, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" DisplayName="回應時間目標" Description="驗證此要求的回應時間是否小於或等於此要求所指定的回應時間目標。回應時間目標為零將被忽略。" Level="Low" ExectuionOrder="AfterDependents">
+      <RuleParameters>
+        <RuleParameter Name="Tolerance" Value="0" />
+      </RuleParameters>
+    </ValidationRule>
+  </ValidationRules>
+</WebTest>

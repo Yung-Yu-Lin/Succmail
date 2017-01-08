@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+<!-- 放置遮罩頁面 -->
+<div id="blackpad" ng-click="CloseGuid()" ng-style="blackpad_css">
+</div>
+<!-- 放置箭頭圖案 -->
+<div id="indicator1" ng-if="UserGuide.IsShowArrow1" ng-style="UserGuide.Arrow1Style" data-ng-cloak></div>
+<div id="indicator2" ng-if="UserGuide.IsShowArrow2" ng-style="UserGuide.Arrow2Style" data-ng-cloak></div>
+<div id="indicator3" ng-if="UserGuide.IsShowArrow3" ng-style="UserGuide.Arrow3Style" data-ng-cloak></div>
+<div id="indicator4" ng-if="UserGuide.IsShowArrow4" ng-style="UserGuide.Arrow4Style" data-ng-cloak></div>
+<!-- 放置導引內容 -->
+<div id="GuideContent" ng-style="UserGuide.ContentStyle">
+    <h2 ng-bind="UserGuide.GuideTitle" data-ng-cloak></h2>
+    <div id="mainArea">
+        <p ng-bind-html="UserGuide.GuideContent" data-ng-cloak></p>
+    </div>
+    <button ng-if="UserGuide.Normal" class="w3-btn w3-padding w3-green" ng-click="ToNextGuide()" ng-disabled="UserGuide.IsableToNext">下一步 >></button>
+    <button ng-if="!UserGuide.Normal" class="w3-btn w3-padding w3-green" ng-click="FinishGuide()">開始使用</button>
+</div>

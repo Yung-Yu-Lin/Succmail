@@ -1,0 +1,198 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <title>Succmail</title>
+        <link href="~/Statics/css/home/LoginPage.min.css" rel="stylesheet" />
+        <link href="~/Statics/css/home/LoginPageItem.min.css" rel="stylesheet" />
+        <link href="~/Statics/css/home/LoginPageContact.min.css" rel="stylesheet" />
+        <link href="~/Statics/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <script src="/Scripts/lib/jquery/jquery-2.1.1.min.js"></script>
+        <script src="~/Scripts/lib/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/Scripts/common/home/about.js"></script>
+        <script src="~/Scripts/common/home/HomeLogic.js"></script>
+    </head>
+    <body>
+        <!-- #region 主板範圍 -->
+        <div id="login-ground">
+            <div class="closeLogin_button"></div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 登入畫面 -->
+        <div id="login-table" style="display:none;">
+            <div id="login-title">
+                <img id="logo_white" />
+            </div>
+            <div id="ac-pw-div">
+                <input id="account" type="text" placeholder="E-mail" />
+                <input id="password" type="password" placeholder="Password" />
+                <a id="forgetPW" href="/Home/Forget">@Html.Raw(Succ.Common.Global.Succ.ForgotPpassword)?</a>
+                <input id="login-button" type="submit" value="@Html.Raw(Succ.Common.Global.Succ.Login)" onclick="Login()" />
+            </div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 最上方Nav Bar -->
+        <nav class="navbar navbar-default padding10" role="navigation">
+            <!-- #region Logo -->
+            <div class="navbar-brand" id="logo"></div>
+            <!-- #endregion -->
+            <div class="container">
+                <div id="mainNav" class="navbar-header mainNavLast">
+                    <!-- #region 畫面縮小列表按鈕 -->
+                    <button id="LoginNavBtn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#loginPage" aria-expanded="false">
+                        <span class="sr-only">Toggle</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- #endregion -->
+                    <!-- #region 登入按鈕 -->
+                    <a id="openLogin" class="navbar-brand" title="@Html.Raw(Succ.Common.Global.Succ.Login)">
+                        @Html.Raw(Succ.Common.Global.Succ.Login)
+                    </a>
+                    <!-- #endregion -->
+                </div>
+                <!-- #region 下拉選項列表 -->
+                <div class="collapse navbar-collapse" id="loginPage" aria-expanded="true">
+                    <ul class="nav navbar-nav loginNav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="@Html.Raw(Succ.Common.Global.Succ.Service)">
+                                @Html.Raw(Succ.Common.Global.Succ.Price_And_Service)
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:100%;">
+                                <li>
+                                    <a href="/Home/Login_pri_serv_contact">@Html.Raw(Succ.Common.Global.Succ.Contact)Succmail</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Login_Network_Security">@Html.Raw(Succ.Common.Global.Succ.Net_Safe)</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Login_ClientCase">@Html.Raw(Succ.Common.Global.Succ.Cus_Sample)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="@Html.Raw(Succ.Common.Global.Succ.About)Succmail">
+                                @Html.Raw(Succ.Common.Global.Succ.About)Succmail
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:100%;">
+                                <li><a href="/Home/Login_about_what">@Html.Raw(Succ.Common.Global.Succ.What_is)Succmail</a></li>
+                                <li><a href="/Home/Login_about_why">@Html.Raw(Succ.Common.Global.Succ.Why)Succmail</a></li>
+                                <li><a href="/Home/Login_about_who">@Html.Raw(Succ.Common.Global.Succ.Who)Succmail</a></li>
+                                <li><a href="/Home/Login_about_where">@Html.Raw(Succ.Common.Global.Succ.AnyWhere)</a></li>
+                                <li><a href="/Home/Login_about_how">@Html.Raw(Succ.Common.Global.Succ.How)Succmail</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- #endregion -->
+            </div>
+        </nav>
+        <!-- #endregion -->
+        <div id="ground-wrap">
+            <!-- #region Logo -->
+            <div id="main-top-part-price">
+                <div id="main-container">
+                    <div id="wrap-slogan-register">
+                        <img id="slogan_customerCase" src="/Statics/img/home/slogan_CustomerCase.png" />
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 主頁面 -->
+            <div id="whatisSuccmail-wrap">
+                <div id="content-wrap_pri">
+                    <div id="contact-div">
+                        <table align="center" class="customTable_main">
+                            <tr class="customTr_main">
+                                <td width="33%" valign="top">
+                                    <table align="center" border="0" width="90%" height="150px">
+                                        <tr class="companyLogo"><td><img src="/Statics/img/companyLogo/genton.png" /></td></tr>
+                                        <tr class="companyName"><td><a href="#">震通股份有限公司</a></td></tr>
+                                        <tr class="companyContent">
+                                            <td>
+                                                以往震通股份有限公司（以下簡稱“震通”）的總經理 彭劉德 總是隨身帶著一本密密麻麻的筆記本，上面記滿了公司大大小小的事項，之後公司開始使用 Succmail企業事件管理平台，公司內部的事務皆透過 Succmail 進行管理，即時了解各部門的狀況，以及基層員工的訴求，震通公司的總經理彭劉德表示：Succmail 的私密性、資料永久保存、以事件管理的特色，讓公司省下大量的溝通成本，光就這點便足以讓他們將更多的時間花在本身產品上。<br /><br />
+
+                                                <img width="90%" src="/Statics/img/home/CustomerCase/genton_note.jpg" /><br /><br />
+
+                                                <b>企業溝通管理「雲端化」是未來趨勢</b><br /><br />
+
+                                                在現代企業中，公司同事之間很多時候是雞犬相聞，老死不相往來。震通公司的總經理彭劉德認為，良好的工作環境是形成企業文化的基本條件，震通一直致力於營造一種溝通流暢、分享協作的工作氛圍。<br /><br />
+
+                                                這樣的企業理念在震通內部開始推動使用 Succmail 得到了顯著的成果。震通是一家新生代的卓越電信設備與元件的專業代理通路商，總公司設立於台灣台中市，目前在台灣設有台北分公司與台中分公司營運，提供完整的行動通訊工程設備與材料供應，並且提供整合型的銷售與技術服務。<br /><br />
+
+                                                總公司與分公司的溝通，及各部門之間的協調，即時回應客戶的需求，都是震通期望改善的目標，在一個偶然的機會，震通股份有限公司接觸到企業界知名的事件管理平台－ Succmail，決定重點引入。在總經理大力推動、中層幹部積極帶動下，Succmail很快地成為員工快樂工作、有效率地處理問題的管理平台。<br /><br />
+
+                                                <b>低成本、高效率、快速解決問題</b><br /><br />
+
+                                                據了解，震通股份有限公司的溝通方式以 Succmail 為主，有效地配合其他的溝通工具，通過不同形式的訊息工具進行有效、安全、快速、分享、溝通成本的降低，是傳統型方式無法比擬的，員工加入到各個討論組中，在討論組內發佈、討論、改進等各種企業營運中的問題，並利用分類功能將訊息有效管理，方便部門之間的匯報、追蹤、及解決問題。<br /><br />
+
+                                                震通對客戶的經營，也充分利用企業事件管理平台體現，做到每日匯報、查看工作訊息、及內部討論溝通，營造出來的是公司言必行、行必果的執行文化，目前，震通優良的企業本質，結合 Succmail 的企業事件管理服務，震通在現代電信設備與元件的專業代理通路商發展的道路上如虎添翼。<br /><br />
+
+                                                <img width="100%" src="/Statics/img/home/CustomerCase/genton_explain.png" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 註冊區塊 -->
+            <div style="text-align:center;width:100%;height:100px;display:block;">
+                <div id="register_item">
+                    @using (Html.BeginForm("Regist", "User", FormMethod.Post, new { id = "emailvalue" }))
+                    {
+                        <input type="text" name="email" id="email2" class="type-regis_item animated fadeIn" placeholder="Enter your work email" />
+                        <input id="logb" type="submit" class="button-regis_item animated fadeIn" value="@Html.Raw(Succ.Common.Global.Succ.Sign_up)" onclick="onSubmit()" />
+                    }
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 底部Footer -->
+            <div id="footer-wrap" class="container">
+                <div class="row">
+                    <div class="col-sm-6 footerInfo">
+                        <span>@Html.Raw(Succ.Common.Global.Succ.Cus_Service)</span>
+                        <section class="serviceEmail">
+                            <img />
+                        </section>
+                        <section class="servicetel">
+                            <img />
+                        </section>
+                        <section class="serviceaddress">
+                            <img />
+                        </section>
+                    </div>
+                    <div class="col-sm-6 footerInfo">
+                        <span>@Html.Raw(Succ.Common.Global.Succ.Promotion_Product)</span>
+                        <section class="BMCAEmail">
+                            <img />
+                        </section>
+                        <section class="BMCAtel">
+                            <img />
+                        </section>
+                        <section class="BMCAaddress">
+                            <img />
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+        </div>
+    </body>
+</html>
+<script>
+    $(window).load(function () {
+        $('html,body').scrollTop($('.companyLogo').offset().top - 130);
+    });
+</script>

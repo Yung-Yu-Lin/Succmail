@@ -1,0 +1,149 @@
+﻿@{
+    Layout = null;
+}
+
+<div id="web_manage" data-ng-controller="WebManage">
+
+    <h2><b>@Html.Raw(Succ.Common.Global.Succ.SiteManagement)</b></h2>
+    <div class="companyinfo">
+        <!-- #region 公司基本資訊 -->
+        <div class="tab-head">
+            <i class="fa fa-briefcase"></i>
+            <label>@Html.Raw(Succ.Common.Global.Succ.Companyinfo)</label>
+        </div>
+        <div class="tab-body">
+            <!-- #region 確定更新成功訊息框 -->
+
+            <!-- #endregion -->
+            <div class="upload_img">
+                <!-- #region 公司照片 -->
+                <img class="companyimg" ng-cloak ng-if="WebManage.ManageData.PhotoPath != null" ng-src="{{WebManage.ManageData.CurrentPath}}" />
+                <img class="companyimg" ng-cloak ng-if="WebManage.ManageData.PhotoPath == null" ng-src="{{WebManage.ManageData.DefaultPath}}" />
+                <!-- #endregion -->
+                <!-- #region 選擇照片按鈕 & 上傳上片form -->
+                <span class="uploadimg" ng-click="UploadImg()">@Html.Raw(Succ.Common.Global.Succ.PicUpload)</span>
+                <form style="position:absolute;z-index:9999;width:106px;opacity:0.0;display:none;" ng-submit="UploadCompImg(this)" method="post" enctype="multipart/form-data" action="">
+                    <input id="CompImg" class="file" type="file" name="file" accept="image/*" onchange="javascript: $(this).submit();" />
+                </form>
+                <!-- #endregion -->
+            </div>
+            <div class="companyname">
+                <table style="width:auto;">
+                    <!-- #region 公司名稱 -->
+                    <tr>
+                        <td>
+                            @Html.Raw(Succ.Common.Global.Succ.CompanyName)
+                            <span class="required">
+                                *
+                            </span>
+                        </td>
+                        <td>
+                            <input id="CompanyName" name="CompanyName" type="text" ng-model="WebManage.ManageData.CompanyName" ng-change="ChangeManage(0)" />
+                        </td>
+                        <td>
+                            <!-- #region 確認儲存或取消的按鈕 -->
+                            <div ng-show="WebManage.ChangedCompName" class="animate-opacity">
+                                <button class="w3-btn w3-padding w3-green" ng-click="SaveCompName()">
+                                    <span class="glyphicon glyphicon-ok" style="color:#fff;"></span>
+                                </button>
+                                <button class="w3-btn w3-padding w3-red" ng-click="OmitModify(0)">
+                                    <span class="glyphicon glyphicon-remove" style="color:#fff;"></span>
+                                </button>
+                            </div>
+                            <!-- #endregion -->
+                            <!-- #region 儲存後的通知訊息 -->
+                            <div class="alert alert-success informMsg" ng-show="WebManage.SaveCompName" role="alert">
+                                @Html.Raw(Succ.Common.Global.Succ.SetSuccessfully)
+                            </div>
+                            <!-- #endregion -->
+                        </td>
+                    </tr>
+                    <!-- #endregion -->
+                    <!-- #region 公司網址 -->
+                    <tr>
+                        <td>@Html.Raw(Succ.Common.Global.Succ.CompanyWebSite)</td>
+                        <td>
+                            <input id="Url" name="Url" type="text" ng-model="WebManage.ManageData.Url" ng-change="ChangeManage(1)" />
+                        </td>
+                        <td>
+                            <!-- #region 確認儲存或取消的按鈕 -->
+                            <div ng-show="WebManage.ChangedCompWeb" class="animate-opacity">
+                                <button class="w3-btn w3-padding w3-green" ng-click="SaveWebSite()">
+                                    <span class="glyphicon glyphicon-ok" style="color:#fff;"></span>
+                                </button>
+                                <button class="w3-btn w3-padding w3-red" ng-click="OmitModify(1)">
+                                    <span class="glyphicon glyphicon-remove" style="color:#fff;"></span>
+                                </button>
+                            </div>
+                            <!-- #endregion -->
+                            <!-- #region 儲存後的通知訊息 -->
+                            <div class="alert alert-success informMsg" ng-show="WebManage.SaveCompWeb" role="alert">
+                                @Html.Raw(Succ.Common.Global.Succ.SetSuccessfully)
+                            </div>
+                            <!-- #endregion -->
+                        </td>
+                    </tr>
+                    <!-- #endregion -->
+                    <!-- #region 公司時區 -->
+                    <tr>
+                        <td>
+                            @Html.Raw(Succ.Common.Global.Succ.Timezone)
+                            <span class="required">
+                                *
+                            </span>
+                        </td>
+                        <td>
+                            <select name="Timezone" ng-options="option.ZoneVal for option in WebManage.ManageData.TimeZoneList" ng-model="WebManage.ManageData.CurrentTimeZone" ng-change="ChangeManage(2)"></select>
+                        </td>
+                        <td>
+                            <!-- #region 確認儲存或取消的按鈕 -->
+                            <div ng-show="WebManage.ChangedCompTimeZone" class="animate-opacity">
+                                <button class="w3-btn w3-padding w3-green" ng-click="SaveTimeZone()">
+                                    <span class="glyphicon glyphicon-ok" style="color:#fff;"></span>
+                                </button>
+                                <button class="w3-btn w3-padding w3-red" ng-click="OmitModify(2)">
+                                    <span class="glyphicon glyphicon-remove" style="color:#fff;"></span>
+                                </button>
+                            </div>
+                            <!-- #endregion -->
+                            <!-- #region 儲存後的通知訊息 -->
+                            <div class="alert alert-success informMsg" ng-show="WebManage.SaveTimeZone" role="alert">
+                                @Html.Raw(Succ.Common.Global.Succ.SetSuccessfully)
+                            </div>
+                            <!-- #endregion -->
+                        </td>
+                    </tr>
+                    <!-- #endregion -->
+                </table>
+            </div>
+        </div>
+        <!-- #endregion -->
+        <div class="tab-head">
+            <span class="glyphicon glyphicon-user"></span>
+            <label>@Html.Raw(Succ.Common.Global.Succ.WebsiteAuthority)</label>
+        </div>
+        <div class="tab-body">
+            <!-- #region 設定公司權限 -->
+            <div class="boss">
+                <label class="left">@Html.Raw(Succ.Common.Global.Succ.HighestAuthority)</label>
+                <select class="left" name="SuperMember" ng-options="option.Name for option in WebManage.ManageData.Members" ng-model="WebManage.ManageData.CurrentManager" ng-change="ChangeManage(3)"></select>
+                <!-- #region 確認儲存或取消的按鈕 -->
+                <div ng-show="WebManage.ChangedSuperUser" class="animate-opacity left" style="margin-left:20px;">
+                    <button class="w3-btn w3-padding w3-green" ng-click="SaveSuperUser()">
+                        <span class="glyphicon glyphicon-ok" style="color:#fff;"></span>
+                    </button>
+                    <button class="w3-btn w3-padding w3-red" ng-click="OmitModify(3)">
+                        <span class="glyphicon glyphicon-remove" style="color:#fff;"></span>
+                    </button>
+                </div>
+                <!-- #endregion -->
+                <!-- #region 儲存後的通知訊息 -->
+                <div ng-show="WebManage.SaveSuperUser" class="alert alert-success informMsg left" style="margin-left:20px;" role="alert">
+                    @Html.Raw(Succ.Common.Global.Succ.SetSuccessfully)
+                </div>
+                <!-- #endregion -->
+            </div>
+            <!-- #endregion -->
+        </div>
+    </div>
+</div>

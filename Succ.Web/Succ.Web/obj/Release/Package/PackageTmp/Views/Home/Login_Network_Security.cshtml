@@ -1,0 +1,206 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <title>Succmail</title>
+        <link href="~/Statics/css/home/LoginPage.min.css" rel="stylesheet" />
+        <link href="~/Statics/css/home/LoginPageItem.min.css" rel="stylesheet" />
+        <link href="~/Statics/css/home/LoginPageContact.min.css" rel="stylesheet" />
+        <link href="~/Statics/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <script src="/Scripts/lib/jquery/jquery-2.1.1.min.js"></script>
+        <script src="~/Scripts/lib/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/Scripts/common/home/about.js"></script>
+        <script src="~/Scripts/common/home/HomeLogic.js"></script>
+    </head>
+    <body>
+        <!-- #region -->
+        <!-- #endregion -->
+        <!-- #region 主板範圍 -->
+        <div id="login-ground">
+            <div class="closeLogin_button"></div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 登入畫面 -->
+        <div id="login-table" style="display:none;">
+            <div id="login-title">
+                <img id="logo_white" />
+            </div>
+            <div id="ac-pw-div">
+                <input id="account" type="text" placeholder="E-mail" />
+                <input id="password" type="password" placeholder="Password" />
+                <a id="forgetPW" href="/Home/Forget">@Html.Raw(Succ.Common.Global.Succ.ForgotPpassword)?</a>
+                <input id="login-button" type="submit" value="@Html.Raw(Succ.Common.Global.Succ.Login)" onclick="Login()" />
+            </div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 最上方Nav Bar -->
+        <nav class="navbar navbar-default padding10" role="navigation">
+            <!-- #region Logo -->
+            <div class="navbar-brand" id="logo"></div>
+            <!-- #endregion -->
+            <div class="container">
+                <div id="mainNav" class="navbar-header mainNavLast">
+                    <!-- #region 畫面縮小列表按鈕 -->
+                    <button id="LoginNavBtn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#loginPage" aria-expanded="false">
+                        <span class="sr-only">Toggle</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- #endregion -->
+                    <!-- #region 登入按鈕 -->
+                    <a id="openLogin" class="navbar-brand" title="@Html.Raw(Succ.Common.Global.Succ.Login)">
+                        @Html.Raw(Succ.Common.Global.Succ.Login)
+                    </a>
+                    <!-- #endregion -->
+                </div>
+                <!-- #region 下拉選項列表 -->
+                <div class="collapse navbar-collapse" id="loginPage" aria-expanded="true">
+                    <ul class="nav navbar-nav loginNav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="@Html.Raw(Succ.Common.Global.Succ.Service)">
+                                @Html.Raw(Succ.Common.Global.Succ.Price_And_Service)
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:100%;">
+                                <li>
+                                    <a href="/Home/Login_pri_serv_contact">@Html.Raw(Succ.Common.Global.Succ.Contact)Succmail</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Login_Network_Security">@Html.Raw(Succ.Common.Global.Succ.Net_Safe)</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Login_ClientCase">@Html.Raw(Succ.Common.Global.Succ.Cus_Sample)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="@Html.Raw(Succ.Common.Global.Succ.About)Succmail">
+                                @Html.Raw(Succ.Common.Global.Succ.About)Succmail
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" style="width:100%;">
+                                <li><a href="/Home/Login_about_what">@Html.Raw(Succ.Common.Global.Succ.What_is)Succmail</a></li>
+                                <li><a href="/Home/Login_about_why">@Html.Raw(Succ.Common.Global.Succ.Why)Succmail</a></li>
+                                <li><a href="/Home/Login_about_who">@Html.Raw(Succ.Common.Global.Succ.Who)Succmail</a></li>
+                                <li><a href="/Home/Login_about_where">@Html.Raw(Succ.Common.Global.Succ.AnyWhere)</a></li>
+                                <li><a href="/Home/Login_about_how">@Html.Raw(Succ.Common.Global.Succ.How)Succmail</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- #endregion -->
+            </div>
+        </nav>
+        <!-- #endregion -->
+        <div id="ground-wrap">
+            <!-- #region Logo -->
+            <div id="main-top-part-price">
+                <div id="main-container">
+                    <div id="wrap-slogan-register">
+                        <img id="slogan_netSecurity" src="/Statics/img/home/slogan_netSecurity.png" />
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 主頁面 -->
+            <div id="whatisSuccmail-wrap">
+                <div id="content-wrap_pri">
+                    <div id="contact-div">
+                        <div id="contact-info-security">
+                            <span class="title_contact_security">Amazon&nbsp;&nbsp; <small>網路安全服務</small></span><br />
+                            <span class="small_title_contact_security">Amazon 雲端運算應用服務安全白皮書</span>
+                            <p class="text_contact_security">如果您在使用Succmail上有任何問題，歡迎您來信告知，或撥打客服專線，我們將會盡快為您服務。</p>
+                            <span style="margin-top:40px;" class="small_title_contact_security">世界專業級的安全</span>
+                            <p class="text_contact_security">Amazon 專業級的雲端運算服務，它提供了高可靠度的專家級安全網路服務，使的平台與資料之間能夠在高保密性中完整的傳輸，讓網路安全滴水不漏。</p>
+
+                            <span style="margin-top:40px;" class="small_title_contact_security">證書與認證</span>
+                            <p class="text_contact_security"><big><b>ISO 27001</b></big><br />Amazon 專業級的雲端運算服務 ( 包括：基礎設施、數據中心和服務、Amazon EC2、Amazon S3 、Amazon VPC ) 已經取得 ISO 27001認證的資訊安全管理體系 ( ISMS ) 。國際標準組織 ISO 27001/27002 是一種被廣泛採用的全球安全標準，嚴謹要求用最佳系統化的方法來定期管理公司和客戶資訊在面對不斷變化的威脅情況時的風險。取得 ISO 27001 認證，證明 Amazon 能提供具有系統性和持續的方法來管理資訊安全風險影響的保密性，完整性和可用性。水不漏。</p>
+
+                            <p class="text_contact_security"><big><b>SAS70 TypeII</b></big><br />Amazon 專業級的雲端運算服務獲得 SOX ( Sarbanes Oxley ) 的 SAS70 Type II 認證，這認證嚴格的確保Amazon 能夠建立內部控制的經營效率以及提供世界級的雲端運算服務，而此認證必須在持續提供相同環境與解決方案之下，才能夠獲得。</p>
+
+                            <span style="margin-top:40px;" class="small_title_contact_security">人員與安全控管</span>
+                            <p class="text_contact_security">Amazon 資料數據中心設計具有軍事級的安全防護，能夠抵擋自然天災的侵襲。Amazon 資料數據中心設置專業安全人員24小時全天候錄影監控，並採用先進的電子入侵偵測系統，授權人員需通過雙因素認證才能進入並且監控進入記錄，而一但授權取消，立即失去進入中心的權力。所有訪問者須提交身分認證與簽署合約並且在安全人員陪同下進行參訪。</p>
+
+                            <span style="margin-top:40px;" class="small_title_contact_security">防火牆解決方案</span>
+                            <p class="text_contact_security">Amazon 提供完整的防火牆解決方案，能保護在 Amazon 雲端運算裡的所有資料並防止駭客入侵。Amazon 採取的控制技術有封包過濾、封包狀態檢驗以及應用層閘道控制。並且在不同類別下使用不同的規則，透過高安全性驗證法的部屬機制，來得到更高的資訊安全。</p>
+
+                            <span style="margin-top:40px;" class="small_title_contact_security">網路安全</span>
+                            <p class="text_contact_security">
+                                Amazon 為防止傳統的網路安全問題以及進一步保護客戶，提供了以下幾點攻擊保護措施。<br /><br />
+                                <ol>
+                                    <li>
+                                        分散式阻斷服務 ( DDoS ) 攻擊 ( Distributed Denial Of ServiceAttacks )<br />
+                                    </li>
+                                    <li>
+                                        中間人 ( MITM ) 攻擊 ( Man In the Middle Attacks )<br />
+                                    </li>
+                                    <li>
+                                        網址偽造 ( IP Spoofing )<br />
+                                    </li>
+                                    <li>
+                                        通訊埠掃描 ( Port Scanning )<br />
+                                    </li>
+                                    <li>
+                                        封包監測 ( Packet sniffing by other tenants ) …等。
+                                    </li>
+                                </ol>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 註冊區塊 -->
+            <div style="text-align:center;width:100%;height:100px;display:block;">
+                <div id="register_item">
+                    @using (Html.BeginForm("Regist", "User", FormMethod.Post, new { id = "emailvalue" }))
+                    {
+                        <input type="text" name="email" id="email2" class="type-regis_item animated fadeIn" placeholder="Enter your work email" />
+                        <input id="logb" type="submit" class="button-regis_item animated fadeIn" value="@Html.Raw(Succ.Common.Global.Succ.Sign_up)" onclick="onSubmit()" />
+                    }
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 底部Footer -->
+            <div id="footer-wrap" class="container">
+                <div class="row">
+                    <div class="col-sm-6 footerInfo">
+                        <span>@Html.Raw(Succ.Common.Global.Succ.Cus_Service)</span>
+                        <section class="serviceEmail">
+                            <img />
+                        </section>
+                        <section class="servicetel">
+                            <img />
+                        </section>
+                        <section class="serviceaddress">
+                            <img />
+                        </section>
+                    </div>
+                    <div class="col-sm-6 footerInfo">
+                        <span>@Html.Raw(Succ.Common.Global.Succ.Promotion_Product)</span>
+                        <section class="BMCAEmail">
+                            <img />
+                        </section>
+                        <section class="BMCAtel">
+                            <img />
+                        </section>
+                        <section class="BMCAaddress">
+                            <img />
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+        </div>
+    </body>
+</html>
+<script>
+    $(window).load(function () {
+        $('html,body').scrollTop($('.title_contact_security').offset().top - 130);
+    });
+</script>

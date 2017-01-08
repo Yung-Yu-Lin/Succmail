@@ -1,0 +1,316 @@
+﻿@{
+    Layout = null;
+ }
+<link href="~/Statics/css/TrashList.css" rel="stylesheet" />
+<div id="middle" class="col-md-9">
+    <h2>
+        <b>討論組名稱</b>
+        <button id="set" class="btn btn-link config" tooltip-placement="bottom"
+                tooltip-html-unsafe="
+                <div class='Tooltip'>
+                    @Html.Raw(Succ.Common.Global.Succ.Setting_Disc)
+                </div>">
+            <span class="glyphicon glyphicon-cog"></span>
+        </button>
+    </h2>
+    <!-- Tab Head -->
+    <div id="tab_content_head">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="tab-file tab-li">
+                <div class="a_type" href="#file" role="tab" data-toggle="tab">
+                    <span class="glyphicon glyphicon-trash"></span> @Html.Raw(Succ.Common.Global.Succ.Recycle)
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Tab Body -->
+    <div id="tab_content_body" class="tab-content">
+        <!-- 進行中 -->
+        <div class="tab-pane active" id="continue">
+            <!-- 條件列 -->
+            @*<div id="tab_content_bar">
+                <!-- 篩選 -->
+                <div class="btn-group" screening discid="{{discussionid}}" userid="{{userid}}" disctype="general">
+                </div>
+                <!--篩選條件標籤 -->
+                <div class="condition-result" filter-label>
+                </div>
+                <!-- 時程表 -->
+                <div class="calendar condition-btn pull-right">
+                    <a class="a_type" href="#/calendar"><span class="glyphicon glyphicon-calendar"></span> @Html.Raw(Succ.Common.Global.Succ.Schedule)</a>
+                </div>
+            </div>*@
+
+            <!--文章列表 -->
+            <div id="tab_content_data">
+                <div class="trashArea">
+
+                    <div class="trashSubjectList">
+                        <div class="trashSubject">
+                            <div class="deleteTime">11/24 10:20</div>
+                            <div class="deleteType">刪除回覆</div>
+                            <div class="deleteName">Micheal Joseph Ja</div>
+                        </div>
+                        <div class="trashInfo" data-toggle="modal" data-target="#deleteDetail">
+                            <div class="deleteTitle">
+                                資訊部 江驊格 2014/07/15請假四小時
+                            </div>
+                            <div class="deleteAuthor">
+                                <div class="time">11/07 &nbsp; 11:07</div>
+                                <div class="name">江驊格</div>
+                            </div>
+                            <div class="deleteContent">
+                                台北市政府公開資料平開資料平開資料平開資料平開資料平開資料http://date.taipei.gov.tw
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trashSubjectList">
+                        <div class="trashSubject">
+                            <div class="deleteTime">11/24 10:20</div>
+                            <div class="deleteType">刪除主題</div>
+                            <div class="deleteName">Mic</div>
+                        </div>
+                        <div class="trashInfo" data-toggle="modal" data-target="#deleteDetail">
+                            <div class="deleteTitle">
+                                資訊部 江驊格 2014/07/15請假四小時
+                            </div>
+                            <div class="deleteAuthor">
+                                <div class="time">11/07 &nbsp; 11:07</div>
+                                <div class="name">江驊格</div>
+                            </div>
+                            <div class="deleteContent">
+                                台北市政府公開資料平開資料平開資料平開資料平開資料平開資料http://date.taipei.gov.twhttp://date.taipei.gov.twhttp://date.taipei.gov.tw
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trashSubjectList">
+                        <div class="trashSubject">
+                            <div class="deleteTime">11/24 10:20</div>
+                            <div class="deleteType">刪除回覆</div>
+                            <div class="deleteName">Micheal Joseph Ja</div>
+                        </div>
+                        <div class="trashInfo" data-toggle="modal" data-target="#deleteDetail">
+                            <div class="deleteTitle">
+                                資訊部 江驊格 2014/07/15請假四小時
+                            </div>
+                            <div class="deleteAuthor">
+                                <div class="time">11/07 &nbsp; 11:07</div>
+                                <div class="name">江驊格</div>
+                            </div>
+                            <div class="deleteContent">
+                                台北市政府公開資料平開資料平開資料平開資料平開資料平開資料http://date.taipei.gov.tw
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trashSubjectList">
+                        <div class="trashSubject">
+                            <div class="deleteTime">11/24 10:20</div>
+                            <div class="deleteType">刪除回覆</div>
+                            <div class="deleteName">Micheal Joseph Ja</div>
+                        </div>
+                        <div class="trashInfo" data-toggle="modal" data-target="#deleteDetail">
+                            <div class="deleteTitle">
+                                資訊部 江驊格 2014/07/15請假四小時
+                            </div>
+                            <div class="deleteAuthor">
+                                <div class="time">11/07 &nbsp; 11:07</div>
+                                <div class="name">江驊格</div>
+                            </div>
+                            <div class="deleteContent">
+                                台北市政府公開資料平開資料平開資料平開資料平開資料平開資料http://date.taipei.gov.tw
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trashSubjectList">
+                        <div class="trashSubject">
+                            <div class="deleteTime">11/24 10:20</div>
+                            <div class="deleteType">刪除回覆</div>
+                            <div class="deleteName">Micheal Joseph Ja</div>
+                        </div>
+                        <div class="trashInfo" data-toggle="modal" data-target="#deleteDetail">
+                            <div class="deleteTitle">
+                                資訊部 江驊格 2014/07/15請假四小時
+                            </div>
+                            <div class="deleteAuthor">
+                                <div class="time">11/07 &nbsp; 11:07</div>
+                                <div class="name">江驊格</div>
+                            </div>
+                            <div class="deleteContent">
+                                台北市政府公開資料平開資料平開資料平開資料平開資料平開資料http://date.taipei.gov.tw
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trashSubjectList">
+                        <div class="trashSubject">
+                            <div class="deleteTime">2014/11/24 10:20</div>
+                            <div class="deleteType">刪除回覆</div>
+                            <div class="deleteName">Micheal Joseph Ja</div>
+                        </div>
+                        <div class="trashInfo" data-toggle="modal" data-target="#deleteDetail">
+                            <div class="deleteTitle">
+                                資訊部 江驊格 2014/07/15請假四小時 資訊部 江驊格 2014/07/15請假四小時 資訊部 江驊格 2014/07/15請假四小時
+                            </div>
+                            <div class="deleteAuthor">
+                                <div class="time">11/07 &nbsp; 11:07</div>
+                                <div class="name">江驊格</div>
+                            </div>
+                            <div class="deleteContent">
+                                台北市政府公開資料平開資料平開資料平開資料平開資料平開資料http://date.taipei.gov.tw
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="deleteDetail" tabindex="-1" role="dialog" aria-labelledby="NewDiscussionModalLabel" aria-hidden="true">
+    @*<div>*@
+    <div class="deleteDetailArea">
+
+        <div class="deleteDetailClose">
+            <img src="/Statics/img/close.png" />
+        </div>
+
+        <div class="deleteDetailSubject">
+
+            <div id="content">
+
+                <div class="TitleArea">
+                    <strong>
+                        訂單 Acer Angular Directives that Scale - Burke $4,200
+                    </strong>
+                </div>
+
+                <div id="infobar">
+
+                    <span>資訊部經理劉佳豪Cesar</span>
+                    <label style="margin-left:5px;">6/26 11:22</label>
+
+                </div>
+
+                <hr style="margin:0" />
+
+                <div class="detail_infobar_hr">
+
+                    <a class="pull-right" style="cursor:pointer;color:#999;text-decoration-line:underline;">已編輯</a>
+                    <label class="responder pull-right" style="color:#999">江資行 6/26 17:22</label>
+                </div>
+
+                <div id="main_content">
+                    <p>
+                        主要是講怎麼把Kendo UI 變成 Angular 的 directives 但不是真的建立 directive，而是讓程式自動去產生http://kendo-labs.github.io/angular-kendo/#/解決AngularJs不相容IE8以下版本的問題 初試Google所開發的前端js框架，習慣性的測試一下各個瀏覽器版本是否有相容性問題。
+                        在Firefox、Chrome底下都沒有問題，但用IE Tester測試IE各個版本時，發現在IE8以下版本，AngularJS
+                    </p>
+                    <p>
+                        <br />
+                    </p>
+                </div>
+
+                <div id="file-attach">
+                    <div class="IconSetting pdf"></div>
+                    <a class="file_name">
+                        Angular Directives that Scale - Burke Holland.pdf
+                    </a><br />
+                </div>
+                <div id="file-attach">
+                    <div class="IconSetting excel"></div>
+                    <a class="file_name">
+                        recyle.xlsx
+                    </a><br />
+                </div>
+
+                <hr style="clear:left" />
+
+                <div id="receiver">
+
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span>
+                        <label class="read-false">黃曉菁</label>
+                    </span>
+                    <span>
+                        <label class="read-false">江驊格</label>
+                    </span>
+                    <span>
+                        <label class="read-false">劉佳豪</label>
+                    </span>
+
+                    <span><label>江資航</label></span>
+                    <span><label>林永裕</label></span>
+                    <span><label>謝昌融</label></span>
+                    <span><label>張耀尹</label></span>
+                    <span><label>童尚正</label></span>
+                    <span><label>江資航</label></span>
+                    <span><label>劉佳豪</label></span>
+
+                </div>
+
+            </div>
+
+            <div id="comment">
+
+                <div id="respond-panel">
+                    回覆<span>25</span>
+                </div>
+
+            </div>
+
+            <div class="trashDetailSubject">
+                <div class="deleteTime">11/24 10:20</div>
+                <div class="deleteType">刪除回覆</div>
+                <div class="deleteName">Micheal Joseph Ja</div>
+            </div>
+
+            <div class="deleteReturn">
+                <button class="deleteReturnBtn btn btn-ok">
+                    <i class="fa fa-undo"></i>還原刪除
+                </button>
+            </div>
+
+            <div id="respond-area">
+                <div id="respond-infobar">
+
+                    <span>江資航</span>
+                    <label>11/21 09:46</label>
+
+                </div>
+
+                <hr />
+
+                <div id="respond-content">
+                    Re:資訊部井裡劉佳豪Cesar <br />
+                    1.所有功能流程圖+文字敘述，敘述包含用之view
+                </div>
+
+                <hr />
+
+                <div id="receiver">
+
+                    <i class="glyphicon glyphicon-user"></i>
+                    <span>
+                        <label>黃曉菁</label>
+                        <label>江驊格</label>
+                        <label>劉佳豪</label>
+                        <label>林永裕</label>
+                        <label>江資航</label>
+                        <label>謝昌融</label>
+                        <label>張耀尹</label>
+                        <label>童尚正</label>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+        @*</div>*@
+    </div>

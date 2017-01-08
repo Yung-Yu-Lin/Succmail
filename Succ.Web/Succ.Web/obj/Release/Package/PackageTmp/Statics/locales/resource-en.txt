@@ -1,0 +1,39 @@
+﻿{
+	"EnterCompName":"Please Enter Company Name",
+	"EnterCompUrl":"Please Enter Company Websit Address",
+
+	"DepartName": "Please Enter Department Name",
+	"AllMember":"All Member",
+	"NewMember":"New Member",
+	"NewDepart":"New Department",
+	"EnterLastName":"Please Enter LastName",
+	"EnterFirstName":"Please Enter FirstName!",
+	"EnterEmail":"Please Enter Email!",
+	"EnterPwd":"Please Enter Password",
+	"DeleteDepart": "Do You Want To Delete Department?",
+	"ReUseEmail": "This Email invited already!",
+
+    "newdisc": "New Discussion",
+	"EnterDiscName": "Please Enter Discussion Name",
+	"EnterAdminerDisc": "Please Choose An Administrator Of Discussion",
+	"ChooseMember": "Please Choose An Member",
+	"Stage1": "Stage 1",
+	"Stage2": "Stage 2",
+	"Stage3": "Stage 3",
+	"Stage4": "Stage 4",
+	"Stage5": "Stage 5",
+	"RecycleDisc": "Do You Really want to Recycle This Discussion?",
+	"StageName": "Stage Name",
+	"Auditor": "Auditor",
+	"EnterName":"Please Enter A Name",
+	"Modify": "Modify",
+	"RevertDisc": "Do You Want To Revert This Discussion?",
+	"DeleteDisc": "Do You Want To Delete This Discussion?",
+	"CannotRemoveAdminer": "Cannot Remove Administrator",
+
+	"StartDay":"Start Day:",
+	"EndDay": "End Day",
+
+	"success":"success"
+
+}

@@ -1,0 +1,99 @@
+﻿@{
+    Layout = null;
+}
+<!-- #region 實作jqGrid所需的js & css檔案 -->
+@Scripts.Render("~/jqGrid/script")
+<link href="~/Scripts/lib/jquery-ui/jquery-ui.css" rel="stylesheet" />
+<link href="~/Scripts/lib/jqGrid/css/ui.jqgrid.css" rel="stylesheet" />
+<link href="~/Statics/css/backend/SubjTag.css" rel="stylesheet" />
+<!-- #endregion -->
+
+<div class="CusTagArea" ng-controller="CusTag">
+    <!-- #region 客戶標籤標題 -->
+    <h2 style="margin-left:60px;">
+        @Html.Raw(Succ.Common.Global.Succ.CusTag)
+    </h2>
+    <!-- #endregion -->
+    <!-- #region 間隔線 -->
+    <div class="seperate_line">
+    </div>
+    <!-- #endregion -->
+    <!-- #region 新增按鈕 -->
+    <div class="SubjTag_Content">
+        <button type="button" class="btn btn-default btn-lg btn-success SubjTagBtn" ng-click="OpenAddTagView()">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> @Html.Raw(Succ.Common.Global.Succ.Added)
+        </button>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 搜尋 -->
+    <div class="Search_Div">
+        <input type="text" id="CusTagSearch" ng-model="TagManage.SearchText" placeholder="@Html.Raw(Succ.Common.Global.Succ.EnterTagNameToSearch)" />
+        <button class="btn btn-info" ng-click="StartSearch()">@Html.Raw(Succ.Common.Global.Succ.Search)</button>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 客戶標籤列表 -->
+    <div id="CusTag_List">
+        <tag-jq-grid config="TagManage.TagConfig"></tag-jq-grid>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Modal View For Add SubjTag -->
+    <div class="modal fade" id="AddCusModal" tabindex="-1" role="dialog" aria-labelledby="AddModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- #region 標頭 -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="AddModalLabel">
+                        @Html.Raw(Succ.Common.Global.Succ.Added)@Html.Raw(Succ.Common.Global.Succ.CusTag)
+                    </h4>
+                </div>
+                <!-- #endregion -->
+                <!-- #region 內容 -->
+                <div class="modal-body">
+                    <div id="CusTag_Body">
+                        <div class="CusTag_Content" ng-repeat="item in TagManage.NewCusTag">
+                            <span>@Html.Raw(Succ.Common.Global.Succ.CusTag){{item.CountNum}}:</span>
+                            <input class="CusTag_Val" type="text" ng-model="item.SubjTagIdName" />
+                        </div>
+                    </div>
+                    <div class="Add_CusTag">
+                        <span class="glyphicon glyphicon-plus" ng-click="AddCus()"></span>
+                    </div>
+                </div>
+                <!-- #endregion -->
+                <!-- #region 底部 -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">@Html.Raw(Succ.Common.Global.Succ.Close)</button>
+                    <button type="button" class="btn btn-primary" ng-click="Store_CusTag()">@Html.Raw(Succ.Common.Global.Succ.Store)</button>
+                </div>
+                <!-- #endregion -->
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Modal View For Edit SubjTag -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="EditModalLabel">
+                        @Html.Raw(Succ.Common.Global.Succ.Edit2)@Html.Raw(Succ.Common.Global.Succ.CusTag)
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div id="CusTag_Body">
+                        <div class="Edit_CusTag_Content">
+                            <span>@Html.Raw(Succ.Common.Global.Succ.CusTag):</span>
+                            <input ng-model="TagManage.Edit_CusTag_Val" type="text" />
+                            <input ng-model="TagManage.Edit_CusTag_ID" type="hidden" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">@Html.Raw(Succ.Common.Global.Succ.Close)</button>
+                    <button type="button" class="btn btn-primary" ng-click="Edit_CusTag()">@Html.Raw(Succ.Common.Global.Succ.Store)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+</div>

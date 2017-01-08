@@ -1,0 +1,158 @@
+﻿@{
+    Layout = null;
+    @model Succ.Common.Models.User.RegisterEmpInfo
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Succmail -- @Html.Raw(Succ.Common.Global.Succ.Member)@Html.Raw(Succ.Common.Global.Succ.Sign_up)</title>
+    <style>
+        #wrapAll {
+            width: 960px;
+            margin: 0 auto;
+            display: block;
+            font-family: "微軟正黑體";
+            font-size: 14px;
+            padding-bottom: 50px;
+        }
+
+        #icon {
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top: 40px;
+        }
+
+        .circle {
+            display: inline-block;
+            background: #B5B5B6;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 999;
+            margin-top: 0.4%;
+        }
+
+        .rectangle {
+            display: inline-block;
+            height: 5px;
+            width: 37%;
+            background: #B5B5B6;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .stepWord {
+            width: 150px;
+            margin-left: -70px;
+            margin-top: 30px;
+            font-family: "微軟正黑體";
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+        }
+
+        .on {
+            background: #007DC3;
+        }
+
+        .ontext {
+            color: #007DC3;
+        }
+
+        #leftInfo tr {
+            height: 45px;
+        }
+
+        #leftInfo input {
+            height: 20px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            font-size: 14px;
+        }
+
+        .inputWidth {
+            width: 220px;
+        }
+
+        #rightInfo {
+            border-width: 0px 0px 0px 2px;
+            border-style: solid;
+            border-color: #CCC;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 30px;
+        }
+
+        .nextButton {
+            background-color: #007DC3;
+            height: 35px;
+            color: #FFF;
+            border: 0px;
+            outline: 0px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+            .nextButton:hover {
+                background-color: #024288;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <div id="wrapAll">
+        <div id="icon"><img src="~/Statics/img/register/logo.png" /></div>
+        <ul style="width:95%; margin:0 auto;">
+            <li class="circle on" style="left: 90px;"><p class="stepWord ontext">@Html.Raw(Succ.Common.Global.Succ.PersonalProfile)</p></li>
+            <li class="rectangle" style="left: 80px;"></li>
+            <li class="rectangle" style="left:60px;"></li>
+            <li class="circle" style="left:50px;"><p class="stepWord">@Html.Raw(Succ.Common.Global.Succ.Start)</p></li>
+        </ul>
+        <input hidden type="hidden" id="companyID" value="@Model.CompanyID" />
+        <input hidden type="hidden" id="DiscID" value="@Model.DiscId" />
+        <table width="80%" align="center" border="0" style="margin-top:60px; color:#666;">
+            <tr>
+                <td width="50%">
+                    <table id="leftInfo" border="0">
+                        <tr style="height:20px;">
+                            <td colspan="2"><b style="color:#000; font-size:16px;">@Model.CompanyName</b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><b style="color:#000; font-size:16px;">@Html.Raw(Succ.Common.Global.Succ.WelcomToUse)Succmail!</b></td>
+                        </tr>
+                        <tr>
+                            <td width="30%">Email</td>
+                            <td style="color:#000;">@Model.UserEmail</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Raw(Succ.Common.Global.Succ.LastName)</td>
+                            <td><input type="text" style="width:50px;" id="lastname" name="0" class="inputWidth" /> &nbsp;&nbsp; @Html.Raw(Succ.Common.Global.Succ.Name)&nbsp;&nbsp;<input id="firstname" name="1" style="width:100px" type="text" class="inputWidth" /></td>
+                            <td><label id="lab0" style="display:none;color:crimson;">X</label></td>
+                        </tr>
+                        <tr><td></td><td style="color:crimson">@Html.Raw(Succ.Common.Global.Succ.Signup_Name)</td></tr>
+                        <tr>
+                            <td>@Html.Raw(Succ.Common.Global.Succ.Password)</td>
+                            <td><input id="pwd" name="2" class="inputWidth" type="password" /></td>
+                            <td><label style="display:none;color:crimson;" id="lab1">X</label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button class="nextButton" data-userid="@Model.UserID"> @Html.Raw(Succ.Common.Global.Succ.Start)SuccMail》</button></td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="color:#333; line-height:24px; font-size:14px; padding-top:0px;" valign="top">
+                    <div id="rightInfo">@Model.BossName @Html.Raw(Succ.Common.Global.Succ.Invite_You_Join)@Model.CompanyName － @Html.Raw(Succ.Common.Global.Succ.Belong_Com_Msg)SuccMail。</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="~/Scripts/lib/jquery/jquery-2.1.1.js"></script>
+    <script src="~/Scripts/common/common.js"></script>
+    <script src="~/Scripts/common/user/emp-register.js"></script>
+</body>
+</html>

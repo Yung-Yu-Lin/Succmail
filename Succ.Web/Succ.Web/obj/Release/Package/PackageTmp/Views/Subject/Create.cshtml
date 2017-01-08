@@ -1,0 +1,133 @@
+﻿@{
+    Layout = null;
+}
+<link href="~/Scripts/extensions/angular-ui-select/css/select.css" rel="stylesheet" />
+<link href="~/Scripts/extensions/angular-ui-select/css/select2.css" rel="stylesheet" />
+<link href="~/Scripts/extensions/angular-ui-select/css/selectize.default.css" rel="stylesheet" />
+<div ng-controller="AddNewMessageCtrl">
+    <div class="add-new-msg">
+        @*<!-- #region 討論組名稱 -->
+        <div class="msg-breadcrumb"><span ng-bind="discName"></span></div>
+        <!-- #endregion -->*@
+        <!-- #region 到期日期 -->
+        <button class="due-date-btn" title="@Html.Raw(Succ.Common.Global.Succ.SettingDue)" ng-click="open($event)">
+            <i class="glyphicon glyphicon-calendar"></i>
+        </button>
+        <input type="text" datepicker-popup="{{format}}" ng-model="dueDate" is-open="datepickerOpened" datepicker-options="dateOptions" show-weeks="false" show-button-bar="false" ng-click="open($event)" class="due-date-input-hidden" readonly />
+        <input type="text" placeholder="@Html.Raw(Succ.Common.Global.Succ.Completion_Date)" datepicker-popup="{{format}}" ng-model="dueDate" ng-click="open($event)" class="due-date-input" readonly />
+        <!-- #endregion -->
+        <div class="chose-box">
+            <!-- #region 顯示收件人按鈕 -->
+            <div class="receipt-btn" ng-click="isShowReceiptsMenu = !isShowReceiptsMenu">
+                <span>@Html.Raw(Succ.Common.Global.Succ.Receiver)</span><span class="caret"></span>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 選擇收件人 -->
+            <div class="receipt-wrap" ng-show="isShowReceiptsMenu">
+                <div accordion close-others='false' is-checkbox="true">
+                    <div accordion-group ng-repeat="group in departments" is-checked="group.selected" item-group="group.DepartmantID">
+                        <div accordion-heading>
+                            {{group.DepartmantName}}
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-content-checkbox panel-body" ng-repeat="item in group.Receipts" item-group="group.DepartmantID" is-checked="item.selected" is-regular="item.IsRegular">
+                                <div accordion-info-block template="templates" source="item"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 收件人下拉選單 -->
+            <select data-placeholder="@Html.Raw(Succ.Common.Global.Succ.Choose_Receiver)" style="width:350px;" multiple chosen="receipts" ng-model="AddReceiver.selectedReceipts" ng-options="item.UserName for item in receipts" template="templates" datasource="receipts" view-width="90%" ng-change="chosenChange()"></select>
+            <!-- #endregion -->
+        </div>
+        <!-- #region 事件標籤 -->
+        <ui-select class="SubjTagSelect" ng-model="SubjEventTag.selected" theme="selectize" ng-disabled="disabled" style="width: 150px;">
+            <ui-select-match placeholder="@Html.Raw(Succ.Common.Global.Succ.PleaseSelectEvent)">{{SubjEventTag.selected[0].SubjTagIdName || $select.selected.SubjTagIdName}}</ui-select-match>
+            <ui-select-choices repeat="SubjEventTag in EventTag | filter: {SubjTagIdName:$select.search} | orderBy : '-SortBy'">
+                <span ng-bind="SubjEventTag.SubjTagIdName"></span>
+                <small style="display:none;" ng-bind="SubjEventTag.SubjTagId"></small>
+            </ui-select-choices>
+        </ui-select>
+        <!-- #endregion -->
+        <!-- #region 連接號 -->
+        <div class="TagIntermediate">
+            <span> - </span>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 對象標籤 -->
+        <ui-select class="SubjTagSelect" ng-model="SubjCusTag.selected" theme="selectize" ng-disabled="disabled" style="width: 150px;">
+            <ui-select-match placeholder="@Html.Raw(Succ.Common.Global.Succ.PleaseSelectCus)">{{SubjCusTag.selected[0].SubjTagIdName || $select.selected.SubjTagIdName}}</ui-select-match>
+            <ui-select-choices repeat="SubjCusTag in CusTag | filter: {SubjTagIdName:$select.search} | orderBy : '-SortBy'">
+                <span ng-bind="SubjCusTag.SubjTagIdName"></span>
+                <small style="display:none;" ng-bind="SubjCusTag.SubjTagId"></small>
+            </ui-select-choices>
+        </ui-select>
+        <!-- #endregion -->
+        @*新增標籤提示畫面*@
+        <div style="top:150px;z-index:1" class="w3-dropdown-content w3-white w3-card-12" ng-style="EventTagStyle" ng-if="IsShowEventTag">
+            <div class="AddTagDiv">
+                <h3 ng-bind="AddTag"></h3><br />
+                <input type="text" ng-model="TypeTagName"/><br /><br />
+                <button type="button" class="btn btn-danger" ng-click="goAddTagPage()">@Html.Raw(Succ.Common.Global.Succ.Added)</button>
+                <button type="button" class="btn btn-warning" ng-click="Cancle()">@Html.Raw(Succ.Common.Global.Succ.Cancle)</button>
+            </div>
+        </div>
+        <!-- #region 主題 -->
+        <input type="text" class="msg-title" ng-model="title" placeholder="@Html.Raw(Succ.Common.Global.Succ.Type_Title)" />
+        <!-- #endregion -->
+        <!-- #region 建立日期 -->
+        <input type="text" datepicker-popup="{{format}}" ng-model="createDate" class="create-date-input" readonly />
+        <!-- #endregion -->
+        <!-- #region 編輯器 -->
+        <div summernote config="options" ng-model="AddSubjObj.text" on-image-remove="imageRemove(target, editor, welEditable)" on-change="change(contents, $editable)" on-image-upload="imageUpload(files, editor)" nv-file-drop="" uploader="uploader"></div>
+        <!-- #endregion -->
+        <!-- #region 附件 -->
+        <ul class="attatch-wrap">
+            <li ng-repeat="item in uploader.queue">
+                <ul class="attatch-info">
+                    <li><div class="IconSetting {{controller.fileTypeImg(item.file)}}"></div></li>
+                    <li>{{controller.fileNameSubStr(item.file)}}</li>
+                    <li>{{item.file.size/1024|number:2}}KB</li>
+                    <li><i class="fa fa-times" data-ng-click="remove(item)"></i></li>
+                    <li data-ng-show="uploader.isHTML5" class="item-progress">
+                        <div class="progress-bar" data-ng-style="{ 'width': item.progress/100*180+'px' }"></div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- #endregion -->
+        <!-- #region 編輯器下方按鈕 -->
+        <div class="pull-right btn-wrap dropup">
+            @*點擊檔案上傳*@
+            <div class="file-input-wrap">
+                <div class="fileUpload btn btn-xs">
+                    <img src="~/Statics/img/upload.png" class="uploadImg" />
+                    <span>@Html.Raw(Succ.Common.Global.Succ.Pick_File)</span>
+                    <input type="file" class="upload" nv-file-select uploader="uploader" />
+                </div>
+                <div class="fileupload-msg">@Html.Raw(Succ.Common.Global.Succ.Do_Not_More_Than) 10M!</div>
+            </div>
+            @*草稿訊息*@
+            <div class="draft-msg"><span ng-bind="DraftMessage"></span></div>
+            @*訊息發布&儲存草稿的按鈕*@
+            <div class="btn-group-new-message">
+                <button type="button" class="btn btn-default btn-cancel" data-ng-click="cancelNew()"><i class=" fa fa-times fa-lg">&nbsp;</i>@Html.Raw(Succ.Common.Global.Succ.Cancle)</button>
+                <button type="button" class="btn btn-ok" data-ng-click="save()">
+                    <i class="fa fa-envelope-o">&nbsp;&nbsp;</i>@Html.Raw(Succ.Common.Global.Succ.OK)
+                </button>
+                <button class="btn dropdown-draft" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <button type="button" class="dropdown-menu btn btn-primary btn-draft" data-ng-click="Draft()">
+                    <i class="fa fa-pencil-square-o fa-lg"></i>@Html.Raw(Succ.Common.Global.Succ.Draft)
+                </button>
+            </div>
+        </div>
+        <!-- #endregion -->
+        @*<div class="loading" ng-show="loading" ng-init="loading=false" ng-bind="loadingText"></div>*@
+    </div>
+</div>
+

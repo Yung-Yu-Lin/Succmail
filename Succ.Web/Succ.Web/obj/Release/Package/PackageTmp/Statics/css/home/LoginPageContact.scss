@@ -1,0 +1,234 @@
+﻿@import '../Reset/reset.scss';
+//微軟正黑體
+$fontString: "Microsoft JhengHei";
+
+@media screen and (max-width: 320px)
+{
+    .price-table td {
+        @include shape(auto, 100%);
+        padding-top:10px;
+        padding-left:5px;
+        min-width:60px;
+    }
+    .type_name, .price {
+        color:#fff;
+        font-size:60%;
+    }
+    .dipiction-td {
+        color:#FFF;
+        font-size:2px;
+        font-family:$fontString;
+        padding-right:10px;
+        line-height:26px;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 480px)
+{
+    .price-table td {
+        @include shape(auto, 100%);
+        padding-top:10px;
+        padding-left:5px;
+        min-width:60px;
+    }
+    .type_name, .price {
+        color:#fff;
+        font-size:60%;
+    }
+    .dipiction-td {
+        color:#FFF;
+        font-size:2px;
+        font-family:$fontString;
+        padding-right:10px;
+        line-height:26px;
+    }
+}
+@media screen and (min-width:480px) and (max-width: 768px)
+{
+    .price-table td {
+        @include shape(auto, 100%);
+        padding-top:18px;
+        padding-left:30px;
+        min-width:85px;
+    }
+    .type_name, .price {
+        color:#fff;
+        font-size:120%;
+    }
+    .dipiction-td {
+        color:#FFF;
+        font-size:95%;
+        font-family:$fontString;
+        padding-right:60px;
+        line-height:26px;
+    }
+}
+@media screen and (min-width:768px) and (max-width: 1680px)
+{
+    .price-table td {
+        @include shape(auto, 100%);
+        padding-top:48px;
+        padding-left:30px;
+    }
+    .type_name, .price {
+        color:#fff;
+        font-size:200%;
+    }
+    .dipiction-td {
+        color:#FFF;
+        font-size:95%;
+        font-family:$fontString;
+        padding-right:60px;
+        line-height:26px;
+    }
+}
+
+
+#content-wrap_pri {
+    @include shape(100%, auto);
+    @include display(inline-block);
+    float:left;
+    border:1px solid #CCC;
+    padding-bottom:50px;
+}
+#contact-div {
+    @include shape(100%, auto);
+    background-color:#fff;
+    box-shadow:0 3px 5px rgba(20%,20%,40%,0.5);
+    padding-top:50px;
+    padding-bottom:80px;
+}
+#contact-info {
+    @include shape(80%, 330px);
+    @include display(inline-block);
+    margin:50px 10%;
+}
+.title_contact {
+    @include display(inline-block);
+    font-size:200%;
+    font-family:$fontString;
+    margin-bottom:15px;
+}
+.small_title_contact {
+    @include display(inline-block);
+    font-size:110%;
+    font-family:$fontString;
+    color:#3085B9;
+}
+.text_contact {
+    @include shape(60%, auto);
+    line-height:24px;
+    font-size:95%;
+    color:#666;
+    margin-top:5px;
+}
+.email_contact {
+    @include display(inline-block);
+    color:#F90;
+    font-family:Verdana, Geneva, sans-serif;
+    text-decoration:none;
+    margin-top:00px;
+    cursor:pointer;
+}
+.tel {
+    @include display(inline-block);
+    color:#F90;
+    font-family:Verdana, Geneva, sans-serif;
+    text-decoration:none;
+    margin-bottom:5px;
+}
+.email_contact:hover {
+    text-decoration:underline;
+}
+.price-div {
+    @include shape(100%, 250px);
+    background-color:rgb(35, 64, 107);
+    margin-bottom:5px;
+    float:right;
+}
+.recommend {
+    @include shape(5%, 100%);
+    min-width:60px;
+    background-color:#FAA32E;
+    float:left;
+}
+.type-td {
+    line-height:60px;
+    font-family:Verdana, Geneva, sans-serif;
+}
+.format-td {
+    color:#fff;
+    font-size:110%;
+    font-family:$fontString;
+}
+//NetWork
+#slogan_netSecurity, #slogan_customerCase {
+    @include shape(100%, auto);
+}
+#contact-info-security {
+    @include shape(80%, auto);
+    @include display(inline-block);
+    margin:50px 10%;
+}
+.title_contact_security {
+    @include display(inline-block);
+    font-size:200%;
+    font-family:$fontString;
+    margin-bottom:15px;
+}
+.small_title_contact_security {
+    @include display(inline-block);
+    font-size:110%;
+    font-family:$fontString;
+    color:#3085B9;
+}
+.text_contact_security {
+    @include shape(100%, auto);
+    line-height:24px;
+    font-size:95%;
+    color:#666;
+    margin-top:5px;
+}
+li {
+    @include display(list-item);
+    line-height:24px;
+    font-size:95%;
+    color:#666;
+}
+//Customer
+.customTable_main {
+    @include shape(90%, auto);
+    margin-top:50px;
+}
+.customTr_main {
+    @include shape(auto, 420px);
+}
+.companyLogo td {
+    @include shape(auto, 100px);
+}
+.companyLogo img {
+    @include shape(auto, 100px);
+}
+.companyName {
+    @include shape(auto, 50px);
+}
+.companyName a {
+    color:#3085B9;
+    font-weight:bold;
+    font-size:1.3em;
+    text-decoration:none;
+    font-family:$fontString;
+}
+.companyName a:hover {
+    text-decoration:underline;
+}
+.companySummary {
+    @include shape(auto, 90px);
+    font-size:0.7em;
+    line-height:1.5em;
+    color:#2a2a2a;
+}
+.companyContent {
+    font-size:1em;
+    line-height:1.5em;
+    color:#2a2a2a;
+}

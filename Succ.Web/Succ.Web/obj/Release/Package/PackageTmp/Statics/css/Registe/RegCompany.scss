@@ -1,0 +1,203 @@
+﻿@import "../Reset/reset.scss";
+
+
+@media screen and (max-width: 320px)
+{
+    html, body {
+        min-width:320px;
+    }
+
+    #main {
+        //padding: 4.5em 6em 3em 6em ;
+        padding:10px 10px;
+        //width:100%;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) 
+{
+    #main {
+        //padding: 4.5em 8em 3em 8em ;
+        padding:10px 40px;
+        //width:100%;
+    }
+}
+
+@media screen and (min-width:480px) and (max-width: 768px)
+{
+    #main{
+        //padding: 4.5em 12em 3em 12em ;
+        padding:10px 60px;
+        //width:100%;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width: 1680px)
+{
+    #main{
+        //padding: 4.5em 20em 3em 20em ;
+        padding:10px 100px;
+        //width:100%;
+    }
+}
+
+*{
+    @include box-sizing(border-box);
+    font-family:'Microsoft JhengHei';
+}
+
+ul{
+    padding:0;
+}
+
+//The form for fill in
+#main {
+    width:100%;
+    margin-top:60px;
+    position: relative;
+    background: #ffffff;
+    border-radius: 4px;
+    cursor: default;
+    opacity: 0.95;
+    @include transform-origin(50% 50%);
+    @include transform(rotateX(0deg));
+    @include transition(opacity 1s ease, 1s ease);
+    @include box-shadow(-4px -4px 20px -6px rgba(0,0,0,0.69));
+}
+
+//The Dev under the #main form
+#main > .Titlefield{
+    margin:0 0 1.5em 0;
+}
+#main > .field
+{
+    width:100%;
+    margin:0 0 1.0em 0;
+}
+
+//The inpur under the Dev
+.field > input
+{
+    display:block;
+    width:100%;
+    height:34px;
+    padding:6px 12px;
+    font-size:14px;
+    background-color:#fff;
+    border:1px solid #ccc;
+    margin-top:10px;
+}
+
+body.is-loading #main {
+    opacity: 0;
+    @include transform(rotateX(30deg));
+}
+
+//The first Div under the Body
+#wrapAll {
+    @include display(flex);
+    @include align-item(center);//vertical
+    @include justify-content(space-between);//well distributed centerd
+    @include flex-direction(column);//order by vertical from top to bottom
+    @include flex-wrap(nowrap);//the model of order is single cilumn
+    min-height: 100%;
+    padding: 1.5em;
+    z-index: 2;
+}
+
+//Must fill
+.required{
+    color:#e14b39;
+    display:inline-block;
+    font-weight:normal;
+    padding-left:2px;
+}
+
+/*SuccMail Logo*/
+#icon {
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 40px;
+}
+
+//The circle of progress
+.circle {
+    display: inline-block;
+    background: #B5B5B6;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 999;
+    margin-top: 0.4%;
+}
+
+//The bar of progress
+.rectangle {
+    display: inline-block;
+    height: 5px;
+    width: 37%;
+    background: #B5B5B6;
+    margin-bottom: 35px;
+    position: relative;
+    margin-left:-5px;
+    margin-right:-5px;
+}
+
+.stepWord {
+    width: 130px;
+    margin-left: -56px;
+    font-family: 'Microsoft JhengHei';
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+.on {
+    background: #007DC3;
+}
+
+.ontext {
+    color: #007DC3;
+}
+
+#leftInfo tr {
+    height: 45px;
+}
+
+#leftInfo input {
+    height: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 14px;
+}
+
+.inputWidth {
+    width: 220px;
+}
+
+#rightInfo {
+    border-width: 0px 0px 0px 2px;
+    border-style: solid;
+    border-color: #CCC;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+}
+
+.nextButton {
+    background-color: #007DC3;
+    height: 35px;
+    color: #FFF;
+    border: 0px;
+    outline: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.nextButton:hover {
+    background-color: #024288;
+    cursor: pointer;
+}

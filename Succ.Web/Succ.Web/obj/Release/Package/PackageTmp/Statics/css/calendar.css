@@ -1,0 +1,93 @@
+﻿
+#middle{
+    padding-left:10px;
+}
+
+#middle #calendar-head{
+    padding-right:50px;
+    padding-bottom:20px;
+    border:1px solid #fff;
+    margin-bottom:50px;
+}
+
+#middle #calendar-head>h3{
+    position:absolute;
+    margin-left:60px;
+    padding-bottom:10px;
+    width:300px;
+}
+
+
+#middle #calendar-head>div{
+    margin:10px;
+}
+
+#middle #calendar-head .back-list{
+    background-color:#eee;
+    border:1px solid #aaa;
+}
+#middle #calendar-head .back-list:hover{
+    background-color:#ccc;
+}
+
+#middle #calendar{
+    top:60px;
+    width:96%;
+    margin:0 auto;
+    margin-bottom:20px;
+}
+
+
+#middle .new-subject-list{
+    position:absolute;
+    width:250px;
+    top:100px;
+    left:300px;
+    background-color:#ccc;
+    z-index:1;
+}
+
+#middle .new-subject-list >div>input{
+    position:relative;
+    top:-15px;
+    margin-top:-10px;
+    margin-left:30px;
+    width:187px;
+}
+
+#middle .new-subject-list >div>textarea{
+    width:218px;
+}
+
+#middle .new-subject-list >div>label{
+    margin-top:5px;
+}
+
+#middle .new-subject-list .chosen-container,
+#middle .new-subject-list .chosen-container>ul,
+#middle .new-subject-list .chosen-drop{
+    width:218px;
+}
+
+#middle .new-subject-list >div>button{
+    margin:5px;
+}
+
+/* 事件標簽 */
+#middle .calendar-event .date-event{
+    position:absolute;
+    top:385px;
+    left:285px;
+    width:125px;
+    color:#fff;
+    background-color:#3385ff;
+    border:2px solid #aaa;
+    border-radius:5px;
+    padding:3px 10px;
+}
+
+
+
+hr{
+    margin:10px;
+}

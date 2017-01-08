@@ -1,0 +1,6 @@
+﻿.note-editor table, .note-editor table td {
+        border: 1px solid #808080;
+    }
+.note-editable {
+    background-color:#fff;
+}

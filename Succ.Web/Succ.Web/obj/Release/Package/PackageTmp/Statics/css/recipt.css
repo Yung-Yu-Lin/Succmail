@@ -1,0 +1,130 @@
+﻿/* #region common setting */
+.info-block {
+    position: relative;
+}
+
+.info-block .square-box {
+    margin-right: 5px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    -moz-background-size: 50px 50px;
+    -webkit-background-size: 50px 50px;
+    -o-background-size: 50px 50px;
+    background-size: 50px 50px;
+}
+
+.info-block .usertxt {
+    font-size: 26px;
+    color: aliceblue;
+    z-index: 1;
+}
+
+.info-block .userimg {
+    z-index: 2;
+    background-color: transparent;
+}
+
+.info-block div.username {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    margin-left: 70px;
+}
+
+.info-block div.email {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    margin-left: 70px;
+}
+/* #endregion */
+
+/* #region accordion */
+.receipt-wrap {
+    z-index: 999;
+    background-color: #fff;
+    position: fixed;
+    right: 60%;
+    overflow-y: scroll;
+    height: 86.5%;
+    width: 21%;
+    top: 13.5% !important;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0 0 6px 0 rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0 0 6px 0 rgba(50, 50, 50, 0.2);
+    box-shadow: 0 0 6px 0 rgba(50, 50, 50, 0.2);
+}
+
+    .receipt-wrap .panel-heading {
+        background-image: none;
+    }
+
+    .receipt-wrap .panel-default:first-child .panel-heading {
+        background-color: #f1f1f1;
+    }
+
+    .receipt-wrap .panel-default, .ng-isolate-scope {
+        border: none;
+    }
+
+    .receipt-wrap .panel-group .panel + .panel {
+        margin: 0;
+    }
+
+    .receipt-wrap .panel-group > div {
+    }
+
+    .receipt-wrap .panel-default > .panel-heading {
+        background-color: #fff;
+        border-bottom: 1px solid lightgray;
+    }
+
+    .receipt-wrap .panel-default .panel-heading .caret {
+        float: right;
+    }
+
+    .receipt-wrap .panel-default .panel-heading a {
+        text-decoration: none;
+    }
+
+    .receipt-wrap .panel-default .panel-body {
+        padding-top: 10px;
+        margin-bottom: 0;
+        height: 70px;
+    }
+
+        .receipt-wrap .panel-default .panel-body:hover, .panel-default .active {
+            background-color: #3399CC;
+            color: white;
+            border-bottom: 1px solid lightgray;
+        }
+
+        .receipt-wrap .panel-default .panel-body input[type="checkbox"] {
+            float: left;
+            margin-top: 15px;
+        }
+
+        .receipt-wrap .info-block .square-box {
+            margin-left: 15px;
+        }
+
+/* #endregion */
+
+/* #region chosen */
+.chosen-container .chosen-results li, .chosen-container-multi .chosen-results li {
+    padding-left: 0;
+    padding-right: 0;
+    height: 50px;
+    margin-bottom:1px;
+}
+
+.chosen-container .info-block .square-box, .chosen-container-multi .info-block .square-box {
+    margin-left: 0;
+    top: -5px;
+    
+}
+
+/* #endregion */

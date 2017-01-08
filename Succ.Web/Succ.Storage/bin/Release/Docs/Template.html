@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuccMail</title>
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/angular-csp.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/font-awesome.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Scripts/extensions/angular-summernote/summernote.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Scripts/extensions/chosen/chosen.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Scripts/extensions/chosen/CoverChosen.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/index.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/recipt.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/setting.css" rel="stylesheet" />
+    <link class="ng-scope" href="http://mailplus.ncut.edu.tw/Statics/css/Detail.css" rel="stylesheet" type="text/css">
+    <meta name="description" content="The description of my page" />    
+</head>
+<body  >
+
+
+    
+
+    <div id="wrap" class="row">
+        <!--<ng-view ng-if="IndexData" ng-cloak></ng-view>-->
+        <div class="row ng-scope" id="wrap">
+            <div id="DetailBody">
+                <!--功能按鈕-->
+                <!-- ngIf: !isEditSubj -->
+                <h2 id="DiscTitle">
+                    <b title="@{DiscName}" class="ng-binding" style="font-size: 26px; margin-left: 25px;" data-ng-bind="data.DiscName">@{DiscName}</b>
+                </h2>
+
+                <div class="ng-scope" id="content" ng-if="!isEditSubj">
+                    <div title="@{Title}" class="TitleArea"><strong class="ng-binding" >@{Title}</strong></div>
+                    
+                    <!--主題資訊列-->
+                    <div id="infobar">
+                        <span title="data.Creator" class="ng-binding" ng-bind="data.Creator">@{SubjCreatorName}</span>
+                        <!-- ngIf: data.ReadStatus == 'UnRead' -->
+                        <label title="時間 : 1/9 06:01" class="ng-binding" style="margin-left: 5px;" ng-bind="data.CreateOn | converdate">@{SubjCreatedOn}</label>                        
+                    </div>
+                    <hr style="margin: 12px 0px;">
+                    <div style="margin-top: 13px;">
+                        
+                    </div>                    
+                    <!--主題主要內容-->
+                    <div class="ng-binding" id="main_content" >
+                    @{Content}                        
+                    </div>                    
+                    <!--附加檔案-->
+                    @{SubAttList}
+                    
+                    <hr>
+                    <!--收件人-->
+                
+                    <div id="receiver">
+                        <span class="glyphicon glyphicon-user"></span>
+                        @{SubRecs}                        
+                    </div>
+                </div><!-- end ngIf: !isEditSubj -->
+                <!-- ngIf: isEditSubj -->
+                <!--主題記錄區-->
+                <!-- ngInclude: SubHistoryUrl -->
+                <div class="ng-scope ng-hide" ng-controller="SubHistory_ctrl" ng-show="ShowSubHis" ng-include="SubHistoryUrl">
+                    
+                </div>
+                <!--快速回覆-->
+                <div class="ng-scope" id="comment" ng-show="!isReply &amp;&amp; !isEditSubj" data-ng-controller="FastReplyCtrl">
+
+                    
+
+
+                    <div id="respond-new">
+                        New
+                        <span class="label label-warning ng-binding" ng-bind="data.NoReadCount">0</span>
+                    </div>
+                    <div class="ng-scope" id="respond-panel" tooltip-html-unsafe="<div class='Tooltip noBreak'>&#10;                    新增回覆 / 回覆數量&#10;                </div>" tooltip-placement="bottom">
+            回覆
+                <span class="label label-default ng-binding" ng-bind="data.ReplyCount">@{ReplyCount}</span>
+            </div>
+                </div>
+
+                <a id="reply-subj"></a>
+                <!-- ngIf: isReply -->
+                <!--回復迴圈-->
+                @{ReplyContent}
+           
+                
+
+                <!--回復迴圈END-->
+
+                
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+    <div class="tab_list_head">
+        <ul class="nav">
+            <li class="new-message-li tab_list_head_li active" data-toggle="tab">
+                <div>
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <a class="new-message-a tab_slide_new">
+                        New
+                    </a>
+                    <i class="glyphicon glyphicon-remove" data-ng-click="disableMsgBlock($event)"></i>
+                </div>
+            </li>
+            <li class="browse-content-li tab_list_head_li" data-toggle="tab">
+                <div>
+                    <a class="browse-content-a tab_slide_browse">
+                        {{subjectTitle|limitTo:6}}
+                    </a>
+                    <i class="glyphicon glyphicon-remove" data-ng-click="disableDetailMsgBlock($event)"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab_list_body new-message nopadding">
+        <div class="tab-content">
+            <div class="new-message-div tab-pane " data-ng-include="createMsgUrl"></div>
+            <div class="browse-content-div tab-pane ">
+                <div data-ng-include="detailMsgUrl" data-ng-controller="SubjectDetail"></div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+    
+
+    
+</body>
+</html>

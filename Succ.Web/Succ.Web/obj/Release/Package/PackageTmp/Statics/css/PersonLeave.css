@@ -1,0 +1,217 @@
+﻿/* #region 附件上傳 */
+.attatch-wrap {
+    background: #fff;
+    list-style: none;
+    font-size: 14px;
+    color: #808080;
+    margin-left: 0;
+    padding-left: 0;
+    float: left;
+    width: 100%;
+}
+
+    .attatch-wrap li {
+        padding: 0 10px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+.file-input-wrap {
+    float: left;
+    width: 30%;
+}
+
+
+/* 附件列表 */
+.attatch-info {
+    list-style: none;
+    margin-left: -50px;
+}
+
+    .attatch-info li {
+        float: left;
+    }
+
+    .attatch-info .item-progress {
+        background-color: #eeeeee;
+        height: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+        border: 1px solid #808080;
+        padding: 0;
+        width: 180px;
+        float: right;
+    }
+
+        .attatch-info .item-progress .progress-bar {
+            background-color: #428bca;
+        }
+
+/* #endregion */
+
+/* 彈出來的收件人區塊 */
+.add-new-personLeaveForm .receipt-wrap {
+    z-index: 999;
+    background-color: #fff;
+    position: fixed;
+    right: 60%;
+    overflow-y: auto;
+}
+/*下拉收件人選單*/
+    .add-new-personLeaveForm .chosen-container {
+    }
+
+
+        /* 下拉收件人選單的的選取結果 */
+        .add-new-personLeaveForm .chosen-choices li.search-choice {
+            background: none #eeeeee;
+            font-size: 16px;
+        }
+
+
+
+
+
+.personLeaveFormDate {
+    height: 60px;
+}
+
+
+        .personLeaveFormDate .date .outBackTime .outYear {
+            margin-left: 14px;
+        }
+
+    
+
+        .personLeaveFormDate .date .outBackTime .outHour, .personLeaveFormDate .date .outBackTime .backHour {
+    margin-left:27px;
+        }
+
+         
+
+             
+
+.personLeaveFormType {
+    height: 50px;
+}
+
+
+        .personLeaveFormType .chose > ul > li {
+            list-style-type: none;
+            display: inline;
+            padding-left: 20px;
+        }
+
+        .personLeaveFormType .chose > span {
+            padding-left: 60px;
+        }
+
+.personLeaveFormReason {
+    height: 50px;
+}
+
+    .personLeaveFormReason .reason {
+        background-color: #fff;
+    }
+
+       
+
+.personLeaveFormRemarks {
+    height: 50px;
+}
+
+    .personLeaveFormRemarks .remarks {
+        background-color: #FFF;
+    }
+
+
+
+.personLeaveFormAdd {
+    height: 30px;
+}
+
+    .personLeaveFormAdd .add {
+        background-color: #FFF;
+    }
+
+.btn-primary {
+    float: left;
+}
+
+.btn-wrap {
+    width: 100%;
+    float: left;
+}
+
+.btn-draft {
+    height: 40px;
+    border: 1px solid #fff;
+    min-width: 100px;
+    position: absolute;
+    -webkit-border-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    text-align: center;
+    margin: 0 0 0 105px;
+    background: #3399cc;
+    color: #fff;
+}
+
+.file-input-wrap {
+    float: left;
+    width: 30%;
+}
+
+.btn-group-new-message {
+    float: right;
+    position: relative;
+    right: 18px;
+}
+.dropdown-draft {
+    background: #3399cc;
+    height: 36px;
+    width: 15px;
+    text-align: center;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 0;
+    position: relative;
+    margin-left: -10px;
+}
+
+.dropdown-draft .caret {
+    /*margin-left: -5px;*/
+    color: #FFF;
+}
+
+.loading {
+    /*display: none;*/
+    background-color: #111;
+    color: #fff;
+    font-size: 26px;
+    height: 100%;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 1111;
+}
+

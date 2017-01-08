@@ -1,0 +1,700 @@
+﻿<!DOCTYPE html>
+<html ng-app="SuccApp" ng-csp>
+<head>
+    <!-- #region 中繼資料和標題 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1" />*@
+    <meta name="description" content="SuccMail" />
+    <meta name="description" content="中小企業管理" />
+    <title>SuccMail</title>
+    <!-- #endregion -->
+    <!-- #region 無法壓縮的css檔案 -->
+    <link href="~/Statics/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Statics/css/angular-csp.css" rel="stylesheet" />
+    <link href="~/Statics/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Scripts/extensions/chosen/chosen.css" rel="stylesheet" />
+    <!-- #endregion -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body ng-controller="SuccmailCtrl" background="/Statics/img/background.jpg" ng-style="body_css" id="bodyid" scroll="no">
+    <!-- #region 線上人員 -->
+    <div class="online-member right" ng-click="GetOnlineUserList()">
+        <span class="glyphicon glyphicon-user"></span>
+        <span class="onlineCount right" ng-bind="IndexData.OnlineUserCount"></span>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 進階搜尋隱藏參數 -->
+    <input type="hidden" ng-bind="SearchFacStartValue" />
+    <input type="hidden" ng-bind="SearchFacEndValue" />
+    <!-- #endregion -->
+    <!-- #region 導覽列 -->
+    <nav id="navbar" class="navbar navbar-default" role="navigation" ng-cloak>
+        <div class="container-fluid">
+            <!-- 固定在上 -->
+            <div class="navbar-header">
+                <!-- #region 縮小之後的清單按紐 -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-area">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- #endregion -->
+                <!-- #region 視為Logo的區域縮小後會存在 -->
+                <section class="navbar-brand">
+                    <a class="BrandName WithoutUnderline" href="/news" ng-click="GetNews(userid, CurrentCompany.CompanyID)">SuccMail</a>
+                    <a href="/news" class="WithoutUnderline" ng-click="GetNews(userid, CurrentCompany.CompanyID)">
+                        <img id="img_mail" src="/Statics/img/envelope.png" />
+                    </a>
+                    <a class="WithoutUnderline">
+                        <span class="badge" style="color:yellow;" ng-bind="IndexData.NoReadCount"></span>
+                    </a>
+                </section>
+                <!-- #endregion -->
+            </div>
+            <!-- #region 可縮小區塊 -->
+            <div class="collapse navbar-collapse" id="collapse-area">
+                <!-- #region 搜尋區塊 -->
+                <div id="panel_search" class="panel-group navbar-left">
+                    <!-- #region 一般搜尋框 -->
+                    <div id="panel_search_head" class="panel-heading">
+                        <input type="text" class="f16" placeholder="@Html.Raw(Succ.Common.Global.Succ.Search)" ng-model="search.SearchKeyWord" ng-keyup="SimpleSearch($event)">
+                        <label data-toggle="collapse" data-parent="#accordion" ng-click="ToShowAdvanced()">
+                            <span class="caret"></span>
+                        </label>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region 進階搜尋主畫面 -->
+                    <div id="nbsearch" class="panel-collapse FadeAnimate" ng-if="ShowAdvanced">
+                        <div id="panel_search_body" class="panel-body row">
+                            <button type="button" class="close" ng-click="ToShowAdvanced()">&times;</button>
+                            <div class="col-sm-11 nopadding">
+                                <!--關鍵字-->
+                                <div class="search_tag f16 pull-left stringLimit" title="{{KeyWordString}}">
+                                    <span class="glyphicon glyphicon-search"></span> &nbsp;{{KeyWordString}}
+                                </div>
+                                <!--關鍵字-->
+                                <input type="text" class="input_search form-control pull-left" ng-model="search.SearchKeyWord">
+                                <!--日期選擇-->
+                                <div class="search_tag f16 pull-left stringLimit">
+                                    <span class="glyphicon glyphicon-calendar"></span> &nbsp;{{SearchDateString}}
+                                </div>
+                                <!--日期選擇-->
+                                <div class="search_date_div pull-left" ng-controller="DatepickerDemoCtrl">
+                                    <p class="input-group input-group-sm start-date pull-left">
+                                        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="SearchStartDate" is-open="StartSearchopened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" show-button-bar="show_button" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="SearchSopen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                    <p class="input-group input-group-sm start-date pull-left">
+                                        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="SearchEndDate" is-open="EndSearchopened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" show-button-bar="show_button" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="SearchEopen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                </div>
+                                <!--成員選擇-->
+                                <div class="search_tag f16 stringLimit pull-left">
+                                    <span class="glyphicon glyphicon-user"></span> &nbsp;{{MemberString}}
+                                </div>
+                                <!--成員選擇-->
+                                <div class='chose-box chose-sender search_member pull-left'>
+                                    <select data-placeholder="@Html.Raw(Succ.Common.Global.Succ.Choose_Receiver)" style="width:350px;" multiple chosen="SearchMemberList" ng-model="search.SelectSearchMember" ng-options="item.UserName for item in search.SearchMemberList" template="templates" datasource="search.SearchMemberList" ng-change="chosenChange()" view-width="230px"></select>
+                                </div>
+                                <!--討論組選擇-->
+                                <div class="search_tag f16 stringLimit pull-left">
+                                    <span class="glyphicon glyphicon-comment"></span> &nbsp;{{DiscString}}
+                                </div>
+                                <!--討論組選擇-->
+                                <div class='chose-box chose-sender search_Disc pull-left'>
+                                    <select data-placeholder="@Html.Raw(Succ.Common.Global.Succ.SelectDiscussion)" style="width:350px;" multiple chosen="SearchDiscList" ng-model="search.SelectSearchDisc" ng-options="item.Name for item in search.SearchDiscList" template="Disctemplates" datasource="search.SearchDiscList" ng-change="chosenChange()" view-width="230px"></select>
+                                </div>
+                                <!--是否為檔案-->
+                                <div class="search_tag f16 pull-left">
+                                    <span class="glyphicon glyphicon-floppy-disk"></span> &nbsp;{{FileString}}
+                                </div>
+                                <!--是否搜尋檔案-->
+                                <div class="btn-group btn-group-sm search-file pull-left">
+                                    <input type="radio" ng-model="search.SearchFile" value="2">On
+                                    <input type="radio" ng-model="search.SearchFile" value="1">Off
+                                </div>
+                                <!--選擇討論組類別-->
+                                <div class="btn-group btn-group-sm search-group pull-left">
+                                    <input type="radio" ng-model="search.SubState" value="0">@Html.Raw(Succ.Common.Global.Succ.All)
+                                    <input type="radio" ng-model="search.SubState" value="1">@Html.Raw(Succ.Common.Global.Succ.Running)
+                                    <input type="radio" ng-model="search.SubState" value="2">@Html.Raw(Succ.Common.Global.Succ.Finished)
+                                </div>
+                            </div>
+                            <!--搜尋按鈕-->
+                            <button id="search_btn" class="btn btn-primary f16" ng-click="SearchData()">
+                                @Html.Raw(Succ.Common.Global.Succ.Search)
+                            </button>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                </div>
+                <!-- #endregion -->
+                <div class="navbar-collapse">
+                    <!-- #region 姓名、齒輪、登出按紐 -->
+                    <div class="nav navbar-right HideNavSetting">
+                        <!-- #region 前往後臺的齒輪按鈕 -->
+                        <div class="settingBackEnd" data-ng-click="goPage('admin')" ng-if="IndexData.CurrentUser.isAdmin"
+                             tooltip-placement="bottom"
+                             tooltip-html-unsafe="
+                            <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.Setting)
+                            </div>">
+                        <span class=" glyphicon glyphicon-cog"></span>
+                    </div>
+                        <!-- #endregion -->
+                        <!-- #region 使用者姓名 -->
+                        <div class="user">
+                            <a class="WithoutUnderline" ng-click="PersonalSetting()">
+                                <span ng-bind="IndexData.CurrentUser.UserName"></span>
+                            </a>
+                        </div>
+                        <!-- #endregion -->
+                        <!-- #region 登出按鈕 -->
+                        <div class="logOut" ng-click="Logout()"
+                             tooltip-placement="bottom"
+                             tooltip-html-unsafe="
+                            <div class='Tooltip'>
+                                @Html.Raw(Succ.Common.Global.Succ.SignOut)
+                            </div>">
+                        <img src="/../Statics/img/icon-exit.png" alt="" />
+                    </div>
+                        <!-- #endregion -->
+                    </div>
+                    <!-- #endregion -->
+                </div>
+            </div>
+            <!-- #endregion -->
+        </div>
+    </nav>
+    @*<nav id="main-nav" class="navigation overflow">
+            <ul>
+                <li><a href="#">Menu item</a></li>
+                <li><a href="#">Menu item 2</a></li>
+            </ul>
+        </nav>
+        <div id="container">
+            <header class="primary">
+                <span class="open icon">&#9776;</span>
+                <hgroup><h1>Title</h1></hgroup>
+            </header>
+            <section id="scroller" class="overflow">
+                <div id="content">
+                    <!-- Content goes in here -->
+                    <!-- Content ends -->
+                </div>
+            </section>
+
+        </div>*@
+    <!-- #endregion -->
+    <!-- #region 內容區域 -->
+    <div id="wrap" class="row">
+        <!-- #region 左側選單畫面 -->
+        <div id="left-side" class="nopadding left" ng-show="ShowLeftMenu" data-ng-init="InitLeftMenu()" ng-cloak>
+            <!-- #region 切換公司區域 -->
+            <div id="panel" class="panel panel-default">
+                <div id="panel_com"
+                     class="panel-body"
+                     tooltip-placement="bottom"
+                     tooltip-html-unsafe="
+                        <div class='Tooltip'>
+                            @Html.Raw(Succ.Common.Global.Succ.Switching_Comp)
+                        </div>">
+                    <!-- #region 公司Logo與公司名稱 -->
+                    <img id="img_com" class="left" ng-if="CurrentCompany.CompanyLogo != null" ng-src="/Backend/getCompImg?CompID={{compid}}&t={{timer}}" />
+                    <img id="img_com" class="left" ng-if="CurrentCompany.CompanyLogo == null" src="~/Statics/img/backend/Default_Company0.jpg" />
+                    <div class="CurrentCompNameArea">
+                        <p class="TextLimitation CurrentCompName" ng-bind="CurrentCompany.CompanyName"></p>
+                    </div>
+                    <!-- #endregion -->
+                    <button class="w3-btn w3-blue w3-ripple right" ng-click="OpenSwitchView()">
+                        @Html.Raw(Succ.Common.Global.Succ.Switching_Comp) 》
+                    </button>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 我的信箱 -->
+            <a class="a_type" title="@Html.Raw(Succ.Common.Global.Succ.MyMailBox)" ng-click="GetBox(userid,CurrentCompany.CompanyID)">
+                <div id="panel_msg" class="subject panel panel-default">
+                    &nbsp;
+                    <span class="panel-icon glyphicon glyphicon-user PanelIcon"></span>&nbsp;
+                    <span>
+                        @Html.Raw(Succ.Common.Global.Succ.MyMailBox)
+                        <span class="label label-default CountNum" ng-bind="IndexData.MySubjectCount"></span>
+                    </span>
+                </div>
+            </a>
+            <!-- #endregion -->
+            <!-- #region 收藏夾 -->
+            <a class="a_type" title="@Html.Raw(Succ.Common.Global.Succ.FavBox)" ng-click="GetFavList(userid,CurrentCompany.CompanyID)">
+                <div id="panel_fav" class="subject panel panel-default">
+                    &nbsp;
+                    <span class="panel-icon glyphicon glyphicon-star PanelIcon"></span>&nbsp;
+                    <span>
+                        @Html.Raw(Succ.Common.Global.Succ.FavBox)
+                        <span class="label label-default CountNum" ng-bind="IndexData.MyFavoriteCount"></span>
+                    </span>
+                </div>
+            </a>
+            <!-- #endregion -->
+            <!-- #region 草稿夾 -->
+            <a class="a_type" title="@Html.Raw(Succ.Common.Global.Succ.Draft)" ng-click="GetDraft(userid,CurrentCompany.CompanyID)">
+                <div id="panel_draft" class="subject panel panel-default">
+                    &nbsp;
+                    <span class="panel-icon glyphicon glyphicon-edit PanelIcon"></span>&nbsp;
+                    <span>
+                        @Html.Raw(Succ.Common.Global.Succ.Draft)
+                        <span class="label label-default CountNum" ng-bind="IndexData.MyDraftCount"></span>
+                    </span>
+                </div>
+            </a>
+            <!-- #endregion -->
+            <!-- #region 公司訊息 -->
+            @*<div class="panel-group" >*@
+            <div class="panel-group" data-ng-repeat="DiscCate in CurrentCompany.DiscussionCate">
+                <div id="panel_msg" class="panel panel-default">
+                    <!-- #region 分類公司訊息 或 行政事務 -->
+                    @*title="{{DiscCate.DiscussionCategoryName}}"*@
+                    <div class="a_type" data-toggle="collapse" data-parent="#accordion" href="#{{$index}}" title="{{DiscCate.DiscussionCategoryName}}">
+                        <div class="left-panel-heading nopadding">
+                            <span class="panel-icon glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;
+                            <span ng-bind="DiscCate.DiscussionCategoryName"></span>
+                            <i class="fa fa-caret-down sj-sandwich right"></i>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- #region 個別討論組名稱 & 數量 -->
+                    <div id="{{$index}}" class="com_msg panel-collapse collapse {{$index ===0 ?'in':''}}">
+                        <div class="panel-body">
+                            @*ng-click="GetSubjList(discItem.DiscussionID)"*@
+                            <div class="a_type DragDisc"
+                                 data-ng-repeat="discItem in DiscCate.Discussions | orderBy:'Sequence'"
+                                 title="{{discItem.DiscussionTitle}}"
+                                 ng-click="GetSubjList(discItem.DiscussionID)"
+                                 ng-model="DiscCate.Discussions"
+                                 data-drag="true"
+                                 data-drop="true"
+                                 jqyoui-droppable="{index: {{$index}},animate:true, onDrop: 'dropCallback(discItem)', onOver: 'overCallback(discItem)', onOut: 'outCallback(discItem)'}"
+                                 jqyoui-draggable="{index: {{$index}},insertInline:true,animate:true,placeholder:true, direction: 'jqyouiDirection', onStart:'startCallback(discItem, $index)', onStop: 'stopCallback(discItem)'}"
+                                 data-jqyoui-options="{revert: 'invalid'}"
+                                 data-direction="{{discItem.jqyouiDirection}}">
+                                <div class="subject" id="{{discItem.DiscussionID}}">
+                                    <div class="subject_div">
+                                        <span class="LimitWord DiscName" ng-bind="discItem.DiscussionTitle"></span>
+                                        <!--公開型討論組-->
+                                        <span ng-if="discItem.isPublic" class="label label-default pull-right DiscCount" ng-bind="discItem.SubjectCount"></span>
+                                        <!--私密型討論組-->
+                                        <span ng-if="!discItem.isPublic" class="label label-default pull-right DiscCount" ng-bind="discItem.MyBoxCountByDisc"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 新增討論組(暫時關閉) -->
+            @*<a href="javascript:;" ng-if="IndexData.CurrentUser.isAdmin" class="add_group" data-toggle="modal" data-target="#NewDiscussionModal" data-ng-click="initNewDiscussion()">+@Html.Raw(Succ.Common.Global.Succ.NewGroup)</a>*@
+            <!-- #endregion -->
+        </div>
+        <!-- #endregion -->
+        @*Middle Content*@
+        @RenderBody()
+    </div>
+    <!-- #endregion -->
+    <!-- #region 右側畫面(包含新訊息與詳細主題畫面)-->
+    <div class="tab_list_head" ng-style="tab_list_head">
+        <ul class="nav">
+            <!-- #region 新訊息滑動標籤 -->
+            <li ng-class="newmessage_li" data-toggle="tab" ng-click="OpenNewMsg()" ng-style="newMsg_li_css">
+                <div>
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <a class="new-message-a tab_slide_new">
+                        New
+                    </a>
+                    <i class="glyphicon glyphicon-remove" data-ng-click="disableMsgBlock($event)"></i>
+                </div>
+            </li>
+            <!-- #endregion -->
+            <!-- #region 詳細主題滑動標籤 -->
+            <li ng-class="browseContent_li" data-toggle="tab" ng-click="OpenDetailContent()" ng-style="browseContent_li_css">
+                <div>
+                    <a class="browse-content-a tab_slide_browse">
+                        {{subjectTitle|limitTo:6}}
+                    </a>
+                    <i class="glyphicon glyphicon-remove" data-ng-click="disableDetailMsgBlock($event)"></i>
+                </div>
+            </li>
+            <!-- #endregion -->
+        </ul>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 新訊息與詳細頁畫面 -->
+    <div ng-class="tab_list_body_class" ng-style="tab_list_body">
+        <div class="tab-content" ng-style="tab_list_content">
+            <div ng-class="newMessageClass" data-ng-include="createMsgUrl" ng-style="newMessage_Div"></div>
+            <div ng-class="browseContentClass" ng-style="browseContentStyle">
+                <div data-ng-include="detailMsgUrl" data-ng-controller="SubjectDetail" class="DetailContainer"></div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 底部畫面 -->
+    <div id="footer" class="row" ng-if="IndexData" ng-cloak>
+        <p>SuccMail雲端企業事件管理平台 &nbsp; Support@458.com.tw &nbsp; 04-22428135</p>
+        <div> Q&A </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 後台導引畫面-->
+    <div backendguide compid="IndexData.CurrentUser.CompID" userid="IndexData.CurrentUser.UserID" mainstyle="BackendGuide.MainStyle" ng-style="BackendGuide.MainStyle" ng-if="BackendGuide.IsStart"></div>
+    <!-- #endregion -->
+    <!-- #region 新增討論組頁面-->
+    <div class="modal fade" id="NewDiscussionModal" tabindex="-1" role="dialog" aria-labelledby="NewDiscussionModalLabel" aria-hidden="true" data-ng-if="showNewDiscussion" data-ng-controller="DiscManageCtrl">
+        <!-- #region 選擇成員 -->
+        <div class="receipt-wrap" data-ng-if="isShowMemberReceiptsMenu">
+            <div accordion close-others='false' is-checkbox="true">
+                <div accordion-group data-ng-repeat="group in MemberDepartmentsForDiscManage track by $index" is-checked="group.selected" item-group="group.DepartmantID">
+                    <div accordion-heading>
+                        {{group.DepartmantName}}
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-checkbox panel-body" data-ng-repeat="item in group.Receipts track by item.UserId" item-group="group.DepartmantID" is-checked="item.selected" is-regular="item.IsRegular">
+                            <div accordion-info-block template="templatesForDiscManage" source="item"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 選擇預設收件人 -->
+        <div class="receipt-wrap" data-ng-if="isShowRegularReceiptsMenu">
+            <div accordion close-others='false' is-checkbox="true">
+                <div accordion-group ng-repeat="group in RegularDepartmentsForDiscManage track by $index" is-checked="group.selected" item-group="group.DepartmantID">
+                    <div accordion-heading>
+                        {{group.DepartmantName}}
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-checkbox panel-body" data-ng-repeat="item in group.Receipts track by item.UserId" item-group="group.DepartmantID" is-checked="item.selected" is-regular="item.IsRegular">
+                            <div accordion-info-block template="templatesForDiscManage" source="item"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #endregion -->
+        <!-- #region 討論組詳細選項 -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="blackpad-discmanage" data-ng-click="hideBlackpad()" data-ng-if="isShowMemberReceiptsMenu || isShowRegularReceiptsMenu"></div>
+                <div class="modal-header">
+                    <button type="button" class="closeButton" data-dismiss="modal" data-ng-click="disableNewDiscussion()"><img src="~/Statics/img/close.png" /></button>
+                    <h4 class="modal-title" id="NewDiscussionModalLabel">@Html.Raw(Succ.Common.Global.Succ.NewGroup)</h4>
+
+                </div>
+                <div class="modal-body">
+                    <div class="sub-type sub-type-general">
+                        <div class="sub-type-chose">
+                            <div id="subGeneral" class="sub-general sub-general-on" data-ng-click="discSetting($event,'general')">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                                @Html.Raw(Succ.Common.Global.Succ.Discussion)
+                                <br />
+                                <p>@Html.Raw(Succ.Common.Global.Succ.DiscussionDesc)</p>
+
+                            </div>
+                            <div id="subAdmin" class="sub-admin sub-admin-off" data-ng-click="discSetting($event,'admin')">
+                                <span class="glyphicon glyphicon-briefcase"></span>
+                                @Html.Raw(Succ.Common.Global.Succ.SigntypeDiscussion)
+                                <br />
+                                <p>@Html.Raw(Succ.Common.Global.Succ.SigntypeDiscussionDesc)</p>
+                            </div>
+                            <img id="admin_sandwich" class="admin_sandwich admin_sandwich_general" src="~/Statics/img/admin_sandwich.png" />
+                        </div>
+                        <div id="subGeneralSet" class="sub-general-set" data-ng-if="isShowGeneralSetting">
+                            <label class="title">@Html.Raw(Succ.Common.Global.Succ.StageName)</label>
+                            <input type="text" data-ng-model="DiscussionSetting.DiscName" class="sub-general-set-name" />
+                            <br />
+                            <label class="title">@Html.Raw(Succ.Common.Global.Succ.SettingsAdministrators)</label>
+                            <select class="sub-general-set-adm" data-ng-options="item.UserName for item in MemberReceiptsForDiscManage" data-ng-model="DiscussionSetting.AdminID" data-ng-change="selectAdmin()"></select>
+                            <br />
+                            <label class="title">@Html.Raw(Succ.Common.Global.Succ.Member)</label>
+                            <select data-placeholder="@Html.Raw(Succ.Common.Global.Succ.Member)" multiple class="sub-general-set-member" chosen="MemberReceiptsForDiscManage" data-ng-options="item.UserName for item in MemberReceiptsForDiscManage track by item.UserId" data-ng-model="$parent.selectedMemberForDiscManage" datasource="MemberReceiptsForDiscManage" template="templatesForDiscManage" style="width:350px;" view-width="560px"></select>
+                            <br />
+                            <label class="title">@Html.Raw(Succ.Common.Global.Succ.FixedReceiver)</label>
+                            <select multiple data-placeholder="@Html.Raw(Succ.Common.Global.Succ.FixedReceiver)" class="sub-general-set-preset" chosen="$parent.RegularReceiptsForDiscManage" data-ng-model="$parent.selectedRegularForDiscManage" data-ng-options="item.UserName for item in $parent.RegularReceiptsForDiscManage track by item.UserId" datasource="$parent.RegularReceiptsForDiscManage" template="templatesForDiscManage" style="width:350px;position:relative;z-index:3999!important;" view-width="560px"></select>
+                        </div>
+                        <div id="subAdminSet" class="sub-admin-set" data-ng-if="isShowAdminSetting">
+                            @* #region 採購計畫 *@
+                            <div class="purchs" data-ng-click="discSetting($event,'purchs')">
+                                <div class="sub-admin-title">@Html.Raw(Succ.Common.Global.Succ.Progress1)</div>
+                                <div class="sub-admin-icon purchs-icon"></div>
+                                <div class="sub-admin-content purchs-content">
+                                    @Html.Raw(Succ.Common.Global.Succ.PurchasDesc)
+                                </div>
+                                <div class="sub-admin-more" data-ng-click="discDesc($event,'purchs')">@Html.Raw(Succ.Common.Global.Succ.Describe)</div>
+                            </div>
+                            @* #endregion *@
+                            @* #region 款項請領 *@
+                            <div class="applyMoney" data-ng-click="discSetting($event,'applyMoney')">
+                                <div class="sub-admin-title">@Html.Raw(Succ.Common.Global.Succ.Progress2)</div>
+                                <div class="sub-admin-icon applyMoney-icon"></div>
+                                <div class="sub-admin-content applyMoney-content">
+                                    @Html.Raw(Succ.Common.Global.Succ.ApplyMoneyDesc)
+                                </div>
+                                <div class="sub-admin-more" data-ng-click="discDesc($event,'applyMoney')">@Html.Raw(Succ.Common.Global.Succ.Describe)</div>
+                            </div>
+                            @* #endregion *@
+                            @* #region 請假區 *@
+                            <div class="personLeave" data-ng-click="discSetting($event,'personLeave')">
+                                <div class="sub-admin-title">@Html.Raw(Succ.Common.Global.Succ.Progress3)</div>
+                                <div class="sub-admin-icon personLeave-icon"></div>
+                                <div class="sub-admin-content personLeave-content">
+                                    @Html.Raw(Succ.Common.Global.Succ.PersonLeaveDesc)
+                                </div>
+                                <div class="sub-admin-more" data-ng-click="discDesc($event,'personLeave')">@Html.Raw(Succ.Common.Global.Succ.Describe)</div>
+                            </div>
+                            @* #endregion *@
+                            @* #region 加班區 *@
+                            <div class="overTime" data-ng-click="discSetting($event,'overTime')">
+                                <div class="sub-admin-title">@Html.Raw(Succ.Common.Global.Succ.Progress4)</div>
+                                <div class="sub-admin-icon overTime-icon"></div>
+                                <div class="sub-admin-content overTime-content">
+                                    @Html.Raw(Succ.Common.Global.Succ.OverTimeDesc)
+                                </div>
+                                <div class="sub-admin-more" data-ng-click="discDesc($event,'overTime')">@Html.Raw(Succ.Common.Global.Succ.Describe)</div>
+                            </div>
+                            @* #endregion *@
+                            @* #region 外出單 *@
+                            <div class="goOut" data-ng-click="discSetting($event,'goOut')">
+                                <div class="sub-admin-title">@Html.Raw(Succ.Common.Global.Succ.Progress5)</div>
+                                <div class="sub-admin-icon goOut-icon"></div>
+                                <div class="sub-admin-content goOut-content">
+                                    @Html.Raw(Succ.Common.Global.Succ.GoOutOutDesc)
+                                </div>
+                                <div class="sub-admin-more" data-ng-click="discDesc($event,'goOut')">@Html.Raw(Succ.Common.Global.Succ.Describe)</div>
+                            </div>
+                            @* #endregion *@
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <button id="AddNewOk" ng-init="GeneralDiscSave=false;" ng-disabled="GeneralDiscSave" data-ng-click="Save()" style="right:304px;"><span class="glyphicon glyphicon-ok"></span><label>&nbsp;@Html.Raw(Succ.Common.Global.Succ.OK)</label></button>
+                    </div>
+                </div>
+                <div class="modal-Detail">
+                    <div class="detailSetting">
+                        <div class="detailReturns">
+                            <label data-ng-click="returnAdminSet()">@Html.Raw(Succ.Common.Global.Succ.SigntypeDiscussion)</label>
+                            <span class="returnTitle"><span> &lt; {{DiscussionMore.Title}} </span></span>
+                        </div>
+                        <div class="detailTitleArea">
+                            <span class="glyphicon glyphicon-briefcase"></span>
+                            <div class="detailTitle"><span>{{DiscussionMore.Title}}</span></div>
+                        </div>
+                        <div class="detailContent" ng-bind-html="DiscussionMore.Desc">
+
+                        </div>
+                    </div>
+                    <div class="setDetail">
+                        <ul id="optionsLevel" class="nav nav-tabs" role="tablist">
+                            <li id="optionsMore" class="pull-left optionsMoreOff optionsMore" data-ng-click="optionsMore()">
+                                <div data-target="#detailOptionsMore" role="tab" data-toggle="tab">@Html.Raw(Succ.Common.Global.Succ.Explanation)</div>
+                            </li>
+                            <li id="optionsSet" class="active pull-right optionsSetOn optionsSet" data-ng-click="optionsSet()">
+                                <div data-target="#detailOptionsSet" role="tab" data-toggle="tab">@Html.Raw(Succ.Common.Global.Succ.Setting)</div>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="detailOptionsSet" class="tab-pane active">
+                                <div class="optionsGeneralSet">
+                                    <h4>@Html.Raw(Succ.Common.Global.Succ.Basic_Setting)</h4>
+                                    <label class="title">@Html.Raw(Succ.Common.Global.Succ.StageName)</label>
+                                    <input type="text" data-ng-model="DiscussionSetting.DiscName" class="optionsGeneralSetName" />
+                                    <br />
+                                    <label class="title">@Html.Raw(Succ.Common.Global.Succ.SettingsAdministrators)</label>
+                                    <select class="optionsGeneralSetAdm" data-ng-options="item.UserName for item in MemberReceiptsForDiscManage" data-ng-model="DiscussionSetting.AdminID" data-ng-change="selectAdmin()"></select>
+                                    <br />
+                                    <label class="title">@Html.Raw(Succ.Common.Global.Succ.Member)</label>
+                                    <select data-placeholder="@Html.Raw(Succ.Common.Global.Succ.Member)" multiple class="sub-general-set-member" chosen="MemberReceiptsForDiscManage" data-ng-options="item.UserName for item in MemberReceiptsForDiscManage track by item.UserId" data-ng-model="selectedMemberForDiscManage" datasource="MemberReceiptsForDiscManage" template="templatesForDiscManage" style="width:350px;" view-width="560px"></select>
+                                    <br />
+                                    <label class="title">@Html.Raw(Succ.Common.Global.Succ.FixedReceiver)</label>
+                                    <select multiple data-placeholder="@Html.Raw(Succ.Common.Global.Succ.FixedReceiver)" class="sub-general-set-preset" chosen="RegularReceiptsForDiscManage" data-ng-model="selectedRegularForDiscManage" data-ng-options="item.UserName for item in RegularReceiptsForDiscManage track by item.UserId" datasource="RegularReceiptsForDiscManage" template="templatesForDiscManage" style="width:350px;" view-width="560px"></select>
+
+                                    <div class="optionsGeneralSetCheck" data-ng-if="isShowFlow">
+                                        <div class="title">@Html.Raw(Succ.Common.Global.Succ.AuditMechanism)</div>
+                                        <div class="flow" data-ng-style="FlowStyle" data-ng-repeat="flowItem in Flows track by $index">
+                                            <input data-ng-model="flowItem.Name" placeholder="@Html.Raw(Succ.Common.Global.Succ.Checkpoint)" />
+                                            <div class="linePoint" data-ng-mouseover="showDel(flowItem)"><img src="/Statics/img/del.png" alt="" data-ng-click="delStep(flowItem)" data-ng-if="flowItem.showDel" data-ng-mouseout="hideDel(flowItem)" class="delLevel" style="cursor:pointer;" /></div>
+                                            <select data-ng-options="item.UserName for item in MemberReceiptsForDiscManage track by item.UserId" data-ng-model="flowItem.AuditID" data-ng-change="changeAudit(flowItem)"></select>
+                                        </div>
+                                        <div class="levelLine">
+                                            <div class="levelLineBar"></div>
+                                            <div class="levelPlus" data-ng-if="Flows.length < 5" data-ng-click="AddStep()">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="personLeaveReason" data-ng-show="isShowLeaveTypes">
+                                        <label class="title">{{DiscussionSetting.LeaveTypeTitle}}</label>
+                                        <div class="plReasonArea">
+                                            <div class="leaveReasonArea plr" data-ng-repeat="leaveItem in LeaveTypes">
+                                                <input class="leaveReason" data-ng-model="leaveItem.Name" />
+                                                <img src="/Statics/img/del.png" alt="" class="leaveReasonDel hideObj" data-ng-click="delType(leaveItem)" />
+                                            </div>
+                                        </div>
+
+                                        <div class="addReasonArea">
+                                            <input class="addplReason" data-ng-model="TypeName" placeholder="Add" data-ng-trim="true" />
+                                            <div class="reasonPlus" data-ng-click="AddLeaveType(TypeName)">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="optionsGeneralSetConfirm">
+                                        <button data-ng-click="Save()">
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                            <label>&nbsp;@Html.Raw(Succ.Common.Global.Succ.OK)</label>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="detailOptionsMore" class="tab-pane">
+                                <div class="detailOptionsMoreCheck">
+                                    <span ng-bind-html="DiscussionMore.Content"></span>
+
+                                </div>
+                                <div class="actualView">
+                                    @Html.Raw(Succ.Common.Global.Succ.ActualScreen)&nbsp;
+                                    <i class="fa fa-caret-down"></i>
+                                </div>
+                                <div id="moreActualView">
+                                    <img data-ng-src="{{DiscussionMore.MoreView}}" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #endregion -->
+    </div>
+    <!-- #endregion -->
+    <!-- #region 線上人員使用狀況畫面 -->
+    <div id="IPListModel" class="modal fade" role="dialog">
+        <div class="modal-dialog" style="min-width:1000px">
+            <div class="modal-content IPListContent">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        @Html.Raw(Succ.Common.Global.Succ.UseRecord)
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container" style="max-width:900px;">
+                        <h2>Online User Info.</h2>
+                        <p>v1.0</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Num.</th>
+                                    <th>IP Address</th>
+                                    <th>UserName</th>
+                                    <th>UserID</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in IndexData.OnlineIPList">
+                                    <td>[{{$index + 1}}]</td>
+                                    <td ng-bind="item.IP"></td>
+                                    <td ng-bind="item.UserName"></td>
+                                    <td ng-bind="item.UserID"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 切換多公司Modal畫面 -->
+    <div id="SwitchCompModal" class="modal fade" role="dialog">
+        <div class="modal-dialog CompModalDialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        @Html.Raw(Succ.Common.Global.Succ.Switching_Comp)
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="w3-row">
+                        <div class="m2 w3-card-12 MultiCompArea" ng-repeat="com in IndexData.Companies">
+                            <img class="MultiCompImg" ng-if="com.CompanyLogo != null" ng-src="/Backend/getCompImg?CompID={{com.CompanyID}}&t={{timer}}" ng-click="SwitchCompany(com.CompanyID)" />
+                            <img class="MultiCompImg" ng-if="com.CompanyLogo == null" ng-src="~/Statics/img/backend/Default_Company0.jpg" ng-click="SwitchCompany(com.CompanyID)" />
+                            <div class="w3-container w3-center CompNameArea" ng-click="SwitchCompany(com.CompanyID)">
+                                <p class="TextLimitation MultiCompName" ng-bind="com.CompanyName"></p>
+                                <span class="MultiNoreadNum" ng-bind="com.UnReadCount"></span>
+                            </div>
+                            <div class="MultiCompBtn left" ng-click="Dropout(com.CompanyID, com.BossId)">
+                                @Html.Raw(Succ.Common.Global.Succ.DropComp)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 遮罩頁面-->
+    <div id="blackpad" ng-click="closeRightSide()" ng-style="blackpad_css"></div>
+    <!-- #endregion -->
+    <iframe id="frameSetting" src="" class="dn" style="width:1px;height:1px; visibility:hidden"></iframe>
+    <audio controls style="display:none" id="remindvoice">
+        <source src="/remind.mp3" type="audio/mpeg">
+    </audio>
+    <!-- #region 多公司使用者公司ID 與 使用者ID -->
+    <input id="CurrentUserID" type="hidden" />
+    <input id="CurrentCompID" type="hidden" />
+    <!-- #endregion -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/signalr")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/zclip")
+    @Scripts.Render("~/bundles/pwd")
+    @Scripts.Render("~/bundles/app")
+    <!-- #region config檔案不可以mini化 -->
+    <script type="text/javascript" src="~/Scripts/app/config.js?version=1"></script>
+    <!-- #endregion -->
+    @Scripts.Render("~/bundles/app/angular")
+    @Scripts.Render("~/bundles/uiSelect")
+    @Scripts.Render("~/bundle/extensions")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/extensions/angular-dragdrop/angular-dragdrop.min.js"></script>
+    <!-- #region chosen檔案不可以mini化 -->
+    <script src="~/Scripts/extensions/chosen/chosen.jquery.js"></script>
+    <!-- #endregion -->
+    <script src="/signalr/hubs"></script>
+    @RenderSection("scripts", required: false)
+
+    <script>
+        //介接原本的方法給開啟視窗
+        function createDialog2(ToUserId, ToUserName) {
+            angular.element(document.getElementById('bodyid')).scope().createDialog(ToUserId, ToUserName);
+        }
+    </script>
+</body>
+
+</html>

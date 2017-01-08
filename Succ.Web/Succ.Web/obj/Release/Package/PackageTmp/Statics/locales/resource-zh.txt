@@ -1,0 +1,43 @@
+﻿{
+	
+	"EnterCompName":"請輸入公司名稱",
+	"EnterCompUrl":"請輸入公司網站",
+
+
+
+	"DepartName": "請輸入部門名稱",
+	"AllMember":"全部人員",
+	"NewMember":"新成員",
+	"NewDepart":"新部門",
+	"EnterLastName":"請輸入姓氏!",
+	"EnterFirstName":"請輸入名字!",
+	"EnterEmail":"請輸入電子郵件",
+	"EnterPwd":"請輸入密碼",
+	"DeleteDepart": "確定要刪除此部門嗎?",
+	"ReUseEmail": "此帳號已寄送邀請",
+
+
+	"newdisc": "新討論組",
+	"EnterDiscName": "請輸入討論組名稱",
+	"EnterAdminerDisc": "請選擇討論組管理員",
+	"ChooseMember": "請選擇一位成員",
+	"Stage1":"第一關",
+	"Stage2":"第二關",
+	"Stage3":"第三關",
+	"Stage4":"第四關",
+	"Stage5":"第五關",
+	"RecycleDisc": "確定要將此討論組移到回收區嗎?",
+	"StageName": "關卡名稱",
+	"Auditor": "審核人",
+	"EnterName":"請輸入一個名稱",
+	"Modify": "修改",
+	"RevertDisc": "確定要還原此討論組嗎?",
+	"DeleteDisc": "確定要完全刪除此討論組嗎?",
+	"CannotRemoveAdminer": "管理員不可移除",
+
+	"StartDay":"開始日期:",
+	"EndDay": "結束日期",
+
+	"success":"成功"
+
+}

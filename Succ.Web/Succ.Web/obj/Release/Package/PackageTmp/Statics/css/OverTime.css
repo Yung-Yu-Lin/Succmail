@@ -1,0 +1,258 @@
+﻿/* #region 附件上傳 */
+.attatch-wrap {
+    background: #fff;
+    list-style: none;
+    font-size: 14px;
+    color: #808080;
+    margin-left: 0;
+    padding-left: 0;
+    float: left;
+    width: 100%;
+}
+
+    .attatch-wrap li {
+        padding: 0 10px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+.file-input-wrap {
+    float: left;
+    width: 30%;
+}
+
+/* 附件列表 */
+.attatch-info {
+    list-style: none;
+    margin-left: -50px;
+}
+
+    .attatch-info li {
+        float: left;
+    }
+
+    .attatch-info .item-progress {
+        background-color: #eeeeee;
+        height: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+        border: 1px solid #808080;
+        padding: 0;
+        width: 180px;
+        float: right;
+    }
+
+        .attatch-info .item-progress .progress-bar {
+            background-color: #428bca;
+        }
+
+/* #endregion */
+
+/* 彈出來的收件人區塊 */
+.add-new-OverTimeForm .receipt-wrap {
+    z-index: 999;
+    background-color: #fff;
+    position: fixed;
+    right: 60%;
+    overflow-y: auto;
+}
+/*下拉收件人選單*/
+    .add-new-OverTimeForm .chosen-container {
+    }
+
+
+        /* 下拉收件人選單的的選取結果 */
+        .add-new-OverTimeForm .chosen-choices li.search-choice {
+            background: none #eeeeee;
+            font-size: 16px;
+        }
+
+.OverTimeFormTable{
+    width:100%;
+}
+
+
+
+.OverTimeFormTable td{
+    border-bottom:1px solid #f2f2f2;
+    border-right:1px solid #f2f2f2;
+    text-align:center;
+}
+
+.OverTimeFormMember >td >select{
+    width:100%;
+    padding-right: 65px;
+    height: 30px;
+    border:none;
+}
+
+
+.OverTimeFormMember .memberName{
+    width:200px;
+    background-color:#fff;
+}
+
+.OverTimeFormMember .dutyAgentName{
+    width:200px;
+    background-color:#fff;
+}
+
+.OverTimeFormDate {
+    height: 60px;
+}
+
+.OverTimeFormDate .date{
+    background-color:#fff;
+    padding-left:5px;
+    color:#999;
+}
+
+.OverTimeFormDate .dataSpan
+{
+    padding:15px 0px 15px 0px;
+    color:black;
+    font-size:1.3em;
+}
+
+.DetailSpan{
+    margin-left:20px;
+}
+
+
+
+.OverTimeFormDate .date .totalTime .totalDay{
+    width:100px;
+}
+
+.OverTimeFormDate .date .totalTime .totalHours{
+    width:50px;
+}
+
+
+
+
+.OverTimeFormDate .date .outBackTime .outYear{
+    margin-left:14px;
+}
+
+
+
+.OverTimeFormDate .date .outBackTime .outHour, .OverTimeFormDate .date .outBackTime .backHour{
+    margin-left:50px;
+}
+
+
+
+
+.OverTimeFormType{
+    height:50px;
+}
+
+.OverTimeFormType .chose{
+    text-align:left;
+}
+
+.OverTimeFormType .chose >ul >li{
+    list-style-type:none;
+    display:inline;
+    padding-left:20px;
+}
+
+.OverTimeFormType .chose >span{
+    padding-left:60px;
+}
+
+.OverTimeFormReason{
+    height:50px;
+}
+
+.OverTimeFormReason .reason{
+    background-color:#fff;
+}
+
+
+
+.OverTimeFormRemarks{
+    height:50px;
+}
+
+.OverTimeFormRemarks .remarks{
+    background-color:#FFF;
+}
+
+
+
+.OverTimeeFormAdd{
+    height:30px;
+}
+
+.OverTimeFormAdd .add{
+    background-color:#FFF;
+}
+.OverTimeFormTable .title {
+    width:80px;
+}
+.btn-wrap {
+    width: 100%;
+    float: left;
+}
+
+.btn-draft {
+    height: 40px;
+    border: 1px solid #fff;
+    min-width: 100px;
+    position: absolute;
+    -webkit-border-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    text-align: center;
+    margin: 0 0 0 105px;
+    background: #3399cc;
+    color: #fff;
+}
+
+.file-input-wrap {
+    float: left;
+    width: 30%;
+}
+
+.btn-group-new-message {
+    float: right;
+    position: relative;
+    right: 18px;
+}
+.dropdown-draft {
+    background: #3399cc;
+    height: 36px;
+    width: 15px;
+    text-align: center;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 0;
+    position: relative;
+    margin-left: -10px;
+}
+
+.dropdown-draft .caret {
+    /*margin-left: -5px;*/
+    color: #FFF;
+}
+
+

@@ -1,0 +1,23 @@
+2016-11-26 16:08:58.4279 | url:/Succ/Index
+2016-11-26 16:09:07.6815 | url:/Backend/BackendGuide
+2016-11-26 16:09:10.3906 | url:/Succ/GetIndexData
+2016-11-26 16:09:13.1298 | url:/Succ/IsUpdateCurrentCompID/
+2016-11-26 16:09:13.1298 | System.ArgumentException: 癸 'Succ.Web.Controllers.SuccController' よ猭 'Void IsUpdateCurrentCompID(System.Guid, System.Guid)' いぃ null  'System.Guid' 把计 'CompID' τē把计ㄥΤ null 兜ヘ匡拒┦把计ゲ斗琌把σ null ┪ゲ斗匡拒┦把计
+把计嘿: parameters
+    System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+    System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+    System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-11-26 16:09:13.5008 | MyBox
+2016-11-26 16:09:13.5008 | url:/Succ/MyBox

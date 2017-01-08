@@ -1,0 +1,194 @@
+﻿/* #region 編輯器 */
+.note-editor table, .note-editor table td {
+    border: 1px solid #cacaca;
+}
+
+.note-editor .note-toolbar {
+    background: none;
+    border-bottom: 0;
+    padding: 7px 0;
+}
+
+.note-editor {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #cacaca;
+}
+
+.note-editable {
+    background-color: #fff;
+    min-height: 130px;
+    border:1px solid #cacaca;
+    padding-left:10px!important;
+}
+
+.note-editor .btn-default {
+    background: none;
+}
+
+.note-editor .note-statusbar {
+    background: none;
+}
+/* 複寫bootstrap */
+.modal-backdrop {
+    z-index: 998;
+}
+
+/* #endregion */
+
+/* #region 附件上傳 */
+.attatch-wrap {
+    background: #fff;
+    list-style: none;
+    font-size: 14px;
+    color: #808080;
+    margin-left: 0;
+    padding-left: 0;
+    float: left;
+    width: 100%;
+    margin-top:10px;
+}
+
+    .attatch-wrap li {
+        padding: 0 10px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+.add-new-msg .file-input-wrap {
+    float: left;
+    width: 30%;
+}
+
+/* 附件列表 */
+.attatch-info {
+    list-style: none;
+    margin-left: -50px;
+}
+
+    .attatch-info li {
+        float: left;
+    }
+
+    .attatch-info .item-progress {
+        background-color: #eeeeee;
+        height: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+        border: 1px solid #808080;
+        padding: 0;
+        width: 180px;
+        float: right;
+    }
+
+        .attatch-info .item-progress .progress-bar {
+            background-color: #428bca;
+        }
+
+/* #endregion */
+
+
+
+/* 款項請領表格 */
+.apply-money-table {
+    width: 100%;
+    padding: 2px;
+}
+
+    .apply-money-table .error {
+        border: 1px solid red;
+    }
+
+    .apply-money-table .amt-title {
+        background-color: #F2F2F2;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+       border:1px solid #ccc;
+    }
+
+.amt-title > td, .amt-content > td {
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+    .amt-title > td:last-child, .amt-content > td:last-child {
+        border-right: 1px solid #f2f2f2;
+    }
+
+.amt-content > tr:last-child {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.amt-content {
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #F2F2F2;
+}
+
+    .amt-content > td > input {
+        border: none;
+        width: 100%;
+        padding-left: 5px;
+    }
+
+    .amt-content td.amt-content-total {
+        text-align: center;
+        background: #F2F2F2;
+    }
+
+.amt-title .amt-title-date, .amt-content-date {
+    width: 13%;
+}
+
+.amt-title .amt-title-project, .amt-content-project {
+    width: 30%;
+}
+
+.amt-title .amt-title-price, .amt-content-price {
+    width: 12%;
+}
+
+.amt-title .amt-title-amount, .amt-content-amount {
+    width: 10%;
+}
+
+.amt-title .amt-title-subtotal {
+    width: 15%;
+}
+
+.amt-content-subtotal, .amt-content-subtotal > input {
+    background-color: #f7f7f7;
+}
+
+.amt-title .amt-title-remarks, .amt-content-remarks {
+    width: 20%;
+}
+
+.amt-content-price > input, .amt-content-amount > input, .amt-content-subtotal > input {
+    text-align: right;
+}
+
+.btn-primary {
+    float: left;
+}
+
+.btn-wrap {
+    width: 100%;
+    float: left;
+    margin-bottom:2em;
+}
+
+.loading {
+    /*display: none;*/
+    background-color: #111;
+    color: #fff;
+    font-size: 26px;
+    height: 100%;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 1111;
+}

@@ -1,0 +1,380 @@
+﻿@{
+    Layout = null;
+}
+<link href="~/Scripts/extensions/angular-ui-select/css/select.css" rel="stylesheet" />
+<link href="~/Scripts/extensions/angular-ui-select/css/select2.css" rel="stylesheet" />
+<link href="~/Scripts/extensions/angular-ui-select/css/selectize.default.css" rel="stylesheet" />
+
+<div id="editor-block" ng-controller="EditorCtrl" ng-init="init()">
+    <!-- #region 事件標籤-->
+    <ui-select class="SubjTagSelect" ng-model="SubjEventTag.selected" theme="selectize" ng-disabled="disabled" style="width: 150px;" data-ng-if="isEditSubj && IsInitEvnttag && EditDiscType < 3">
+        <ui-select-match placeholder="@Html.Raw(Succ.Common.Global.Succ.PleaseSelectEvent)">{{SubjEventTag.selected[0].SubjTagIdName || $select.selected.SubjTagIdName}}</ui-select-match>
+        <ui-select-choices repeat="SubjEventTag in EditEventTag | filter:$select.search | orderBy : '-SortBy'">
+            <span ng-bind="SubjEventTag.SubjTagIdName"></span>
+            <small style="display:none;" ng-bind="SubjEventTag.SubjTagId"></small>
+        </ui-select-choices>
+    </ui-select>
+    <!-- #endregion -->
+    <!-- #region 區隔線-->
+    <div class="TagIntermediate" data-ng-if="isEditSubj && IsInitEvnttag && IsInitCustag  && EditDiscType < 3">
+        <span> - </span>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 對象標籤-->
+    <ui-select class="SubjTagSelect" ng-model="SubjCusTag.selected" theme="selectize" ng-disabled="disabled" style="width: 150px;" data-ng-if="isEditSubj && IsInitCustag  && EditDiscType < 3">
+        <ui-select-match placeholder="@Html.Raw(Succ.Common.Global.Succ.PleaseSelectCus)">{{SubjCusTag.selected[0].SubjTagIdName || $select.selected.SubjTagIdName}}</ui-select-match>
+        <ui-select-choices repeat="SubjCusTag in EditCusTag | filter:$select.search | orderBy : '-SortBy'">
+            <span ng-bind="SubjCusTag.SubjTagIdName"></span>
+            <small style="display:none;" ng-bind="SubjCusTag.SubjTagId"></small>
+        </ui-select-choices>
+    </ui-select>
+    <!-- #endregion -->
+    @*新增標籤提示畫面*@
+    <div style="top:150px;z-index:1" class="w3-dropdown-content w3-white w3-card-12" ng-style="EventTagStyle" ng-if="IsShowEventTag">
+        <div class="AddTagDiv">
+            <h3>{{AddTag}}</h3><br />
+            @*<h3>{{TypeTagName}}</h3>*@
+            <input type="text" ng-model="TypeTagName" /><br /><br />
+            <button type="button" class="btn btn-danger" ng-click="goAddTagPage()">@Html.Raw(Succ.Common.Global.Succ.Added)</button>
+            <button type="button" class="btn btn-warning" ng-click="Cancle()">@Html.Raw(Succ.Common.Global.Succ.Cancle)</button>
+        </div>
+    </div>
+    <!-- #region 區隔線-->
+    <div class="TagIntermediate" data-ng-if="isEditSubj && IsInitEvnttag && IsInitCustag  && EditDiscType < 3">
+        <span> - </span>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 主題欄-->
+    <input type="text" class="msg-title" data-ng-model="tTitle" data-ng-change="change(tTitle)" data-ng-if="isEditSubj && IsInitEvnttag && IsInitCustag" placeholder="標題" />
+    <!-- #endregion -->
+    <!-- #region 區隔線-->
+    @*<div class="TagIntermediate" data-ng-if="isEditSubj  && IsInitEvnttag && IsInitCustag  && EditDiscType < 3">
+        <span> - </span>
+    </div>*@
+    <!-- #endregion --> 
+    <!-- #region 建立日期時間-->
+    <input type="text" class="msd-createdon" data-ng-model="CreatedonString" disabled="disabled" data-ng-if="isEditSubj  && IsInitEvnttag && IsInitCustag && EditDiscType < 3" />
+    <!-- #endregion -->
+    <!-- #region 到期日期-->
+    <input data-ng-if="EditSubjObj.tPlanCloseOn" placeholder="完成期限" datepicker-popup="{{tformat}}" ng-model="EditSubjObj.tPlanCloseOn" is-open="tdatepickerOpened" datepicker-options="tdateOptions" show-weeks="false" show-button-bar="false" ng-click="topen($event)" class="due-date-input" style="margin:0;height:38px;float:none;" readonly />
+    <button data-ng-if="EditSubjObj.tPlanCloseOn" class="due-date-btn" title="設定到期日" data-ng-click="topen($event)">
+        <i class="glyphicon glyphicon-calendar"></i>
+    </button>
+    <!-- #endregion -->
+    <!--#region 款項請領表格-->
+    <table class="apply-money-table" ng-if="Edit.ApplyMoney">
+        <tr class="amt-title">
+            <td class="amt-title-date">使用日期</td>
+            <td class="amt-title-project">項目</td>
+            <td class="amt-title-price">單價</td>
+            <td class="amt-title-amount">數量</td>
+            <td class="amt-title-subtotal">小計</td>
+            <td class="amt-title-remarks">備註</td>
+        </tr>
+
+        <tr class="amt-content" ng-repeat="item in tApplyMoneyData">
+            <!--使用日期-->
+            <td class="amt-content-date">
+                <input ng-model="item.pDate" ng-change="check_Upt_Val($index,'pDate','pDateError','error')" ng-class="item.pDateError" datepicker-popup="{{format}}" is-open="item.datepickerOpened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" show-weeks="false" close-text="Close" show-button-bar="true" ng-click="open($event, $index)" readonly />
+            </td>
+            <!--款項名稱-->
+            <td class="amt-content-project">
+                <input ng-model="item.pName" ng-class="item.pNameError" ng-change="check_Upt_Val($index,'pName','pNameError','error')" />
+            </td>
+            <!--款項價格-->
+            <td class="amt-content-price">
+                <input ng-model="item.pPrice" ng-class="item.pPriceError" ng-change="check_Upt_Val($index,'pPrice','pPriceError','error')" type="number" />
+                @*<input ng-model="item.pPrice" ng-class="item.pPriceError" ng-change="check_Upt_Val($index,'pPrice','pPriceError','error')" min="1" type="number" />*@
+            </td>
+            <!--款項數量-->
+            <td class="amt-content-amount">
+                <input ng-model="item.pQty" ng-class="item.pQtyError" ng-change="check_Upt_Val($index,'pQty','pQtyError','error')" min="1" type="number" />
+            </td>
+            <!--款項總計-->
+            <td class="amt-content-subtotal">
+                <input readonly ng-model="item.pTotal" />
+            </td>
+            <!--款項備註-->
+            <td class="amt-content-remarks">
+                <input ng-model="item.pMemo" ng-class="item.pMemoError" ng-change="check_Upt_Val($index,'pMemo','pMemoError','error')" />
+            </td>
+        </tr>
+
+        <!--總計-->
+        <tr class="amt-content">
+            <td class="amt-content-total" colspan="4">總計</td>
+            <td class="amt-content-total" data-ng-bind="Total | customcurrency"></td>
+            <td class="amt-content-remarks"></td>
+        </tr>
+    </table>
+    <!-- #endregion -->
+    <!--#region 採購計畫表格-->
+    <table class="apply-money-table" ng-if="Edit.Purchase">
+
+        <tr class="amt-title">
+            <td class="amt-title-project">項目</td>
+            <td class="amt-title-price">單價</td>
+            <td class="amt-title-amount">數量</td>
+            <td class="amt-title-subtotal" style="width:30%;">小計</td>
+            <td class="amt-title-remarks">備註</td>
+        </tr>
+
+        <tr class="amt-content" ng-repeat="item in tPurchaseMoney">
+            <td class="amt-content-project"><input ng-model="item.pName" ng-class="item.pNameError" ng-change="check_Upt_Val($index,'pName','pNameError','error')" /></td>
+            <td class="amt-content-price"><input ng-model="item.pPrice" ng-class="item.pPriceError" ng-change="check_Upt_Val($index,'pPrice','pPriceError','error')" min="1" type="number" /></td>
+            <td class="amt-content-amount"><input ng-model="item.pQty" ng-class="item.pQtyError" ng-change="check_Upt_Val($index,'pQty','pQtyError','error')" min="1" type="number" /></td>
+            <td class="amt-content-subtotal"><input readonly ng-model="item.pTotal" /></td>
+            <td class="amt-content-remarks"><input ng-model="item.pMemo" ng-class="item.pMemoError" ng-change="check_Upt_Val($index,'pMemo','pMemoError','error')" /></td>
+        </tr>
+
+        <!--總計-->
+        <tr class="amt-content">
+            <td class="amt-content-total" colspan="4">總計</td>
+            <td class="amt-content-total" data-ng-bind="Total"></td>
+            <td class="amt-content-remarks"></td>
+        </tr>
+
+    </table>
+    <!-- #endregion -->
+    <!--#region 外出表單-->
+    <table class="GoOutFormTable" ng-if="Edit.GoOut">
+        <tr class="GoOutFormMember">
+            <td class="title">人員</td>
+            <td class="memberName">
+                <select data-ng-model="tGoOut.Member" data-ng-options="item.UserName for item in receipts" data-ng-class="tGoOut.MemberError" ng-change="check_Upt_Val('','Member','MemberError','error')"></select>
+            </td>
+            <td class="title">職務代理人</td>
+            <td class="dutyAgentName">
+                <select data-ng-model="tGoOut.Agent" data-ng-options="item.UserName for item in receipts" data-ng-class="tGoOut.AgentError" ng-change="check_Upt_Val('','Agent','AgentError','error')"><option></option></select>
+            </td>
+        </tr>
+        <tr class="GoOutFormDate">
+            <td class="title">外出</td>
+            <td class="date" colspan="3">
+                <div class="outBackTime">
+                    <input class="outYear {{tGoOut.sYearError}}" ng-model="tGoOut.sYear" type="number" maxlength="4" ng-change="check_Upt_Val('','sYear','sYearError','error')" /><label>/</label>
+                    <input class="outMon {{tGoOut.sMonthError}}" data-ng-model="tGoOut.sMonth" type="number" max="12" min="1" maxlength="2" ng-change="check_Upt_Val('','sMonth','sMonthError','error')" /><label>/</label>
+                    <input class="outDay {{tGoOut.sDayError}}" data-ng-model="tGoOut.sDay" type="number" maxlength="2" max="31" min="1" ng-change="check_Upt_Val('','sDay','sDayError','error')" />
+                    <input class="outHour {{tGoOut.sHourError}}" data-ng-model="tGoOut.sHour" type="number" maxlength="2" max="23" min="0" ng-change="check_Upt_Val('','sHour','sHourError','error')" /><label>:</label>
+                    <input class="outMin {{tGoOut.sMinuteError}}" data-ng-model="tGoOut.sMinute" type="number" maxlength="2" max="59" min="0" ng-change="check_Upt_Val('','sMinute','sMinuteError','error')" /><br /><label>~</label>
+                    <input class="backYear {{tGoOut.eYearError}}" data-ng-model="tGoOut.eYear" type="number" maxlength="4" ng-change="check_Upt_Val('','eYear','eYearError','error')" /><label>/</label>
+                    <input class="backMon {{tGoOut.eMonthError}}" data-ng-model="tGoOut.eMonth" type="number" max="12" min="1" maxlength="2" ng-change="check_Upt_Val('','eMonth','eMonthError','error')" /><label>/</label>
+                    <input class="backDay {{tGoOut.eDayError}}" data-ng-model="tGoOut.eDay" type="number" maxlength="2" max="31" min="1" ng-change="check_Upt_Val('','eDay','eDayError','error')" />
+                    <input class="backHour {{tGoOut.eHourError}}" data-ng-model="tGoOut.eHour" type="number" maxlength="2" max="23" min="0" ng-change="check_Upt_Val('','eHour','eHourError','error')" /><label>:</label>
+                    <input class="backMin {{tGoOut.eMinuteError}}" data-ng-model="tGoOut.eMinute" type="number" maxlength="2" max="59" min="0" ng-change="check_Upt_Val('','eMinute','eMinuteError','error')" />
+                </div>
+                <div class="totalTime">
+                    <label>共</label><input class="totalDay {{tGoOut.TotalDaysError}}" type="number" data-ng-model="tGoOut.TotalDays" ng-change="check_Upt_Val('','TotalDays','TotalDaysError','error')" ng-class="tGoOut.TotalDaysError" />
+                    <label>天</label><input class="totalHours {{tGoOut.TotalHoursError}}" type="number" data-ng-model="tGoOut.TotalHours" ng-change="check_Upt_Val('','TotalHours','TotalHoursError','error')" />
+                    <label>小時</label>
+                </div>
+            </td>
+        </tr>
+        <tr class="GoOutFormType">
+            <td class="title">公事</td>
+            <td class="chose" colspan="3">
+                <ul>
+                    <li data-ng-repeat="outType in Edit.OutType">
+                        <input type="radio" name="OutType" data-ng-model="tGoOut.OutTypeID" ng-value="outType.ID" />{{outType.Name}}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="GoOutFormReason">
+            <td class="title">事由</td>
+            <td class="reason" colspan="3"><textarea data-ng-model="tGoOut.Reason"></textarea></td>
+        </tr>
+        <tr class="GoOutFormRemarks">
+            <td class="title">備註</td>
+            <td class="remarks" colspan="3"><textarea data-ng-model="tGoOut.Memo"></textarea></td>
+        </tr>
+    </table>
+    <!-- #endregion -->
+    <!--#region 請假表單-->
+    <table class="personLeaveFormTable" ng-if="Edit.Leave">
+        <tr class="personLeaveFormMember">
+            <td class="title">人員</td>
+            <td class="memberName">
+                <select data-ng-model="tLeave.Member" data-ng-options="item.UserName for item in receipts" data-ng-class="tLeave.MemberError" ng-change="check_Upt_Val('','Member','MemberError','error')"></select>
+            </td>
+            <td class="title">職務代理人</td>
+            <td class="dutyAgentName">
+                <select data-ng-model="tLeave.Agent" data-ng-options="item.UserName for item in receipts" data-ng-class="tLeave.AgentError" ng-change="check_Upt_Val('','Agent','AgentError','error')"><option></option></select>
+            </td>
+        </tr>
+        <tr class="personLeaveFormDate">
+            <td class="title">請假</td>
+            <td class="date" colspan="3">
+                <div class="outBackTime">
+                    <input class="outYear {{tLeave.sYearError}}" data-ng-model="tLeave.sYear" type="number" maxlength="4" ng-change="check_Upt_Val('','sYear','sYearError','error')" /><label>/</label>
+                    <input class="outMon {{tLeave.sMonthError}}" data-ng-model="tLeave.sMonth" type="number" max="12" min="1" maxlength="2" ng-change="check_Upt_Val('','sMonth','sMonthError','error')" /><label>/</label>
+                    <input class="outDay {{tLeave.sDayError}}" data-ng-model="tLeave.sDay" type="number" maxlength="2" max="31" min="1" ng-change="check_Upt_Val('','sDay','sDayError','error')" />
+                    <input class="outHour {{tLeave.sHourError}}" data-ng-model="tLeave.sHour" type="number" maxlength="2" max="23" min="0" ng-change="check_Upt_Val('','sHour','sHourError','error')" /><label>:</label>
+                    <input class="outMin {{tLeave.sMinuteError}}" data-ng-model="tLeave.sMinute" type="number" maxlength="2" max="59" min="0" ng-change="check_Upt_Val('','sMinute','sMinuteError','error')" /><br /><label>~</label>
+                    <input class="backYear {{tLeave.eYearError}}" data-ng-model="tLeave.eYear" type="number" maxlength="4" ng-change="check_Upt_Val('','eYear','eYearError','error')" /><label>/</label>
+                    <input class="backMon {{tLeave.eMonthError}}" data-ng-model="tLeave.eMonth" type="number" max="12" min="1" maxlength="2" ng-change="check_Upt_Val('','eMonth','eMonthError','error')" /><label>/</label>
+                    <input class="backDay {{tLeave.eDayError}}" data-ng-model="tLeave.eDay" type="number" maxlength="2" max="31" min="1" ng-change="check_Upt_Val('','eDay','eDayError','error')" />
+                    <input class="backHour {{tLeave.eHourError}}" data-ng-model="tLeave.eHour" type="number" maxlength="2" max="23" min="0" ng-change="check_Upt_Val('','eHour','eHourError','error')" /><label>:</label>
+                    <input class="backMin {{tLeave.eMinuteError}}" data-ng-model="tLeave.eMinute" type="number" maxlength="2" max="59" min="0" ng-change="check_Upt_Val('','eMinute','eMinuteError','error')" />
+                </div>
+                <div class="totalTime">
+                    <label>共</label><input class="totalDay {{tLeave.TotalDaysError}}" type="number" data-ng-model="tLeave.TotalDays" ng-change="check_Upt_Val('','TotalDays','TotalDaysError','error')" ng-class="tLeave.TotalDaysError" />
+                    <label>天</label><input class="totalHours {{tLeave.TotalHoursError}}" type="number" data-ng-model="tLeave.TotalHours" ng-change="check_Upt_Val('','TotalHours','TotalHoursError','error')" />
+                    <label>小時</label>
+                </div>
+            </td>
+        </tr>
+        <tr class="personLeaveFormType">
+            <td class="title">假別</td>
+            <td class="chose" colspan="3">
+                <ul>
+                    <li data-ng-repeat="leaveType in Edit.LeaveType">
+                        <input type="radio" name="LeaveType" data-ng-model="tLeave.LeaveTypeID" ng-value="leaveType.ID" />{{leaveType.Name}}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="personLeaveFormReason">
+            <td class="title">事由</td>
+            <td class="reason" colspan="3">
+                <textarea data-ng-model="tLeave.Reason"></textarea>
+            </td>
+        </tr>
+        <tr class="personLeaveFormRemarks">
+            <td class="title">備註</td>
+            <td class="remarks" colspan="3">
+                <textarea data-ng-model="tLeave.Memo"></textarea>
+            </td>
+        </tr>
+    </table>
+    <!-- #endregion -->
+    <!--#region 加班表單-->
+    <table class="OverTimeFormTable" ng-if="Edit.OverTime">
+        <tr class="OverTimeFormMember">
+            <td class="title">人員</td>
+            <td class="memberName"><select data-ng-model="tOverTime.Member" data-ng-options="item.UserName for item in receipts" data-ng-class="tOverTime.MemberError" ng-change="check_Upt_Val('','Member','MemberError','error')"></select></td>
+        </tr>
+        <tr class="OverTimeFormDate">
+            <td class="title">加班</td>
+            <td class="date" colspan="3">
+                <div class="outBackTime">
+                    <input class="outYear {{tOverTime.sYearError}}" data-ng-model="tOverTime.sYear" type="number" maxlength="4" ng-change="check_Upt_Val('','sYear','sYearError','error')" /><label>/</label>
+                    <input class="outMon {{tOverTime.sMonthError}}" data-ng-model="tOverTime.sMonth" type="number" max="12" min="1" maxlength="2" ng-change="check_Upt_Val('','sMonth','sMonthError','error')" /><label>/</label>
+                    <input class="outDay {{tOverTime.sDayError}}" data-ng-model="tOverTime.sDay" type="number" maxlength="2" max="31" min="1" ng-change="check_Upt_Val('','sDay','sDayError','error')" />
+                    <input class="outHour {{tOverTime.sHourError}}" data-ng-model="tOverTime.sHour" type="number" maxlength="2" max="23" min="0" ng-change="check_Upt_Val('','sHour','sHourError','error')" /><label>:</label>
+                    <input class="outMin {{tOverTime.sMinuteError}}" data-ng-model="tOverTime.sMinute" type="number" maxlength="2" max="59" min="0" ng-change="check_Upt_Val('','sMinute','sMinuteError','error')" /><br /><label>~</label>
+                    <input class="backYear {{tOverTime.eYearError}}" data-ng-model="tOverTime.eYear" type="number" maxlength="4" ng-change="check_Upt_Val('','eYear','eYearError','error')" /><label>/</label>
+                    <input class="backMon {{tOverTime.eMonthError}}" data-ng-model="tOverTime.eMonth" type="number" max="12" min="1" maxlength="2" ng-change="check_Upt_Val('','eMonth','eMonthError','error')" /><label>/</label>
+                    <input class="backDay {{tOverTime.eDayError}}" data-ng-model="tOverTime.eDay" type="number" maxlength="2" max="31" min="1" ng-change="check_Upt_Val('','eDay','eDayError','error')" />
+                    <input class="backHour {{tOverTime.eHourError}}" data-ng-model="tOverTime.eHour" type="number" maxlength="2" max="23" min="0" ng-change="check_Upt_Val('','eHour','eHourError','error')" /><label>:</label>
+                    <input class="backMin {{tOverTime.eMinuteError}}" data-ng-model="tOverTime.eMinute" type="number" maxlength="2" max="59" min="0" ng-change="check_Upt_Val('','eMinute','eMinuteError','error')" />
+                </div>
+                <div class="totalTime">
+                    <label>共</label><input class="totalDay {{tOverTime.TotalDaysError}}" type="number" data-ng-model="tOverTime.TotalDays" ng-change="check_Upt_Val('','TotalDays','TotalDaysError','error')" ng-class="tOverTime.TotalDaysError" />
+                    <label>天</label><input class="totalHours {{tOverTime.TotalHoursError}}" type="number" data-ng-model="tOverTime.TotalHours" ng-change="check_Upt_Val('','TotalHours','TotalHoursError','error')" />
+                    <label>小時</label>
+                </div>
+            </td>
+        </tr>
+        <tr class="OverTimeFormReason">
+            <td class="title">內容</td>
+            <td class="reason" colspan="3"><textarea class="backConetnt {{tOverTime.ContentError}}" data-ng-model="tOverTime.Content"></textarea></td>
+        </tr>
+        <tr class="OverTimeFormRemarks">
+            <td class="title">備註</td>
+            <td class="remarks" colspan="3"><textarea data-ng-model="tOverTime.Memo"></textarea></td>
+        </tr>
+    </table>
+    <!-- #endregion -->
+    <!-- #region 內容編輯器 -->
+    <div class="replyMsgBlock" ng-if="IsInitEvnttag && IsInitCustag">
+        <!--編輯器-->
+        <div summernote config="tOptions" ng-model="EditSubjObj.tText" on-image-remove="tImageRemove(target, editor, welEditable)" on-image-upload="tImageUpload(files, editor)" nv-file-drop="" uploader="tUploader" ng-if="!Edit.GoOut && !Edit.Leave && !Edit.OverTime"></div>
+        <!--附件-->
+        <ul class="attatch-wrap">
+            <li ng-repeat="item in tUploader.queue">
+                <ul class="attatch-info">
+                    <li><div class="IconSetting {{tController.fileTypeImg(item.file)}}"></div></li>
+                    <li>{{tController.fileNameSubStr(item.file)}}</li>
+                    <li>{{item.file.size/1024|number:2}}kb</li>
+                    <li><i class="fa fa-times" ng-click="tRemove(item)"></i></li>
+                    <li data-ng-show="tUploader.isHTML5 && item.progress>0" class="item-progress">
+                        <div class="progress-bar" data-ng-style="{ 'width': item.progress/100*180 + 'px' }"></div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="chose-box">
+            <!--顯示收件人按鈕-->
+            <div class="receipt-btn" ng-click="isShowReceiptsMenu = !isShowReceiptsMenu">
+                <span>收件人</span><span class="caret"></span>
+            </div>
+
+            <!--選擇收件人-->
+            <div class="receipt-wrap" ng-show="isShowReceiptsMenu">
+                <div accordion close-others='false' is-checkbox="true">
+                    <div accordion-group ng-repeat="group in tDepartments" is-checked="group.selected" item-group="group.DepartmantID">
+                        <div accordion-heading>
+                            {{group.DepartmantName}}
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-content-checkbox panel-body" ng-repeat="item in group.Receipts" item-group="group.DepartmantID" is-checked="item.selected" is-regular="item.IsRegular">
+                                <div accordion-info-block template="tTemplates" source="item"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--收件人下拉選單-->
+            <select data-placeholder="@Html.Raw(Succ.Common.Global.Succ.Choose_Receiver)" style="width:600px;" multiple chosen="tReceipts" ng-model="EditReceiver.tSelectedReceipts" ng-options="item.UserName for item in tReceipts" template="tTemplates" datasource="tReceipts" ng-change="chosenChange()"></select>
+        </div>
+        <!--下方確定按鈕-->
+        <div class="pull-right btn-wrap dropup">
+            <div class="file-input-wrap">
+                <div class="fileUpload btn btn-xs">
+                    <img src="/Statics/img/upload.png" class="uploadImg" />
+                    <span>@Html.Raw(Succ.Common.Global.Succ.Pick_File)</span>
+                    <input type="file" class="upload" nv-file-select uploader="tUploader" />
+                </div>
+                <div class="fileupload-msg">@Html.Raw(Succ.Common.Global.Succ.Do_Not_More_Than) 10M!</div>
+            </div>
+            <div class="draft-msg"><span data-ng-bind="tDraftMessage"></span></div>
+            <!-- #region 編輯主題部分的草稿儲存按鈕 -->
+            <div class="btn-group-edit-message" ng-if="isEditSubj">
+                <button type="button" class="btn btn-default btn-cancel" data-ng-click="tCancel()"><i class=" fa fa-times fa-lg">&nbsp;</i>@Html.Raw(Succ.Common.Global.Succ.Cancle)</button>
+                <button type="button" class="btn btn-ok" data-ng-click="tSave()">
+                    <i class="fa fa-envelope-o">&nbsp;&nbsp;</i>@Html.Raw(Succ.Common.Global.Succ.OK)
+                </button>
+                <button type="button" class="btn dropdown-draft" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <button type="button" class="dropdown-menu btn btn-primary btn-draft" data-ng-click="tSaveDraft()"><i class="fa fa-pencil-square-o fa-lg"></i>@Html.Raw(Succ.Common.Global.Succ.Draft)</button>
+            </div>
+            <!-- #endregion -->
+            <!-- #region 編輯回覆部分的草稿儲存按鈕 -->
+            <div class="btn-group-edit-message" ng-if="!isEditSubj">
+                <button type="button" class="btn btn-default btn-cancel" data-ng-click="tCancel()"><i class=" fa fa-times fa-lg">&nbsp;</i>@Html.Raw(Succ.Common.Global.Succ.Cancle)</button>
+                <button type="button" class="btn btn-ok" data-ng-click="tSave()">
+                    <i class="fa fa-envelope-o">&nbsp;&nbsp;</i>@Html.Raw(Succ.Common.Global.Succ.OK)
+                </button>
+                <button type="button" class="btn dropdown-draft" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <button type="button" class="dropdown-menu btn btn-primary btn-draft" data-ng-click="tSaveReplyDraft()"><i class="fa fa-pencil-square-o fa-lg"></i>@Html.Raw(Succ.Common.Global.Succ.Draft)</button>
+            </div>
+            <!-- #endregion -->
+        </div>
+    </div>
+    <!-- #endregion -->
+</div>
+
+<script>
+    //$(function () {
+    //    // 點收件人時要把跳出來的那個收件人區塊定位在receipt-wrap的那個地方
+    //    $('.receipt-btn').click(function (e) {
+    //        $('.receipt-wrap').css('top', $('#editor-block').offset().top + 'px');
+    //    });
+    //});
+</script>

@@ -1,0 +1,123 @@
+﻿@{
+    Layout = null;
+}
+@*實作jqGrid所需的js & css檔案*@
+@Scripts.Render("~/jqGrid/script")
+<link href="~/Scripts/lib/jquery-ui/jquery-ui.css" rel="stylesheet" />
+<link href="~/Scripts/lib/jqGrid/css/ui.jqgrid.css" rel="stylesheet" />
+<link href="~/Statics/css/backend/SubjTag.css" rel="stylesheet" />
+
+<div class="EventTagArea" ng-controller="EventTag">
+    <!-- #region 畫面內容 -->
+    <h2 style="margin-left:60px;">
+        @Html.Raw(Succ.Common.Global.Succ.ObjectTag)
+    </h2>
+    <!-- #endregion -->
+    <!-- #region 間隔線 -->
+    <div class="seperate_line">
+    </div>
+    <!-- #endregion -->
+    <!-- #region 新增按鈕   -->
+    <div class="SubjTag_Content">
+        <button type="button" class="btn btn-default btn-lg btn-success SubjTagBtn" ng-click="OpenAddTagView()">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> @Html.Raw(Succ.Common.Global.Succ.Added)
+        </button>
+        <button type="button" class="btn btn-default btn-lg btn-success SubjTagBtn" ng-click="OpenDefaultTagView()">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            @Html.Raw(Succ.Common.Global.Succ.Default)
+        </button>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 搜尋按鈕 -->
+    <div class="Search_Div">
+        <input type="text" id="EventTagSearch" ng-model="TagManage.SearchText" placeholder="@Html.Raw(Succ.Common.Global.Succ.EnterTagNameToSearch)" />
+        <button class="btn btn-info" ng-click="StartSearch()">@Html.Raw(Succ.Common.Global.Succ.Search)</button>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 事件標籤列表 -->
+    <div id="EventTag_List">
+        <tag-jq-grid config="TagManage.TagConfig"></tag-jq-grid>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Modal View For Add SubjTag -->
+    <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="AddModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="AddModalLabel">
+                        @Html.Raw(Succ.Common.Global.Succ.Added)@Html.Raw(Succ.Common.Global.Succ.ObjectTag)
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div id="EventTag_Body">
+                        <div class="EventTag_Content" ng-repeat="item in TagManage.NewEventTag">
+                            <span>@Html.Raw(Succ.Common.Global.Succ.ObjectTag){{item.CountNum}}:</span>
+                            <input class="EventTag_Val" type="text" ng-model="item.SubjTagIdName" />
+                        </div>
+                    </div>
+                    <div class="Add_EventTag">
+                        <span class="glyphicon glyphicon-plus" ng-click="AddEvent()"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">@Html.Raw(Succ.Common.Global.Succ.Close)</button>
+                    <button type="button" class="btn btn-primary" ng-click="Store_EventTag()">@Html.Raw(Succ.Common.Global.Succ.Store)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Modal View For Edit SubjTag -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="EditModalLabel">
+                        @Html.Raw(Succ.Common.Global.Succ.Edit2)@Html.Raw(Succ.Common.Global.Succ.SubjectTag)
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div id="EventTag_Body">
+                        <div class="Edit_EventTag_Content">
+                            <span>@Html.Raw(Succ.Common.Global.Succ.SubjectTag):</span>
+                            <input ng-model="TagManage.Edit_EventTag_Val" type="text" />
+                            <input ng-model="TagManage.Edit_EventTag_ID" type="hidden" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">@Html.Raw(Succ.Common.Global.Succ.Close)</button>
+                    <button type="button" class="btn btn-primary" ng-click="Edit_EventTag()">@Html.Raw(Succ.Common.Global.Succ.Store)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Modal View For Default SubjTag -->
+    <div class="modal fade" id="DefaultModal" tabindex="-1" role="dialog" aria-labelledby="DefaultModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="DefaultModalLabel">
+                        @Html.Raw(Succ.Common.Global.Succ.Default)@Html.Raw(Succ.Common.Global.Succ.ObjectTag)
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div style="width:32%;display:inline-block;margin:2px;" ng-repeat="item in TagManage.DefaultEvent_Tag">
+                        <input class="w3-check" type="checkbox" ng-model="item.IsCheck" ng-checked="item.IsCheck" ng-disabled="item.Default">
+                        <button class="w3-btn w3-blue">
+                            <span ng-bind="item.ID"></span>
+                            <span>.</span>
+                            <span ng-bind="item.TagName"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">@Html.Raw(Succ.Common.Global.Succ.Close)</button>
+                    <button type="button" class="btn btn-primary" ng-click="Store_DefaultTag()">@Html.Raw(Succ.Common.Global.Succ.Store)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
+</div>

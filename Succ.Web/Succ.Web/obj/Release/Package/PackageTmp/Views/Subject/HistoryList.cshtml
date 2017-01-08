@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+
+<div id="SubHistory-area" ng-repeat="data in SubHistoryData">
+    <!-- #region 主題紀錄內容-->
+    <div class="TitleArea" title="{{data.SubjectTitle}}"><strong ng-bind="data.SubjectTitle"></strong></div>
+    <hr />
+    <!-- #endregion -->
+    <!-- #region 主題紀錄資訊列-->
+    <div id="infobar">
+        <span title="data.Creator" style="color:#3385cc" ng-bind="data.Creator"></span>
+        <label title="@Html.Raw(Succ.Common.Global.Succ.Time) : {{data.CreateOn}} | converdate" ng-bind="data.CreateOn | converdate" style="color:#999"></label>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 主題記錄主要內容-->
+    <div id="main_content" ng-bind-html="ConvertContent(data.Content)"></div>
+    <!-- #endregion -->
+    <!-- #region 主題記錄附加檔案-->
+    <div id="file-attach" ng-repeat="att in data.Attatchments">
+        <i ng-class="AttIcon(att.FileType)"></i>
+        <a ng-click="DownLoadFile(att.FileID)" class="file_name" ng-bind-template="{{att.FileName}} &nbsp;&nbsp; {{att.FileSize}}"></a>
+        <br />
+    </div>
+    <!-- #endregion -->
+</div>
+
+<div id="SubHistory-area" ng-repeat="otherdata in subOtherHis">
+    <!-- #region 主題記錄標題-->
+    <div class="TitleArea" title="{{otherdata.SubjectTitle}}" ng-show="otherdata.isOpen"><strong ng-bind="otherdata.SubjectTitle"></strong></div>
+    <!-- #endregion -->
+    <hr ng-show="otherdata.isOpen" />
+    <!-- #region 主題紀錄資訊列-->
+    <div id="infobar" ng-click="otherdata.isOpen = true">
+        <span title="otherdata.Creator" style="color:#3385cc" ng-bind="otherdata.Creator"></span>
+        <label title="@Html.Raw(Succ.Common.Global.Succ.Time) : {{otherdata.CreateOn}} | converdate" ng-bind="otherdata.CreateOn | converdate" style="color:#999"></label>
+    </div>
+    <!-- #endregion -->
+    <!-- #region 主題記錄主要內容-->
+    <div id="main_content" ng-bind-html="ConvertContent(otherdata.Content)" ng-show="otherdata.isOpen"></div>
+    <!-- #endregion -->
+    <!-- #region 主題記錄附加檔案-->
+    <div id="file-attach" ng-repeat="att in otherdata.Attatchments" ng-show="otherdata.isOpen">
+        <i ng-class="AttIcon(att.FileType)"></i>
+        <a ng-click="DownLoadFile(att.FileID)" class="file_name" ng-bind-template="{{att.FileName}} &nbsp;&nbsp; {{att.FileSize}}"></a>
+        <br />
+    </div>
+    <!-- #endregion -->
+</div>

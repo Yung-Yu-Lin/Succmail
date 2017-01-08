@@ -1,0 +1,314 @@
+﻿/* #region 編輯器 */
+.note-editor table, .note-editor table td {
+    border: 1px solid #808080;
+}
+
+.note-toolbar { 
+    border:none;
+    /*border-left: 1px solid #a9a9a9;
+    border-right: 1px solid #a9a9a9;*/
+}
+
+.note-editor {
+    border-left: none;
+    border-right: none;
+}
+
+.note-editable {
+    background-color: #fff;
+}
+/* 複寫bootstrap */
+.modal-backdrop {
+    z-index: 998;
+}
+
+/* #endregion */
+.fa-file-pdf-o {
+    color: #ff0000;
+}
+
+.fa-times {
+    color: #ff0000;
+}
+/* #region 附件上傳 */
+.attatch-wrap {
+    background: #fff;
+    list-style: none;
+    font-size: 14px;
+    color: #808080;
+    margin-left: 0;
+    padding-left: 0;
+    float: left;
+    width: 100%;
+}
+
+    .attatch-wrap li {
+        padding: 0 10px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+.add-new-msg .file-input-wrap {
+    float:left;
+    width:100%;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    float:left;
+    background-color:#eee;
+}
+
+.uploadImg{
+    width:20px;
+    height:20px;
+}
+
+    .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+.add-new-msg .fileupload-msg {
+    float:left;
+    color: #808080;
+    font-size: small;
+    position: relative;
+    width: 100px;
+    line-height:40px;
+}
+/* 附件列表 */
+.attatch-info {
+    list-style: none;
+    margin-left: -50px;
+}
+
+    .attatch-info li {
+        float: left;
+    }
+
+    .attatch-info .item-progress {
+        background-color: #ff6a00;
+        height: 10px;
+        width: 360px;
+        margin-top: 10px;
+    }
+
+/* #endregion */
+
+.add-new-msg {
+}
+    .add-new-msg .ng-hide {
+        height: 50px;
+    }
+
+/* 彈出來的收件人區塊 */
+.receipt-wrap {
+    width: 350px;
+    height: 400px;
+    z-index: 999;
+    background-color: #fff;
+    position: fixed;
+    right: 60%;
+    overflow-y: scroll;
+}
+
+/* 收件人按鈕 */
+.add-new-msg .receipt-btn {
+    border-left: 1px solid #808080;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    padding-right: 0;
+    position: relative;
+    float: left;
+    margin-left: 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+    .add-new-msg .receipt-btn:hover {
+        background-color: #e5e5e5;
+    }
+
+.add-new-msg .chosen-container {
+}
+
+.add-new-msg .chosen-choices {
+    border: none;
+    height: 30px !important;
+}
+
+/* 下拉收件人選單的的選取結果 */
+.chosen-choices li.search-choice {
+    background: none #eeeeee;
+    /*border-radius: none;*/
+    font-size: 14px;
+}
+
+/* 訊息主題輸入框 */
+.add-new-msg .msg-title {
+    border: none;
+    border-radius:5px 5px 0 0;
+    height: 50px;
+    width: 100%;
+}
+
+.add-new-msg{
+    box-shadow:0 0 5px 5px gray;
+    border-radius:3px;
+}
+
+/* 標題 */
+.msg-breadcrumb{
+    float:none;
+    margin-bottom:20px;
+}
+
+/* 款項請領表格 */
+.apply-money-table{
+    width:100%;
+    padding:2px;
+}
+
+.apply-money-table .amt-title{
+    background-color:#F2F2F2;
+    text-align:center;
+    width:100%;
+    height:30px;
+    border:#ddd;
+}
+
+.amt-title > td , .amt-content > td{
+    border-right:1px solid #ddd;
+    border-bottom:1px solid #ddd
+}
+
+.amt-title > td:last-child , .amt-content > td:last-child{
+    border-right:1px solid #f2f2f2;
+}
+
+.amt-content > tr:last-child{
+    border-bottom:1px solid #f2f2f2;
+}
+
+.amt-content{
+    height:30px;
+    background-color:#fff;
+    border:1px solid #F2F2F2;
+}
+
+.amt-content > td > input{
+    border:none;
+    width:100%;
+}
+
+.amt-title .amt-title-project , .amt-content-project{
+    width:35%;
+}
+
+.amt-title .amt-title-price , .amt-content-price{
+    width:15%;
+}
+
+.amt-title .amt-title-amount , .amt-content-amount{
+    width:10%;
+}
+
+.amt-title .amt-title-subtotal{
+    width:15%;
+}
+
+.amt-content-subtotal , .amt-content-subtotal > input{
+    background-color:#f7f7f7;
+}
+
+.amt-title .amt-title-remarks , .amt-content-remarks{
+    width:50%;
+}
+
+/* 到期日按鈕 */
+.add-new-msg .due-date-btn {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: medium none;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #808080;
+    cursor: pointer;
+    height: 30px;
+    width: 40px;
+    /*padding: 0;*/
+    margin: 0;
+    float: right;
+    position: relative;
+    /*right: 10px;*/
+    /*top: 58px;*/
+}
+
+.add-new-msg .due-date-hidden-input {
+    position: absolute;
+    right: 120px;
+    top: 35px;
+    z-index: -11;
+    visibility: hidden;
+}
+/* 取消按鈕 */
+.btn-cancel {
+    /*float: right;
+    position: relative;
+    right: 22%;*/
+}
+
+.add-new-msg .btn-draft {
+    height: 40px;
+    border: 1px solid #fff;
+    min-width: 75px;
+    position: absolute;
+    -webkit-border-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    text-align: center;
+    right: 25px;
+    margin: 0;
+}
+
+/* 草稿訊息 */
+.add-new-msg .draft-msg {
+    width: 230px;
+    float: left;
+    color: #808080;
+    font-size: medium;
+    line-height: 30px;
+}
+
+.check-drafts{
+    margin-top:20px;
+}
+
+.add-new-msg .loading {
+    /*display: none;*/
+    background-color: #111;
+    color: #fff;
+    font-size: 26px;
+    height: 100%;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 1111;
+}

@@ -1,0 +1,518 @@
+2016-09-03 11:00:26.8901 | url:/Succ/Index
+2016-09-03 11:00:36.0716 | url:/Backend/BackendGuide
+2016-09-03 11:00:37.9858 | MyBox
+2016-09-03 11:00:37.9858 | url:/Succ/MyBox
+2016-09-03 11:00:45.5072 | url:/Succ/GetIndexData
+2016-09-03 11:00:46.0612 | и獺絚计:7
+2016-09-03 11:00:46.0612 | url:/Subject/GetMyBox/
+2016-09-03 11:00:46.3903 | url:/Backend/getCompImg
+2016-09-03 11:00:46.4023 | url:/Backend/getCompImg
+2016-09-03 11:00:46.4153 | url:/Backend/getCompImg
+2016-09-03 11:00:46.4153 | url:/Backend/getCompImg
+2016-09-03 11:00:46.4393 | url:/Backend/getCompImg
+2016-09-03 11:00:46.4533 | url:/Backend/getCompImg
+2016-09-03 11:00:46.8973 | url:/Backend/getCompImg
+2016-09-03 11:00:47.1533 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:00:47.3953 | url:/Backend/getCompImg
+2016-09-03 11:00:47.4123 | url:/Subject/GetCompanyUserList/
+2016-09-03 11:01:05.8024 | url:/Subject/SubjectList
+2016-09-03 11:01:08.4306 | url:/Subject/GetSubjectList/
+2016-09-03 11:01:08.6806 | url:/Backend/getUserImg/
+2016-09-03 11:01:08.8096 | url:/Subject/GetUserData/
+2016-09-03 11:01:09.1856 | url:/Backend/getUserImg/
+2016-09-03 11:01:10.4357 | url:/subject/create
+2016-09-03 11:01:10.6027 | url:/Subject/GetEventTagList
+2016-09-03 11:01:11.0977 | url:/Subject/GetCusTagList
+2016-09-03 11:01:11.5908 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:01:11.5908 | DiscussionID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:01:11.5908 | url:/Receipt/GetReceipts
+2016-09-03 11:01:35.7832 | url:/Attatch/Upload
+2016-09-03 11:01:35.7832 | System.Exception: 99
+    Succ.Data.Service.Imps.AttachementServiceImp.UploadToLocal(UploadParam para)  D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\Imps\AttachementServiceImp.cs: ︽ 69
+    Succ.Web.Controllers.AttatchController.Upload(HttpPostedFileBase file, UploadParam param)  D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Web\Controllers\AttatchController.cs: ︽ 64
+    lambda_method(Closure , ControllerBase , Object[] )
+    System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+    System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+    System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-09-03 11:01:43.3279 | url:/Succ/Index
+2016-09-03 11:01:43.5369 | url:/Succ/IsUpdateCurrentCompID/
+2016-09-03 11:01:44.8580 | url:/Backend/BackendGuide
+2016-09-03 11:01:44.8830 | url:/Subject/SubjectList
+2016-09-03 11:01:45.5641 | url:/Succ/GetIndexData
+2016-09-03 11:01:45.7917 | url:/Subject/GetUserData/
+2016-09-03 11:01:46.1847 | url:/Backend/getUserImg/
+2016-09-03 11:01:46.2167 | url:/Backend/getCompImg
+2016-09-03 11:01:46.2407 | url:/Backend/getCompImg
+2016-09-03 11:01:46.2677 | url:/Backend/getCompImg
+2016-09-03 11:01:46.2857 | url:/Backend/getCompImg
+2016-09-03 11:01:46.3377 | url:/Subject/GetSubjectList/
+2016-09-03 11:01:46.3747 | url:/Backend/getCompImg
+2016-09-03 11:01:46.6397 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:01:46.6887 | url:/Backend/getCompImg
+2016-09-03 11:01:46.7067 | url:/Backend/getCompImg
+2016-09-03 11:01:46.8158 | url:/Backend/getCompImg
+2016-09-03 11:01:47.2006 | url:/Backend/getUserImg/
+2016-09-03 11:02:45.6033 | url:/Subject/GetNoReadCount
+2016-09-03 11:02:46.1001 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:03:45.6077 | url:/Subject/GetNoReadCount
+2016-09-03 11:03:46.1167 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:04:42.3371 | url:/subject/create
+2016-09-03 11:04:42.4481 | url:/Subject/GetCusTagList
+2016-09-03 11:04:42.9471 | url:/Subject/GetEventTagList
+2016-09-03 11:04:43.4444 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:04:43.4444 | DiscussionID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:04:43.4454 | url:/Receipt/GetReceipts
+2016-09-03 11:04:45.5976 | url:/Subject/GetNoReadCount
+2016-09-03 11:04:46.1055 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:06:24.4559 | url:/Attatch/Upload
+2016-09-03 11:06:24.4559 | System.Exception: 99
+    Succ.Data.Service.Imps.AttachementServiceImp.UploadToLocal(UploadParam para)  D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\Imps\AttachementServiceImp.cs: ︽ 69
+    Succ.Web.Controllers.AttatchController.Upload(HttpPostedFileBase file, UploadParam param)  D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Web\Controllers\AttatchController.cs: ︽ 64
+    lambda_method(Closure , ControllerBase , Object[] )
+    System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+    System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+    System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-09-03 11:06:24.4609 | url:/Subject/GetNoReadCount
+2016-09-03 11:06:24.9705 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:06:35.4606 | 40a58714-e154-404c-a031-67713ff883df
+2016-09-03 11:06:35.4606 | PlanDate:0
+2016-09-03 11:06:35.4606 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:06:39.0779 | url:/Subject/CreateSubmit
+2016-09-03 11:06:39.0779 | System.NullReferenceException: ゼ盢ン把σ砞﹚ン磅︽砰
+    Succ.Data.Service.Imps.SubjectServiceImp.CreateSubject(Create data)  D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Data\Service\Imps\SubjectServiceImp.cs: ︽ 80
+    Succ.Web.Controllers.SubjectController.CreateSubmit(Create createObj)  D:\SuccMail_2.0_0720\SuccWebV2\Succ.Web\Succ.Web\Controllers\SubjectController.cs: ︽ 401
+    lambda_method(Closure , ControllerBase , Object[] )
+    System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+    System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+    System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+    System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2016-09-03 11:06:43.1328 | url:/Succ/Index
+2016-09-03 11:06:43.3348 | url:/Succ/IsUpdateCurrentCompID/
+2016-09-03 11:06:44.6279 | url:/Backend/BackendGuide
+2016-09-03 11:06:44.6529 | url:/Subject/SubjectList
+2016-09-03 11:06:45.4145 | url:/Succ/GetIndexData
+2016-09-03 11:06:45.7024 | url:/Subject/GetSubjectList/
+2016-09-03 11:06:46.0484 | url:/Backend/getUserImg/
+2016-09-03 11:06:46.0614 | url:/Backend/getCompImg
+2016-09-03 11:06:46.0784 | url:/Backend/getCompImg
+2016-09-03 11:06:46.0924 | url:/Backend/getCompImg
+2016-09-03 11:06:46.1044 | url:/Backend/getCompImg
+2016-09-03 11:06:46.1164 | url:/Backend/getCompImg
+2016-09-03 11:06:46.1164 | url:/Backend/getCompImg
+2016-09-03 11:06:46.1894 | url:/Subject/GetUserData/
+2016-09-03 11:06:46.4954 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:06:46.5755 | url:/Backend/getCompImg
+2016-09-03 11:06:47.0822 | url:/Backend/getCompImg
+2016-09-03 11:06:47.5928 | url:/Backend/getUserImg/
+2016-09-03 11:06:55.1387 | url:/subject/create
+2016-09-03 11:06:55.3207 | url:/Subject/GetEventTagList
+2016-09-03 11:06:55.8194 | url:/Subject/GetCusTagList
+2016-09-03 11:06:56.3369 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:06:56.3369 | DiscussionID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:06:56.3369 | url:/Receipt/GetReceipts
+2016-09-03 11:07:07.6544 | url:/Attatch/Upload
+2016-09-03 11:07:45.4887 | url:/Subject/GetNoReadCount
+2016-09-03 11:07:45.9792 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:08:45.4438 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:08:45.9688 | url:/Subject/GetNoReadCount
+2016-09-03 11:09:47.3139 | url:/Subject/GetNoReadCount
+2016-09-03 11:09:47.7960 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:11:52.5664 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:11:52.6314 | url:/Subject/GetNoReadCount
+2016-09-03 11:11:52.8485 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:11:53.2535 | url:/Succ/Index
+2016-09-03 11:11:58.1808 | url:/Succ/IsUpdateCurrentCompID/
+2016-09-03 11:12:00.8888 | url:/Succ/GetIndexData
+2016-09-03 11:12:01.0208 | MyBox
+2016-09-03 11:12:01.0208 | url:/Succ/MyBox
+2016-09-03 11:12:01.1568 | url:/Backend/getCompImg
+2016-09-03 11:12:01.2108 | url:/Backend/getCompImg
+2016-09-03 11:12:01.7249 | и獺絚计:7
+2016-09-03 11:12:01.7249 | url:/Subject/GetMyBox/
+2016-09-03 11:12:01.7799 | url:/Subject/GetCompanyUserList/
+2016-09-03 11:12:01.9169 | url:/Backend/getCompImg
+2016-09-03 11:12:02.0359 | url:/Backend/getCompImg
+2016-09-03 11:12:02.0679 | url:/Backend/getCompImg
+2016-09-03 11:12:02.0729 | url:/Backend/BackendGuide
+2016-09-03 11:12:03.6224 | url:/Backend/getCompImg
+2016-09-03 11:12:03.6819 | url:/Backend/getCompImg
+2016-09-03 11:12:04.1448 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:12:04.1878 | url:/Backend/getCompImg
+2016-09-03 11:12:05.1968 | url:/Subject/SubjectList
+2016-09-03 11:12:07.9843 | url:/Subject/GetSubjectList/
+2016-09-03 11:12:08.2994 | url:/Backend/getUserImg/
+2016-09-03 11:12:08.3784 | url:/Subject/GetUserData/
+2016-09-03 11:12:08.7994 | url:/Backend/getUserImg/
+2016-09-03 11:12:09.2486 | url:/subject/create
+2016-09-03 11:12:09.4116 | url:/Subject/GetEventTagList
+2016-09-03 11:12:09.9067 | url:/Subject/GetCusTagList
+2016-09-03 11:12:10.4014 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:12:10.4014 | DiscussionID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:12:10.4014 | url:/Receipt/GetReceipts
+2016-09-03 11:12:20.6362 | url:/Attatch/Upload
+2016-09-03 11:13:00.9180 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:13:01.4188 | url:/Subject/GetNoReadCount
+2016-09-03 11:14:02.3116 | url:/Subject/GetNoReadCount
+2016-09-03 11:14:02.8116 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:15:02.3127 | url:/Subject/GetNoReadCount
+2016-09-03 11:15:02.8113 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:16:02.3123 | url:/Subject/GetNoReadCount
+2016-09-03 11:16:02.8123 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:17:01.3313 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:17:01.3653 | url:/Subject/GetNoReadCount
+2016-09-03 11:17:01.8493 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:18:02.3242 | url:/Subject/GetNoReadCount
+2016-09-03 11:18:02.8072 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:19:02.3118 | url:/Subject/GetNoReadCount
+2016-09-03 11:19:02.8088 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:20:02.3064 | url:/Subject/GetNoReadCount
+2016-09-03 11:20:02.7934 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:21:02.3130 | url:/Subject/GetNoReadCount
+2016-09-03 11:21:02.8080 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:22:01.3265 | url:/Subject/GetNoReadCount
+2016-09-03 11:22:01.8048 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:22:01.8705 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:23:02.2948 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:23:02.8173 | url:/Subject/GetNoReadCount
+2016-09-03 11:24:02.3235 | url:/Subject/GetNoReadCount
+2016-09-03 11:24:02.8270 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:37:35.3013 | url:/Succ/Index
+2016-09-03 11:37:44.2869 | url:/Succ/GetIndexData
+2016-09-03 11:37:44.4419 | url:/Backend/getCompImg
+2016-09-03 11:37:44.4549 | url:/Backend/getCompImg
+2016-09-03 11:37:44.4799 | url:/Backend/getCompImg
+2016-09-03 11:37:44.4939 | url:/Backend/getCompImg
+2016-09-03 11:37:44.4939 | url:/Backend/getCompImg
+2016-09-03 11:37:44.5189 | url:/Backend/getCompImg
+2016-09-03 11:37:44.5339 | url:/Backend/getCompImg
+2016-09-03 11:37:44.7289 | url:/Backend/BackendGuide
+2016-09-03 11:37:45.7440 | MyBox
+2016-09-03 11:37:45.7440 | url:/Succ/MyBox
+2016-09-03 11:37:45.9380 | url:/Backend/getCompImg
+2016-09-03 11:37:46.3570 | url:/Subject/GetCompanyUserList/
+2016-09-03 11:37:47.0110 | и獺絚计:7
+2016-09-03 11:37:47.0110 | url:/Subject/GetMyBox/
+2016-09-03 11:37:47.4330 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:37:54.1975 | url:/Subject/GetDetail/
+2016-09-03 11:37:54.6405 | url:/Subject/GetReplyList/
+2016-09-03 11:37:54.9185 | url:/Subject/SubDetailTemplate
+2016-09-03 11:37:57.0136 | url:/Subject/HistoryList
+2016-09-03 11:37:57.0386 | url:/Attatch/getImg/
+2016-09-03 11:38:46.3076 | url:/Subject/GetNoReadCount
+2016-09-03 11:38:46.7906 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:39:38.5397 | url:/Subject/SubjectList
+2016-09-03 11:39:38.8287 | url:/Subject/GetSubjectList/
+2016-09-03 11:39:39.1057 | url:/Backend/getUserImg/
+2016-09-03 11:39:39.2647 | url:/Subject/GetUserData/
+2016-09-03 11:39:39.6048 | url:/Backend/getUserImg/
+2016-09-03 11:39:40.1168 | url:/subject/create
+2016-09-03 11:39:40.2168 | url:/Subject/GetEventTagList
+2016-09-03 11:39:40.7008 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:39:40.7008 | DiscussionID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:39:40.7008 | url:/Receipt/GetReceipts
+2016-09-03 11:39:41.2039 | url:/Subject/GetCusTagList
+2016-09-03 11:39:44.3260 | url:/Subject/GetNoReadCount
+2016-09-03 11:39:44.8221 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:39:49.5644 | url:/Attatch/Upload
+2016-09-03 11:39:51.6225 | 40a58714-e154-404c-a031-67713ff883df
+2016-09-03 11:39:51.6225 | PlanDate:0
+2016-09-03 11:39:51.6225 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:39:52.5265 | url:/Subject/CreateSubmit
+2016-09-03 11:39:52.5475 | CompanyID:af00535b-7a92-4b7b-9964-bd3a02823718
+2016-09-03 11:39:52.5475 | UserID:40a58714-e154-404c-a031-67713ff883df
+2016-09-03 11:39:52.5475 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:39:52.5705 | MyBoxCount:40
+2016-09-03 11:39:52.5705 | SubjectCount:41
+2016-09-03 11:39:52.5705 | url:/Subject/UpdateMark
+2016-09-03 11:39:53.9956 | url:/Subject/GetDetail/
+2016-09-03 11:39:54.4456 | url:/Subject/GetReplyList/
+2016-09-03 11:40:44.3256 | url:/Subject/GetNoReadCount
+2016-09-03 11:40:44.8207 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:41:44.3252 | url:/Subject/GetNoReadCount
+2016-09-03 11:41:44.8232 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:42:44.3288 | url:/Subject/GetNoReadCount
+2016-09-03 11:42:44.8588 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:42:45.3379 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:43:17.4828 | url:/Succ/Index
+2016-09-03 11:43:22.8711 | url:/Succ/IsUpdateCurrentCompID/
+2016-09-03 11:43:25.4413 | url:/Backend/BackendGuide
+2016-09-03 11:43:25.4723 | url:/Subject/SubjectList
+2016-09-03 11:43:26.2203 | url:/Succ/GetIndexData
+2016-09-03 11:43:26.7553 | url:/Subject/GetSubjectList/
+2016-09-03 11:43:27.1144 | url:/Subject/GetUserData/
+2016-09-03 11:43:27.1944 | url:/Backend/getUserImg/
+2016-09-03 11:43:27.2184 | url:/Backend/getCompImg
+2016-09-03 11:43:27.2554 | url:/Backend/getCompImg
+2016-09-03 11:43:27.2694 | url:/Backend/getCompImg
+2016-09-03 11:43:27.3664 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:43:27.3814 | url:/Backend/getCompImg
+2016-09-03 11:43:27.7914 | url:/Backend/getCompImg
+2016-09-03 11:43:28.2264 | url:/Backend/getCompImg
+2016-09-03 11:43:28.7375 | url:/Backend/getCompImg
+2016-09-03 11:43:29.2465 | url:/Backend/getCompImg
+2016-09-03 11:43:29.7435 | url:/Backend/getUserImg/
+2016-09-03 11:43:30.3396 | url:/Subject/GetDetail/
+2016-09-03 11:43:30.9786 | url:/Subject/GetReplyList/
+2016-09-03 11:43:31.2016 | url:/Subject/SubDetailTemplate
+2016-09-03 11:43:31.3956 | url:/Subject/HistoryList
+2016-09-03 11:44:20.4005 | url:/Succ/Index
+2016-09-03 11:44:25.5379 | url:/Succ/IsUpdateCurrentCompID/
+2016-09-03 11:44:27.8090 | url:/Backend/BackendGuide
+2016-09-03 11:44:27.8400 | url:/Subject/SubjectList
+2016-09-03 11:44:28.8221 | url:/Succ/GetIndexData
+2016-09-03 11:44:29.5711 | url:/Subject/GetSubjectList/
+2016-09-03 11:44:29.9121 | url:/Subject/GetUserData/
+2016-09-03 11:44:30.0371 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:44:30.1191 | url:/Backend/getCompImg
+2016-09-03 11:44:30.1351 | url:/Backend/getCompImg
+2016-09-03 11:44:30.1501 | url:/Backend/getCompImg
+2016-09-03 11:44:30.1651 | url:/Backend/getCompImg
+2016-09-03 11:44:30.1981 | url:/Backend/getCompImg
+2016-09-03 11:44:30.2451 | url:/Backend/getCompImg
+2016-09-03 11:44:30.5922 | url:/Backend/getUserImg/
+2016-09-03 11:44:30.6452 | url:/Backend/getCompImg
+2016-09-03 11:44:31.0962 | url:/Backend/getUserImg/
+2016-09-03 11:44:31.1402 | url:/Backend/getCompImg
+2016-09-03 11:44:36.7575 | url:/Subject/GetDetail/
+2016-09-03 11:44:37.4886 | url:/Subject/GetReplyList/
+2016-09-03 11:44:37.6556 | url:/Subject/SubDetailTemplate
+2016-09-03 11:44:39.4687 | url:/Subject/HistoryList
+2016-09-03 11:45:28.8796 | url:/Subject/GetNoReadCount
+2016-09-03 11:45:29.3607 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:46:00.3035 | url:/Subject/GetNoReadCount
+2016-09-03 11:46:00.8056 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:46:16.6835 | url:/Subject/EditorTemplate
+2016-09-03 11:46:16.6955 | DiscID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:46:16.6955 | DiscussionID:4d8a88ed-f989-4684-a688-896c4739ab87
+2016-09-03 11:46:16.7895 | url:/Receipt/GetReceipts
+2016-09-03 11:46:33.0825 | url:/Attatch/Upload
+2016-09-03 11:46:33.4735 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:46:36.4217 | af00535b-7a92-4b7b-9964-bd3a02823718
+2016-09-03 11:46:37.5928 | url:/Subject/CreateReply
+2016-09-03 11:47:04.3234 | url:/Subject/GetNoReadCount
+2016-09-03 11:47:04.8114 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:48:02.6238 | url:/Subject/GetNoReadCount
+2016-09-03 11:48:03.1119 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:48:09.0952 | url:/Succ/Index
+2016-09-03 11:48:11.1403 | url:/Succ/IsUpdateCurrentCompID/
+2016-09-03 11:48:13.4475 | url:/Backend/BackendGuide
+2016-09-03 11:48:13.4755 | url:/Subject/SubjectList
+2016-09-03 11:48:14.2925 | url:/Succ/GetIndexData
+2016-09-03 11:48:14.7186 | url:/Subject/GetUserData/
+2016-09-03 11:48:15.1606 | url:/Backend/getUserImg/
+2016-09-03 11:48:15.1806 | url:/Backend/getCompImg
+2016-09-03 11:48:15.2196 | url:/Backend/getCompImg
+2016-09-03 11:48:15.2306 | url:/Backend/getCompImg
+2016-09-03 11:48:15.2656 | url:/Backend/getCompImg
+2016-09-03 11:48:15.2966 | url:/Backend/getCompImg
+2016-09-03 11:48:15.3176 | url:/Backend/getCompImg
+2016-09-03 11:48:15.3986 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:48:15.6656 | url:/Backend/getUserImg/
+2016-09-03 11:48:15.6976 | url:/Backend/getCompImg
+2016-09-03 11:48:15.8456 | url:/Subject/GetSubjectList/
+2016-09-03 11:48:16.1736 | url:/Backend/getCompImg
+2016-09-03 11:48:17.7617 | url:/Subject/GetDetail/
+2016-09-03 11:48:18.3568 | url:/Subject/GetReplyList/
+2016-09-03 11:48:18.7168 | url:/Subject/SubDetailTemplate
+2016-09-03 11:48:20.4119 | url:/Subject/HistoryList
+2016-09-03 11:49:14.3311 | url:/Subject/GetNoReadCount
+2016-09-03 11:49:14.8222 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:50:16.3068 | url:/Subject/GetNoReadCount
+2016-09-03 11:50:16.8099 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:51:16.3114 | url:/Subject/GetNoReadCount
+2016-09-03 11:51:16.8075 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:52:16.3200 | url:/Subject/GetNoReadCount
+2016-09-03 11:52:16.7930 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:53:15.3235 | url:/Subject/GetNoReadCount
+2016-09-03 11:53:15.8076 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:53:15.8776 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:53:21.3029 | url:/Succ/Index
+2016-09-03 11:53:21.6019 | url:/Succ/IsUpdateCurrentCompID/
+2016-09-03 11:53:23.5340 | url:/Backend/BackendGuide
+2016-09-03 11:53:23.9041 | url:/Succ/GetIndexData
+2016-09-03 11:53:24.0881 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:53:24.1421 | url:/Subject/SubjectList
+2016-09-03 11:53:24.3131 | url:/Backend/getCompImg
+2016-09-03 11:53:24.4401 | url:/Backend/getCompImg
+2016-09-03 11:53:24.5991 | url:/Backend/getCompImg
+2016-09-03 11:53:24.8011 | url:/Subject/GetSubjectList/
+2016-09-03 11:53:24.8481 | url:/Backend/getCompImg
+2016-09-03 11:53:24.9061 | url:/Backend/getCompImg
+2016-09-03 11:53:24.9731 | url:/Backend/getCompImg
+2016-09-03 11:53:25.3601 | url:/Subject/GetUserData/
+2016-09-03 11:53:25.4731 | url:/Backend/getUserImg/
+2016-09-03 11:53:25.8732 | url:/Backend/getCompImg
+2016-09-03 11:53:25.9832 | url:/Backend/getUserImg/
+2016-09-03 11:53:26.4382 | url:/Backend/getCompImg
+2016-09-03 11:53:31.4755 | url:/Subject/GetDetail/
+2016-09-03 11:53:31.9735 | url:/Subject/GetReplyList/
+2016-09-03 11:53:31.9875 | url:/Subject/SubDetailTemplate
+2016-09-03 11:53:32.2065 | url:/Subject/HistoryList
+2016-09-03 11:54:25.3137 | url:/Subject/GetNoReadCount
+2016-09-03 11:54:25.7918 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:55:25.2903 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:55:25.8103 | url:/Subject/GetNoReadCount
+2016-09-03 11:56:25.3199 | url:/Subject/GetNoReadCount
+2016-09-03 11:56:25.8239 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:57:25.3175 | url:/Subject/GetNoReadCount
+2016-09-03 11:57:25.8055 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:58:17.0766 | url:/Subject/GetDetail/
+2016-09-03 11:58:17.5706 | url:/Subject/GetReplyList/
+2016-09-03 11:58:19.4347 | url:/Succ/Index
+2016-09-03 11:58:20.6518 | url:/Backend/BackendGuide
+2016-09-03 11:58:20.9068 | url:/Succ/GetIndexData
+2016-09-03 11:58:21.0128 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:58:21.1688 | url:/Backend/getCompImg
+2016-09-03 11:58:21.1858 | url:/Backend/getCompImg
+2016-09-03 11:58:21.2368 | url:/Backend/getCompImg
+2016-09-03 11:58:21.3108 | url:/Backend/getCompImg
+2016-09-03 11:58:21.3368 | url:/Backend/getCompImg
+2016-09-03 11:58:21.3618 | url:/Backend/getCompImg
+2016-09-03 11:58:21.6719 | url:/Backend/getCompImg
+2016-09-03 11:58:21.6879 | url:/Backend/getCompImg
+2016-09-03 11:58:22.1959 | url:/Subject/Detail
+2016-09-03 11:58:23.9520 | url:/Subject/GetRightToSubjDetail/
+2016-09-03 11:58:23.9740 | url:/Subject/GetRightToSubjDetail/
+2016-09-03 11:58:23.9880 | url:/Subject/GetRightToSubjDetail/
+2016-09-03 11:58:24.0020 | url:/Subject/GetDetail/
+2016-09-03 11:58:24.0090 | url:/Subject/GetReplyList/
+2016-09-03 11:58:24.0510 | url:/Subject/HistoryList
+2016-09-03 11:58:24.3710 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 11:58:24.4170 | url:/Subject/GetNoReadCount
+2016-09-03 11:58:24.4310 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:58:24.9191 | url:/Subject/GetRightToSubjDetail/
+2016-09-03 11:58:25.4231 | url:/Subject/GetRightToSubjDetail/
+2016-09-03 11:58:25.9201 | url:/Subject/GetRightToSubjDetail/
+2016-09-03 11:58:26.4231 | url:/Subject/GetRightToSubjDetail/
+2016-09-03 11:58:26.9212 | url:/Subject/GetRightToSubjDetail/
+2016-09-03 11:59:20.9584 | url:/Subject/GetNoReadCount
+2016-09-03 11:59:21.4494 | url:/Succ/GetOnlineUserCount
+2016-09-03 11:59:25.3147 | url:/Subject/GetNoReadCount
+2016-09-03 11:59:25.3427 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:00:25.1282 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:00:25.2212 | url:/Subject/GetNoReadCount
+2016-09-03 12:00:25.3113 | url:/Subject/GetNoReadCount
+2016-09-03 12:00:25.7933 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:01:22.3177 | url:/Subject/GetNoReadCount
+2016-09-03 12:01:22.8057 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:01:25.3188 | url:/Subject/GetNoReadCount
+2016-09-03 12:01:25.8159 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:02:22.3082 | url:/Subject/GetNoReadCount
+2016-09-03 12:02:22.8053 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:02:25.3134 | url:/Subject/GetNoReadCount
+2016-09-03 12:02:25.8065 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:03:21.3208 | url:/Subject/GetNoReadCount
+2016-09-03 12:03:21.8028 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:03:21.9268 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 12:03:24.3200 | url:/Subject/GetNoReadCount
+2016-09-03 12:03:24.8090 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:03:24.8760 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 12:04:22.3114 | url:/Subject/GetNoReadCount
+2016-09-03 12:04:22.8075 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:04:25.3096 | url:/Subject/GetNoReadCount
+2016-09-03 12:04:25.7966 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:05:22.3100 | url:/Subject/GetNoReadCount
+2016-09-03 12:05:22.8050 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:05:25.3072 | url:/Subject/GetNoReadCount
+2016-09-03 12:05:25.8062 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:06:22.3086 | url:/Subject/GetNoReadCount
+2016-09-03 12:06:22.8056 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:06:25.3058 | url:/Subject/GetNoReadCount
+2016-09-03 12:06:25.7918 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:07:22.3162 | url:/Subject/GetNoReadCount
+2016-09-03 12:07:22.8072 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:07:25.3064 | url:/Subject/GetNoReadCount
+2016-09-03 12:07:25.7914 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:08:21.3737 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 12:08:21.4147 | url:/Subject/GetNoReadCount
+2016-09-03 12:08:21.9068 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:08:24.3139 | url:/Subject/GetNoReadCount
+2016-09-03 12:08:24.7999 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:08:24.8389 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 12:09:22.3064 | url:/Subject/GetNoReadCount
+2016-09-03 12:09:22.8074 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:09:25.3065 | url:/Subject/GetNoReadCount
+2016-09-03 12:09:25.7986 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:10:22.3070 | url:/Subject/GetNoReadCount
+2016-09-03 12:10:22.8050 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:10:25.3071 | url:/Subject/GetNoReadCount
+2016-09-03 12:10:25.7932 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:11:22.3085 | url:/Subject/GetNoReadCount
+2016-09-03 12:11:22.8066 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:11:25.3047 | url:/Subject/GetNoReadCount
+2016-09-03 12:11:25.8057 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:12:22.3011 | url:/Subject/GetNoReadCount
+2016-09-03 12:12:22.7922 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:12:25.3113 | url:/Subject/GetNoReadCount
+2016-09-03 12:12:25.8064 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:13:21.3107 | url:/Subject/GetNoReadCount
+2016-09-03 12:13:21.7977 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:13:21.8697 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 12:13:24.3118 | url:/Subject/GetNoReadCount
+2016-09-03 12:13:24.7979 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:13:24.8599 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 12:14:22.3073 | url:/Subject/GetNoReadCount
+2016-09-03 12:14:22.8063 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:14:25.3025 | url:/Subject/GetNoReadCount
+2016-09-03 12:14:25.7915 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:15:22.3169 | url:/Subject/GetNoReadCount
+2016-09-03 12:15:22.8109 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:15:25.3061 | url:/Subject/GetNoReadCount
+2016-09-03 12:15:25.7921 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:16:22.3105 | url:/Subject/GetNoReadCount
+2016-09-03 12:16:22.8075 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:16:25.3107 | url:/Subject/GetNoReadCount
+2016-09-03 12:16:25.8067 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:17:22.3081 | url:/Subject/GetNoReadCount
+2016-09-03 12:17:22.8061 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:17:25.3042 | url:/Subject/GetNoReadCount
+2016-09-03 12:17:25.8053 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:18:21.3216 | url:/Subject/GetNoReadCount
+2016-09-03 12:18:21.8096 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:18:21.8706 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 12:18:24.3338 | url:/Subject/GetNoReadCount
+2016-09-03 12:18:24.4098 | url:/Subject/GetAllCompNoReadCount
+2016-09-03 12:18:24.8228 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:19:22.3112 | url:/Subject/GetNoReadCount
+2016-09-03 12:19:22.8063 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:19:25.3274 | url:/Subject/GetNoReadCount
+2016-09-03 12:19:25.3474 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:20:22.3018 | url:/Subject/GetNoReadCount
+2016-09-03 12:20:22.7909 | url:/Succ/GetOnlineUserCount
+2016-09-03 12:20:25.3010 | url:/Subject/GetNoReadCount
+2016-09-03 12:20:25.7900 | url:/Succ/GetOnlineUserCount

@@ -1,0 +1,142 @@
+﻿@mixin box-sizing($Type)
+{
+    box-sizing:$Type;
+    -webkit-box-sizing:$Type;
+    -moz-box-sizing:$Type;
+}
+
+@mixin transform-origin($Type)
+{
+    transform-origin:$Type;
+    -moz-transform-origin:$Type;
+    -webkit-transform-origin:$Type;
+    -ms-transform-origin:$Type;
+    -o-transform-origin:$Type;
+}
+
+@mixin transform($Type)
+{
+    -moz-transform: $Type;
+    -webkit-transform: $Type;
+    -ms-transform: $Type;
+    transform: $Type;
+}
+
+@mixin transition($Transition, $Transformation)
+{
+    -moz-transition: $Transition, -moz-transform + ' ' + $Transformation;
+    -webkit-transition: $Transition, -webkit-transform + ' ' + $Transformation;
+    -ms-transition: $Transition, -ms-transform + ' ' + $Transformation;
+    transition: $Transition, transform + ' ' + $Transformation;
+}
+
+@mixin transition2($Transition)
+{
+   -webkit-transition: $Transition;
+   -moz-transition: $Transition;
+   -ms-transition: $Transition;
+   -o-transition: $Transition;
+   transition: $Transition;
+}
+
+@mixin box-shadow($Type)
+{
+    -webkit-box-shadow:$Type;
+    -moz-box-shadow:$Type;
+    box-shadow:$Type;
+}
+
+@mixin align-item($Type)
+{
+    align-items:$Type;
+    -webkit-align-items:$Type;
+    -ms-align-items:$Type;
+    //align-items:center;vertical;
+    //align-items:flex-start;vertical from top
+    //align-items:flex-end;vertical from end
+    //align-items:baseline;
+    //align-items:stretch;vertical full the screen
+}
+
+@mixin justify-content($Type)
+{
+    justify-content:$Type;
+    -webkit-justify-content:$Type;
+    -ms-justify-content:$Type;
+    //justify-content:space-between;well distributed centerd
+    //justify-content:flex-start;from start to centerd
+    //justify-content:flex-end;from end to centerd
+    //justify-content:center;tight centerd
+    //justify-content:space-around;surplus centerd
+}
+
+@mixin flex-direction($Type)
+{
+    flex-direction:$Type;
+    -webkit-flex-direction:$Type;
+    -ms-flex-direction:$Type;
+    //flex-direction:column;order by vertical from top to bottom
+    //flex-direction:row;order by horizontal from left to right
+    //flex-direction:row-reverse;order by horizontal from right to left
+    //flex-direction:column-reverse;order by vertical from bottom to top
+}
+
+@mixin flex-wrap($Type)
+{
+    flex-wrap:$Type;
+    -webkit-flex-wrap:$Type;
+    -ms-flex-wrap:$Type;
+    //flex-wrap:nowrap;the model of order is single cilumn
+    //flex-wrap:wrap;the model of order is multiple cilumn
+    //flex-wrap:wrap-reverse;the model of order is multiple cilumn but reverse
+    //flex-flow:column nowrap;combine flex-direction + flex-wrap
+}
+
+@mixin display($Type)
+{
+    display:$Type;
+    display:-moz+'-'+$Type;
+    display:-webkit+'-'+$Type;
+    display:-ms+'-'+$Type;
+}
+
+@mixin shape($Width, $Height)
+{
+    width:$Width;
+    height:$Height;
+}
+
+@mixin backgoround($linear , $oneDirection, $Direction1, $Direction2, $value1, $value2, $color1, $color2)
+{
+    background:$color1;
+    background:-moz-linear-gradient + '(' +　$oneDirection +',' + $color1 + $value1 + ',' + $color2 + $value2 +')';
+    background:-webkit-gradient +'(' + $linear + ',' + $Direction1 +',' + $Direction2 +',' + 'color-stop(' + $value1 + ',' + $color1 + '), color-stop(' + $value2 + ',' + $color2 + '))';
+    background:-webkit-linear-gradient + '(' + $oneDirection + ',' + $color1 + $value1 + ',' + $color2 + $value2 +')';
+    background:-o-linear-gradient + '(' + $oneDirection + ',' + $color1 + $value1 + ',' + $color2 + $value2 +')';
+    background:-ms-linear-gradient + '(' + $oneDirection + ',' + $color1 + $value1 + ',' + $color2 + $value2 +')';
+    background:linear-gradient + '(' + $oneDirection + ',' + $color1 + $value1 + ',' + $color2 + $value2 +')';
+}
+
+@mixin background-setting($ImgUrl, $ImgRepeat, $Imgposition, $Imgsize)
+{
+    background-image:url + '(' + $ImgUrl + ')';
+    background-repeat:$ImgRepeat;
+    background-position:$Imgposition;
+    background-size:$Imgsize;
+}
+
+@mixin filter($src, $sizeMethod)
+{
+    //filter: progid + ':' + DXImageTransform.Microsoft.AlphaImageLoader + '(src=' + $src + ',sizingMethod=' + $sizeMethod + ')';
+    -ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+ $src +"',sizingMethod='"+ $sizeMethod +"')";
+}
+@mixin userSelect($Type)
+{
+    -moz-user-select:$Type;
+    -webkit-user-select:$Type;
+    user-select:$Type;
+}
+@mixin border($Type)
+{
+    border: $Type;
+}

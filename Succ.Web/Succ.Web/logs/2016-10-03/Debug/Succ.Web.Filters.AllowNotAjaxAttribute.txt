@@ -1,0 +1,7 @@
+2016-10-03 19:17:54.6115 | http://localhost:2042/Subject/GetSubjectList/?UserID=40a58714-e154-404c-a031-67713ff883df&DiscussionID=84271f42-2a79-4ca0-9b40-dcdd226a0f27inFilterExecuting.
+2016-10-03 19:35:25.7614 | http://localhost:2042/Subject/GetSubjectList/?UserID=40a58714-e154-404c-a031-67713ff883df&DiscussionID=64b9c8d4-22d5-43ea-8fe3-0d073fa1f280inFilterExecuting.
+2016-10-03 20:40:31.3795 | http://localhost:2042/Subject/GetSubjectList/?UserID=40a58714-e154-404c-a031-67713ff883df&DiscussionID=e924b271-652b-46e8-818e-fce854e716b9inFilterExecuting.
+2016-10-03 20:40:35.2307 | http://localhost:2042/Subject/GetSubjectList/?UserID=40a58714-e154-404c-a031-67713ff883df&DiscussionID=aa1ec16d-87d7-4a04-ad5c-4b527635ff1finFilterExecuting.
+2016-10-03 20:40:36.8078 | http://localhost:2042/Subject/GetSubjectList/?UserID=40a58714-e154-404c-a031-67713ff883df&DiscussionID=e4b58b43-53d8-4c6a-a633-6505ddc79217inFilterExecuting.
+2016-10-03 20:40:43.7864 | http://localhost:2042/Subject/GetSubjectList/?UserID=40a58714-e154-404c-a031-67713ff883df&DiscussionID=4e745c10-7be5-4325-b66d-1f85adac5e73inFilterExecuting.
+2016-10-03 20:43:21.6003 | http://localhost:2042/Subject/GetSubjectList/?UserID=40a58714-e154-404c-a031-67713ff883df&DiscussionID=4d8a88ed-f989-4684-a688-896c4739ab87inFilterExecuting.

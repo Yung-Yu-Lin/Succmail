@@ -1,0 +1,262 @@
+﻿@media screen and (max-width: 320px) {
+  html, body {
+    min-width: 320px;
+  }
+  #main {
+    padding: 10px 10px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  #main {
+    padding: 10px 40px;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  #main {
+    padding: 10px 60px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1680px) {
+  #main {
+    padding: 10px 100px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-family: 'Microsoft JhengHei';
+}
+
+ul {
+  padding: 0;
+}
+
+#wrapAll {
+  display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -ms-justify-content: space-between;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  min-height: 100%;
+  padding: 1.5em;
+  z-index: 2;
+}
+
+/*SuccMail Logo*/
+#icon {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 40px;
+}
+
+.circle {
+  display: inline-block;
+  background: #B5B5B6;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 999;
+  margin-top: 0.4%;
+}
+
+.rectangle {
+  display: inline-block;
+  height: 5px;
+  width: 37%;
+  background: #B5B5B6;
+  margin-bottom: 35px;
+  position: relative;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.stepWord {
+  width: 130px;
+  margin-left: -70px;
+  margin-top: 30px;
+  font-family: 'Microsoft JhengHei';
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
+
+.on {
+  background: #007DC3;
+}
+
+body.is-loading #main {
+  opacity: 0;
+  -moz-transform: rotateX(30deg);
+  -webkit-transform: rotateX(30deg);
+  -ms-transform: rotateX(30deg);
+  transform: rotateX(30deg);
+}
+
+#main {
+  width: 100%;
+  margin-top: 60px;
+  position: relative;
+  background: #ffffff;
+  border-radius: 4px;
+  cursor: default;
+  opacity: 0.95;
+  transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  -moz-transform: rotateX(0deg);
+  -webkit-transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -moz-transition: opacity 1s ease, -moz-transform 1s ease;
+  -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+  -ms-transition: opacity 1s ease, -ms-transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease;
+  -webkit-box-shadow: -4px -4px 20px -6px rgba(0, 0, 0, 0.69);
+  -moz-box-shadow: -4px -4px 20px -6px rgba(0, 0, 0, 0.69);
+  box-shadow: -4px -4px 20px -6px rgba(0, 0, 0, 0.69);
+}
+
+.area {
+  margin-bottom: 10px;
+}
+
+.DiscSection {
+  display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
+  -ms-justify-content: space-around;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+}
+
+.discussDiv {
+  width: 150px;
+  height: 85px;
+  border: 1px solid #CCC;
+  text-align: center;
+  padding-top: 20px;
+  display: table-cell;
+  display: -moz-table-cell;
+  display: -webkit-table-cell;
+  display: -ms-table-cell;
+  margin-bottom: 10px;
+}
+
+.discussName {
+  width: 100%;
+  display: inline-block;
+  display: -moz-inline-block;
+  display: -webkit-inline-block;
+  display: -ms-inline-block;
+  height: 30px;
+  font-weight: 800;
+  font-size: 16px;
+  color: #666;
+}
+
+.selectedDiv {
+  border-color: #007DC3;
+  border-width: 2px;
+}
+
+.build, .built {
+  height: 15px;
+  display: inline-block;
+  display: -moz-inline-block;
+  display: -webkit-inline-block;
+  display: -ms-inline-block;
+  margin-bottom: 0px;
+  height: 30px;
+  float: right;
+  line-height: 30px;
+}
+
+.build:hover, .nextButton:hover {
+  background-color: #024288;
+  cursor: pointer;
+}
+
+.build {
+  background-color: #007DC3;
+  color: #FFF;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.built {
+  background-color: #CCC;
+  color: #333;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-shadow: 0px 0px 1px #999;
+  cursor: pointer;
+}
+
+.addDiscussName {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 150px;
+  text-align: center;
+}
+
+.StartSection {
+  display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+}
+
+.nextButton {
+  background-color: #007DC3;
+  height: 35px;
+  color: #FFF;
+  border: 0px;
+  outline: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/*# sourceMappingURL=CreateDisc.css.map */

@@ -1,0 +1,158 @@
+﻿@{
+    Layout = null;
+}
+<div ng-controller="AddNewOverTimeCtrl">
+    <link href="/Statics/css/OverTime.css" rel="stylesheet" />
+    @*Breadcrumb*@
+    <div class="msg-breadcrumb"><span ng-bind="discName"></span></div>
+
+    <div class="add-new-OverTimeForm">
+        <div class="chose-box">
+            @*顯示收件人按鈕*@
+            <div class="receipt-btn" ng-click="isShowReceiptsMenu = !isShowReceiptsMenu">
+                <span>收件人</span><span class="caret"></span>
+            </div>
+            @*選擇收件人*@
+            <div class="receipt-wrap" ng-show="isShowReceiptsMenu">
+                <div accordion close-others='false' is-checkbox="true">
+                    <div accordion-group ng-repeat="group in departments" is-checked="group.selected" item-group="group.DepartmantID">
+                        <div accordion-heading>
+                            {{group.DepartmantName}}
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-content-checkbox panel-body" ng-repeat="item in group.Receipts" item-group="group.DepartmantID" is-checked="item.selected" is-regular="item.IsRegular">
+                                <div accordion-info-block template="templates" source="item"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*收件人下拉選單*@
+            <select data-placeholder="@Html.Raw(Succ.Common.Global.Succ.Choose_Receiver)" style="width:700px;" multiple chosen="receipts" ng-model="selectedReceipts" ng-options="item.UserName for item in receipts" template="templates" datasource="receipts" ng-change="chosenChange()"></select>
+        </div>
+        <div>
+            <table class="OverTimeFormTable">
+                <tr class="OverTimeFormTitle">
+                    <td colspan="4">
+                        <input type="text" class="msg-title" ng-model="title" placeholder="@Html.Raw(Succ.Common.Global.Succ.Type_Title)" />
+                    </td>
+                </tr>
+
+                <tr class="OverTimeFormMember">
+                    <td class="title">@Html.Raw(Succ.Common.Global.Succ.Staff)</td>
+                    <td class="memberName"><select data-ng-model="OverTime.Member" data-ng-options="item.UserName for item in receipts" data-ng-class="OverTime.MemberError" ng-change="checkVal('Member','MemberError','error')"></select></td>
+                </tr>
+
+                <tr class="OverTimeFormDate">
+                    <td class="title">@Html.Raw(Succ.Common.Global.Succ.OverTime)</td>
+                    <td class="date" colspan="3">
+                        <div class="outBackTime">
+                            <input class="outYear {{OverTime.sYearError}}" data-ng-model="OverTime.sYear" type="number" maxlength="4" ng-change="checkVal('sYear','sYearError','error')" /><label>/</label>
+                            <input class="outMon {{OverTime.sMonthError}}" data-ng-model="OverTime.sMonth" type="number" max="12" min="1" maxlength="2" ng-change="checkVal('sMonth','sMonthError','error')" /><label>/</label>
+                            <input class="outDay {{OverTime.sDayError}}" data-ng-model="OverTime.sDay" type="number" maxlength="2" max="31" min="1" ng-change="checkVal('sDay','sDayError','error')" />
+                            <input class="outHour {{OverTime.sHourError}}" data-ng-model="OverTime.sHour" type="number" maxlength="2" max="23" min="0" ng-change="checkVal('sHour','sHourError','error')" /><label>:</label>
+                            <input class="outMin {{OverTime.sMinuteError}}" data-ng-model="OverTime.sMinute" type="number" maxlength="2" max="59" min="0" ng-change="checkVal('sMinute','sMinuteError','error')" /><br /><label>~</label>
+                            <input class="backYear {{OverTime.eYearError}}" data-ng-model="OverTime.eYear" type="number" maxlength="4" ng-change="checkVal('eYear','eYearError','error')" /><label>/</label>
+                            <input class="backMon {{OverTime.eMonthError}}" data-ng-model="OverTime.eMonth" type="number" max="12" min="1" maxlength="2" ng-change="checkVal('eMonth','eMonthError','error')" /><label>/</label>
+                            <input class="backDay {{OverTime.eDayError}}" data-ng-model="OverTime.eDay" type="number" maxlength="2" max="31" min="1" ng-change="checkVal('eDay','eDayError','error')" />
+                            <input class="backHour {{OverTime.eHourError}}" data-ng-model="OverTime.eHour" type="number" maxlength="2" max="23" min="0" ng-change="checkVal('eHour','eHourError','error')" /><label>:</label>
+                            <input class="backMin {{OverTime.eMinuteError}}" data-ng-model="OverTime.eMinute" type="number" maxlength="2" max="59" min="0" ng-change="checkVal('eMinute','eMinuteError','error')" />
+                        </div>
+                        <div class="totalTime">
+                            <label>@Html.Raw(Succ.Common.Global.Succ.Total2)</label><input class="totalDay {{OverTime.TotalDaysError}}" type="number" data-ng-model="OverTime.TotalDays" ng-change="checkVal('TotalDays','TotalDaysError','error')" ng-class="OverTime.TotalDaysError" />
+                            <label>@Html.Raw(Succ.Common.Global.Succ.Day)</label><input class="totalHours {{OverTime.TotalHoursError}}" type="number" data-ng-model="OverTime.TotalHours" ng-change="checkVal('TotalHours','TotalHoursError','error')" />
+                            <label>@Html.Raw(Succ.Common.Global.Succ.Hours)</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="OverTimeFormReason">
+                    <td class="title">@Html.Raw(Succ.Common.Global.Succ.OverTime_Content)</td>
+                    <td class="reason" colspan="3"><textarea class="backConetnt {{OverTime.ContentError}}" data-ng-model="OverTime.Content"></textarea></td>
+                </tr>
+
+                <tr class="OverTimeFormRemarks">
+                    <td class="title">@Html.Raw(Succ.Common.Global.Succ.Remark)</td>
+                    <td class="remarks" colspan="3"><textarea data-ng-model="OverTime.Memo"></textarea></td>
+                </tr>
+
+                @*<tr class="OverTimeFormAdd">
+                        <td class="title">@Html.Raw(Succ.Common.Global.Succ.Attach)</td>
+                        <td class="add" colspan="3" nv-file-select uploader="uploader">
+                            <div class="file-input-wrap">
+                                <div class="fileUpload btn btn-xs">
+                                    <img src="~/Statics/img/upload.png" class="uploadImg" />
+                                    <span>@Html.Raw(Succ.Common.Global.Succ.Pick_File)</span>
+                                    <input type="file" class="upload" nv-file-select uploader="uploader" />
+                                </div>
+
+                            </div>
+
+                            <ul class="attatch-wrap">
+                                <li ng-repeat="item in uploader.queue">
+                                    <ul class="attatch-info">
+                                        <li><div class="IconSetting {{controller.fileTypeImg(item._file)}}"></div></li>
+                                        <li>{{controller.fileNameSubStr(item._file)}}</li>
+                                        <li>{{item.file.size/1024|number:2}}KB</li>
+                                        <li><i class="fa fa-times" ng-click="remove(item)"></i></li>
+                                        <li data-ng-show="uploader.isHTML5" class="item-progress">
+                                            <div class="progress-bar" data-ng-style="{ 'width': item.progress/100*180+'px' }"></div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </td>
+                    </tr>*@
+
+            </table>
+        </div>
+
+        </div>
+        @*附件*@
+        <ul class="attatch-wrap">
+            <li ng-repeat="item in uploader.queue">
+                <ul class="attatch-info">
+                    <li><div class="IconSetting {{controller.fileTypeImg(item._file)}}"></div></li>
+                    <li>{{controller.fileNameSubStr(item._file)}}</li>
+                    <li>{{item.file.size/1024|number:2}}KB</li>
+                    <li><i class="fa fa-times" data-ng-click="remove(item)"></i></li>
+                    <li data-ng-show="uploader.isHTML5" class="item-progress">
+                        <div class="progress-bar" data-ng-style="{ 'width': item.progress/100 * 180+'px' }"></div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="pull-right btn-wrap dropup">
+            <div class="file-input-wrap">
+                <div class="fileUpload btn btn-xs">
+                    <img src="~/Statics/img/upload.png" class="uploadImg" />
+                    <span>@Html.Raw(Succ.Common.Global.Succ.Pick_File)</span>
+                    <input type="file" class="upload" nv-file-select uploader="uploader" />
+                </div>
+                <div class="fileupload-msg" style="margin-left:125px;">@Html.Raw(Succ.Common.Global.Succ.Do_Not_More_Than) 10M!</div>
+            </div>
+            <div class="draft-msg"><span ng-bind="DraftMessage"></span></div>
+            <div class="btn-group-new-message">
+                <button type="button" class="btn btn-default btn-cancel" data-ng-click="cancelNew()"><i class=" fa fa-times fa-lg">&nbsp;</i>@Html.Raw(Succ.Common.Global.Succ.Cancle)</button>
+                <button type="button" class="btn btn-ok" data-ng-click="save()">
+                    <i class="fa fa-envelope-o">&nbsp;&nbsp;</i>@Html.Raw(Succ.Common.Global.Succ.OK)
+                </button>
+                <button class="btn dropdown-draft" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <button type="button" class="dropdown-menu btn btn-primary btn-draft"><i class=" fa fa-pencil-square-o fa-lg"></i>@Html.Raw(Succ.Common.Global.Succ.Draft)</button>
+            </div>
+        </div>
+        <div class="loading" ng-show="loading" ng-init="loading=false" ng-bind="loadingText"></div>
+    </div>
+
+    <script>
+        $(function () {
+            // 點收件人時要把跳出來的那個收件人區塊定位在receipt-wrap的那個地方
+            $('.receipt-btn').click(function (e) {
+                $('.receipt-wrap').css('top', '100px');
+            });
+        });
+    </script>

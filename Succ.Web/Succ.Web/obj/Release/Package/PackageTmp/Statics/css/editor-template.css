@@ -1,0 +1,347 @@
+﻿/*回覆編輯區*/
+#EditReply {
+    background-color: #fff;
+    margin: 0 40px 0 25px;
+    border: 1px solid #ddd;
+    /*padding: 10px 20px 5px 20px;*/
+}
+
+#editor-block {
+    background: #fff;
+    
+    margin: 81px 40px 116px 25px;
+    padding:20px 20px 5px 20px;
+   /* border-radius: 5px;*/
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(50, 50, 50, 0.2);
+    box-shadow: 0px 0px 6px 0px rgba(50, 50, 50, 0.2);
+}
+
+
+    /*主題*/
+    #editor-block .msg-title {
+        height: 35px;
+        width: 32%;
+        margin: 9px 0;
+        font-size:18px;
+        float:left;
+        border:1px solid #cacaca;
+        padding-left:2px;
+        margin-left:1px;
+    }
+
+    /*編輯主題當下的時間字串*/
+    .msd-createdon{
+        height:35px;
+        width:16%;
+        border:1px solid #cacaca;
+        margin:9px 0px;
+        font-size:18px;
+        float:left;
+        padding-left:2px;
+        margin-left:1px;
+        text-align:center;
+    }
+
+/* #region 編輯器 */
+.note-editor table, .note-editor table td {
+    border: 1px solid #cacaca;
+}
+
+.note-editor .note-toolbar {
+    background: none;
+}
+
+.note-editor {
+    width: 100%;
+    float: left;
+    border: none;
+    border-top: 1px solid #cacaca;
+}
+
+.replyMsgBlock .note-editable {
+    background-color: #fff;
+    min-height: 155px;
+    border:1px solid #cacaca;
+    padding-left:10px!important;
+}
+
+.add-new-msg .note-editable{
+    min-height: 400px;
+}
+
+.note-editor .btn-default {
+    background: none;
+}
+
+.note-editor .note-statusbar {
+    background: none;
+}
+/* 複寫bootstrap */
+.modal-backdrop {
+    z-index: 998;
+}
+
+/* #endregion */
+
+/* #region 附件上傳 */
+#editor-block .attatch-wrap {
+    background: #fff;
+    list-style: none;
+    font-size: 14px;
+    color: #808080;
+    padding:0 10px 0 0;
+    float: left;
+    width: 100%;
+}
+
+    .attatch-wrap li {
+        padding: 0 10px 0 2px;
+        line-height: 36px;
+        height: 39px;
+    }
+
+#editor-block .file-input-wrap {
+    float: left;
+}
+
+#editor-block .fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    float: left;
+    margin-top:1.4em;
+    font-size:1em;
+}
+
+#editor-block .uploadImg {
+    width: 20px;
+    height: 20px;
+}
+
+#editor-block .fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9em;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#editor-block .fileUpload .fileupload-msg {
+    float: left;
+    color: #808080;
+    font-size: small;
+    position: relative;
+    width: 100px;
+    line-height: 40px;
+}
+
+#editor-block .fileupload-msg {
+    float: left;
+    color: #808080;
+    font-size: 0.9em;
+    position: absolute;
+    width: 100px;
+    margin-top:1.9em;
+    left:110px;
+}
+/* 附件列表 */
+#editor-block .attatch-info {
+    list-style: none;
+    margin-left: -50px;
+}
+
+    #editor-block .attatch-info li {
+        float: left;
+    }
+
+    #editor-block .attatch-info .item-progress {
+        background-color: #eeeeee;
+        height: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+        border: 1px solid #808080;
+        padding: 0;
+        width: 180px;
+        float: right;
+    }
+
+        #editor-block .attatch-info .item-progress .progress-bar {
+            background-color: #428bca;
+        }
+
+/* #endregion */
+
+
+/* 收件人按鈕 */
+#editor-block .receipt-btn {
+    cursor: pointer;
+    float: left;
+    font-size: 16px;
+    margin:7px 0px 0px 0
+}
+
+#editor-block .chose-box {
+}
+
+#editor-block .chosen-container {
+}
+
+#editor-block .chosen-choices {
+    border: none;
+}
+
+/* 下拉收件人選單的的選取結果 */
+.chosen-choices li.search-choice {
+    background: none #eeeeee;
+    border-radius: none;
+    font-size: 14px;
+}
+/* 到期日按鈕 */
+/* 完成期限 */
+#editor-block .due-date-btn {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: medium none;
+    border-left: 1px solid #cacaca;
+    border-right: 1px solid #cacaca;
+    border-top: none;
+    cursor: pointer;
+    height: 36px;
+    width: 40px;
+    margin: 0;
+    float: right;
+    position: relative;
+}
+
+#editor-block .due-date-input {
+    float: left;
+    width: 15%;
+    height: 48px;
+    border-left: 1px solid #cacaca;
+    margin: 5px 0 -7px 0;
+    padding-left: 3px;
+    font-size: 17px;
+    text-align: center;
+}
+
+#editor-block .due-date-input-hidden {
+    width: 15%;
+    height: 30px;
+    background: #3399cc;
+    position: absolute;
+    right: 150px;
+    top: 150px;
+    visibility: hidden;
+}
+
+#editor-block .btn-wrap {
+    width: 105%;
+    position: relative;
+    top: 3px;
+    margin-bottom: 20px;
+}
+
+
+#editor-block .btn-draft {
+    height: 40px;
+    border: 1px solid #fff;
+    min-width: 100px;
+    position: absolute;
+    -webkit-border-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    text-align: center;
+    margin: 0 0 0 110px;
+    background: #3399cc;
+    color: #fff;
+}
+
+/* 草稿訊息 */
+#editor-block .btn-group-edit-message {
+right:-29px;/*right:-22px;*/
+margin-top:17px;
+    float: right;
+    position: relative;
+}
+/* 草稿訊息 */
+#editor-block .draft-msg {
+    float: right;
+    color: #808080;
+    font-size: 14px;
+    margin-top:1.8em;
+    position:absolute;
+    right:222px;
+}
+
+#editor-block .dropdown-draft {
+    background: #3399cc;
+    height: 36px;
+    width: 15px;
+    text-align: center;
+    border-radius: 0;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 0;
+    position: relative;
+    margin-left: -5px;
+}
+
+#editor-block .loading {
+    background-color: #111;
+    color: #fff;
+    font-size: 26px;
+    height: 100%;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 1111;
+}
+
+.SubjTagSelect{
+    float:left;
+    position:relative;
+    top:8px;
+}
+
+.TagIntermediate{
+    display:inline-block;
+    position:relative;
+    top:16px;
+    margin:0px 5px 0px 5px;
+    float:left;
+}
+.AddTagDiv{
+    height:200px;
+}
+
+.w3-dropdown-content
+{
+    width:320px;
+    height:200px;
+    text-align:center;
+    position:absolute;
+}
+.w3-dropdown-content div:hover
+{
+    background-color:white;
+}

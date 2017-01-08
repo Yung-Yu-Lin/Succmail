@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuccMail</title>
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/angular-csp.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/font-awesome.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Scripts/extensions/angular-summernote/summernote.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Scripts/extensions/chosen/chosen.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Scripts/extensions/chosen/CoverChosen.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/index.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/recipt.css" rel="stylesheet" />
+    <link href="http://mailplus.ncut.edu.tw/Statics/css/setting.css" rel="stylesheet" />
+    <link class="ng-scope" href="http://mailplus.ncut.edu.tw/Statics/css/Detail.css" rel="stylesheet" type="text/css">
+    <meta name="description" content="The description of my page" />    
+</head>
+<body  >
+
+
+    
+
+    <div id="wrap" class="row">
+        <!--<ng-view ng-if="IndexData" ng-cloak></ng-view>-->
+        <div class="row ng-scope" id="wrap">
+            <div id="DetailBody">
+               
+                <div id="tab_content_body" class="tab-content" style=" margin-top: 45px;">
+                    @{BoxContent}                                       
+                </div>                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="tab_list_head">
+        <ul class="nav">
+            <li class="new-message-li tab_list_head_li active" data-toggle="tab">
+                <div>
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <a class="new-message-a tab_slide_new">
+                        New
+                    </a>
+                    <i class="glyphicon glyphicon-remove" data-ng-click="disableMsgBlock($event)"></i>
+                </div>
+            </li>
+            <li class="browse-content-li tab_list_head_li" data-toggle="tab">
+                <div>
+                    <a class="browse-content-a tab_slide_browse">
+                        {{subjectTitle|limitTo:6}}
+                    </a>
+                    <i class="glyphicon glyphicon-remove" data-ng-click="disableDetailMsgBlock($event)"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab_list_body new-message nopadding">
+        <div class="tab-content">
+            <div class="new-message-div tab-pane " data-ng-include="createMsgUrl"></div>
+            <div class="browse-content-div tab-pane ">
+                <div data-ng-include="detailMsgUrl" data-ng-controller="SubjectDetail"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

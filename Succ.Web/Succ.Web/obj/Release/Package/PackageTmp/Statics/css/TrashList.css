@@ -1,0 +1,322 @@
+﻿/* #region 資源回收桶列表*/
+
+#middle #tab_content_head > ul > li{
+    margin-left:250px;
+}
+
+#middle #tab_content_body{
+    border:none;
+    border-top:1px solid #c4c4c4;
+}
+
+#middle #tab_content_bar{
+    border:none;
+}
+
+.trashArea{
+    margin:10px 10px 20px 10px;
+}
+
+.trashSubjectList{
+    margin-top:20px;
+}
+
+.trashSubject{
+    border:1px solid #999;
+    background-color:#999;
+    color:white;
+    padding:5px;
+    margin-bottom:-5px;
+    display:inline-block;
+    border-top-left-radius:8px;
+    border-top-right-radius:8px;
+}
+
+.trashSubject .deleteTime{
+    float:left;
+    margin-right:10px;
+    margin-left:10px;
+    font-size:17px;
+}
+
+.trashSubject .deleteType{
+    float:left;
+    margin-right:10px;
+    font-size:17px
+}
+
+.trashSubject .deleteName{
+    float:left;
+    margin-right:10px;
+    font-size:17px;
+}
+
+.trashArea .trashSubjectList .trashInfo{
+    border:1px solid #999;
+    padding:10px 10px;
+    cursor:pointer;
+}
+
+.trashArea .trashSubjectList .trashInfo:hover{
+    background-color:#fffdcf;
+}
+
+.trashInfo:active{
+    background-color:#fffdcf;
+}
+
+.trashInfo .deleteTitle{
+    float:left;
+    color:#222;
+    margin-bottom:10px;
+    width:650px;
+}
+
+.trashInfo .deleteAuthor{
+    float:right;
+    margin-right:10px;
+    width:200px;
+}
+
+.trashInfo .deleteAuthor .name{
+    float:right;
+    margin-right:10px;
+}
+
+.trashInfo .deleteAuthor .time{
+    float:right;
+}
+
+.trashInfo .deleteContent{
+    clear:both;
+    color:lightgray;
+}
+/* #endregion */
+
+/* #region 資源回收桶詳細訊息*/
+
+.deleteDetailSubject{
+    background-color:#eee;
+    border:1px solid #999;
+    padding-bottom:30px;
+    padding-top:15px;
+    margin-top:80px;
+    box-shadow: #999 0px 0px 3px 2px;
+}
+
+.deleteDetailClose {
+    float: right;
+    position: relative;
+    top: -17px;
+    right: -17px;
+}
+
+.deleteDetailArea{
+    /*border:1px solid #999;*/
+    margin-bottom:50px;
+    margin-left:20%;
+    margin-right:20%;
+}
+
+#content {
+    background-color: #fff;
+    margin-top: 30px;
+    margin-left: 25px;
+    margin-right: 40px;
+    border: 1px solid #ddd;
+    padding: 0 20px 10px 20px;
+}
+
+.TitleArea{
+    width:80%;
+    text-overflow: ellipsis;
+    display: inline-block;
+    font-size: 2em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#infobar {
+    margin: 0 0 -1px 0;
+}
+
+#content #infobar > span {
+    color: #3385cc;
+    font-weight: 700;
+    font-size: 0.98em;
+}
+
+#content #infobar > label {
+    color: #999;
+    font-weight: normal;
+}
+
+.detail_infobar_hr{
+    padding-top:10px;
+    padding-bottom:6px;
+}
+
+.responder {
+    font-weight: normal;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    color: #888;
+    font-size: 14px;
+}
+
+#content #main_content {
+    clear: left;
+    margin: 20px 1px;
+    font-size: 1.1em;
+}
+
+#content #main_content > p{
+    line-height:2;
+}
+
+#content #file-attach {
+    margin-top: 10px;
+    display: flex;
+}
+
+#content #file-attach > div {
+    float: left;
+    clear: both;
+    margin: 5px 3px 3px -7px;
+}
+
+#content #file-attach .file_name {
+    color: #428bca;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 14px;
+}
+
+#content #receiver {
+    clear: left;
+    font-size: 0.98em;
+    margin-top: -10px;
+    color: #A9A9A9;
+}
+
+#comment {
+    margin-top: 23px;
+    margin-left: 27px;
+    margin-right: 41px;
+    margin-bottom: 28px;
+    padding-bottom: 61px;
+    border-bottom: 1px solid #aaa;
+    font-size: 1.11em;
+}
+
+#respond-panel {
+    position: absolute;
+    right: 25%;
+    margin-top: 26px;
+    font-size: 14px;
+    /* height: 40px; */
+    padding: 6px;
+    padding-left: 17px;
+    padding-right: 8px;
+    /* background-color: #fff; */
+    border-top: 1px solid #c4c4c4;
+    border-left: 1px solid #c4c4c4;
+    border-right: 1px solid #c4c4c4;
+    border-bottom: 2px solid #eee;
+    color: #666;
+}
+
+#respond-panel > span{
+    background-color: #eee;
+    font-size: 16px;
+    color: #555;
+    padding-left: 2px;
+}
+
+.trashDetailSubject{
+    border:1px solid #999;
+    background-color:#999;
+    color:white;
+    padding:5px;
+    margin-bottom:-5px;
+    margin-left:25px;
+    display:inline-block;
+    border-top-left-radius:8px;
+    border-top-right-radius:8px;
+}
+
+.trashDetailSubject .deleteTime{
+    float:left;
+    margin-right:10px;
+    margin-left:10px;
+    font-size:17px;
+}
+
+.trashDetailSubject .deleteType{
+    float:left;
+    margin-right:10px;
+    font-size:17px
+}
+
+.trashDetailSubject .deleteName{
+    float:left;
+    margin-right:10px;
+    font-size:17px;
+}
+
+.deleteReturn{
+    display:inline-block;
+    float:right;
+    margin-right:40px;
+    margin-top:-1px;
+}
+
+.deleteReturn > button > i{
+    right:3px;
+}
+
+#respond-area {
+    background-color: #fff;
+    margin: 0px 40px 0px 25px;
+    border: 1px solid #ddd;
+    padding: 0 20px 9px 20px;
+}
+
+#respond-area #respond-infobar {
+    margin-top: 10px;
+    padding: 10px 0 5px 0;
+    font-size: 1.15em;
+    font-weight: 700;
+}
+
+#respond-area #respond-infobar > span {
+    color: #3385cc;
+}
+
+#respond-area #respond-infobar > label {
+    color: #888;
+    margin-left: 0.8em;
+}
+
+#respond-area #respond-content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#receiver {
+    clear: left;
+    font-size: 0.98em;
+    margin-top: -8px;
+    color: #A9A9A9;
+}
+
+#receiver > span > label {
+    margin-left: 0.8em;
+    clear: left;
+    font-size: 0.99em;
+    margin-top: 0;
+    color: #333;
+    font-weight: normal;
+}
+
+/* #endregion*/

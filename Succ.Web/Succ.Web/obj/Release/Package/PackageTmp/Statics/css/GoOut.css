@@ -1,0 +1,188 @@
+﻿/* #region 附件上傳 */
+.attatch-wrap {
+    background: #fff;
+    list-style: none;
+    font-size: 14px;
+    color: #808080;
+    margin-left: 0;
+    padding-left: 0;
+    float: left;
+    width: 100%;
+}
+
+    .attatch-wrap li {
+        padding: 0 10px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+
+
+/* 附件列表 */
+.attatch-info {
+    list-style: none;
+    margin-left: -50px;
+}
+
+    .attatch-info li {
+        float: left;
+    }
+
+    .attatch-info .item-progress {
+        background-color: #eeeeee;
+        height: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+        border: 1px solid #808080;
+        padding: 0;
+        width: 180px;
+        float: right;
+    }
+
+        .attatch-info .item-progress .progress-bar {
+            background-color: #428bca;
+        }
+
+/* #endregion */
+
+/*下拉收件人選單*/
+    .add-new-GoOutForm .chosen-container {
+    }
+
+
+
+        /* 下拉收件人選單的的選取結果 */
+        .add-new-GoOutForm .chosen-choices li.search-choice {
+            background: none #eeeeee;
+            font-size: 16px;
+        }
+
+
+
+.GoOutFormMember >td >select{
+    width:100%;
+    padding-right: 65px;
+    height: 30px;
+    border:none;
+}
+    .GoOutFormMember select.error {
+        border:1px solid red;
+    }
+
+
+
+.GoOutFormDate {
+    height: 60px;
+}
+
+
+
+.GoOutFormDate .dataSpan
+{
+    padding:15px 0 15px 0;
+    color:black;
+    font-size:1.3em;
+}
+
+.DetailSpan{
+    margin-left:20px;
+}
+
+
+
+
+.GoOutFormDate .date .totalTime .totalDay{
+    width:100px;
+}
+
+.GoOutFormDate .date .totalTime .totalHours{
+    width:50px;
+}
+
+
+
+.GoOutFormDate .date .outBackTime .outYear{
+    margin-left:14px;
+}
+
+
+.GoOutFormDate .date .outBackTime .outHour, .GoOutFormDate .date .outBackTime .backHour{
+    margin-left:27px;
+}
+
+
+
+
+.GoOutFormType{
+    height:50px;
+}
+
+.GoOutFormType .chose{
+    text-align:left;
+}
+
+.GoOutFormType .chose >ul >li{
+    list-style-type:none;
+    display:inline;
+    padding-left:20px;
+}
+
+.GoOutFormType .chose >span{
+    padding-left:60px;
+}
+
+.GoOutFormReason{
+    height:50px;
+}
+
+.GoOutFormReason .reason{
+    background-color:#fff;
+}
+
+
+.GoOutFormRemarks{
+    height:50px;
+}
+
+.GoOutFormRemarks .remarks{
+    background-color:#FFF;
+}
+
+
+.GoOuteFormAdd{
+    height:30px;
+}
+
+.GoOutFormAdd .add{
+    background-color:#FFF;
+}
+
+.btn-primary {
+    float: left;
+}
+
+.btn-wrap {
+    width: 100%;
+    float: left;
+}
+
+
+.btn-group-new-message {
+    float: right;
+    position: relative;
+    right: 18px;
+}
+
+.loading {
+    /*display: none;*/
+    background-color: #111;
+    color: #fff;
+    font-size: 26px;
+    height: 100%;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 1111;
+}

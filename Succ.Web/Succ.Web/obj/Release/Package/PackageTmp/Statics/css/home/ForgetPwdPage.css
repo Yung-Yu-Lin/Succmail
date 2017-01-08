@@ -1,0 +1,72 @@
+﻿@media screen and (max-width: 320px) {
+  .main {
+    width: 100%;
+    height: auto;
+    border: 1px solid #808080;
+    padding-bottom: 80px;
+    margin: 100px auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px #808080;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .main {
+    width: 100%;
+    height: auto;
+    border: 1px solid #808080;
+    padding-bottom: 80px;
+    margin: 100px auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px #808080;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .main {
+    width: 70%;
+    height: auto;
+    border: 1px solid #808080;
+    padding-bottom: 80px;
+    margin: 100px auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px #808080;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1680px) {
+  .main {
+    width: 40%;
+    height: auto;
+    border: 1px solid #808080;
+    padding-bottom: 80px;
+    margin: 100px auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px #808080;
+  }
+}
+
+#see_id {
+  padding: 15px 0 15px 0;
+  text-align: center;
+  color: #ffffff;
+  background-color: #3085B9;
+  font-family: "Microsoft JhengHei";
+}
+
+#txtEmail {
+  width: 80%;
+  height: 40px;
+  margin: 0 10%;
+  padding: 0 15px 0 15px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.submit_button {
+  width: 80%;
+  height: 35px;
+  margin: 0 10%;
+}
+
+/*# sourceMappingURL=ForgetPwdPage.css.map */
